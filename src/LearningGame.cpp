@@ -15,14 +15,14 @@
 
 LearningGame::LearningGame(int nbr_probs, double min_prob, double max_prob) : stats{nullptr}, nbr_probs(nbr_probs), nbr_stats{0}
 {
-	//	for (int pl = 0; pl < Hokm::N_PLAYERS; pl++)
-	//		agents[pl] = new SoundAgent(pl);
-	agents[0] = new RndAgent(0);
-	agents[1] = new SoundAgent(1);
-	agents[2] = new RndAgent(2);
-	agents[3] = new SoundAgent(3);
+	for (int pl = 0; pl < Hokm::N_PLAYERS; pl++)
+		agent[pl] = new SoundAgent();
+	// agent[0] = new SoundAgent();
+	// agent[1] = new RndAgent();
+	// agent[2] = new SoundAgent();
+	// agent[3] = new RndAgent();
 
-	round = std::unique_ptr<GameRound>(new GameRound(agents));
+	round = std::unique_ptr<GameRound>(new GameRound(agent));
 
 	probs = new double[nbr_probs];
 
@@ -35,7 +35,7 @@ LearningGame::LearningGame(int nbr_probs, double min_prob, double max_prob) : st
 LearningGame::~LearningGame()
 {
 	for (int pl = 0; pl < Hokm::N_PLAYERS; pl++)
-		delete agents[pl];
+		delete agent[pl];
 	delete[] probs;
 	delete[] stats;
 }
@@ -51,14 +51,14 @@ void LearningGame::tweak_floor_trump_probs(int nbr_episodes)
 	{
 		for (int j1 = i1 + 1; j1 < nbr_probs; j1++)
 		{
-			((SoundAgent *)agents[0])->set_probs(probs[i1], probs[j1]);
-			((SoundAgent *)agents[2])->set_probs(probs[i1], probs[j1]);
+			((SoundAgent *)agent[0])->set_probs(probs[i1], probs[j1]);
+			((SoundAgent *)agent[2])->set_probs(probs[i1], probs[j1]);
 			for (int i2 = 0; i2 < nbr_probs - 1; i2++)
 			{
 				for (int j2 = i2 + 1; j2 < nbr_probs; j2++)
 				{
-					((SoundAgent *)agents[1])->set_probs(probs[i2], probs[j2]);
-					((SoundAgent *)agents[3])->set_probs(probs[i2], probs[j2]);
+					((SoundAgent *)agent[1])->set_probs(probs[i2], probs[j2]);
+					((SoundAgent *)agent[3])->set_probs(probs[i2], probs[j2]);
 
 					for (int e = 0; e < nbr_episodes; e++)
 					{
@@ -68,7 +68,7 @@ void LearningGame::tweak_floor_trump_probs(int nbr_episodes)
 							round->reset();
 							round->deal_n_init();
 							round->trump_call();
-							int winner_team = round->play(false);
+							int winner_team = round->play();
 
 							if (winner_team == 0)
 							{
@@ -78,6 +78,8 @@ void LearningGame::tweak_floor_trump_probs(int nbr_episodes)
 							else
 								stats[i2 * nbr_probs + j2]++;
 						}
+						for (auto ag : agent)
+							ag->fin_game();
 						LOG(
 							"e: " << e << ", winner team: " << ((nbr_team_0_wins > 6) ? 1 : 2));
 						round->winner_team = -1;
@@ -117,14 +119,14 @@ void LearningGame::tweak_trump_prob_cap(int nbr_episodes)
 
 	for (int i = 0; i < nbr_probs; i++)
 	{
-		((SoundAgent *)agents[0])->set_probs(0, probs[i]);
-		((SoundAgent *)agents[2])->set_probs(0, probs[i]);
+		((SoundAgent *)agent[0])->set_probs(0, probs[i]);
+		((SoundAgent *)agent[2])->set_probs(0, probs[i]);
 		for (int j = 0; j < nbr_probs; j++)
 		{
 			if (j == i)
 				continue;
-			((SoundAgent *)agents[1])->set_probs(0, probs[j]);
-			((SoundAgent *)agents[3])->set_probs(0, probs[j]);
+			((SoundAgent *)agent[1])->set_probs(0, probs[j]);
+			((SoundAgent *)agent[3])->set_probs(0, probs[j]);
 
 			for (int e = 0; e < nbr_episodes; e++)
 			{
@@ -134,7 +136,7 @@ void LearningGame::tweak_trump_prob_cap(int nbr_episodes)
 					round->reset();
 					round->deal_n_init();
 					round->trump_call();
-					int winner_team = round->play(false);
+					int winner_team = round->play();
 
 					if (winner_team == 0)
 					{
@@ -144,6 +146,8 @@ void LearningGame::tweak_trump_prob_cap(int nbr_episodes)
 					else
 						stats[j]++;
 				}
+				for (auto ag : agent)
+					ag->fin_game();
 				LOG(
 					"e: " << e << ", winner team: " << ((nbr_team_0_wins > 6) ? 1 : 2));
 				round->winner_team = -1;
@@ -161,14 +165,14 @@ void LearningGame::tweak_floor_prob(int nbr_episodes)
 
 	for (int i = 0; i < nbr_probs; i++)
 	{
-		((SoundAgent *)agents[0])->set_probs(probs[i]);
-		((SoundAgent *)agents[2])->set_probs(probs[i]);
+		((SoundAgent *)agent[0])->set_probs(probs[i]);
+		((SoundAgent *)agent[2])->set_probs(probs[i]);
 		for (int j = 0; j < nbr_probs; j++)
 		{
 			if (j == i)
 				continue;
-			((SoundAgent *)agents[1])->set_probs(probs[j]);
-			((SoundAgent *)agents[3])->set_probs(probs[j]);
+			((SoundAgent *)agent[1])->set_probs(probs[j]);
+			((SoundAgent *)agent[3])->set_probs(probs[j]);
 
 			for (int e = 0; e < nbr_episodes; e++)
 			{
@@ -177,15 +181,15 @@ void LearningGame::tweak_floor_prob(int nbr_episodes)
 					round->reset();
 					round->deal_n_init();
 					round->trump_call();
-					int winner_team = round->play(false);
+					int winner_team = round->play();
 
 					if (winner_team == 0)
-					{
 						stats[i]++;
-					}
 					else
 						stats[j]++;
 				}
+				for (auto ag : agent)
+					ag->fin_game();
 				round->winner_team = -1;
 			}
 		}
@@ -201,7 +205,7 @@ void LearningGame::tweak_floor_prob(int nbr_episodes)
 	double prb_max = 1;
 	for (int i = 0; i < nbr_stats; i++)
 	{
-		double &cnt = stats[i];
+		double cnt = stats[i];
 		if (cnt > mx_cnt)
 		{
 			mx_cnt = cnt;
@@ -214,16 +218,15 @@ void LearningGame::tweak_floor_prob(int nbr_episodes)
 
 void LearningGame::tweak_floor_prob_vs_rnd(int nbr_episodes)
 {
-
 	nbr_stats = nbr_probs;
 	stats = new double[nbr_stats];
 	int rnd_wins[nbr_stats] = {0};
-	std::fill((stats), (stats + nbr_stats), 0);
+	std::fill(stats, stats + nbr_stats, 0);
 
 	for (int i = 0; i < nbr_probs; i++)
 	{
-		((SoundAgent *)agents[0])->set_probs(probs[i]);
-		((SoundAgent *)agents[2])->set_probs(probs[i]);
+		((SoundAgent *)agent[0])->set_probs(probs[i]);
+		((SoundAgent *)agent[2])->set_probs(probs[i]);
 
 		for (int e = 0; e < nbr_episodes; e++)
 		{
@@ -232,16 +235,15 @@ void LearningGame::tweak_floor_prob_vs_rnd(int nbr_episodes)
 				round->reset();
 				round->deal_n_init();
 				round->trump_call();
-
-				int winner_team = round->play(false);
+				int winner_team = round->play();
 
 				if (winner_team == 0)
-				{
 					stats[i]++;
-				}
 				else
 					rnd_wins[i]++;
 			}
+			for (auto ag : agent)
+				ag->fin_game();
 			round->winner_team = -1;
 		}
 	}
@@ -256,26 +258,30 @@ void LearningGame::tweak_floor_prob_vs_rnd(int nbr_episodes)
 	double sum = 0;
 	double mx_cnt = 0;
 	double prb_max = 1;
+	double r_m = 0;
 	for (int i = 0; i < nbr_stats; i++)
 	{
-		double &cnt = stats[i];
+		double cnt = stats[i];
+		double r_cnt = rnd_wins[i];
+		double r = cnt / r_cnt;
 		if (cnt > mx_cnt)
 		{
 			mx_cnt = cnt;
 			prb_max = probs[i];
+			r_m = r;
 		}
-		cnt /= rnd_wins[i];
-		sum += cnt;
-		std::cout << cnt << " ";
+		sum += r;
+		std::cout << r << " ";
 	}
 	std::cout << std::endl;
-	std::cout << "Optim. floor prob: " << prb_max << "\n";
+	std::cout << "Optim. floor prob: " << prb_max << ", max ratio: " << r_m << "\n";
 	std::cout << "Avg. ratio: " << sum / nbr_probs << std::endl;
 }
 
 void LearningGame::play(int nbr_episodes)
 {
-	tweak_floor_prob_vs_rnd(nbr_episodes);
+	tweak_floor_prob(nbr_episodes);
+	// tweak_floor_prob_vs_rnd(nbr_episodes);
 }
 
 void LearningGame::cp_probs(double *probs_cp)

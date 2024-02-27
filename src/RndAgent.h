@@ -16,7 +16,7 @@ class RndAgent : public Agent {
 private:
 	std::mt19937 mt_rnd_gen;
 public:
-	RndAgent(int player_id);
+	RndAgent();
 	Card act(const State&, const History&) override;
 	Suit call_trump(const CardStack&) override;
 };

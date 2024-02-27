@@ -1,0 +1,3784 @@
+RemoteInterAgent 1: Server listening on port 23346
+RemoteInterAgent 1: Server waiting for client connection...
+RemoteInterAgent 1: Client connected
+RemoteInterAgent 2: Server listening on port 23347
+RemoteInterAgent 2: Server waiting for client connection...
+RemoteInterAgent 2: Client connected
+RemoteInterAgent 3: Server listening on port 23348
+RemoteInterAgent 3: Server waiting for client connection...
+RemoteInterAgent 3: Client connected
+RemoteInterAgent 1: Input: pararolooo
+RemoteInterAgent 2: Input: I
+RemoteInterAgent 3: Input: Fataneh
+/INF=== Round 1 ===
+RemoteInterAgent 3: Input: d
+AI_0 Habc: 2S 3S 4S 5S 6S 7S 8S 9S XS JS QS KS,2H 3H 4H 5H 6H 7H 9H JH QH KH AH,5C 7C 8C XC KC AC,2D 3D 4D 6D 8D 9D XD JD QD AD
+AI_0 hand AS,8H XH,2C 3C 4C 6C 9C JC QC,5D 7D KD
+pararolooo hand 4H 6H 9H QH KH,5C 7C 8C XC AC,2D 3D JD
+I hand 2S 3S 4S 7S 8S 9S XS JS QS,5H AH,KC,6D
+Fataneh hand 5S 6S KS,2H 3H 7H JH,4D 8D 9D XD QD AD
+Round 1, Trick 0, Turn: 3, Trump: D
++++ Trick id 0 turn 3 trump D +++
+RemoteInterAgent 3: Input: 6s
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led S trump D
+hand: AS,8H XH,2C 3C 4C 6C 9C JC QC,5D 7D KD
+op_b 3 table 6S
+case 1:
+pssbl_hi_hand: AS,
+prb_act AS 1
+out: AS, prb: 1
+Alg. out card: AS
+--- AI_0 --- out card: AS ---
+RemoteInterAgent 1: Input: 2d
+RemoteInterAgent 2: Input: 2s
+AI_0 played AS
+pararolooo played 2D
+I played 2S
+Fataneh played 6S
+^^^ Trick id 0 turn 3 led S trump D ^^^
+AI_0 hand 8H XH,2C 3C 4C 6C 9C JC QC,5D 7D KD
+pararolooo hand 4H 6H 9H QH KH,5C 7C 8C XC AC,3D JD
+I hand 3S 4S 7S 8S 9S XS JS QS,5H AH,KC,6D
+Fataneh hand 5S KS,2H 3H 7H JH,4D 8D 9D XD QD AD
+Round 1, Trick 1, Turn: 1, Trump: D
++++ Trick id 1 turn 1 trump D +++
+RemoteInterAgent 1: Input: ac
+RemoteInterAgent 2: Input: kc
+RemoteInterAgent 3: Input: ksw
+RemoteInterAgent 3: Input: 2h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led S led C trump D
+hand: 8H XH,2C 3C 4C 6C 9C JC QC,5D 7D KD
+comp 2 last table 2S
+op_a 1 last table 2D
+op_a 1 table AC
+comp 2 table KC
+op_b 3 table 2H
+case 3:
+hi_hand: 
+Alg. out card: 2C
+--- AI_0 --- out card: 2C ---
+AI_0 played 2C
+pararolooo played AC
+I played KC
+Fataneh played 2H
+^^^ Trick id 1 turn 1 led C trump D ^^^
+AI_0 hand 8H XH,3C 4C 6C 9C JC QC,5D 7D KD
+pararolooo hand 4H 6H 9H QH KH,5C 7C 8C XC,3D JD
+I hand 3S 4S 7S 8S 9S XS JS QS,5H AH,6D
+Fataneh hand 5S KS,3H 7H JH,4D 8D 9D XD QD AD
+Round 1, Trick 2, Turn: 1, Trump: D
++++ Trick id 2 turn 1 trump D +++
+RemoteInterAgent 1: Input: 8c
+RemoteInterAgent 2: Input: 6d
+RemoteInterAgent 3: Input: 8d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led C trump D
+hand: 8H XH,3C 4C 6C 9C JC QC,5D 7D KD
+op_a 1 table 8C
+comp 2 table 6D
+op_b 3 table 8D
+case 3:
+hi_hand: 
+Alg. out card: 3C
+--- AI_0 --- out card: 3C ---
+AI_0 played 3C
+pararolooo played 8C
+I played 6D
+Fataneh played 8D
+^^^ Trick id 2 turn 1 led C trump D ^^^
+AI_0 hand 8H XH,4C 6C 9C JC QC,5D 7D KD
+pararolooo hand 4H 6H 9H QH KH,5C 7C XC,3D JD
+I hand 3S 4S 7S 8S 9S XS JS QS,5H AH,
+Fataneh hand 5S KS,3H 7H JH,4D 9D XD QD AD
+Round 1, Trick 3, Turn: 3, Trump: D
++++ Trick id 3 turn 3 trump D +++
+RemoteInterAgent 3: Input: ks
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led C led S trump D
+hand: 8H XH,4C 6C 9C JC QC,5D 7D KD
+op_b 3 table KS
+case 1:
+pssbl_hi_hand: 5D 7D KD
+prb_act 5D 0.040724
+prb_act 7D 0.040724
+prb_act KD 0.588235
+out: KD, prb: 0.588235
+Alg. out card: KD
+--- AI_0 --- out card: KD ---
+RemoteInterAgent 1: Input: 5c
+RemoteInterAgent 2: Input: 3s
+AI_0 played KD
+pararolooo played 5C
+I played 3S
+Fataneh played KS
+^^^ Trick id 3 turn 3 led S trump D ^^^
+AI_0 hand 8H XH,4C 6C 9C JC QC,5D 7D
+pararolooo hand 4H 6H 9H QH KH,7C XC,3D JD
+I hand 4S 7S 8S 9S XS JS QS,5H AH,
+Fataneh hand 5S,3H 7H JH,4D 9D XD QD AD
+Round 1, Trick 4, Turn: 0, Trump: D
++++ Trick id 4 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led S led - trump D
+hand: 8H XH,4C 6C 9C JC QC,5D 7D
+comp 2 last table 3S
+op_a 1 last table 5C
+case 0:
+pssbl_hi_hand: 8H XH,JC QC,5D 7D
+prb_act 8H 0.00237154
+prb_act XH 0.00996047
+prb_act JC 7.48908e-05
+prb_act QC 7.48908e-05
+prb_act 5D 0.00237154
+prb_act 7D 0.00237154
+out: --, prb: 0.00996047
+Alg. out card: 4C
+--- AI_0 --- out card: 4C ---
+RemoteInterAgent 1: Input: 7c
+RemoteInterAgent 2: Input: 4s
+RemoteInterAgent 3: Input: 5s
+AI_0 played 4C
+pararolooo played 7C
+I played 4S
+Fataneh played 5S
+^^^ Trick id 4 turn 0 led C trump D ^^^
+AI_0 hand 8H XH,6C 9C JC QC,5D 7D
+pararolooo hand 4H 6H 9H QH KH,XC,3D JD
+I hand 7S 8S 9S XS JS QS,5H AH,
+Fataneh hand 3H 7H JH,4D 9D XD QD AD
+Round 1, Trick 5, Turn: 1, Trump: D
++++ Trick id 5 turn 1 trump D +++
+RemoteInterAgent 1: Input: 9h
+RemoteInterAgent 2: Input: ah
+RemoteInterAgent 3: Input: 3h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led H trump D
+hand: 8H XH,6C 9C JC QC,5D 7D
+op_b 3 last table 5S
+comp 2 last table 4S
+op_a 1 last table 7C
+op_a 1 table 9H
+comp 2 table AH
+op_b 3 table 3H
+case 3:
+Companion's card is good enough.
+Alg. out card: 8H
+--- AI_0 --- out card: 8H ---
+AI_0 played 8H
+pararolooo played 9H
+I played AH
+Fataneh played 3H
+^^^ Trick id 5 turn 1 led H trump D ^^^
+AI_0 hand XH,6C 9C JC QC,5D 7D
+pararolooo hand 4H 6H QH KH,XC,3D JD
+I hand 7S 8S 9S XS JS QS,5H,
+Fataneh hand 7H JH,4D 9D XD QD AD
+Round 1, Trick 6, Turn: 2, Trump: D
++++ Trick id 6 turn 2 trump D +++
+RemoteInterAgent 2: Input: xs
+RemoteInterAgent 3: Input: 9d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led H led S trump D
+hand: XH,6C 9C JC QC,5D 7D
+comp 2 table XS
+op_b 3 table 9D
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 6C
+--- AI_0 --- out card: 6C ---
+RemoteInterAgent 1: Input: xc
+AI_0 played 6C
+pararolooo played XC
+I played XS
+Fataneh played 9D
+^^^ Trick id 6 turn 2 led S trump D ^^^
+AI_0 hand XH,9C JC QC,5D 7D
+pararolooo hand 4H 6H QH KH,3D JD
+I hand 7S 8S 9S JS QS,5H,
+Fataneh hand 7H JH,4D XD QD AD
+Round 1, Trick 7, Turn: 3, Trump: D
++++ Trick id 7 turn 3 trump D +++
+RemoteInterAgent 3: Input: ad
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led S led D trump D
+hand: XH,9C JC QC,5D 7D
+op_a 1 last table XC
+op_b 3 table AD
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 5D
+--- AI_0 --- out card: 5D ---
+RemoteInterAgent 1: Input: 3d
+RemoteInterAgent 2: Input: 5h
+AI_0 played 5D
+pararolooo played 3D
+I played 5H
+Fataneh played AD
+^^^ Trick id 7 turn 3 led D trump D ^^^
+AI_0 hand XH,9C JC QC,7D
+pararolooo hand 4H 6H QH KH,JD
+I hand 7S 8S 9S JS QS,
+Fataneh hand 7H JH,4D XD QD
+Round 1, Trick 8, Turn: 3, Trump: D
++++ Trick id 8 turn 3 trump D +++
+RemoteInterAgent 3: Input: qd
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led D led D trump D
+hand: XH,9C JC QC,7D
+comp 2 last table 5H
+op_a 1 last table 3D
+op_b 3 table QD
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 7D
+--- AI_0 --- out card: 7D ---
+RemoteInterAgent 1: Input: jd
+RemoteInterAgent 2: Input: 7s
+AI_0 played 7D
+pararolooo played JD
+I played 7S
+Fataneh played QD
+^^^ Trick id 8 turn 3 led D trump D ^^^
+kot: 0, oth_scr: 2, winner_team: 1, trump_team: 1
+/ALR=== Round 1 winner team: 1  (Kot: 0) ===
+/INF=== Round 2 ===
+RemoteInterAgent 3: Input: xd
+RemoteInterAgent 3: Input: c
+AI_0 Habc: 2S 3S 4S 5S 6S 7S 9S XS JS QS KS AS,2H 4H 6H 8H 9H XH JH QH AH,2C 3C 5C 6C 7C 8C 9C QC KC,3D 4D 5D 7D 8D XD JD KD AD
+AI_0 hand 8S,3H 5H 7H KH,4C XC JC AC,2D 6D 9D QD
+pararolooo hand 2S,4H 6H 9H JH AH,5C 7C QC KC,3D 8D XD
+I hand 3S 7S 9S,2H 8H XH QH,6C,4D 5D JD KD AD
+Fataneh hand 4S 5S 6S XS JS QS KS AS,2C 3C 8C 9C,7D
+Round 2, Trick 0, Turn: 3, Trump: C
++++ Trick id 0 turn 3 trump C +++
+RemoteInterAgent 3: Input: as
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led S trump C
+hand: 8S,3H 5H 7H KH,4C XC JC AC,2D 6D 9D QD
+op_b 3 table AS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 8S
+--- AI_0 --- out card: 8S ---
+RemoteInterAgent 1: Input: 2s
+RemoteInterAgent 2: Input: 3s
+AI_0 played 8S
+pararolooo played 2S
+I played 3S
+Fataneh played AS
+^^^ Trick id 0 turn 3 led S trump C ^^^
+AI_0 hand 3H 5H 7H KH,4C XC JC AC,2D 6D 9D QD
+pararolooo hand 4H 6H 9H JH AH,5C 7C QC KC,3D 8D XD
+I hand 7S 9S,2H 8H XH QH,6C,4D 5D JD KD AD
+Fataneh hand 4S 5S 6S XS JS QS KS,2C 3C 8C 9C,7D
+Round 2, Trick 1, Turn: 3, Trump: C
++++ Trick id 1 turn 3 trump C +++
+RemoteInterAgent 3: Input: ks
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led S led S trump C
+hand: 3H 5H 7H KH,4C XC JC AC,2D 6D 9D QD
+comp 2 last table 3S
+op_a 1 last table 2S
+op_b 3 table KS
+case 1:
+pssbl_hi_hand: 4C XC JC AC,
+prb_act 4C 1
+out: 4C, prb: 1
+Alg. out card: 4C
+--- AI_0 --- out card: 4C ---
+RemoteInterAgent 1: Input: 5c
+RemoteInterAgent 2: Input: 7s
+AI_0 played 4C
+pararolooo played 5C
+I played 7S
+Fataneh played KS
+^^^ Trick id 1 turn 3 led S trump C ^^^
+AI_0 hand 3H 5H 7H KH,XC JC AC,2D 6D 9D QD
+pararolooo hand 4H 6H 9H JH AH,7C QC KC,3D 8D XD
+I hand 9S,2H 8H XH QH,6C,4D 5D JD KD AD
+Fataneh hand 4S 5S 6S XS JS QS,2C 3C 8C 9C,7D
+Round 2, Trick 2, Turn: 1, Trump: C
++++ Trick id 2 turn 1 trump C +++
+RemoteInterAgent 1: Input: ah
+RemoteInterAgent 2: Input: 2h
+RemoteInterAgent 3: Input: 7d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led S led H trump C
+hand: 3H 5H 7H KH,XC JC AC,2D 6D 9D QD
+comp 2 last table 7S
+op_a 1 last table 5C
+op_a 1 table AH
+comp 2 table 2H
+op_b 3 table 7D
+case 3:
+hi_hand: 
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+AI_0 played 3H
+pararolooo played AH
+I played 2H
+Fataneh played 7D
+^^^ Trick id 2 turn 1 led H trump C ^^^
+AI_0 hand 5H 7H KH,XC JC AC,2D 6D 9D QD
+pararolooo hand 4H 6H 9H JH,7C QC KC,3D 8D XD
+I hand 9S,8H XH QH,6C,4D 5D JD KD AD
+Fataneh hand 4S 5S 6S XS JS QS,2C 3C 8C 9C,
+Round 2, Trick 3, Turn: 1, Trump: C
++++ Trick id 3 turn 1 trump C +++
+RemoteInterAgent 1: Input: 4h
+RemoteInterAgent 2: Input: xh
+RemoteInterAgent 3: Input: 2c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led H led H trump C
+hand: 5H 7H KH,XC JC AC,2D 6D 9D QD
+op_a 1 table 4H
+comp 2 table XH
+op_b 3 table 2C
+case 3:
+hi_hand: 
+Alg. out card: 5H
+--- AI_0 --- out card: 5H ---
+AI_0 played 5H
+pararolooo played 4H
+I played XH
+Fataneh played 2C
+^^^ Trick id 3 turn 1 led H trump C ^^^
+AI_0 hand 7H KH,XC JC AC,2D 6D 9D QD
+pararolooo hand 6H 9H JH,7C QC KC,3D 8D XD
+I hand 9S,8H QH,6C,4D 5D JD KD AD
+Fataneh hand 4S 5S 6S XS JS QS,3C 8C 9C,
+Round 2, Trick 4, Turn: 3, Trump: C
++++ Trick id 4 turn 3 trump C +++
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led H led S trump C
+hand: 7H KH,XC JC AC,2D 6D 9D QD
+op_b 3 table QS
+case 1:
+pssbl_hi_hand: XC JC AC,
+prb_act XC 0.289474
+prb_act JC 0.289474
+prb_act AC 1
+out: --, prb: 1
+Alg. out card: 2D
+--- AI_0 --- out card: 2D ---
+RemoteInterAgent 1: Input: 3d
+RemoteInterAgent 2: Input: 9s
+AI_0 played 2D
+pararolooo played 3D
+I played 9S
+Fataneh played QS
+^^^ Trick id 4 turn 3 led S trump C ^^^
+AI_0 hand 7H KH,XC JC AC,6D 9D QD
+pararolooo hand 6H 9H JH,7C QC KC,8D XD
+I hand 8H QH,6C,4D 5D JD KD AD
+Fataneh hand 4S 5S 6S XS JS,3C 8C 9C,
+Round 2, Trick 5, Turn: 3, Trump: C
++++ Trick id 5 turn 3 trump C +++
+RemoteInterAgent 3: Input: js
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led S led S trump C
+hand: 7H KH,XC JC AC,6D 9D QD
+comp 2 last table 9S
+op_a 1 last table 3D
+op_b 3 table JS
+case 1:
+pssbl_hi_hand: XC JC AC,
+prb_act XC 0.321637
+prb_act JC 0.321637
+prb_act AC 1
+out: --, prb: 1
+Alg. out card: 6D
+--- AI_0 --- out card: 6D ---
+RemoteInterAgent 1: Input: 8d
+RemoteInterAgent 2: Input: 6c
+AI_0 played 6D
+pararolooo played 8D
+I played 6C
+Fataneh played JS
+^^^ Trick id 5 turn 3 led S trump C ^^^
+AI_0 hand 7H KH,XC JC AC,9D QD
+pararolooo hand 6H 9H JH,7C QC KC,XD
+I hand 8H QH,4D 5D JD KD AD
+Fataneh hand 4S 5S 6S XS,3C 8C 9C,
+Round 2, Trick 6, Turn: 2, Trump: C
++++ Trick id 6 turn 2 trump C +++
+RemoteInterAgent 2: Input: ad
+RemoteInterAgent 3: Input: 3c
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led S led D trump C
+hand: 7H KH,XC JC AC,9D QD
+comp 2 last table 6C
+op_a 1 last table 8D
+comp 2 table AD
+op_b 3 table 3C
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 9D
+--- AI_0 --- out card: 9D ---
+RemoteInterAgent 1: Input: xd
+AI_0 played 9D
+pararolooo played XD
+I played AD
+Fataneh played 3C
+^^^ Trick id 6 turn 2 led D trump C ^^^
+AI_0 hand 7H KH,XC JC AC,QD
+pararolooo hand 6H 9H JH,7C QC KC,
+I hand 8H QH,4D 5D JD KD
+Fataneh hand 4S 5S 6S XS,8C 9C,
+Round 2, Trick 7, Turn: 3, Trump: C
++++ Trick id 7 turn 3 trump C +++
+RemoteInterAgent 3: Input: xs
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led D led S trump C
+hand: 7H KH,XC JC AC,QD
+op_a 1 last table XD
+op_b 3 table XS
+case 1:
+pssbl_hi_hand: XC JC AC,
+prb_act XC 0.307692
+prb_act JC 0.307692
+prb_act AC 1
+out: --, prb: 1
+Alg. out card: 7H
+--- AI_0 --- out card: 7H ---
+RemoteInterAgent 1: Input: kc
+RemoteInterAgent 2: Input: 4d
+AI_0 played 7H
+pararolooo played KC
+I played 4D
+Fataneh played XS
+^^^ Trick id 7 turn 3 led S trump C ^^^
+kot: 0, oth_scr: 1, winner_team: 1, trump_team: 1
+/ALR=== Round 2 winner team: 1  (Kot: 0) ===
+/INF=== Round 3 ===
+RemoteInterAgent 3: Input: s
+AI_0 Habc: 2S 3S 4S 5S 6S 7S 8S 9S XS JS KS AS,3H 4H 5H 6H 7H 8H 9H XH JH QH AH,2C 4C 5C 6C 7C XC QC KC,2D 3D 8D 9D JD QD KD AD
+AI_0 hand QS,2H KH,3C 8C 9C JC AC,4D 5D 6D 7D XD
+pararolooo hand KS,8H 9H JH AH,4C 5C 6C 7C XC QC,2D 3D
+I hand 6S 8S XS JS AS,3H 4H 5H 7H QH,2C KC,9D
+Fataneh hand 2S 3S 4S 5S 7S 9S,6H XH,8D JD QD KD AD
+Round 3, Trick 0, Turn: 3, Trump: S
++++ Trick id 0 turn 3 trump S +++
+RemoteInterAgent 3: Input: ad
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led D trump S
+hand: QS,2H KH,3C 8C 9C JC AC,4D 5D 6D 7D XD
+op_b 3 table AD
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 4D
+--- AI_0 --- out card: 4D ---
+RemoteInterAgent 1: Input: 2d
+RemoteInterAgent 2: Input: 9d
+AI_0 played 4D
+pararolooo played 2D
+I played 9D
+Fataneh played AD
+^^^ Trick id 0 turn 3 led D trump S ^^^
+AI_0 hand QS,2H KH,3C 8C 9C JC AC,5D 6D 7D XD
+pararolooo hand KS,8H 9H JH AH,4C 5C 6C 7C XC QC,3D
+I hand 6S 8S XS JS AS,3H 4H 5H 7H QH,2C KC,
+Fataneh hand 2S 3S 4S 5S 7S 9S,6H XH,8D JD QD KD
+Round 3, Trick 1, Turn: 3, Trump: S
++++ Trick id 1 turn 3 trump S +++
+RemoteInterAgent 3: Input: kd
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led D led D trump S
+hand: QS,2H KH,3C 8C 9C JC AC,5D 6D 7D XD
+comp 2 last table 9D
+op_a 1 last table 2D
+op_b 3 table KD
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 5D
+--- AI_0 --- out card: 5D ---
+RemoteInterAgent 1: Input: 3d
+RemoteInterAgent 2: Input: 6s
+AI_0 played 5D
+pararolooo played 3D
+I played 6S
+Fataneh played KD
+^^^ Trick id 1 turn 3 led D trump S ^^^
+AI_0 hand QS,2H KH,3C 8C 9C JC AC,6D 7D XD
+pararolooo hand KS,8H 9H JH AH,4C 5C 6C 7C XC QC,
+I hand 8S XS JS AS,3H 4H 5H 7H QH,2C KC,
+Fataneh hand 2S 3S 4S 5S 7S 9S,6H XH,8D JD QD
+Round 3, Trick 2, Turn: 2, Trump: S
++++ Trick id 2 turn 2 trump S +++
+RemoteInterAgent 2: Input: 2c
+RemoteInterAgent 3: Input: qd
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led D led C trump S
+hand: QS,2H KH,3C 8C 9C JC AC,6D 7D XD
+comp 2 last table 6S
+op_a 1 last table 3D
+comp 2 table 2C
+op_b 3 table QD
+case 2:
+pssbl_hi_hand: 3C 8C 9C JC AC,
+prb_act 3C 0.02948
+prb_act 8C 0.253615
+prb_act 9C 0.253615
+prb_act JC 0.408602
+prb_act AC 1
+prb_act out: AC, (max)prb: 1
+c_card: 2C, prb: 0.02948
+diff of 2C-AC: -7
+Alg. out card: AC
+--- AI_0 --- out card: AC ---
+RemoteInterAgent 1: Input: 4c
+AI_0 played AC
+pararolooo played 4C
+I played 2C
+Fataneh played QD
+^^^ Trick id 2 turn 2 led C trump S ^^^
+AI_0 hand QS,2H KH,3C 8C 9C JC,6D 7D XD
+pararolooo hand KS,8H 9H JH AH,5C 6C 7C XC QC,
+I hand 8S XS JS AS,3H 4H 5H 7H QH,KC,
+Fataneh hand 2S 3S 4S 5S 7S 9S,6H XH,8D JD
+Round 3, Trick 3, Turn: 0, Trump: S
++++ Trick id 3 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led C led - trump S
+hand: QS,2H KH,3C 8C 9C JC,6D 7D XD
+op_a 1 last table 4C
+case 0:
+pssbl_hi_hand: QS,2H KH,3C 8C 9C JC,
+prb_act QS 0.119048
+prb_act 2H 0
+prb_act KH 0.357143
+prb_act 3C 0.000557414
+prb_act 8C 0.03663
+prb_act 9C 0.03663
+prb_act JC 0.119048
+out: --, prb: 0.357143
+Alg. out card: 2H
+--- AI_0 --- out card: 2H ---
+RemoteInterAgent 1: Input: ah
+RemoteInterAgent 2: Input: 3h
+RemoteInterAgent 3: Input: 6h
+AI_0 played 2H
+pararolooo played AH
+I played 3H
+Fataneh played 6H
+^^^ Trick id 3 turn 0 led H trump S ^^^
+AI_0 hand QS,KH,3C 8C 9C JC,6D 7D XD
+pararolooo hand KS,8H 9H JH,5C 6C 7C XC QC,
+I hand 8S XS JS AS,4H 5H 7H QH,KC,
+Fataneh hand 2S 3S 4S 5S 7S 9S,XH,8D JD
+Round 3, Trick 4, Turn: 1, Trump: S
++++ Trick id 4 turn 1 trump S +++
+RemoteInterAgent 1: Input: 5c
+RemoteInterAgent 2: Input: kc
+RemoteInterAgent 3: Input: 2s
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led C trump S
+hand: QS,KH,3C 8C 9C JC,6D 7D XD
+op_b 3 last table 6H
+comp 2 last table 3H
+op_a 1 last table AH
+op_a 1 table 5C
+comp 2 table KC
+op_b 3 table 2S
+case 3:
+hi_hand: 
+Alg. out card: 3C
+--- AI_0 --- out card: 3C ---
+AI_0 played 3C
+pararolooo played 5C
+I played KC
+Fataneh played 2S
+^^^ Trick id 4 turn 1 led C trump S ^^^
+AI_0 hand QS,KH,8C 9C JC,6D 7D XD
+pararolooo hand KS,8H 9H JH,6C 7C XC QC,
+I hand 8S XS JS AS,4H 5H 7H QH,
+Fataneh hand 3S 4S 5S 7S 9S,XH,8D JD
+Round 3, Trick 5, Turn: 3, Trump: S
++++ Trick id 5 turn 3 trump S +++
+RemoteInterAgent 3: Input: xh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led C led H trump S
+hand: QS,KH,8C 9C JC,6D 7D XD
+op_b 3 table XH
+case 1:
+pssbl_hi_hand: KH,
+prb_act KH 1
+out: KH, prb: 1
+Alg. out card: KH
+--- AI_0 --- out card: KH ---
+RemoteInterAgent 1: Input: 8h
+RemoteInterAgent 2: Input: 4h
+AI_0 played KH
+pararolooo played 8H
+I played 4H
+Fataneh played XH
+^^^ Trick id 5 turn 3 led H trump S ^^^
+AI_0 hand QS,8C 9C JC,6D 7D XD
+pararolooo hand KS,9H JH,6C 7C XC QC,
+I hand 8S XS JS AS,5H 7H QH,
+Fataneh hand 3S 4S 5S 7S 9S,8D JD
+Round 3, Trick 6, Turn: 0, Trump: S
++++ Trick id 6 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led H led - trump S
+hand: QS,8C 9C JC,6D 7D XD
+comp 2 last table 4H
+op_a 1 last table 8H
+case 0:
+pssbl_hi_hand: QS,8C 9C JC,
+prb_act QS 0.122807
+prb_act 8C 0.122807
+prb_act 9C 0.122807
+prb_act JC 0.368421
+out: --, prb: 0.368421
+Alg. out card: 6D
+--- AI_0 --- out card: 6D ---
+RemoteInterAgent 1: Input: ks
+RemoteInterAgent 2: Input: as
+RemoteInterAgent 3: Input: 8d
+AI_0 played 6D
+pararolooo played KS
+I played AS
+Fataneh played 8D
+^^^ Trick id 6 turn 0 led D trump S ^^^
+AI_0 hand QS,8C 9C JC,7D XD
+pararolooo hand 9H JH,6C 7C XC QC,
+I hand 8S XS JS,5H 7H QH,
+Fataneh hand 3S 4S 5S 7S 9S,JD
+Round 3, Trick 7, Turn: 2, Trump: S
++++ Trick id 7 turn 2 trump S +++
+RemoteInterAgent 2: Input: qh
+RemoteInterAgent 3: Input: 3s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led H trump S
+hand: QS,8C 9C JC,7D XD
+op_b 3 last table 8D
+comp 2 last table AS
+op_a 1 last table KS
+comp 2 table QH
+op_b 3 table 3S
+case 2:
+pssbl_hi_hand: QS,
+prb_act QS 1
+prb_act out: --, (max)prb: 1
+Alg. out card: 7D
+--- AI_0 --- out card: 7D ---
+RemoteInterAgent 1: Input: 9h
+AI_0 played 7D
+pararolooo played 9H
+I played QH
+Fataneh played 3S
+^^^ Trick id 7 turn 2 led H trump S ^^^
+AI_0 hand QS,8C 9C JC,XD
+pararolooo hand JH,6C 7C XC QC,
+I hand 8S XS JS,5H 7H,
+Fataneh hand 4S 5S 7S 9S,JD
+Round 3, Trick 8, Turn: 3, Trump: S
++++ Trick id 8 turn 3 trump S +++
+RemoteInterAgent 3: Input: jd
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led H led D trump S
+hand: QS,8C 9C JC,XD
+op_a 1 last table 9H
+op_b 3 table JD
+case 1:
+pssbl_hi_hand: 
+Alg. out card: XD
+--- AI_0 --- out card: XD ---
+RemoteInterAgent 1: Input: jh
+RemoteInterAgent 2: Input: 8s
+AI_0 played XD
+pararolooo played JH
+I played 8S
+Fataneh played JD
+^^^ Trick id 8 turn 3 led D trump S ^^^
+AI_0 hand QS,8C 9C JC,
+pararolooo hand 6C 7C XC QC,
+I hand XS JS,5H 7H,
+Fataneh hand 4S 5S 7S 9S,
+Round 3, Trick 9, Turn: 2, Trump: S
++++ Trick id 9 turn 2 trump S +++
+RemoteInterAgent 2: Input: 7h
+RemoteInterAgent 3: Input: 9s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led D led H trump S
+hand: QS,8C 9C JC,
+comp 2 last table 8S
+op_a 1 last table JH
+comp 2 table 7H
+op_b 3 table 9S
+case 2:
+pssbl_hi_hand: QS,
+prb_act QS 1
+prb_act out: --, (max)prb: 1
+Alg. out card: 8C
+--- AI_0 --- out card: 8C ---
+RemoteInterAgent 1: Input: 7c
+AI_0 played 8C
+pararolooo played 7C
+I played 7H
+Fataneh played 9S
+^^^ Trick id 9 turn 2 led H trump S ^^^
+AI_0 hand QS,9C JC,
+pararolooo hand 6C XC QC,
+I hand XS JS,5H,
+Fataneh hand 4S 5S 7S,
+Round 3, Trick 10, Turn: 3, Trump: S
++++ Trick id 10 turn 3 trump S +++
+RemoteInterAgent 3: Input: 4s
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led H led S trump S
+hand: QS,9C JC,
+op_a 1 last table 7C
+op_b 3 table 4S
+case 1:
+pssbl_hi_hand: QS,
+prb_act QS 1
+out: --, prb: 1
+Alg. out card: QS
+--- AI_0 --- out card: QS ---
+RemoteInterAgent 1: Input: 6c
+RemoteInterAgent 2: Input: xs
+AI_0 played QS
+pararolooo played 6C
+I played XS
+Fataneh played 4S
+^^^ Trick id 10 turn 3 led S trump S ^^^
+AI_0 hand 9C JC,
+pararolooo hand XC QC,
+I hand JS,5H,
+Fataneh hand 5S 7S,
+Round 3, Trick 11, Turn: 0, Trump: S
++++ Trick id 11 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led S led - trump S
+hand: 9C JC,
+comp 2 last table XS
+op_a 1 last table 6C
+case 0:
+pssbl_hi_hand: 9C JC,
+prb_act 9C 0
+prb_act JC 0.2
+out: --, prb: 0.2
+Alg. out card: 9C
+--- AI_0 --- out card: 9C ---
+RemoteInterAgent 1: Input: qc
+RemoteInterAgent 2: Input: js
+RemoteInterAgent 3: Input: 5s
+AI_0 played 9C
+pararolooo played QC
+I played JS
+Fataneh played 5S
+^^^ Trick id 11 turn 0 led C trump S ^^^
+kot: 0, oth_scr: 5, winner_team: 0, trump_team: 1
+/ALR=== Round 3 winner team: 0  (Kot: 0) ===
+/INF=== Round 4 ===
+AI_0, trump call, first5:
+
+S: 4S6S
+H: 3H
+C: 8C
+D: 9D
+
+AI_0, trump call, suit S, score: 3
+AI_0, trump call, suit H, score: 1.16667
+AI_0, trump call, suit C, score: 2
+AI_0, trump call, suit D, score: 2.16667
+AI_0, alg. trump: S
+AI_0 Habc: 2S 3S 5S 7S 8S 9S XS JS QS AS,4H 5H 6H 8H 9H XH JH QH KH AH,2C 3C 4C 6C 7C 9C JC KC,2D 3D 4D 5D 6D 7D 8D XD QD KD AD
+AI_0 hand 4S 6S KS,2H 3H 7H,5C 8C XC QC AC,9D JD
+pararolooo hand XS AS,6H 9H QH KH,2C 3C JC,4D 5D 7D 8D
+I hand 3S 5S 8S 9S,JH AH,4C 7C KC,2D 6D XD QD
+Fataneh hand 2S 7S JS QS,4H 5H 8H XH,6C 9C,3D KD AD
+Round 4, Trick 0, Turn: 0, Trump: S
++++ Trick id 0 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord -1 last_led - led - trump S
+hand: 4S 6S KS,2H 3H 7H,5C 8C XC QC AC,9D JD
+case 0:
+pssbl_hi_hand: 4S 6S KS,2H 3H 7H,5C 8C XC QC AC,9D JD
+prb_act 4S 2.09188e-05
+prb_act 6S 0.000111567
+prb_act KS 0.333333
+prb_act 2H 4.49866e-07
+prb_act 3H 4.49866e-07
+prb_act 7H 0.000111567
+prb_act 5C 0.00223532
+prb_act 8C 0.0312945
+prb_act XC 0.105263
+prb_act QC 0.333333
+prb_act AC 1
+out: AC, prb: 1
+Alg. out card: AC
+--- AI_0 --- out card: AC ---
+RemoteInterAgent 1: Input: 2c
+RemoteInterAgent 2: Input: 4c
+RemoteInterAgent 3: Input: 6c
+AI_0 played AC
+pararolooo played 2C
+I played 4C
+Fataneh played 6C
+^^^ Trick id 0 turn 0 led C trump S ^^^
+AI_0 hand 4S 6S KS,2H 3H 7H,5C 8C XC QC,9D JD
+pararolooo hand XS AS,6H 9H QH KH,3C JC,4D 5D 7D 8D
+I hand 3S 5S 8S 9S,JH AH,7C KC,2D 6D XD QD
+Fataneh hand 2S 7S JS QS,4H 5H 8H XH,9C,3D KD AD
+Round 4, Trick 1, Turn: 0, Trump: S
++++ Trick id 1 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump S
+hand: 4S 6S KS,2H 3H 7H,5C 8C XC QC,9D JD
+op_b 3 last table 6C
+comp 2 last table 4C
+op_a 1 last table 2C
+case 0:
+pssbl_hi_hand: 4S 6S KS,2H 3H 7H,5C 8C XC QC,9D JD
+prb_act 4S 1.6358e-05
+prb_act 6S 9.48767e-05
+prb_act KS 0.333333
+prb_act 2H 2.59652e-07
+prb_act 3H 2.59652e-07
+prb_act 7H 9.48767e-05
+prb_act 5C 0.00840336
+prb_act 8C 0.0308123
+prb_act XC 0.104762
+prb_act QC 0.333333
+prb_act 9D 0.00840336
+prb_act JD 0.0308123
+out: --, prb: 0.333333
+Alg. out card: 2H
+--- AI_0 --- out card: 2H ---
+RemoteInterAgent 1: Input: 9
+RemoteInterAgent 1: Input: 9h
+RemoteInterAgent 2: Input: ah
+RemoteInterAgent 3: Input: 4h
+AI_0 played 2H
+pararolooo played 9H
+I played AH
+Fataneh played 4H
+^^^ Trick id 1 turn 0 led H trump S ^^^
+AI_0 hand 4S 6S KS,3H 7H,5C 8C XC QC,9D JD
+pararolooo hand XS AS,6H QH KH,3C JC,4D 5D 7D 8D
+I hand 3S 5S 8S 9S,JH,7C KC,2D 6D XD QD
+Fataneh hand 2S 7S JS QS,5H 8H XH,9C,3D KD AD
+Round 4, Trick 2, Turn: 2, Trump: S
++++ Trick id 2 turn 2 trump S +++
+RemoteInterAgent 2: Input: 7c
+RemoteInterAgent 3: Input: 9c
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led C trump S
+hand: 4S 6S KS,3H 7H,5C 8C XC QC,9D JD
+op_b 3 last table 4H
+comp 2 last table AH
+op_a 1 last table 9H
+comp 2 table 7C
+op_b 3 table 9C
+case 2:
+pssbl_hi_hand: XC QC,
+prb_act XC 0.408602
+prb_act QC 0.645161
+prb_act out: QC, (max)prb: 0.645161
+c_card: 7C, prb: 0.408602
+diff of 7C-QC: -2
+Alg. out card: QC
+--- AI_0 --- out card: QC ---
+RemoteInterAgent 1: Input: 3c
+AI_0 played QC
+pararolooo played 3C
+I played 7C
+Fataneh played 9C
+^^^ Trick id 2 turn 2 led C trump S ^^^
+AI_0 hand 4S 6S KS,3H 7H,5C 8C XC,9D JD
+pararolooo hand XS AS,6H QH KH,JC,4D 5D 7D 8D
+I hand 3S 5S 8S 9S,JH,KC,2D 6D XD QD
+Fataneh hand 2S 7S JS QS,5H 8H XH,3D KD AD
+Round 4, Trick 3, Turn: 0, Trump: S
++++ Trick id 3 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led C led - trump S
+hand: 4S 6S KS,3H 7H,5C 8C XC,9D JD
+op_a 1 last table 3C
+case 0:
+pssbl_hi_hand: 4S 6S KS,3H 7H,5C 8C XC,9D JD
+prb_act 4S 7.68846e-06
+prb_act 6S 5.89449e-05
+prb_act KS 0.333333
+prb_act 3H 5.89449e-05
+prb_act 7H 0.00176835
+prb_act 5C 0.103448
+prb_act 8C 0.103448
+prb_act XC 0.103448
+prb_act 9D 0.00766284
+prb_act JD 0.0295567
+out: --, prb: 0.333333
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+RemoteInterAgent 1: Input: kh
+RemoteInterAgent 2: Input: jh
+RemoteInterAgent 3: Input: 5h
+AI_0 played 3H
+pararolooo played KH
+I played JH
+Fataneh played 5H
+^^^ Trick id 3 turn 0 led H trump S ^^^
+AI_0 hand 4S 6S KS,7H,5C 8C XC,9D JD
+pararolooo hand XS AS,6H QH,JC,4D 5D 7D 8D
+I hand 3S 5S 8S 9S,KC,2D 6D XD QD
+Fataneh hand 2S 7S JS QS,8H XH,3D KD AD
+Round 4, Trick 4, Turn: 1, Trump: S
++++ Trick id 4 turn 1 trump S +++
+RemoteInterAgent 1: Input: qh
+RemoteInterAgent 2: Input: 3s
+RemoteInterAgent 3: Input: 8h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led H trump S
+hand: 4S 6S KS,7H,5C 8C XC,9D JD
+op_b 3 last table 5H
+comp 2 last table JH
+op_a 1 last table KH
+op_a 1 table QH
+comp 2 table 3S
+op_b 3 table 8H
+case 3:
+Companion's card is good enough.
+Alg. out card: 7H
+--- AI_0 --- out card: 7H ---
+AI_0 played 7H
+pararolooo played QH
+I played 3S
+Fataneh played 8H
+^^^ Trick id 4 turn 1 led H trump S ^^^
+AI_0 hand 4S 6S KS,5C 8C XC,9D JD
+pararolooo hand XS AS,6H,JC,4D 5D 7D 8D
+I hand 5S 8S 9S,KC,2D 6D XD QD
+Fataneh hand 2S 7S JS QS,XH,3D KD AD
+Round 4, Trick 5, Turn: 2, Trump: S
++++ Trick id 5 turn 2 trump S +++
+RemoteInterAgent 2: Input: xd
+RemoteInterAgent 3: Input: ad
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led H led D trump S
+hand: 4S 6S KS,5C 8C XC,9D JD
+comp 2 table XD
+op_b 3 table AD
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 9D
+--- AI_0 --- out card: 9D ---
+RemoteInterAgent 1: Input: 4d
+AI_0 played 9D
+pararolooo played 4D
+I played XD
+Fataneh played AD
+^^^ Trick id 5 turn 2 led D trump S ^^^
+AI_0 hand 4S 6S KS,5C 8C XC,JD
+pararolooo hand XS AS,6H,JC,5D 7D 8D
+I hand 5S 8S 9S,KC,2D 6D QD
+Fataneh hand 2S 7S JS QS,XH,3D KD
+Round 4, Trick 6, Turn: 3, Trump: S
++++ Trick id 6 turn 3 trump S +++
+RemoteInterAgent 3: Input: kd
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led D led D trump S
+hand: 4S 6S KS,5C 8C XC,JD
+op_a 1 last table 4D
+op_b 3 table KD
+case 1:
+pssbl_hi_hand: 
+Alg. out card: JD
+--- AI_0 --- out card: JD ---
+RemoteInterAgent 1: Input: 5d
+RemoteInterAgent 2: Input: 2d
+AI_0 played JD
+pararolooo played 5D
+I played 2D
+Fataneh played KD
+^^^ Trick id 6 turn 3 led D trump S ^^^
+AI_0 hand 4S 6S KS,5C 8C XC,
+pararolooo hand XS AS,6H,JC,7D 8D
+I hand 5S 8S 9S,KC,6D QD
+Fataneh hand 2S 7S JS QS,XH,3D
+Round 4, Trick 7, Turn: 3, Trump: S
++++ Trick id 7 turn 3 trump S +++
+RemoteInterAgent 3: Input: 3d
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led D led D trump S
+hand: 4S 6S KS,5C 8C XC,
+comp 2 last table 2D
+op_a 1 last table 5D
+op_b 3 table 3D
+case 1:
+pssbl_hi_hand: 4S 6S KS,
+prb_act 4S 1
+out: 4S, prb: 1
+Alg. out card: 4S
+--- AI_0 --- out card: 4S ---
+RemoteInterAgent 1: Input: 7d
+RemoteInterAgent 2: Input: 6d
+AI_0 played 4S
+pararolooo played 7D
+I played 6D
+Fataneh played 3D
+^^^ Trick id 7 turn 3 led D trump S ^^^
+AI_0 hand 6S KS,5C 8C XC,
+pararolooo hand XS AS,6H,JC,8D
+I hand 5S 8S 9S,KC,QD
+Fataneh hand 2S 7S JS QS,XH,
+Round 4, Trick 8, Turn: 0, Trump: S
++++ Trick id 8 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led D led - trump S
+hand: 6S KS,5C 8C XC,
+comp 2 last table 6D
+op_a 1 last table 7D
+case 0:
+pssbl_hi_hand: 6S KS,5C 8C XC,
+prb_act 6S 0
+prb_act KS 0.384615
+prb_act 5C 0.128205
+prb_act 8C 0.128205
+prb_act XC 0.128205
+out: --, prb: 0.384615
+Alg. out card: 5C
+--- AI_0 --- out card: 5C ---
+RemoteInterAgent 1: Input: jc
+RemoteInterAgent 2: Input: kc
+RemoteInterAgent 3: Input: 2s
+AI_0 played 5C
+pararolooo played JC
+I played KC
+Fataneh played 2S
+^^^ Trick id 8 turn 0 led C trump S ^^^
+AI_0 hand 6S KS,8C XC,
+pararolooo hand XS AS,6H,8D
+I hand 5S 8S 9S,QD
+Fataneh hand 7S JS QS,XH,
+Round 4, Trick 9, Turn: 3, Trump: S
++++ Trick id 9 turn 3 trump S +++
+RemoteInterAgent 3: Input: xh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led H trump S
+hand: 6S KS,8C XC,
+op_b 3 last table 2S
+comp 2 last table KC
+op_a 1 last table JC
+op_b 3 table XH
+case 1:
+pssbl_hi_hand: 6S KS,
+prb_act 6S 1
+out: 6S, prb: 1
+Alg. out card: 6S
+--- AI_0 --- out card: 6S ---
+RemoteInterAgent 1: Input: 6h
+RemoteInterAgent 2: Input: qd
+AI_0 played 6S
+pararolooo played 6H
+I played QD
+Fataneh played XH
+^^^ Trick id 9 turn 3 led H trump S ^^^
+AI_0 hand KS,8C XC,
+pararolooo hand XS AS,8D
+I hand 5S 8S 9S,
+Fataneh hand 7S JS QS,
+Round 4, Trick 10, Turn: 0, Trump: S
++++ Trick id 10 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led H led - trump S
+hand: KS,8C XC,
+comp 2 last table QD
+op_a 1 last table 6H
+case 0:
+pssbl_hi_hand: KS,8C XC,
+prb_act KS 0.333333
+prb_act 8C 0
+prb_act XC 0
+out: --, prb: 0.333333
+Alg. out card: 8C
+--- AI_0 --- out card: 8C ---
+RemoteInterAgent 1: Input: xs
+RemoteInterAgent 2: Input: 5s
+RemoteInterAgent 3: Input: 7s
+AI_0 played 8C
+pararolooo played XS
+I played 5S
+Fataneh played 7S
+^^^ Trick id 10 turn 0 led C trump S ^^^
+AI_0 hand KS,XC,
+pararolooo hand AS,8D
+I hand 8S 9S,
+Fataneh hand JS QS,
+Round 4, Trick 11, Turn: 1, Trump: S
++++ Trick id 11 turn 1 trump S +++
+RemoteInterAgent 1: Input: as
+RemoteInterAgent 2: Input: 8s
+RemoteInterAgent 3: Input: jd
+RemoteInterAgent 3: Input: js
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led S trump S
+hand: KS,XC,
+op_b 3 last table 7S
+comp 2 last table 5S
+op_a 1 last table XS
+op_a 1 table AS
+comp 2 table 8S
+op_b 3 table JS
+case 3:
+hi_hand: 
+Alg. out card: KS
+--- AI_0 --- out card: KS ---
+AI_0 played KS
+pararolooo played AS
+I played 8S
+Fataneh played JS
+^^^ Trick id 11 turn 1 led S trump S ^^^
+AI_0 hand XC,
+pararolooo hand 8D
+I hand 9S,
+Fataneh hand QS,
+Round 4, Trick 12, Turn: 1, Trump: S
++++ Trick id 12 turn 1 trump S +++
+RemoteInterAgent 1: Input: 8d
+RemoteInterAgent 2: Input: 9s
+RemoteInterAgent 3: Input: qd
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led S led D trump S
+hand: XC,
+op_a 1 table 8D
+comp 2 table 9S
+op_b 3 table QS
+case 3:
+hi_hand: 
+Alg. out card: XC
+--- AI_0 --- out card: XC ---
+AI_0 played XC
+pararolooo played 8D
+I played 9S
+Fataneh played QS
+^^^ Trick id 12 turn 1 led D trump S ^^^
+kot: 0, oth_scr: 6, winner_team: 1, trump_team: 0
+/ALR=== Round 4 winner team: 1  (Kot: 0) ===
+/INF=== Round 5 ===
+RemoteInterAgent 1: Input: s
+AI_0 Habc: 2S 3S 4S 5S 7S 8S XS JS QS KS AS,4H 6H 7H 8H 9H XH JH QH KH AH,2C 3C 4C 5C 6C 8C 9C XC JC QC AC,2D 3D 5D 6D 7D 9D KD
+AI_0 hand 6S 9S,2H 3H 5H,7C KC,4D 8D XD JD QD AD
+pararolooo hand 3S 7S 8S QS KS,4H,5C 6C XC JC AC,2D 9D
+I hand 2S 4S AS,8H XH JH QH,9C,3D 5D 6D 7D KD
+Fataneh hand 5S XS JS,6H 7H 9H KH AH,2C 3C 4C 8C QC,
+Round 5, Trick 0, Turn: 1, Trump: S
++++ Trick id 0 turn 1 trump S +++
+RemoteInterAgent 1: Input: ac
+RemoteInterAgent 2: Input: 9c
+RemoteInterAgent 3: Input: 2c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord -1 last_led - led C trump S
+hand: 6S 9S,2H 3H 5H,7C KC,4D 8D XD JD QD AD
+op_a 1 table AC
+comp 2 table 9C
+op_b 3 table 2C
+case 3:
+hi_hand: 
+Alg. out card: 7C
+--- AI_0 --- out card: 7C ---
+AI_0 played 7C
+pararolooo played AC
+I played 9C
+Fataneh played 2C
+^^^ Trick id 0 turn 1 led C trump S ^^^
+AI_0 hand 6S 9S,2H 3H 5H,KC,4D 8D XD JD QD AD
+pararolooo hand 3S 7S 8S QS KS,4H,5C 6C XC JC,2D 9D
+I hand 2S 4S AS,8H XH JH QH,3D 5D 6D 7D KD
+Fataneh hand 5S XS JS,6H 7H 9H KH AH,3C 4C 8C QC,
+Round 5, Trick 1, Turn: 1, Trump: S
++++ Trick id 1 turn 1 trump S +++
+RemoteInterAgent 1: Input: 4h
+RemoteInterAgent 2: Input: xh
+RemoteInterAgent 3: Input: kh
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led H trump S
+hand: 6S 9S,2H 3H 5H,KC,4D 8D XD JD QD AD
+op_a 1 table 4H
+comp 2 table XH
+op_b 3 table KH
+case 3:
+hi_hand: 
+Alg. out card: 2H
+--- AI_0 --- out card: 2H ---
+AI_0 played 2H
+pararolooo played 4H
+I played XH
+Fataneh played KH
+^^^ Trick id 1 turn 1 led H trump S ^^^
+AI_0 hand 6S 9S,3H 5H,KC,4D 8D XD JD QD AD
+pararolooo hand 3S 7S 8S QS KS,5C 6C XC JC,2D 9D
+I hand 2S 4S AS,8H JH QH,3D 5D 6D 7D KD
+Fataneh hand 5S XS JS,6H 7H 9H AH,3C 4C 8C QC,
+Round 5, Trick 2, Turn: 3, Trump: S
++++ Trick id 2 turn 3 trump S +++
+RemoteInterAgent 3: Input: ah
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led H led H trump S
+hand: 6S 9S,3H 5H,KC,4D 8D XD JD QD AD
+op_b 3 table AH
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+RemoteInterAgent 1: Input: 2d
+RemoteInterAgent 2: Input: 8h
+AI_0 played 3H
+pararolooo played 2D
+I played 8H
+Fataneh played AH
+^^^ Trick id 2 turn 3 led H trump S ^^^
+AI_0 hand 6S 9S,5H,KC,4D 8D XD JD QD AD
+pararolooo hand 3S 7S 8S QS KS,5C 6C XC JC,9D
+I hand 2S 4S AS,JH QH,3D 5D 6D 7D KD
+Fataneh hand 5S XS JS,6H 7H 9H,3C 4C 8C QC,
+Round 5, Trick 3, Turn: 3, Trump: S
++++ Trick id 3 turn 3 trump S +++
+RemoteInterAgent 3: Input: 9h
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led H trump S
+hand: 6S 9S,5H,KC,4D 8D XD JD QD AD
+comp 2 last table 8H
+op_a 1 last table 2D
+op_b 3 table 9H
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 5H
+--- AI_0 --- out card: 5H ---
+RemoteInterAgent 1: Input: 3s
+RemoteInterAgent 2: Input: jh
+AI_0 played 5H
+pararolooo played 3S
+I played JH
+Fataneh played 9H
+^^^ Trick id 3 turn 3 led H trump S ^^^
+AI_0 hand 6S 9S,KC,4D 8D XD JD QD AD
+pararolooo hand 7S 8S QS KS,5C 6C XC JC,9D
+I hand 2S 4S AS,QH,3D 5D 6D 7D KD
+Fataneh hand 5S XS JS,6H 7H,3C 4C 8C QC,
+Round 5, Trick 4, Turn: 1, Trump: S
++++ Trick id 4 turn 1 trump S +++
+RemoteInterAgent 1: Input: 9d
+RemoteInterAgent 2: Input: 3d
+RemoteInterAgent 3: Input: 3c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led H led D trump S
+hand: 6S 9S,KC,4D 8D XD JD QD AD
+comp 2 last table JH
+op_a 1 last table 3S
+op_a 1 table 9D
+comp 2 table 3D
+op_b 3 table 3C
+case 3:
+hi_hand: XD JD QD AD
+Alg. out card: XD
+--- AI_0 --- out card: XD ---
+AI_0 played XD
+pararolooo played 9D
+I played 3D
+Fataneh played 3C
+^^^ Trick id 4 turn 1 led D trump S ^^^
+AI_0 hand 6S 9S,KC,4D 8D JD QD AD
+pararolooo hand 7S 8S QS KS,5C 6C XC JC,
+I hand 2S 4S AS,QH,5D 6D 7D KD
+Fataneh hand 5S XS JS,6H 7H,4C 8C QC,
+Round 5, Trick 5, Turn: 0, Trump: S
++++ Trick id 5 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led D led - trump S
+hand: 6S 9S,KC,4D 8D JD QD AD
+case 0:
+pssbl_hi_hand: 6S 9S,KC,4D 8D JD QD AD
+prb_act 6S 2.31144e-05
+prb_act 9S 0.00131752
+prb_act KC 1
+out: KC, prb: 1
+Alg. out card: KC
+--- AI_0 --- out card: KC ---
+RemoteInterAgent 1: Input: 5c
+RemoteInterAgent 2: Input: 5d
+RemoteInterAgent 3: Input: 4c
+AI_0 played KC
+pararolooo played 5C
+I played 5D
+Fataneh played 4C
+^^^ Trick id 5 turn 0 led C trump S ^^^
+AI_0 hand 6S 9S,4D 8D JD QD AD
+pararolooo hand 7S 8S QS KS,6C XC JC,
+I hand 2S 4S AS,QH,6D 7D KD
+Fataneh hand 5S XS JS,6H 7H,8C QC,
+Round 5, Trick 6, Turn: 0, Trump: S
++++ Trick id 6 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump S
+hand: 6S 9S,4D 8D JD QD AD
+op_b 3 last table 4C
+comp 2 last table 5D
+op_a 1 last table 5C
+case 0:
+pssbl_hi_hand: 6S 9S,4D 8D JD QD AD
+prb_act 6S 8.59993e-06
+prb_act 9S 0.00103199
+prb_act 4D 0.0263158
+prb_act 8D 0.333333
+prb_act JD 0.333333
+prb_act QD 0.333333
+prb_act AD 1
+out: AD, prb: 1
+Alg. out card: AD
+--- AI_0 --- out card: AD ---
+RemoteInterAgent 1: Input: 7s
+RemoteInterAgent 2: Input: 6d
+RemoteInterAgent 3: Input: 6h
+AI_0 played AD
+pararolooo played 7S
+I played 6D
+Fataneh played 6H
+^^^ Trick id 6 turn 0 led D trump S ^^^
+AI_0 hand 6S 9S,4D 8D JD QD
+pararolooo hand 8S QS KS,6C XC JC,
+I hand 2S 4S AS,QH,7D KD
+Fataneh hand 5S XS JS,7H,8C QC,
+Round 5, Trick 7, Turn: 1, Trump: S
++++ Trick id 7 turn 1 trump S +++
+RemoteInterAgent 1: Input: 8s
+RemoteInterAgent 2: Input: 2s
+RemoteInterAgent 3: Input: xs
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led S trump S
+hand: 6S 9S,4D 8D JD QD
+op_b 3 last table 6H
+comp 2 last table 6D
+op_a 1 last table 7S
+op_a 1 table 8S
+comp 2 table 2S
+op_b 3 table XS
+case 3:
+hi_hand: 
+Alg. out card: 6S
+--- AI_0 --- out card: 6S ---
+AI_0 played 6S
+pararolooo played 8S
+I played 2S
+Fataneh played XS
+^^^ Trick id 7 turn 1 led S trump S ^^^
+AI_0 hand 9S,4D 8D JD QD
+pararolooo hand QS KS,6C XC JC,
+I hand 4S AS,QH,7D KD
+Fataneh hand 5S JS,7H,8C QC,
+Round 5, Trick 8, Turn: 3, Trump: S
++++ Trick id 8 turn 3 trump S +++
+RemoteInterAgent 3: Input: qc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led S led C trump S
+hand: 9S,4D 8D JD QD
+op_b 3 table QC
+case 1:
+pssbl_hi_hand: 9S,
+prb_act 9S 1
+out: 9S, prb: 1
+Alg. out card: 9S
+--- AI_0 --- out card: 9S ---
+RemoteInterAgent 1: Input: 6c
+RemoteInterAgent 2: Input: 7d
+AI_0 played 9S
+pararolooo played 6C
+I played 7D
+Fataneh played QC
+^^^ Trick id 8 turn 3 led C trump S ^^^
+AI_0 hand 4D 8D JD QD
+pararolooo hand QS KS,XC JC,
+I hand 4S AS,QH,KD
+Fataneh hand 5S JS,7H,8C,
+Round 5, Trick 9, Turn: 0, Trump: S
++++ Trick id 9 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led C led - trump S
+hand: 4D 8D JD QD
+comp 2 last table 7D
+op_a 1 last table 6C
+case 0:
+pssbl_hi_hand: 4D 8D JD QD
+prb_act 4D 0.444444
+prb_act 8D 0.444444
+prb_act JD 0.444444
+prb_act QD 0.444444
+out: --, prb: 0.444444
+Alg. out card: 4D
+--- AI_0 --- out card: 4D ---
+RemoteInterAgent 1: Input: xc
+RemoteInterAgent 2: Input: kd
+RemoteInterAgent 3: Input: 5s
+AI_0 played 4D
+pararolooo played XC
+I played KD
+Fataneh played 5S
+^^^ Trick id 9 turn 0 led D trump S ^^^
+kot: 0, oth_scr: 3, winner_team: 1, trump_team: 1
+/ALR=== Round 5 winner team: 1  (Kot: 0) ===
+/INF=== Round 6 ===
+RemoteInterAgent 1: Input: h
+AI_0 Habc: 3S 4S 6S 7S 9S XS JS QS,2H 3H 4H 5H 6H 7H 8H 9H XH JH KH AH,2C 3C 4C 5C 6C 8C JC QC KC AC,2D 5D 7D 8D 9D XD QD KD AD
+AI_0 hand 2S 5S 8S KS AS,QH,7C 9C XC,3D 4D 6D JD
+pararolooo hand 3S 4S,2H 5H 6H 7H 9H KH,8C JC QC,XD AD
+I hand 9S,3H 8H XH JH AH,4C 5C 6C,2D 7D QD KD
+Fataneh hand 6S 7S XS JS QS,4H,2C 3C KC AC,5D 8D 9D
+Round 6, Trick 0, Turn: 1, Trump: H
++++ Trick id 0 turn 1 trump H +++
+RemoteInterAgent 1: Input: ad
+RemoteInterAgent 2: Input: 2d
+RemoteInterAgent 3: Input: 5d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord -1 last_led - led D trump H
+hand: 2S 5S 8S KS AS,QH,7C 9C XC,3D 4D 6D JD
+op_a 1 table AD
+comp 2 table 2D
+op_b 3 table 5D
+case 3:
+hi_hand: 
+Alg. out card: 3D
+--- AI_0 --- out card: 3D ---
+AI_0 played 3D
+pararolooo played AD
+I played 2D
+Fataneh played 5D
+^^^ Trick id 0 turn 1 led D trump H ^^^
+AI_0 hand 2S 5S 8S KS AS,QH,7C 9C XC,4D 6D JD
+pararolooo hand 3S 4S,2H 5H 6H 7H 9H KH,8C JC QC,XD
+I hand 9S,3H 8H XH JH AH,4C 5C 6C,7D QD KD
+Fataneh hand 6S 7S XS JS QS,4H,2C 3C KC AC,8D 9D
+Round 6, Trick 1, Turn: 1, Trump: H
++++ Trick id 1 turn 1 trump H +++
+RemoteInterAgent 1: Input: xd
+RemoteInterAgent 2: Input: qd
+RemoteInterAgent 3: Input: 8d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led D led D trump H
+hand: 2S 5S 8S KS AS,QH,7C 9C XC,4D 6D JD
+op_a 1 table XD
+comp 2 table QD
+op_b 3 table 8D
+case 3:
+Companion's card is good enough.
+Alg. out card: 4D
+--- AI_0 --- out card: 4D ---
+AI_0 played 4D
+pararolooo played XD
+I played QD
+Fataneh played 8D
+^^^ Trick id 1 turn 1 led D trump H ^^^
+AI_0 hand 2S 5S 8S KS AS,QH,7C 9C XC,6D JD
+pararolooo hand 3S 4S,2H 5H 6H 7H 9H KH,8C JC QC,
+I hand 9S,3H 8H XH JH AH,4C 5C 6C,7D KD
+Fataneh hand 6S 7S XS JS QS,4H,2C 3C KC AC,9D
+Round 6, Trick 2, Turn: 2, Trump: H
++++ Trick id 2 turn 2 trump H +++
+RemoteInterAgent 2: Input: kd
+RemoteInterAgent 3: Input: 9d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led D led D trump H
+hand: 2S 5S 8S KS AS,QH,7C 9C XC,6D JD
+comp 2 table KD
+op_b 3 table 9D
+case 2:
+pssbl_hi_hand: JD
+prb_act JD 1
+prb_act out: JD, (max)prb: 1
+c_card: KD, prb: 1
+diff of KD-JD: 0
+Companion's card is good enough.
+Alg. out card: 6D
+--- AI_0 --- out card: 6D ---
+RemoteInterAgent 1: Input: 2h
+AI_0 played 6D
+pararolooo played 2H
+I played KD
+Fataneh played 9D
+^^^ Trick id 2 turn 2 led D trump H ^^^
+AI_0 hand 2S 5S 8S KS AS,QH,7C 9C XC,JD
+pararolooo hand 3S 4S,5H 6H 7H 9H KH,8C JC QC,
+I hand 9S,3H 8H XH JH AH,4C 5C 6C,7D
+Fataneh hand 6S 7S XS JS QS,4H,2C 3C KC AC,
+Round 6, Trick 3, Turn: 1, Trump: H
++++ Trick id 3 turn 1 trump H +++
+RemoteInterAgent 1: Input: 3s
+RemoteInterAgent 2: Input: 9s
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led D led S trump H
+hand: 2S 5S 8S KS AS,QH,7C 9C XC,JD
+op_a 1 last table 2H
+op_a 1 table 3S
+comp 2 table 9S
+op_b 3 table QS
+case 3:
+hi_hand: KS AS,
+Alg. out card: KS
+--- AI_0 --- out card: KS ---
+AI_0 played KS
+pararolooo played 3S
+I played 9S
+Fataneh played QS
+^^^ Trick id 3 turn 1 led S trump H ^^^
+AI_0 hand 2S 5S 8S AS,QH,7C 9C XC,JD
+pararolooo hand 4S,5H 6H 7H 9H KH,8C JC QC,
+I hand 3H 8H XH JH AH,4C 5C 6C,7D
+Fataneh hand 6S 7S XS JS,4H,2C 3C KC AC,
+Round 6, Trick 4, Turn: 0, Trump: H
++++ Trick id 4 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led S led - trump H
+hand: 2S 5S 8S AS,QH,7C 9C XC,JD
+case 0:
+pssbl_hi_hand: 2S 5S 8S AS,QH,7C 9C XC,JD
+prb_act 2S 0.00156076
+prb_act 5S 0.00717949
+prb_act 8S 0.102564
+prb_act AS 1
+out: AS, prb: 1
+Alg. out card: AS
+--- AI_0 --- out card: AS ---
+RemoteInterAgent 1: Input: 4s
+RemoteInterAgent 2: Input: 7d
+RemoteInterAgent 3: Input: 6s
+AI_0 played AS
+pararolooo played 4S
+I played 7D
+Fataneh played 6S
+^^^ Trick id 4 turn 0 led S trump H ^^^
+AI_0 hand 2S 5S 8S,QH,7C 9C XC,JD
+pararolooo hand 5H 6H 7H 9H KH,8C JC QC,
+I hand 3H 8H XH JH AH,4C 5C 6C,
+Fataneh hand 7S XS JS,4H,2C 3C KC AC,
+Round 6, Trick 5, Turn: 0, Trump: H
++++ Trick id 5 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump H
+hand: 2S 5S 8S,QH,7C 9C XC,JD
+op_b 3 last table 6S
+comp 2 last table 7D
+op_a 1 last table 4S
+case 0:
+pssbl_hi_hand: 2S 5S 8S,QH,7C 9C XC,JD
+prb_act 2S 0.027668
+prb_act 5S 0.027668
+prb_act 8S 0.101449
+prb_act QH 0.101449
+prb_act 7C 0.00131752
+prb_act 9C 0.00658762
+prb_act XC 0.00658762
+prb_act JD 0
+out: --, prb: 0.101449
+Alg. out card: 2S
+--- AI_0 --- out card: 2S ---
+RemoteInterAgent 1: Input: 8c
+RemoteInterAgent 2: Input: 3s
+RemoteInterAgent 2: Input: 3h
+RemoteInterAgent 3: Input: js
+AI_0 played 2S
+pararolooo played 8C
+I played 3H
+Fataneh played JS
+^^^ Trick id 5 turn 0 led S trump H ^^^
+AI_0 hand 5S 8S,QH,7C 9C XC,JD
+pararolooo hand 5H 6H 7H 9H KH,JC QC,
+I hand 8H XH JH AH,4C 5C 6C,
+Fataneh hand 7S XS,4H,2C 3C KC AC,
+Round 6, Trick 6, Turn: 2, Trump: H
++++ Trick id 6 turn 2 trump H +++
+RemoteInterAgent 2: Input: 4
+RemoteInterAgent 2: Input: 4c
+RemoteInterAgent 3: Input: ac
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led C trump H
+hand: 5S 8S,QH,7C 9C XC,JD
+op_b 3 last table JS
+comp 2 last table 3H
+op_a 1 last table 8C
+comp 2 table 4C
+op_b 3 table AC
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 7C
+--- AI_0 --- out card: 7C ---
+RemoteInterAgent 1: Input: jc
+AI_0 played 7C
+pararolooo played JC
+I played 4C
+Fataneh played AC
+^^^ Trick id 6 turn 2 led C trump H ^^^
+AI_0 hand 5S 8S,QH,9C XC,JD
+pararolooo hand 5H 6H 7H 9H KH,QC,
+I hand 8H XH JH AH,5C 6C,
+Fataneh hand 7S XS,4H,2C 3C KC,
+Round 6, Trick 7, Turn: 3, Trump: H
++++ Trick id 7 turn 3 trump H +++
+RemoteInterAgent 3: Input: kc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led C led C trump H
+hand: 5S 8S,QH,9C XC,JD
+op_a 1 last table JC
+op_b 3 table KC
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 9C
+--- AI_0 --- out card: 9C ---
+RemoteInterAgent 1: Input: qc
+RemoteInterAgent 2: Input: 5c
+AI_0 played 9C
+pararolooo played QC
+I played 5C
+Fataneh played KC
+^^^ Trick id 7 turn 3 led C trump H ^^^
+AI_0 hand 5S 8S,QH,XC,JD
+pararolooo hand 5H 6H 7H 9H KH,
+I hand 8H XH JH AH,6C,
+Fataneh hand 7S XS,4H,2C 3C,
+Round 6, Trick 8, Turn: 3, Trump: H
++++ Trick id 8 turn 3 trump H +++
+RemoteInterAgent 3: Input: xs
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led C led S trump H
+hand: 5S 8S,QH,XC,JD
+comp 2 last table 5C
+op_a 1 last table QC
+op_b 3 table XS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 5S
+--- AI_0 --- out card: 5S ---
+RemoteInterAgent 1: Input: 9h
+RemoteInterAgent 2: Input: xh
+AI_0 played 5S
+pararolooo played 9H
+I played XH
+Fataneh played XS
+^^^ Trick id 8 turn 3 led S trump H ^^^
+AI_0 hand 8S,QH,XC,JD
+pararolooo hand 5H 6H 7H KH,
+I hand 8H JH AH,6C,
+Fataneh hand 7S,4H,2C 3C,
+Round 6, Trick 9, Turn: 2, Trump: H
++++ Trick id 9 turn 2 trump H +++
+RemoteInterAgent 2: Input: ah
+RemoteInterAgent 3: Input: 4h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led S led H trump H
+hand: 8S,QH,XC,JD
+comp 2 last table XH
+op_a 1 last table 9H
+comp 2 table AH
+op_b 3 table 4H
+case 2:
+pssbl_hi_hand: QH,
+prb_act QH 0.555556
+prb_act out: QH, (max)prb: 0.555556
+c_card: AH, prb: 1
+diff of AH-QH: 1
+Companion's card is good enough.
+Alg. out card: QH
+--- AI_0 --- out card: QH ---
+RemoteInterAgent 1: Input: 5h
+AI_0 played QH
+pararolooo played 5H
+I played AH
+Fataneh played 4H
+^^^ Trick id 9 turn 2 led H trump H ^^^
+AI_0 hand 8S,XC,JD
+pararolooo hand 6H 7H KH,
+I hand 8H JH,6C,
+Fataneh hand 7S,2C 3C,
+Round 6, Trick 10, Turn: 2, Trump: H
++++ Trick id 10 turn 2 trump H +++
+RemoteInterAgent 2: Input: 6c
+RemoteInterAgent 3: Input: 2c
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led H led C trump H
+hand: 8S,XC,JD
+op_a 1 last table 5H
+comp 2 table 6C
+op_b 3 table 2C
+case 2:
+pssbl_hi_hand: XC,
+prb_act XC 1
+prb_act out: XC, (max)prb: 1
+c_card: 6C, prb: 1
+diff of 6C-XC: 0
+Companion's card is good enough.
+Alg. out card: XC
+--- AI_0 --- out card: XC ---
+RemoteInterAgent 1: Input: 7h
+AI_0 played XC
+pararolooo played 7H
+I played 6C
+Fataneh played 2C
+^^^ Trick id 10 turn 2 led C trump H ^^^
+AI_0 hand 8S,JD
+pararolooo hand 6H KH,
+I hand 8H JH,
+Fataneh hand 7S,3C,
+Round 6, Trick 11, Turn: 1, Trump: H
++++ Trick id 11 turn 1 trump H +++
+RemoteInterAgent 1: Input: kh
+RemoteInterAgent 2: Input: 8h
+RemoteInterAgent 3: Input: 3c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led C led H trump H
+hand: 8S,JD
+op_a 1 last table 7H
+op_a 1 table KH
+comp 2 table 8H
+op_b 3 table 3C
+case 3:
+hi_hand: 
+Alg. out card: 8S
+--- AI_0 --- out card: 8S ---
+AI_0 played 8S
+pararolooo played KH
+I played 8H
+Fataneh played 3C
+^^^ Trick id 11 turn 1 led H trump H ^^^
+AI_0 hand JD
+pararolooo hand 6H,
+I hand JH,
+Fataneh hand 7S,
+Round 6, Trick 12, Turn: 1, Trump: H
++++ Trick id 12 turn 1 trump H +++
+RemoteInterAgent 1: Input: 6h
+RemoteInterAgent 2: Input: jh
+RemoteInterAgent 3: Input: 7s
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led H led H trump H
+hand: JD
+op_a 1 table 6H
+comp 2 table JH
+op_b 3 table 7S
+case 3:
+Companion's card is good enough.
+Alg. out card: JD
+--- AI_0 --- out card: JD ---
+AI_0 played JD
+pararolooo played 6H
+I played JH
+Fataneh played 7S
+^^^ Trick id 12 turn 1 led H trump H ^^^
+kot: 0, oth_scr: 6, winner_team: 0, trump_team: 1
+/ALR=== Round 6 winner team: 0  (Kot: 0) ===
+/INF=== Round 7 ===
+RemoteInterAgent 2: Input: h
+AI_0 Habc: 3S 4S 7S 8S 9S KS,2H 3H 5H 6H 9H XH JH QH AH,2C 4C 5C 6C 7C 8C XC JC QC KC AC,2D 3D 4D 5D 6D 7D 8D 9D XD JD QD KD AD
+AI_0 hand 2S 5S 6S XS JS QS AS,4H 7H 8H KH,3C 9C,
+pararolooo hand 9H XH,2C 4C 8C JC KC AC,3D 5D 6D 7D QD
+I hand 4S 9S KS,2H 3H 5H 6H JH QH,7C,8D XD AD
+Fataneh hand 3S 7S 8S,AH,5C 6C XC QC,2D 4D 9D JD KD
+Round 7, Trick 0, Turn: 2, Trump: H
++++ Trick id 0 turn 2 trump H +++
+RemoteInterAgent 2: Input: ad
+RemoteInterAgent 3: Input: 2d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord -1 last_led - led D trump H
+hand: 2S 5S 6S XS JS QS AS,4H 7H 8H KH,3C 9C,
+comp 2 table AD
+op_b 3 table 2D
+case 2:
+pssbl_hi_hand: 4H 7H 8H KH,
+prb_act 4H 1
+prb_act out: 4H, (max)prb: 1
+c_card: AD, prb: 1
+diff of AD-4H: -52
+Companion's card is good enough.
+Alg. out card: 2S
+--- AI_0 --- out card: 2S ---
+RemoteInterAgent 1: Input: 3d
+AI_0 played 2S
+pararolooo played 3D
+I played AD
+Fataneh played 2D
+^^^ Trick id 0 turn 2 led D trump H ^^^
+AI_0 hand 5S 6S XS JS QS AS,4H 7H 8H KH,3C 9C,
+pararolooo hand 9H XH,2C 4C 8C JC KC AC,5D 6D 7D QD
+I hand 4S 9S KS,2H 3H 5H 6H JH QH,7C,8D XD
+Fataneh hand 3S 7S 8S,AH,5C 6C XC QC,4D 9D JD KD
+Round 7, Trick 1, Turn: 2, Trump: H
++++ Trick id 1 turn 2 trump H +++
+RemoteInterAgent 2: Input: 9s
+RemoteInterAgent 3: Input: 3s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led D led S trump H
+hand: 5S 6S XS JS QS AS,4H 7H 8H KH,3C 9C,
+op_a 1 last table 3D
+comp 2 table 9S
+op_b 3 table 3S
+case 2:
+pssbl_hi_hand: 5S 6S XS JS QS AS,
+prb_act 5S 0.257353
+prb_act 6S 0.257353
+prb_act XS 0.647059
+prb_act out: XS, (max)prb: 0.647059
+c_card: 9S, prb: 0.647059
+diff of 9S-XS: 0
+Companion's card is good enough.
+Alg. out card: 5S
+--- AI_0 --- out card: 5S ---
+RemoteInterAgent 1: Input: 9h
+AI_0 played 5S
+pararolooo played 9H
+I played 9S
+Fataneh played 3S
+^^^ Trick id 1 turn 2 led S trump H ^^^
+AI_0 hand 6S XS JS QS AS,4H 7H 8H KH,3C 9C,
+pararolooo hand XH,2C 4C 8C JC KC AC,5D 6D 7D QD
+I hand 4S KS,2H 3H 5H 6H JH QH,7C,8D XD
+Fataneh hand 7S 8S,AH,5C 6C XC QC,4D 9D JD KD
+Round 7, Trick 2, Turn: 1, Trump: H
++++ Trick id 2 turn 1 trump H +++
+RemoteInterAgent 1: Input: ac
+RemoteInterAgent 2: Input: 7c
+RemoteInterAgent 3: Input: 5c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led S led C trump H
+hand: 6S XS JS QS AS,4H 7H 8H KH,3C 9C,
+op_a 1 last table 9H
+op_a 1 table AC
+comp 2 table 7C
+op_b 3 table 5C
+case 3:
+hi_hand: 
+Alg. out card: 3C
+--- AI_0 --- out card: 3C ---
+AI_0 played 3C
+pararolooo played AC
+I played 7C
+Fataneh played 5C
+^^^ Trick id 2 turn 1 led C trump H ^^^
+AI_0 hand 6S XS JS QS AS,4H 7H 8H KH,9C,
+pararolooo hand XH,2C 4C 8C JC KC,5D 6D 7D QD
+I hand 4S KS,2H 3H 5H 6H JH QH,8D XD
+Fataneh hand 7S 8S,AH,6C XC QC,4D 9D JD KD
+Round 7, Trick 3, Turn: 1, Trump: H
++++ Trick id 3 turn 1 trump H +++
+RemoteInterAgent 1: Input: kc
+RemoteInterAgent 2: Input: 2h
+RemoteInterAgent 3: Input: 6c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led C trump H
+hand: 6S XS JS QS AS,4H 7H 8H KH,9C,
+op_a 1 table KC
+comp 2 table 2H
+op_b 3 table 6C
+case 3:
+Companion's card is good enough.
+Alg. out card: 9C
+--- AI_0 --- out card: 9C ---
+AI_0 played 9C
+pararolooo played KC
+I played 2H
+Fataneh played 6C
+^^^ Trick id 3 turn 1 led C trump H ^^^
+AI_0 hand 6S XS JS QS AS,4H 7H 8H KH,
+pararolooo hand XH,2C 4C 8C JC,5D 6D 7D QD
+I hand 4S KS,3H 5H 6H JH QH,8D XD
+Fataneh hand 7S 8S,AH,XC QC,4D 9D JD KD
+Round 7, Trick 4, Turn: 2, Trump: H
++++ Trick id 4 turn 2 trump H +++
+RemoteInterAgent 2: Input: ks
+RemoteInterAgent 3: Input: 7s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led C led S trump H
+hand: 6S XS JS QS AS,4H 7H 8H KH,
+comp 2 table KS
+op_b 3 table 7S
+case 2:
+pssbl_hi_hand: XS JS QS AS,
+prb_act XS 0.0139992
+prb_act JS 0.0139992
+prb_act QS 0.0139992
+prb_act AS 0.0139992
+prb_act out: --, (max)prb: 0.0139992
+Alg. out card: 6S
+--- AI_0 --- out card: 6S ---
+RemoteInterAgent 1: Input: xh
+AI_0 played 6S
+pararolooo played XH
+I played KS
+Fataneh played 7S
+^^^ Trick id 4 turn 2 led S trump H ^^^
+AI_0 hand XS JS QS AS,4H 7H 8H KH,
+pararolooo hand 2C 4C 8C JC,5D 6D 7D QD
+I hand 4S,3H 5H 6H JH QH,8D XD
+Fataneh hand 8S,AH,XC QC,4D 9D JD KD
+Round 7, Trick 5, Turn: 1, Trump: H
++++ Trick id 5 turn 1 trump H +++
+RemoteInterAgent 1: Input: jc
+RemoteInterAgent 2: Input: 3h
+RemoteInterAgent 3: Input: qc
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led S led C trump H
+hand: XS JS QS AS,4H 7H 8H KH,
+op_a 1 last table XH
+op_a 1 table JC
+comp 2 table 3H
+op_b 3 table QC
+case 3:
+Companion's card is good enough.
+Alg. out card: XS
+--- AI_0 --- out card: XS ---
+AI_0 played XS
+pararolooo played JC
+I played 3H
+Fataneh played QC
+^^^ Trick id 5 turn 1 led C trump H ^^^
+AI_0 hand JS QS AS,4H 7H 8H KH,
+pararolooo hand 2C 4C 8C,5D 6D 7D QD
+I hand 4S,5H 6H JH QH,8D XD
+Fataneh hand 8S,AH,XC,4D 9D JD KD
+Round 7, Trick 6, Turn: 2, Trump: H
++++ Trick id 6 turn 2 trump H +++
+RemoteInterAgent 2: Input: 8d
+RemoteInterAgent 3: Input: kd
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led C led D trump H
+hand: JS QS AS,4H 7H 8H KH,
+comp 2 table 8D
+op_b 3 table KD
+case 2:
+pssbl_hi_hand: 4H 7H 8H KH,
+prb_act 4H 1
+prb_act out: 4H, (max)prb: 1
+c_card: 8D, prb: 0.0882353
+diff of 8D-4H: -52
+Alg. out card: 4H
+--- AI_0 --- out card: 4H ---
+RemoteInterAgent 1: Input: 5d
+AI_0 played 4H
+pararolooo played 5D
+I played 8D
+Fataneh played KD
+^^^ Trick id 6 turn 2 led D trump H ^^^
+AI_0 hand JS QS AS,7H 8H KH,
+pararolooo hand 2C 4C 8C,6D 7D QD
+I hand 4S,5H 6H JH QH,XD
+Fataneh hand 8S,AH,XC,4D 9D JD
+Round 7, Trick 7, Turn: 0, Trump: H
++++ Trick id 7 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led D led - trump H
+hand: JS QS AS,7H 8H KH,
+op_a 1 last table 5D
+case 0:
+pssbl_hi_hand: JS QS AS,7H 8H KH,
+prb_act JS 1
+out: JS, prb: 1
+Alg. out card: JS
+--- AI_0 --- out card: JS ---
+RemoteInterAgent 1: Input: 2c
+RemoteInterAgent 2: Input: 4s
+RemoteInterAgent 3: Input: 8s
+AI_0 played JS
+pararolooo played 2C
+I played 4S
+Fataneh played 8S
+^^^ Trick id 7 turn 0 led S trump H ^^^
+AI_0 hand QS AS,7H 8H KH,
+pararolooo hand 4C 8C,6D 7D QD
+I hand 5H 6H JH QH,XD
+Fataneh hand AH,XC,4D 9D JD
+Round 7, Trick 8, Turn: 0, Trump: H
++++ Trick id 8 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump H
+hand: QS AS,7H 8H KH,
+op_b 3 last table 8S
+comp 2 last table 4S
+op_a 1 last table 2C
+case 0:
+pssbl_hi_hand: QS AS,7H 8H KH,
+prb_act QS 0.00126263
+prb_act AS 0.00126263
+prb_act 7H 0.0454545
+prb_act 8H 0.0454545
+prb_act KH 0.416667
+out: --, prb: 0.416667
+Alg. out card: QS
+--- AI_0 --- out card: QS ---
+RemoteInterAgent 1: Input: 6d
+RemoteInterAgent 2: Input: 5s
+RemoteInterAgent 2: Input: xd
+RemoteInterAgent 3: Input: ah
+AI_0 played QS
+pararolooo played 6D
+I played XD
+Fataneh played AH
+^^^ Trick id 8 turn 0 led S trump H ^^^
+AI_0 hand AS,7H 8H KH,
+pararolooo hand 4C 8C,7D QD
+I hand 5H 6H JH QH,
+Fataneh hand XC,4D 9D JD
+Round 7, Trick 9, Turn: 3, Trump: H
++++ Trick id 9 turn 3 trump H +++
+RemoteInterAgent 3: Input: xc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led C trump H
+hand: AS,7H 8H KH,
+op_b 3 last table AH
+comp 2 last table XD
+op_a 1 last table 6D
+op_b 3 table XC
+case 1:
+pssbl_hi_hand: 7H 8H KH,
+prb_act 7H 1
+out: 7H, prb: 1
+Alg. out card: 7H
+--- AI_0 --- out card: 7H ---
+RemoteInterAgent 1: Input: 4c
+RemoteInterAgent 2: Input: 5h
+AI_0 played 7H
+pararolooo played 4C
+I played 5H
+Fataneh played XC
+^^^ Trick id 9 turn 3 led C trump H ^^^
+AI_0 hand AS,8H KH,
+pararolooo hand 8C,7D QD
+I hand 6H JH QH,
+Fataneh hand 4D 9D JD
+Round 7, Trick 10, Turn: 0, Trump: H
++++ Trick id 10 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led C led - trump H
+hand: AS,8H KH,
+comp 2 last table 5H
+op_a 1 last table 4C
+case 0:
+pssbl_hi_hand: AS,8H KH,
+prb_act AS 0.0178571
+prb_act 8H 0.107143
+prb_act KH 1
+out: --, prb: 1
+Alg. out card: AS
+--- AI_0 --- out card: AS ---
+RemoteInterAgent 1: Input: 7d
+RemoteInterAgent 2: Input: jh
+RemoteInterAgent 3: Input: 4
+RemoteInterAgent 3: Input: 4d
+AI_0 played AS
+pararolooo played 7D
+I played JH
+Fataneh played 4D
+^^^ Trick id 10 turn 0 led S trump H ^^^
+kot: 0, oth_scr: 4, winner_team: 0, trump_team: 0
+/ALR=== Round 7 winner team: 0  (Kot: 0) ===
+/INF=== Round 8 ===
+RemoteInterAgent 2: Input: c
+AI_0 Habc: 2S 3S 4S 6S 8S 9S XS JS QS KS AS,5H 6H 7H 9H XH JH QH KH,2C 3C 4C 5C 7C 8C 9C JC QC AC,2D 3D 4D 5D 6D 7D 8D XD KD AD
+AI_0 hand 5S 7S,2H 3H 4H 8H AH,6C XC KC,9D JD QD
+pararolooo hand 6S 8S QS AS,5H JH,3C 4C 9C,2D 7D XD KD
+I hand 2S 9S,6H 7H XH KH,5C JC QC AC,3D 4D 8D
+Fataneh hand 3S 4S XS JS KS,9H QH,2C 7C 8C,5D 6D AD
+Round 8, Trick 0, Turn: 2, Trump: C
++++ Trick id 0 turn 2 trump C +++
+RemoteInterAgent 2: Input: xh
+RemoteInterAgent 3: Input: qh
+--- AI_0 pl_id 0 team 0 ord 2 last_ord -1 last_led - led H trump C
+hand: 5S 7S,2H 3H 4H 8H AH,6C XC KC,9D JD QD
+comp 2 table XH
+op_b 3 table QH
+case 2:
+pssbl_hi_hand: AH,
+prb_act AH 1
+prb_act out: AH, (max)prb: 1
+c_card: XH, prb: 0.414414
+diff of XH-AH: -3
+Alg. out card: AH
+--- AI_0 --- out card: AH ---
+RemoteInterAgent 1: Input: 5h
+AI_0 played AH
+pararolooo played 5H
+I played XH
+Fataneh played QH
+^^^ Trick id 0 turn 2 led H trump C ^^^
+AI_0 hand 5S 7S,2H 3H 4H 8H,6C XC KC,9D JD QD
+pararolooo hand 6S 8S QS AS,JH,3C 4C 9C,2D 7D XD KD
+I hand 2S 9S,6H 7H KH,5C JC QC AC,3D 4D 8D
+Fataneh hand 3S 4S XS JS KS,9H,2C 7C 8C,5D 6D AD
+Round 8, Trick 1, Turn: 0, Trump: C
++++ Trick id 1 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led H led - trump C
+hand: 5S 7S,2H 3H 4H 8H,6C XC KC,9D JD QD
+op_a 1 last table 5H
+case 0:
+pssbl_hi_hand: 5S 7S,2H 3H 4H 8H,6C XC KC,9D JD QD
+prb_act 5S 1.6358e-05
+prb_act 7S 9.48767e-05
+prb_act 2H 0.00210084
+prb_act 3H 0.00210084
+prb_act 4H 0.00210084
+prb_act 8H 0.0308123
+prb_act 6C 0.000474383
+prb_act XC 0.0308123
+prb_act KC 0.333333
+prb_act 9D 0.0308123
+prb_act JD 0.104762
+prb_act QD 0.104762
+out: --, prb: 0.333333
+Alg. out card: 2H
+--- AI_0 --- out card: 2H ---
+RemoteInterAgent 1: Input: jh
+RemoteInterAgent 2: Input: kh
+RemoteInterAgent 3: Input: 9h
+AI_0 played 2H
+pararolooo played JH
+I played KH
+Fataneh played 9H
+^^^ Trick id 1 turn 0 led H trump C ^^^
+AI_0 hand 5S 7S,3H 4H 8H,6C XC KC,9D JD QD
+pararolooo hand 6S 8S QS AS,3C 4C 9C,2D 7D XD KD
+I hand 2S 9S,6H 7H,5C JC QC AC,3D 4D 8D
+Fataneh hand 3S 4S XS JS KS,2C 7C 8C,5D 6D AD
+Round 8, Trick 2, Turn: 2, Trump: C
++++ Trick id 2 turn 2 trump C +++
+RemoteInterAgent 2: Input: 6h
+RemoteInterAgent 3: Input: 2c
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led H trump C
+hand: 5S 7S,3H 4H 8H,6C XC KC,9D JD QD
+op_b 3 last table 9H
+comp 2 last table KH
+op_a 1 last table JH
+comp 2 table 6H
+op_b 3 table 2C
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+RemoteInterAgent 1: Input: 6s
+AI_0 played 3H
+pararolooo played 6S
+I played 6H
+Fataneh played 2C
+^^^ Trick id 2 turn 2 led H trump C ^^^
+AI_0 hand 5S 7S,4H 8H,6C XC KC,9D JD QD
+pararolooo hand 8S QS AS,3C 4C 9C,2D 7D XD KD
+I hand 2S 9S,7H,5C JC QC AC,3D 4D 8D
+Fataneh hand 3S 4S XS JS KS,7C 8C,5D 6D AD
+Round 8, Trick 3, Turn: 3, Trump: C
++++ Trick id 3 turn 3 trump C +++
+RemoteInterAgent 3: Input: ad
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led H led D trump C
+hand: 5S 7S,4H 8H,6C XC KC,9D JD QD
+op_a 1 last table 6S
+op_b 3 table AD
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 9D
+--- AI_0 --- out card: 9D ---
+RemoteInterAgent 1: Input: 2d
+RemoteInterAgent 2: Input: 3d
+AI_0 played 9D
+pararolooo played 2D
+I played 3D
+Fataneh played AD
+^^^ Trick id 3 turn 3 led D trump C ^^^
+AI_0 hand 5S 7S,4H 8H,6C XC KC,JD QD
+pararolooo hand 8S QS AS,3C 4C 9C,7D XD KD
+I hand 2S 9S,7H,5C JC QC AC,4D 8D
+Fataneh hand 3S 4S XS JS KS,7C 8C,5D 6D
+Round 8, Trick 4, Turn: 3, Trump: C
++++ Trick id 4 turn 3 trump C +++
+RemoteInterAgent 3: Input: xs
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led D led S trump C
+hand: 5S 7S,4H 8H,6C XC KC,JD QD
+comp 2 last table 3D
+op_a 1 last table 2D
+op_b 3 table XS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 5S
+--- AI_0 --- out card: 5S ---
+RemoteInterAgent 1: Input: as
+RemoteInterAgent 2: Input: 2s
+AI_0 played 5S
+pararolooo played AS
+I played 2S
+Fataneh played XS
+^^^ Trick id 4 turn 3 led S trump C ^^^
+AI_0 hand 7S,4H 8H,6C XC KC,JD QD
+pararolooo hand 8S QS,3C 4C 9C,7D XD KD
+I hand 9S,7H,5C JC QC AC,4D 8D
+Fataneh hand 3S 4S JS KS,7C 8C,5D 6D
+Round 8, Trick 5, Turn: 1, Trump: C
++++ Trick id 5 turn 1 trump C +++
+RemoteInterAgent 1: Input: 8s
+RemoteInterAgent 2: Input: 9s
+RemoteInterAgent 3: Input: ks
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led S led S trump C
+hand: 7S,4H 8H,6C XC KC,JD QD
+comp 2 last table 2S
+op_a 1 last table AS
+op_a 1 table 8S
+comp 2 table 9S
+op_b 3 table KS
+case 3:
+hi_hand: 
+Alg. out card: 7S
+--- AI_0 --- out card: 7S ---
+AI_0 played 7S
+pararolooo played 8S
+I played 9S
+Fataneh played KS
+^^^ Trick id 5 turn 1 led S trump C ^^^
+AI_0 hand 4H 8H,6C XC KC,JD QD
+pararolooo hand QS,3C 4C 9C,7D XD KD
+I hand 7H,5C JC QC AC,4D 8D
+Fataneh hand 3S 4S JS,7C 8C,5D 6D
+Round 8, Trick 6, Turn: 3, Trump: C
++++ Trick id 6 turn 3 trump C +++
+RemoteInterAgent 3: Input: js
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led S led S trump C
+hand: 4H 8H,6C XC KC,JD QD
+op_b 3 table JS
+case 1:
+pssbl_hi_hand: 6C XC KC,
+prb_act 6C 1
+out: 6C, prb: 1
+Alg. out card: 6C
+--- AI_0 --- out card: 6C ---
+RemoteInterAgent 1: Input: qs
+RemoteInterAgent 2: Input: 7h
+AI_0 played 6C
+pararolooo played QS
+I played 7H
+Fataneh played JS
+^^^ Trick id 6 turn 3 led S trump C ^^^
+AI_0 hand 4H 8H,XC KC,JD QD
+pararolooo hand 3C 4C 9C,7D XD KD
+I hand 5C JC QC AC,4D 8D
+Fataneh hand 3S 4S,7C 8C,5D 6D
+Round 8, Trick 7, Turn: 0, Trump: C
++++ Trick id 7 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led S led - trump C
+hand: 4H 8H,XC KC,JD QD
+comp 2 last table 7H
+op_a 1 last table QS
+case 0:
+pssbl_hi_hand: 4H 8H,XC KC,JD QD
+prb_act 4H 0
+prb_act 8H 0
+prb_act XC 0.0357143
+prb_act KC 0.375
+prb_act JD 0.375
+prb_act QD 0.375
+out: --, prb: 0.375
+Alg. out card: 4H
+--- AI_0 --- out card: 4H ---
+RemoteInterAgent 1: Input: 3c
+RemoteInterAgent 2: Input: jc
+RemoteInterAgent 3: Input: 5d
+AI_0 played 4H
+pararolooo played 3C
+I played JC
+Fataneh played 5D
+^^^ Trick id 7 turn 0 led H trump C ^^^
+AI_0 hand 8H,XC KC,JD QD
+pararolooo hand 4C 9C,7D XD KD
+I hand 5C QC AC,4D 8D
+Fataneh hand 3S 4S,7C 8C,6D
+Round 8, Trick 8, Turn: 2, Trump: C
++++ Trick id 8 turn 2 trump C +++
+RemoteInterAgent 2: Input: 8d
+RemoteInterAgent 3: Input: 6d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led D trump C
+hand: 8H,XC KC,JD QD
+op_b 3 last table 5D
+comp 2 last table JC
+op_a 1 last table 3C
+comp 2 table 8D
+op_b 3 table 6D
+case 2:
+pssbl_hi_hand: JD QD
+prb_act JD 0.615385
+prb_act out: JD, (max)prb: 0.615385
+c_card: 8D, prb: 0.358974
+diff of 8D-JD: -1
+Alg. out card: JD
+--- AI_0 --- out card: JD ---
+RemoteInterAgent 1: Input: kd
+AI_0 played JD
+pararolooo played KD
+I played 8D
+Fataneh played 6D
+^^^ Trick id 8 turn 2 led D trump C ^^^
+AI_0 hand 8H,XC KC,QD
+pararolooo hand 4C 9C,7D XD
+I hand 5C QC AC,4D
+Fataneh hand 3S 4S,7C 8C,
+Round 8, Trick 9, Turn: 1, Trump: C
++++ Trick id 9 turn 1 trump C +++
+RemoteInterAgent 1: Input: xd
+RemoteInterAgent 2: Input: 4d
+RemoteInterAgent 3: Input: 7c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led D led D trump C
+hand: 8H,XC KC,QD
+op_a 1 last table KD
+op_a 1 table XD
+comp 2 table 4D
+op_b 3 table 7C
+case 3:
+hi_hand: 
+Alg. out card: QD
+--- AI_0 --- out card: QD ---
+AI_0 played QD
+pararolooo played XD
+I played 4D
+Fataneh played 7C
+^^^ Trick id 9 turn 1 led D trump C ^^^
+AI_0 hand 8H,XC KC,
+pararolooo hand 4C 9C,7D
+I hand 5C QC AC,
+Fataneh hand 3S 4S,8C,
+Round 8, Trick 10, Turn: 3, Trump: C
++++ Trick id 10 turn 3 trump C +++
+RemoteInterAgent 3: Input: 4s
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led D led S trump C
+hand: 8H,XC KC,
+op_b 3 table 4S
+case 1:
+pssbl_hi_hand: XC KC,
+prb_act XC 1
+prb_act KC 1
+out: --, prb: 1
+Alg. out card: 8H
+--- AI_0 --- out card: 8H ---
+RemoteInterAgent 1: Input: 9c
+RemoteInterAgent 2: Input: qc
+AI_0 played 8H
+pararolooo played 9C
+I played QC
+Fataneh played 4S
+^^^ Trick id 10 turn 3 led S trump C ^^^
+AI_0 hand XC KC,
+pararolooo hand 4C,7D
+I hand 5C AC,
+Fataneh hand 3S,8C,
+Round 8, Trick 11, Turn: 2, Trump: C
++++ Trick id 11 turn 2 trump C +++
+RemoteInterAgent 2: Input: ac
+RemoteInterAgent 3: Input: 8c
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led S led C trump C
+hand: XC KC,
+comp 2 last table QC
+op_a 1 last table 9C
+comp 2 table AC
+op_b 3 table 8C
+case 2:
+pssbl_hi_hand: XC KC,
+prb_act XC 1
+prb_act out: XC, (max)prb: 1
+c_card: AC, prb: 1
+diff of AC-XC: 0
+Companion's card is good enough.
+Alg. out card: XC
+--- AI_0 --- out card: XC ---
+RemoteInterAgent 1: Input: 4c
+AI_0 played XC
+pararolooo played 4C
+I played AC
+Fataneh played 8C
+^^^ Trick id 11 turn 2 led C trump C ^^^
+AI_0 hand KC,
+pararolooo hand 7D
+I hand 5C,
+Fataneh hand 3S,
+Round 8, Trick 12, Turn: 2, Trump: C
++++ Trick id 12 turn 2 trump C +++
+RemoteInterAgent 2: Input: 5c
+RemoteInterAgent 3: Input: 3s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led C led C trump C
+hand: KC,
+op_a 1 last table 4C
+comp 2 table 5C
+op_b 3 table 3S
+case 2:
+pssbl_hi_hand: KC,
+prb_act KC 1
+prb_act out: KC, (max)prb: 1
+c_card: 5C, prb: 1
+diff of 5C-KC: 0
+Companion's card is good enough.
+Alg. out card: KC
+--- AI_0 --- out card: KC ---
+RemoteInterAgent 1: Input: 7d
+AI_0 played KC
+pararolooo played 7D
+I played 5C
+Fataneh played 3S
+^^^ Trick id 12 turn 2 led C trump C ^^^
+kot: 0, oth_scr: 6, winner_team: 0, trump_team: 0
+/ALR=== Round 8 winner team: 0  (Kot: 0) ===
+/INF=== Round 9 ===
+RemoteInterAgent 2: Input: h
+AI_0 Habc: 2S 3S 4S 5S 6S 8S 9S XS JS KS AS,2H 6H 7H 9H XH QH KH,3C 4C 5C 7C 8C XC JC QC KC AC,2D 3D 4D 5D 6D 7D 8D 9D JD QD AD
+AI_0 hand 7S QS,3H 4H 5H 8H JH AH,2C 6C 9C,XD KD
+pararolooo hand 2S 6S JS AS,9H XH,4C 7C QC KC,3D 5D 8D
+I hand 3S 8S,6H 7H QH KH,5C XC JC,2D 4D 9D AD
+Fataneh hand 4S 5S 9S XS KS,2H,3C 8C AC,6D 7D JD QD
+Round 9, Trick 0, Turn: 2, Trump: H
++++ Trick id 0 turn 2 trump H +++
+RemoteInterAgent 2: Input: ad
+RemoteInterAgent 3: Input: 6d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord -1 last_led - led D trump H
+hand: 7S QS,3H 4H 5H 8H JH AH,2C 6C 9C,XD KD
+comp 2 table AD
+op_b 3 table 6D
+case 2:
+pssbl_hi_hand: XD KD
+prb_act XD 0.414414
+prb_act KD 1
+prb_act out: KD, (max)prb: 1
+c_card: AD, prb: 1
+diff of AD-KD: 0
+Companion's card is good enough.
+Alg. out card: XD
+--- AI_0 --- out card: XD ---
+RemoteInterAgent 1: Input: 3d
+AI_0 played XD
+pararolooo played 3D
+I played AD
+Fataneh played 6D
+^^^ Trick id 0 turn 2 led D trump H ^^^
+AI_0 hand 7S QS,3H 4H 5H 8H JH AH,2C 6C 9C,KD
+pararolooo hand 2S 6S JS AS,9H XH,4C 7C QC KC,5D 8D
+I hand 3S 8S,6H 7H QH KH,5C XC JC,2D 4D 9D
+Fataneh hand 4S 5S 9S XS KS,2H,3C 8C AC,7D JD QD
+Round 9, Trick 1, Turn: 2, Trump: H
++++ Trick id 1 turn 2 trump H +++
+RemoteInterAgent 2: Input: xc
+RemoteInterAgent 3: Input: ac
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led D led C trump H
+hand: 7S QS,3H 4H 5H 8H JH AH,2C 6C 9C,KD
+op_a 1 last table 3D
+comp 2 table XC
+op_b 3 table AC
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 2C
+--- AI_0 --- out card: 2C ---
+RemoteInterAgent 1: Input: 4c
+AI_0 played 2C
+pararolooo played 4C
+I played XC
+Fataneh played AC
+^^^ Trick id 1 turn 2 led C trump H ^^^
+AI_0 hand 7S QS,3H 4H 5H 8H JH AH,6C 9C,KD
+pararolooo hand 2S 6S JS AS,9H XH,7C QC KC,5D 8D
+I hand 3S 8S,6H 7H QH KH,5C JC,2D 4D 9D
+Fataneh hand 4S 5S 9S XS KS,2H,3C 8C,7D JD QD
+Round 9, Trick 2, Turn: 3, Trump: H
++++ Trick id 2 turn 3 trump H +++
+RemoteInterAgent 3: Input: 9s
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led C led S trump H
+hand: 7S QS,3H 4H 5H 8H JH AH,6C 9C,KD
+op_a 1 last table 4C
+op_b 3 table 9S
+case 1:
+pssbl_hi_hand: QS,
+prb_act QS 0.423387
+out: --, prb: 0.423387
+Alg. out card: 7S
+--- AI_0 --- out card: 7S ---
+RemoteInterAgent 1: Input: as
+RemoteInterAgent 2: Input: 3s
+AI_0 played 7S
+pararolooo played AS
+I played 3S
+Fataneh played 9S
+^^^ Trick id 2 turn 3 led S trump H ^^^
+AI_0 hand QS,3H 4H 5H 8H JH AH,6C 9C,KD
+pararolooo hand 2S 6S JS,9H XH,7C QC KC,5D 8D
+I hand 8S,6H 7H QH KH,5C JC,2D 4D 9D
+Fataneh hand 4S 5S XS KS,2H,3C 8C,7D JD QD
+Round 9, Trick 3, Turn: 1, Trump: H
++++ Trick id 3 turn 1 trump H +++
+RemoteInterAgent 1: Input: kc
+RemoteInterAgent 2: Input: 5c
+RemoteInterAgent 3: Input: 3c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led S led C trump H
+hand: QS,3H 4H 5H 8H JH AH,6C 9C,KD
+comp 2 last table 3S
+op_a 1 last table AS
+op_a 1 table KC
+comp 2 table 5C
+op_b 3 table 3C
+case 3:
+hi_hand: 
+Alg. out card: 6C
+--- AI_0 --- out card: 6C ---
+AI_0 played 6C
+pararolooo played KC
+I played 5C
+Fataneh played 3C
+^^^ Trick id 3 turn 1 led C trump H ^^^
+AI_0 hand QS,3H 4H 5H 8H JH AH,9C,KD
+pararolooo hand 2S 6S JS,9H XH,7C QC,5D 8D
+I hand 8S,6H 7H QH KH,JC,2D 4D 9D
+Fataneh hand 4S 5S XS KS,2H,8C,7D JD QD
+Round 9, Trick 4, Turn: 1, Trump: H
++++ Trick id 4 turn 1 trump H +++
+RemoteInterAgent 1: Input: qc
+RemoteInterAgent 2: Input: jc
+RemoteInterAgent 3: Input: 8c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led C trump H
+hand: QS,3H 4H 5H 8H JH AH,9C,KD
+op_a 1 table QC
+comp 2 table JC
+op_b 3 table 8C
+case 3:
+hi_hand: 
+Alg. out card: 9C
+--- AI_0 --- out card: 9C ---
+AI_0 played 9C
+pararolooo played QC
+I played JC
+Fataneh played 8C
+^^^ Trick id 4 turn 1 led C trump H ^^^
+AI_0 hand QS,3H 4H 5H 8H JH AH,KD
+pararolooo hand 2S 6S JS,9H XH,7C,5D 8D
+I hand 8S,6H 7H QH KH,2D 4D 9D
+Fataneh hand 4S 5S XS KS,2H,7D JD QD
+Round 9, Trick 5, Turn: 1, Trump: H
++++ Trick id 5 turn 1 trump H +++
+RemoteInterAgent 1: Input: 7c
+RemoteInterAgent 2: Input: 6h
+RemoteInterAgent 3: Input: 4s
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led C trump H
+hand: QS,3H 4H 5H 8H JH AH,KD
+op_a 1 table 7C
+comp 2 table 6H
+op_b 3 table 4S
+case 3:
+Companion's card is good enough.
+Alg. out card: QS
+--- AI_0 --- out card: QS ---
+AI_0 played QS
+pararolooo played 7C
+I played 6H
+Fataneh played 4S
+^^^ Trick id 5 turn 1 led C trump H ^^^
+AI_0 hand 3H 4H 5H 8H JH AH,KD
+pararolooo hand 2S 6S JS,9H XH,5D 8D
+I hand 8S,7H QH KH,2D 4D 9D
+Fataneh hand 5S XS KS,2H,7D JD QD
+Round 9, Trick 6, Turn: 2, Trump: H
++++ Trick id 6 turn 2 trump H +++
+RemoteInterAgent 2: Input: 8s
+RemoteInterAgent 3: Input: ks
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led C led S trump H
+hand: 3H 4H 5H 8H JH AH,KD
+comp 2 table 8S
+op_b 3 table KS
+case 2:
+pssbl_hi_hand: 3H 4H 5H 8H JH AH,
+prb_act 3H 1
+prb_act out: 3H, (max)prb: 1
+c_card: 8S, prb: 0.385965
+diff of 8S-3H: -52
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+RemoteInterAgent 1: Input: 2s
+AI_0 played 3H
+pararolooo played 2S
+I played 8S
+Fataneh played KS
+^^^ Trick id 6 turn 2 led S trump H ^^^
+AI_0 hand 4H 5H 8H JH AH,KD
+pararolooo hand 6S JS,9H XH,5D 8D
+I hand 7H QH KH,2D 4D 9D
+Fataneh hand 5S XS,2H,7D JD QD
+Round 9, Trick 7, Turn: 0, Trump: H
++++ Trick id 7 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led S led - trump H
+hand: 4H 5H 8H JH AH,KD
+op_a 1 last table 2S
+case 0:
+pssbl_hi_hand: 4H 5H 8H JH AH,KD
+prb_act 4H 0.00070028
+prb_act 5H 0.00070028
+prb_act 8H 0.00490196
+prb_act JH 0.0980392
+prb_act AH 1
+prb_act KD 1
+out: KD, prb: 1
+Alg. out card: KD
+--- AI_0 --- out card: KD ---
+RemoteInterAgent 1: Input: 5d
+RemoteInterAgent 2: Input: 2d
+RemoteInterAgent 3: Input: 7d
+AI_0 played KD
+pararolooo played 5D
+I played 2D
+Fataneh played 7D
+^^^ Trick id 7 turn 0 led D trump H ^^^
+AI_0 hand 4H 5H 8H JH AH,
+pararolooo hand 6S JS,9H XH,8D
+I hand 7H QH KH,4D 9D
+Fataneh hand 5S XS,2H,JD QD
+Round 9, Trick 8, Turn: 0, Trump: H
++++ Trick id 8 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump H
+hand: 4H 5H 8H JH AH,
+op_b 3 last table 7D
+comp 2 last table 2D
+op_a 1 last table 5D
+case 0:
+pssbl_hi_hand: 4H 5H 8H JH AH,
+prb_act 4H 0.000333
+prb_act 5H 0.000333
+prb_act 8H 0.003663
+prb_act JH 0.0952381
+prb_act AH 1
+out: AH, prb: 1
+Alg. out card: AH
+--- AI_0 --- out card: AH ---
+RemoteInterAgent 1: Input: 9h
+RemoteInterAgent 2: Input: 7h
+RemoteInterAgent 3: Input: 2h
+AI_0 played AH
+pararolooo played 9H
+I played 7H
+Fataneh played 2H
+^^^ Trick id 8 turn 0 led H trump H ^^^
+AI_0 hand 4H 5H 8H JH,
+pararolooo hand 6S JS,XH,8D
+I hand QH KH,4D 9D
+Fataneh hand 5S XS,JD QD
+Round 9, Trick 9, Turn: 0, Trump: H
++++ Trick id 9 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump H
+hand: 4H 5H 8H JH,
+op_b 3 last table 2H
+comp 2 last table 7H
+op_a 1 last table 9H
+case 0:
+pssbl_hi_hand: 4H 5H 8H JH,
+prb_act 4H 0.0181818
+prb_act 5H 0.0181818
+prb_act 8H 0.0181818
+prb_act JH 0.0909091
+out: --, prb: 0.0909091
+Alg. out card: 4H
+--- AI_0 --- out card: 4H ---
+RemoteInterAgent 1: Input: xh
+RemoteInterAgent 2: Input: qh
+RemoteInterAgent 3: Input: 5s
+AI_0 played 4H
+pararolooo played XH
+I played QH
+Fataneh played 5S
+^^^ Trick id 9 turn 0 led H trump H ^^^
+AI_0 hand 5H 8H JH,
+pararolooo hand 6S JS,8D
+I hand KH,4D 9D
+Fataneh hand XS,JD QD
+Round 9, Trick 10, Turn: 2, Trump: H
++++ Trick id 10 turn 2 trump H +++
+RemoteInterAgent 2: Input: kh
+RemoteInterAgent 3: Input: jd
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led H trump H
+hand: 5H 8H JH,
+op_b 3 last table 5S
+comp 2 last table QH
+op_a 1 last table XH
+comp 2 table KH
+op_b 3 table JD
+case 2:
+pssbl_hi_hand: 5H 8H JH,
+prb_act 5H 1
+prb_act out: 5H, (max)prb: 1
+c_card: KH, prb: 1
+diff of KH-5H: 0
+Companion's card is good enough.
+Alg. out card: 5H
+--- AI_0 --- out card: 5H ---
+RemoteInterAgent 1: Input: 8d
+AI_0 played 5H
+pararolooo played 8D
+I played KH
+Fataneh played JD
+^^^ Trick id 10 turn 2 led H trump H ^^^
+kot: 0, oth_scr: 4, winner_team: 0, trump_team: 0
+/ALR=== Round 9 winner team: 0  (Kot: 0) ===
+/INF=== Round 10 ===
+RemoteInterAgent 2: Input: s
+AI_0 Habc: 4S 6S 7S 9S XS JS QS KS,2H 3H 4H 5H 6H 7H 8H 9H JH QH AH,2C 3C 4C 5C 7C 8C XC JC KC AC,2D 3D 5D 6D 8D 9D XD QD KD AD
+AI_0 hand 2S 3S 5S 8S AS,XH KH,6C 9C QC,4D 7D JD
+pararolooo hand 7S,3H 4H 5H 8H 9H,2C JC KC,6D XD QD AD
+I hand 4S 6S 9S XS QS KS,2H JH,5C 7C AC,3D 8D
+Fataneh hand JS,6H 7H QH AH,3C 4C 8C XC,2D 5D 9D KD
+Round 10, Trick 0, Turn: 2, Trump: S
++++ Trick id 0 turn 2 trump S +++
+RemoteInterAgent 2: Input: ac
+RemoteInterAgent 3: Input: 3c
+--- AI_0 pl_id 0 team 0 ord 2 last_ord -1 last_led - led C trump S
+hand: 2S 3S 5S 8S AS,XH KH,6C 9C QC,4D 7D JD
+comp 2 table AC
+op_b 3 table 3C
+case 2:
+pssbl_hi_hand: 6C 9C QC,
+prb_act 6C 0.0975093
+prb_act 9C 0.260489
+prb_act QC 0.648649
+prb_act out: QC, (max)prb: 0.648649
+c_card: AC, prb: 1
+diff of AC-QC: 1
+Companion's card is good enough.
+Alg. out card: 6C
+--- AI_0 --- out card: 6C ---
+RemoteInterAgent 1: Input: 2c
+AI_0 played 6C
+pararolooo played 2C
+I played AC
+Fataneh played 3C
+^^^ Trick id 0 turn 2 led C trump S ^^^
+AI_0 hand 2S 3S 5S 8S AS,XH KH,9C QC,4D 7D JD
+pararolooo hand 7S,3H 4H 5H 8H 9H,JC KC,6D XD QD AD
+I hand 4S 6S 9S XS QS KS,2H JH,5C 7C,3D 8D
+Fataneh hand JS,6H 7H QH AH,4C 8C XC,2D 5D 9D KD
+Round 10, Trick 1, Turn: 2, Trump: S
++++ Trick id 1 turn 2 trump S +++
+RemoteInterAgent 2: Input: 2h
+RemoteInterAgent 3: Input: ah
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led C led H trump S
+hand: 2S 3S 5S 8S AS,XH KH,9C QC,4D 7D JD
+op_a 1 last table 2C
+comp 2 table 2H
+op_b 3 table AH
+case 2:
+pssbl_hi_hand: 
+Alg. out card: XH
+--- AI_0 --- out card: XH ---
+RemoteInterAgent 1: Input: 3h
+AI_0 played XH
+pararolooo played 3H
+I played 2H
+Fataneh played AH
+^^^ Trick id 1 turn 2 led H trump S ^^^
+AI_0 hand 2S 3S 5S 8S AS,KH,9C QC,4D 7D JD
+pararolooo hand 7S,4H 5H 8H 9H,JC KC,6D XD QD AD
+I hand 4S 6S 9S XS QS KS,JH,5C 7C,3D 8D
+Fataneh hand JS,6H 7H QH,4C 8C XC,2D 5D 9D KD
+Round 10, Trick 2, Turn: 3, Trump: S
++++ Trick id 2 turn 3 trump S +++
+RemoteInterAgent 3: Input: 7h
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led H led H trump S
+hand: 2S 3S 5S 8S AS,KH,9C QC,4D 7D JD
+op_a 1 last table 3H
+op_b 3 table 7H
+case 1:
+pssbl_hi_hand: KH,
+prb_act KH 1
+out: KH, prb: 1
+Alg. out card: KH
+--- AI_0 --- out card: KH ---
+RemoteInterAgent 1: Input: 4h
+RemoteInterAgent 2: Input: jh
+AI_0 played KH
+pararolooo played 4H
+I played JH
+Fataneh played 7H
+^^^ Trick id 2 turn 3 led H trump S ^^^
+AI_0 hand 2S 3S 5S 8S AS,9C QC,4D 7D JD
+pararolooo hand 7S,5H 8H 9H,JC KC,6D XD QD AD
+I hand 4S 6S 9S XS QS KS,5C 7C,3D 8D
+Fataneh hand JS,6H QH,4C 8C XC,2D 5D 9D KD
+Round 10, Trick 3, Turn: 0, Trump: S
++++ Trick id 3 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led H led - trump S
+hand: 2S 3S 5S 8S AS,9C QC,4D 7D JD
+comp 2 last table JH
+op_a 1 last table 4H
+case 0:
+pssbl_hi_hand: 2S 3S 5S 8S AS,9C QC,4D 7D JD
+prb_act 2S 7.68846e-06
+prb_act 3S 7.68846e-06
+prb_act 5S 5.89449e-05
+prb_act 8S 0.00176835
+prb_act AS 1
+prb_act 9C 0.0295567
+prb_act QC 0.333333
+prb_act 4D 7.68846e-06
+prb_act 7D 0.000353669
+prb_act JD 0.0295567
+out: --, prb: 1
+Alg. out card: 4D
+--- AI_0 --- out card: 4D ---
+RemoteInterAgent 1: Input: ad
+RemoteInterAgent 2: Input: 3d
+RemoteInterAgent 3: Input: 2d
+AI_0 played 4D
+pararolooo played AD
+I played 3D
+Fataneh played 2D
+^^^ Trick id 3 turn 0 led D trump S ^^^
+AI_0 hand 2S 3S 5S 8S AS,9C QC,7D JD
+pararolooo hand 7S,5H 8H 9H,JC KC,6D XD QD
+I hand 4S 6S 9S XS QS KS,5C 7C,8D
+Fataneh hand JS,6H QH,4C 8C XC,5D 9D KD
+Round 10, Trick 4, Turn: 1, Trump: S
++++ Trick id 4 turn 1 trump S +++
+RemoteInterAgent 1: Input: kc
+RemoteInterAgent 2: Input: 5c
+RemoteInterAgent 3: Input: 4c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led C trump S
+hand: 2S 3S 5S 8S AS,9C QC,7D JD
+op_b 3 last table 2D
+comp 2 last table 3D
+op_a 1 last table AD
+op_a 1 table KC
+comp 2 table 5C
+op_b 3 table 4C
+case 3:
+hi_hand: 
+Alg. out card: 9C
+--- AI_0 --- out card: 9C ---
+AI_0 played 9C
+pararolooo played KC
+I played 5C
+Fataneh played 4C
+^^^ Trick id 4 turn 1 led C trump S ^^^
+AI_0 hand 2S 3S 5S 8S AS,QC,7D JD
+pararolooo hand 7S,5H 8H 9H,JC,6D XD QD
+I hand 4S 6S 9S XS QS KS,7C,8D
+Fataneh hand JS,6H QH,8C XC,5D 9D KD
+Round 10, Trick 5, Turn: 1, Trump: S
++++ Trick id 5 turn 1 trump S +++
+RemoteInterAgent 1: Input: xd
+RemoteInterAgent 2: Input: 8d
+RemoteInterAgent 3: Input: kd
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led D trump S
+hand: 2S 3S 5S 8S AS,QC,7D JD
+op_a 1 table XD
+comp 2 table 8D
+op_b 3 table KD
+case 3:
+hi_hand: 
+Alg. out card: 7D
+--- AI_0 --- out card: 7D ---
+AI_0 played 7D
+pararolooo played XD
+I played 8D
+Fataneh played KD
+^^^ Trick id 5 turn 1 led D trump S ^^^
+AI_0 hand 2S 3S 5S 8S AS,QC,JD
+pararolooo hand 7S,5H 8H 9H,JC,6D QD
+I hand 4S 6S 9S XS QS KS,7C,
+Fataneh hand JS,6H QH,8C XC,5D 9D
+Round 10, Trick 6, Turn: 3, Trump: S
++++ Trick id 6 turn 3 trump S +++
+RemoteInterAgent 3: Input: 9d
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led D led D trump S
+hand: 2S 3S 5S 8S AS,QC,JD
+op_b 3 table 9D
+case 1:
+pssbl_hi_hand: JD
+prb_act JD 0.65
+out: JD, prb: 0.65
+Alg. out card: JD
+--- AI_0 --- out card: JD ---
+RemoteInterAgent 1: Input: qd
+RemoteInterAgent 2: Input: 4s
+AI_0 played JD
+pararolooo played QD
+I played 4S
+Fataneh played 9D
+^^^ Trick id 6 turn 3 led D trump S ^^^
+AI_0 hand 2S 3S 5S 8S AS,QC,
+pararolooo hand 7S,5H 8H 9H,JC,6D
+I hand 6S 9S XS QS KS,7C,
+Fataneh hand JS,6H QH,8C XC,5D
+Round 10, Trick 7, Turn: 2, Trump: S
++++ Trick id 7 turn 2 trump S +++
+RemoteInterAgent 2: Input: 7c
+RemoteInterAgent 3: Input: xc
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led D led C trump S
+hand: 2S 3S 5S 8S AS,QC,
+comp 2 last table 4S
+op_a 1 last table QD
+comp 2 table 7C
+op_b 3 table XC
+case 2:
+pssbl_hi_hand: QC,
+prb_act QC 1
+prb_act out: QC, (max)prb: 1
+c_card: 7C, prb: 0.375
+diff of 7C-QC: -3
+Alg. out card: QC
+--- AI_0 --- out card: QC ---
+RemoteInterAgent 1: Input: jc
+AI_0 played QC
+pararolooo played JC
+I played 7C
+Fataneh played XC
+^^^ Trick id 7 turn 2 led C trump S ^^^
+AI_0 hand 2S 3S 5S 8S AS,
+pararolooo hand 7S,5H 8H 9H,6D
+I hand 6S 9S XS QS KS,
+Fataneh hand JS,6H QH,8C,5D
+Round 10, Trick 8, Turn: 0, Trump: S
++++ Trick id 8 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led C led - trump S
+hand: 2S 3S 5S 8S AS,
+op_a 1 last table JC
+case 0:
+pssbl_hi_hand: 2S 3S 5S 8S AS,
+prb_act 2S 0
+prb_act 3S 0
+prb_act 5S 0
+prb_act 8S 0.000777001
+prb_act AS 1
+out: AS, prb: 1
+Alg. out card: AS
+--- AI_0 --- out card: AS ---
+RemoteInterAgent 1: Input: 7s
+RemoteInterAgent 2: Input: 6s
+RemoteInterAgent 3: Input: js
+AI_0 played AS
+pararolooo played 7S
+I played 6S
+Fataneh played JS
+^^^ Trick id 8 turn 0 led S trump S ^^^
+AI_0 hand 2S 3S 5S 8S,
+pararolooo hand 5H 8H 9H,6D
+I hand 9S XS QS KS,
+Fataneh hand 6H QH,8C,5D
+Round 10, Trick 9, Turn: 0, Trump: S
++++ Trick id 9 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump S
+hand: 2S 3S 5S 8S,
+op_b 3 last table JS
+comp 2 last table 6S
+op_a 1 last table 7S
+case 0:
+pssbl_hi_hand: 2S 3S 5S 8S,
+prb_act 2S 0.0047619
+prb_act 3S 0.0047619
+prb_act 5S 0.0047619
+prb_act 8S 0.0047619
+out: --, prb: 0.0047619
+Alg. out card: 2S
+--- AI_0 --- out card: 2S ---
+RemoteInterAgent 1: Input: 5h
+RemoteInterAgent 2: Input: qs
+RemoteInterAgent 3: Input: 5d
+AI_0 played 2S
+pararolooo played 5H
+I played QS
+Fataneh played 5D
+^^^ Trick id 9 turn 0 led S trump S ^^^
+AI_0 hand 3S 5S 8S,
+pararolooo hand 8H 9H,6D
+I hand 9S XS KS,
+Fataneh hand 6H QH,8C,
+Round 10, Trick 10, Turn: 2, Trump: S
++++ Trick id 10 turn 2 trump S +++
+RemoteInterAgent 2: Input: ks
+RemoteInterAgent 3: Input: 8c
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led S trump S
+hand: 3S 5S 8S,
+op_b 3 last table 5D
+comp 2 last table QS
+op_a 1 last table 5H
+comp 2 table KS
+op_b 3 table 8C
+case 2:
+pssbl_hi_hand: 3S 5S 8S,
+prb_act 3S 0.285714
+prb_act 5S 0.285714
+prb_act 8S 0.285714
+prb_act out: --, (max)prb: 0.285714
+Alg. out card: 3S
+--- AI_0 --- out card: 3S ---
+RemoteInterAgent 1: Input: 6d
+AI_0 played 3S
+pararolooo played 6D
+I played KS
+Fataneh played 8C
+^^^ Trick id 10 turn 2 led S trump S ^^^
+kot: 0, oth_scr: 4, winner_team: 0, trump_team: 0
+/ALR=== Round 10 winner team: 0  (Kot: 0) ===
+/INF=== Round 11 ===
+RemoteInterAgent 2: Input: d
+AI_0 Habc: 2S 5S 6S 7S 8S 9S XS JS QS AS,3H 4H 6H 8H 9H XH JH QH KH,2C 3C 4C 5C 7C 8C 9C JC KC AC,2D 3D 4D 5D 6D 7D XD QD KD AD
+AI_0 hand 3S 4S KS,2H 5H 7H AH,6C XC QC,8D 9D JD
+pararolooo hand 3H 4H 6H JH QH,8C 9C KC AC,2D 5D 7D XD
+I hand 6S 7S 8S XS JS QS,9H,2C 5C,3D 4D KD AD
+Fataneh hand 2S 5S 9S AS,8H XH KH,3C 4C 7C JC,6D QD
+Round 11, Trick 0, Turn: 2, Trump: D
++++ Trick id 0 turn 2 trump D +++
+RemoteInterAgent 2: Input: xs
+RemoteInterAgent 3: Input: as
+--- AI_0 pl_id 0 team 0 ord 2 last_ord -1 last_led - led S trump D
+hand: 3S 4S KS,2H 5H 7H AH,6C XC QC,8D 9D JD
+comp 2 table XS
+op_b 3 table AS
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 3S
+--- AI_0 --- out card: 3S ---
+RemoteInterAgent 1: Input: 2d
+AI_0 played 3S
+pararolooo played 2D
+I played XS
+Fataneh played AS
+^^^ Trick id 0 turn 2 led S trump D ^^^
+AI_0 hand 4S KS,2H 5H 7H AH,6C XC QC,8D 9D JD
+pararolooo hand 3H 4H 6H JH QH,8C 9C KC AC,5D 7D XD
+I hand 6S 7S 8S JS QS,9H,2C 5C,3D 4D KD AD
+Fataneh hand 2S 5S 9S,8H XH KH,3C 4C 7C JC,6D QD
+Round 11, Trick 1, Turn: 1, Trump: D
++++ Trick id 1 turn 1 trump D +++
+RemoteInterAgent 1: Input: ac
+RemoteInterAgent 2: Input: 2c
+RemoteInterAgent 3: Input: 3c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led S led C trump D
+hand: 4S KS,2H 5H 7H AH,6C XC QC,8D 9D JD
+op_a 1 last table 2D
+op_a 1 table AC
+comp 2 table 2C
+op_b 3 table 3C
+case 3:
+hi_hand: 
+Alg. out card: 6C
+--- AI_0 --- out card: 6C ---
+AI_0 played 6C
+pararolooo played AC
+I played 2C
+Fataneh played 3C
+^^^ Trick id 1 turn 1 led C trump D ^^^
+AI_0 hand 4S KS,2H 5H 7H AH,XC QC,8D 9D JD
+pararolooo hand 3H 4H 6H JH QH,8C 9C KC,5D 7D XD
+I hand 6S 7S 8S JS QS,9H,5C,3D 4D KD AD
+Fataneh hand 2S 5S 9S,8H XH KH,4C 7C JC,6D QD
+Round 11, Trick 2, Turn: 1, Trump: D
++++ Trick id 2 turn 1 trump D +++
+RemoteInterAgent 1: Input: kc
+RemoteInterAgent 2: Input: 5c
+RemoteInterAgent 3: Input: 4c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led C trump D
+hand: 4S KS,2H 5H 7H AH,XC QC,8D 9D JD
+op_a 1 table KC
+comp 2 table 5C
+op_b 3 table 4C
+case 3:
+hi_hand: 
+Alg. out card: XC
+--- AI_0 --- out card: XC ---
+AI_0 played XC
+pararolooo played KC
+I played 5C
+Fataneh played 4C
+^^^ Trick id 2 turn 1 led C trump D ^^^
+AI_0 hand 4S KS,2H 5H 7H AH,QC,8D 9D JD
+pararolooo hand 3H 4H 6H JH QH,8C 9C,5D 7D XD
+I hand 6S 7S 8S JS QS,9H,3D 4D KD AD
+Fataneh hand 2S 5S 9S,8H XH KH,7C JC,6D QD
+Round 11, Trick 3, Turn: 1, Trump: D
++++ Trick id 3 turn 1 trump D +++
+RemoteInterAgent 1: Input: 6h
+RemoteInterAgent 2: Input: 9h
+RemoteInterAgent 3: Input: xh
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led H trump D
+hand: 4S KS,2H 5H 7H AH,QC,8D 9D JD
+op_a 1 table 6H
+comp 2 table 9H
+op_b 3 table XH
+case 3:
+hi_hand: AH,
+Alg. out card: AH
+--- AI_0 --- out card: AH ---
+AI_0 played AH
+pararolooo played 6H
+I played 9H
+Fataneh played XH
+^^^ Trick id 3 turn 1 led H trump D ^^^
+AI_0 hand 4S KS,2H 5H 7H,QC,8D 9D JD
+pararolooo hand 3H 4H JH QH,8C 9C,5D 7D XD
+I hand 6S 7S 8S JS QS,3D 4D KD AD
+Fataneh hand 2S 5S 9S,8H KH,7C JC,6D QD
+Round 11, Trick 4, Turn: 0, Trump: D
++++ Trick id 4 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led H led - trump D
+hand: 4S KS,2H 5H 7H,QC,8D 9D JD
+case 0:
+pssbl_hi_hand: 4S KS,2H 5H 7H,QC,8D 9D JD
+prb_act 4S 4.05392e-05
+prb_act KS 1
+out: KS, prb: 1
+Alg. out card: KS
+--- AI_0 --- out card: KS ---
+RemoteInterAgent 1: Input: 5d
+RemoteInterAgent 2: Input: 6s
+RemoteInterAgent 3: Input: 2s
+AI_0 played KS
+pararolooo played 5D
+I played 6S
+Fataneh played 2S
+^^^ Trick id 4 turn 0 led S trump D ^^^
+AI_0 hand 4S,2H 5H 7H,QC,8D 9D JD
+pararolooo hand 3H 4H JH QH,8C 9C,7D XD
+I hand 7S 8S JS QS,3D 4D KD AD
+Fataneh hand 5S 9S,8H KH,7C JC,6D QD
+Round 11, Trick 5, Turn: 1, Trump: D
++++ Trick id 5 turn 1 trump D +++
+RemoteInterAgent 1: Input: 8c
+RemoteInterAgent 2: Input: 3d
+RemoteInterAgent 3: Input: jc
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led C trump D
+hand: 4S,2H 5H 7H,QC,8D 9D JD
+op_b 3 last table 2S
+comp 2 last table 6S
+op_a 1 last table 5D
+op_a 1 table 8C
+comp 2 table 3D
+op_b 3 table JC
+case 3:
+Companion's card is good enough.
+Alg. out card: QC
+--- AI_0 --- out card: QC ---
+AI_0 played QC
+pararolooo played 8C
+I played 3D
+Fataneh played JC
+^^^ Trick id 5 turn 1 led C trump D ^^^
+AI_0 hand 4S,2H 5H 7H,8D 9D JD
+pararolooo hand 3H 4H JH QH,9C,7D XD
+I hand 7S 8S JS QS,4D KD AD
+Fataneh hand 5S 9S,8H KH,7C,6D QD
+Round 11, Trick 6, Turn: 2, Trump: D
++++ Trick id 6 turn 2 trump D +++
+RemoteInterAgent 2: Input: js
+RemoteInterAgent 3: Input: 5s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led C led S trump D
+hand: 4S,2H 5H 7H,8D 9D JD
+comp 2 table JS
+op_b 3 table 5S
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 4S
+--- AI_0 --- out card: 4S ---
+RemoteInterAgent 1: Input: 7d
+AI_0 played 4S
+pararolooo played 7D
+I played JS
+Fataneh played 5S
+^^^ Trick id 6 turn 2 led S trump D ^^^
+AI_0 hand 2H 5H 7H,8D 9D JD
+pararolooo hand 3H 4H JH QH,9C,XD
+I hand 7S 8S QS,4D KD AD
+Fataneh hand 9S,8H KH,7C,6D QD
+Round 11, Trick 7, Turn: 1, Trump: D
++++ Trick id 7 turn 1 trump D +++
+RemoteInterAgent 1: Input: qh
+RemoteInterAgent 2: Input: 4d
+RemoteInterAgent 3: Input: 8h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led S led H trump D
+hand: 2H 5H 7H,8D 9D JD
+op_a 1 last table 7D
+op_a 1 table QH
+comp 2 table 4D
+op_b 3 table 8H
+case 3:
+Companion's card is good enough.
+Alg. out card: 2H
+--- AI_0 --- out card: 2H ---
+AI_0 played 2H
+pararolooo played QH
+I played 4D
+Fataneh played 8H
+^^^ Trick id 7 turn 1 led H trump D ^^^
+AI_0 hand 5H 7H,8D 9D JD
+pararolooo hand 3H 4H JH,9C,XD
+I hand 7S 8S QS,KD AD
+Fataneh hand 9S,KH,7C,6D QD
+Round 11, Trick 8, Turn: 2, Trump: D
++++ Trick id 8 turn 2 trump D +++
+RemoteInterAgent 2: Input: qs
+RemoteInterAgent 3: Input: 9h
+RemoteInterAgent 3: Input: 9s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led H led S trump D
+hand: 5H 7H,8D 9D JD
+comp 2 table QS
+op_b 3 table 9S
+case 2:
+pssbl_hi_hand: 8D 9D JD
+prb_act 8D 0.0454545
+prb_act 9D 0.0454545
+prb_act JD 0.121212
+prb_act out: --, (max)prb: 0.121212
+Alg. out card: 5H
+--- AI_0 --- out card: 5H ---
+RemoteInterAgent 1: Input: xd
+AI_0 played 5H
+pararolooo played XD
+I played QS
+Fataneh played 9S
+^^^ Trick id 8 turn 2 led S trump D ^^^
+AI_0 hand 7H,8D 9D JD
+pararolooo hand 3H 4H JH,9C,
+I hand 7S 8S,KD AD
+Fataneh hand KH,7C,6D QD
+Round 11, Trick 9, Turn: 1, Trump: D
++++ Trick id 9 turn 1 trump D +++
+RemoteInterAgent 1: Input: 9c
+RemoteInterAgent 2: Input: kd
+RemoteInterAgent 3: Input: 7c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led S led C trump D
+hand: 7H,8D 9D JD
+op_a 1 last table XD
+op_a 1 table 9C
+comp 2 table KD
+op_b 3 table 7C
+case 3:
+Companion's card is good enough.
+Alg. out card: 7H
+--- AI_0 --- out card: 7H ---
+AI_0 played 7H
+pararolooo played 9C
+I played KD
+Fataneh played 7C
+^^^ Trick id 9 turn 1 led C trump D ^^^
+AI_0 hand 8D 9D JD
+pararolooo hand 3H 4H JH,
+I hand 7S 8S,AD
+Fataneh hand KH,6D QD
+Round 11, Trick 10, Turn: 2, Trump: D
++++ Trick id 10 turn 2 trump D +++
+RemoteInterAgent 2: Input: ad
+RemoteInterAgent 3: Input: 6d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led C led D trump D
+hand: 8D 9D JD
+comp 2 table AD
+op_b 3 table 6D
+case 2:
+pssbl_hi_hand: 8D 9D JD
+prb_act 8D 0.4
+prb_act 9D 0.4
+prb_act JD 0.4
+prb_act out: --, (max)prb: 0.4
+Alg. out card: 8D
+--- AI_0 --- out card: 8D ---
+RemoteInterAgent 1: Input: 3h
+AI_0 played 8D
+pararolooo played 3H
+I played AD
+Fataneh played 6D
+^^^ Trick id 10 turn 2 led D trump D ^^^
+AI_0 hand 9D JD
+pararolooo hand 4H JH,
+I hand 7S 8S,
+Fataneh hand KH,QD
+Round 11, Trick 11, Turn: 2, Trump: D
++++ Trick id 11 turn 2 trump D +++
+RemoteInterAgent 2: Input: 8s
+RemoteInterAgent 3: Input: qd
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led D led S trump D
+hand: 9D JD
+op_a 1 last table 3H
+comp 2 table 8S
+op_b 3 table QD
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 9D
+--- AI_0 --- out card: 9D ---
+RemoteInterAgent 1: Input: 4h
+AI_0 played 9D
+pararolooo played 4H
+I played 8S
+Fataneh played QD
+^^^ Trick id 11 turn 2 led S trump D ^^^
+kot: 0, oth_scr: 5, winner_team: 1, trump_team: 0
+/ALR=== Round 11 winner team: 1  (Kot: 0) ===
+/INF=== Round 12 ===
+RemoteInterAgent 3: Input: d
+AI_0 Habc: 2S 3S 4S 5S 6S 8S 9S XS JS QS KS AS,2H 3H 6H 7H XH QH KH AH,2C 4C 5C 7C 8C 9C JC QC KC AC,3D 4D 5D 6D 7D 8D 9D XD JD
+AI_0 hand 7S,4H 5H 8H 9H JH,3C 6C XC,2D QD KD AD
+pararolooo hand 4S,3H 6H KH,2C 5C 8C 9C JC QC AC,7D XD
+I hand 3S 5S 6S 8S 9S XS JS,2H 7H QH AH,KC,4D
+Fataneh hand 2S QS KS AS,XH,4C 7C,3D 5D 6D 8D 9D JD
+Round 12, Trick 0, Turn: 3, Trump: D
++++ Trick id 0 turn 3 trump D +++
+RemoteInterAgent 3: Input: as
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led S trump D
+hand: 7S,4H 5H 8H 9H JH,3C 6C XC,2D QD KD AD
+op_b 3 table AS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 7S
+--- AI_0 --- out card: 7S ---
+RemoteInterAgent 1: Input: 4s
+RemoteInterAgent 2: Input: 3s
+AI_0 played 7S
+pararolooo played 4S
+I played 3S
+Fataneh played AS
+^^^ Trick id 0 turn 3 led S trump D ^^^
+AI_0 hand 4H 5H 8H 9H JH,3C 6C XC,2D QD KD AD
+pararolooo hand 3H 6H KH,2C 5C 8C 9C JC QC AC,7D XD
+I hand 5S 6S 8S 9S XS JS,2H 7H QH AH,KC,4D
+Fataneh hand 2S QS KS,XH,4C 7C,3D 5D 6D 8D 9D JD
+Round 12, Trick 1, Turn: 3, Trump: D
++++ Trick id 1 turn 3 trump D +++
+RemoteInterAgent 3: Input: ks
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led S led S trump D
+hand: 4H 5H 8H 9H JH,3C 6C XC,2D QD KD AD
+comp 2 last table 3S
+op_a 1 last table 4S
+op_b 3 table KS
+case 1:
+pssbl_hi_hand: 2D QD KD AD
+prb_act 2D 1
+out: 2D, prb: 1
+Alg. out card: 2D
+--- AI_0 --- out card: 2D ---
+RemoteInterAgent 1: Input: 7d
+RemoteInterAgent 2: Input: 5s
+AI_0 played 2D
+pararolooo played 7D
+I played 5S
+Fataneh played KS
+^^^ Trick id 1 turn 3 led S trump D ^^^
+AI_0 hand 4H 5H 8H 9H JH,3C 6C XC,QD KD AD
+pararolooo hand 3H 6H KH,2C 5C 8C 9C JC QC AC,XD
+I hand 6S 8S 9S XS JS,2H 7H QH AH,KC,4D
+Fataneh hand 2S QS,XH,4C 7C,3D 5D 6D 8D 9D JD
+Round 12, Trick 2, Turn: 1, Trump: D
++++ Trick id 2 turn 1 trump D +++
+RemoteInterAgent 1: Input: ac
+RemoteInterAgent 2: Input: kc
+RemoteInterAgent 3: Input: 4c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led S led C trump D
+hand: 4H 5H 8H 9H JH,3C 6C XC,QD KD AD
+comp 2 last table 5S
+op_a 1 last table 7D
+op_a 1 table AC
+comp 2 table KC
+op_b 3 table 4C
+case 3:
+hi_hand: 
+Alg. out card: 3C
+--- AI_0 --- out card: 3C ---
+AI_0 played 3C
+pararolooo played AC
+I played KC
+Fataneh played 4C
+^^^ Trick id 2 turn 1 led C trump D ^^^
+AI_0 hand 4H 5H 8H 9H JH,6C XC,QD KD AD
+pararolooo hand 3H 6H KH,2C 5C 8C 9C JC QC,XD
+I hand 6S 8S 9S XS JS,2H 7H QH AH,4D
+Fataneh hand 2S QS,XH,7C,3D 5D 6D 8D 9D JD
+Round 12, Trick 3, Turn: 1, Trump: D
++++ Trick id 3 turn 1 trump D +++
+RemoteInterAgent 1: Input: 6h
+RemoteInterAgent 2: Input: ah
+RemoteInterAgent 3: Input: xh
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led H trump D
+hand: 4H 5H 8H 9H JH,6C XC,QD KD AD
+op_a 1 table 6H
+comp 2 table AH
+op_b 3 table XH
+case 3:
+Companion's card is good enough.
+Alg. out card: 4H
+--- AI_0 --- out card: 4H ---
+AI_0 played 4H
+pararolooo played 6H
+I played AH
+Fataneh played XH
+^^^ Trick id 3 turn 1 led H trump D ^^^
+AI_0 hand 5H 8H 9H JH,6C XC,QD KD AD
+pararolooo hand 3H KH,2C 5C 8C 9C JC QC,XD
+I hand 6S 8S 9S XS JS,2H 7H QH,4D
+Fataneh hand 2S QS,7C,3D 5D 6D 8D 9D JD
+Round 12, Trick 4, Turn: 2, Trump: D
++++ Trick id 4 turn 2 trump D +++
+RemoteInterAgent 2: Input: 7h
+RemoteInterAgent 3: Input: 3d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led H led H trump D
+hand: 5H 8H 9H JH,6C XC,QD KD AD
+comp 2 table 7H
+op_b 3 table 3D
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 5H
+--- AI_0 --- out card: 5H ---
+RemoteInterAgent 1: Input: 3h
+AI_0 played 5H
+pararolooo played 3H
+I played 7H
+Fataneh played 3D
+^^^ Trick id 4 turn 2 led H trump D ^^^
+AI_0 hand 8H 9H JH,6C XC,QD KD AD
+pararolooo hand KH,2C 5C 8C 9C JC QC,XD
+I hand 6S 8S 9S XS JS,2H QH,4D
+Fataneh hand 2S QS,7C,5D 6D 8D 9D JD
+Round 12, Trick 5, Turn: 3, Trump: D
++++ Trick id 5 turn 3 trump D +++
+RemoteInterAgent 3: Input: 7c
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led H led C trump D
+hand: 8H 9H JH,6C XC,QD KD AD
+op_a 1 last table 3H
+op_b 3 table 7C
+case 1:
+pssbl_hi_hand: XC,
+prb_act XC 0.233333
+out: --, prb: 0.233333
+Alg. out card: 6C
+--- AI_0 --- out card: 6C ---
+RemoteInterAgent 1: Input: 8c
+RemoteInterAgent 2: Input: 4d
+AI_0 played 6C
+pararolooo played 8C
+I played 4D
+Fataneh played 7C
+^^^ Trick id 5 turn 3 led C trump D ^^^
+AI_0 hand 8H 9H JH,XC,QD KD AD
+pararolooo hand KH,2C 5C 9C JC QC,XD
+I hand 6S 8S 9S XS JS,2H QH,
+Fataneh hand 2S QS,5D 6D 8D 9D JD
+Round 12, Trick 6, Turn: 2, Trump: D
++++ Trick id 6 turn 2 trump D +++
+RemoteInterAgent 2: Input: xs
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led C led S trump D
+hand: 8H 9H JH,XC,QD KD AD
+comp 2 last table 4D
+op_a 1 last table 8C
+comp 2 table XS
+op_b 3 table QS
+case 2:
+pssbl_hi_hand: QD KD AD
+prb_act QD 1
+prb_act out: QD, (max)prb: 1
+c_card: XS, prb: 0.002331
+diff of XS-QD: -52
+Alg. out card: QD
+--- AI_0 --- out card: QD ---
+RemoteInterAgent 1: Input: 2c
+AI_0 played QD
+pararolooo played 2C
+I played XS
+Fataneh played QS
+^^^ Trick id 6 turn 2 led S trump D ^^^
+AI_0 hand 8H 9H JH,XC,KD AD
+pararolooo hand KH,5C 9C JC QC,XD
+I hand 6S 8S 9S JS,2H QH,
+Fataneh hand 2S,5D 6D 8D 9D JD
+Round 12, Trick 7, Turn: 0, Trump: D
++++ Trick id 7 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led S led - trump D
+hand: 8H 9H JH,XC,KD AD
+op_a 1 last table 2C
+case 0:
+pssbl_hi_hand: 8H 9H JH,KD AD
+prb_act 8H 0.164835
+prb_act 9H 0.164835
+prb_act JH 0.164835
+prb_act KD 1
+prb_act AD 1
+out: --, prb: 1
+Alg. out card: 8H
+--- AI_0 --- out card: 8H ---
+RemoteInterAgent 1: Input: kh
+RemoteInterAgent 2: Input: 2h
+RemoteInterAgent 3: Input: 2s
+AI_0 played 8H
+pararolooo played KH
+I played 2H
+Fataneh played 2S
+^^^ Trick id 7 turn 0 led H trump D ^^^
+AI_0 hand 9H JH,XC,KD AD
+pararolooo hand 5C 9C JC QC,XD
+I hand 6S 8S 9S JS,QH,
+Fataneh hand 5D 6D 8D 9D JD
+Round 12, Trick 8, Turn: 1, Trump: D
++++ Trick id 8 turn 1 trump D +++
+RemoteInterAgent 1: Input: qc
+RemoteInterAgent 2: Input: 6s
+RemoteInterAgent 3: Input: 9d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led C trump D
+hand: 9H JH,XC,KD AD
+op_b 3 last table 2S
+comp 2 last table 2H
+op_a 1 last table KH
+op_a 1 table QC
+comp 2 table 6S
+op_b 3 table 9D
+case 3:
+hi_hand: 
+Alg. out card: XC
+--- AI_0 --- out card: XC ---
+AI_0 played XC
+pararolooo played QC
+I played 6S
+Fataneh played 9D
+^^^ Trick id 8 turn 1 led C trump D ^^^
+AI_0 hand 9H JH,KD AD
+pararolooo hand 5C 9C JC,XD
+I hand 8S 9S JS,QH,
+Fataneh hand 5D 6D 8D JD
+Round 12, Trick 9, Turn: 3, Trump: D
++++ Trick id 9 turn 3 trump D +++
+RemoteInterAgent 3: Input: 5d
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led C led D trump D
+hand: 9H JH,KD AD
+op_b 3 table 5D
+case 1:
+pssbl_hi_hand: KD AD
+prb_act KD 1
+prb_act AD 1
+out: --, prb: 1
+Alg. out card: KD
+--- AI_0 --- out card: KD ---
+RemoteInterAgent 1: Input: xd
+RemoteInterAgent 2: Input: 8s
+AI_0 played KD
+pararolooo played XD
+I played 8S
+Fataneh played 5D
+^^^ Trick id 9 turn 3 led D trump D ^^^
+AI_0 hand 9H JH,AD
+pararolooo hand 5C 9C JC,
+I hand 9S JS,QH,
+Fataneh hand 6D 8D JD
+Round 12, Trick 10, Turn: 0, Trump: D
++++ Trick id 10 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led D led - trump D
+hand: 9H JH,AD
+comp 2 last table 8S
+op_a 1 last table XD
+case 0:
+pssbl_hi_hand: AD
+prb_act AD 1
+out: --, prb: 1
+Alg. out card: 9H
+--- AI_0 --- out card: 9H ---
+RemoteInterAgent 1: Input: 5c
+RemoteInterAgent 2: Input: qh
+RemoteInterAgent 3: Input: 6d
+AI_0 played 9H
+pararolooo played 5C
+I played QH
+Fataneh played 6D
+^^^ Trick id 10 turn 0 led H trump D ^^^
+kot: 0, oth_scr: 4, winner_team: 1, trump_team: 1
+/ALR=== Round 12 winner team: 1  (Kot: 0) ===
+/INF=== Round 13 ===
+RemoteInterAgent 3: Input: s
+AI_0 Habc: 2S 3S 5S 6S 7S 8S QS KS AS,2H 4H 6H 7H 8H 9H XH JH QH KH,2C 3C 4C 5C 9C XC JC KC AC,3D 4D 5D 6D 7D 8D 9D XD JD QD AD
+AI_0 hand 4S 9S XS JS,3H 5H AH,6C 7C 8C QC,2D KD
+pararolooo hand 2S KS,6H 7H 8H JH,4C 5C,3D 9D XD QD AD
+I hand 5S 6S 8S,2H 4H XH QH KH,3C 9C JC AC,7D
+Fataneh hand 3S 7S QS AS,9H,2C XC KC,4D 5D 6D 8D JD
+Round 13, Trick 0, Turn: 3, Trump: S
++++ Trick id 0 turn 3 trump S +++
+RemoteInterAgent 3: Input: 9h
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led H trump S
+hand: 4S 9S XS JS,3H 5H AH,6C 7C 8C QC,2D KD
+op_b 3 table 9H
+case 1:
+pssbl_hi_hand: AH,
+prb_act AH 1
+out: AH, prb: 1
+Alg. out card: AH
+--- AI_0 --- out card: AH ---
+RemoteInterAgent 1: Input: 6h
+RemoteInterAgent 2: Input: 2h
+AI_0 played AH
+pararolooo played 6H
+I played 2H
+Fataneh played 9H
+^^^ Trick id 0 turn 3 led H trump S ^^^
+AI_0 hand 4S 9S XS JS,3H 5H,6C 7C 8C QC,2D KD
+pararolooo hand 2S KS,7H 8H JH,4C 5C,3D 9D XD QD AD
+I hand 5S 6S 8S,4H XH QH KH,3C 9C JC AC,7D
+Fataneh hand 3S 7S QS AS,2C XC KC,4D 5D 6D 8D JD
+Round 13, Trick 1, Turn: 0, Trump: S
++++ Trick id 1 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led H led - trump S
+hand: 4S 9S XS JS,3H 5H,6C 7C 8C QC,2D KD
+comp 2 last table 2H
+op_a 1 last table 6H
+case 0:
+pssbl_hi_hand: 4S 9S XS JS,3H 5H,6C 7C 8C QC,2D KD
+prb_act 4S 9.48767e-05
+prb_act 9S 0.0308123
+prb_act XS 0.0308123
+prb_act JS 0.0308123
+prb_act 3H 9.48767e-05
+prb_act 5H 0.000474383
+prb_act 6C 0.00210084
+prb_act 7C 0.00210084
+prb_act 8C 0.00210084
+prb_act QC 0.104762
+prb_act 2D 1.99732e-08
+prb_act KD 0.333333
+out: --, prb: 0.333333
+Alg. out card: 2D
+--- AI_0 --- out card: 2D ---
+RemoteInterAgent 1: Input: ad
+RemoteInterAgent 2: Input: 7d
+RemoteInterAgent 3: Input: 4d
+AI_0 played 2D
+pararolooo played AD
+I played 7D
+Fataneh played 4D
+^^^ Trick id 1 turn 0 led D trump S ^^^
+AI_0 hand 4S 9S XS JS,3H 5H,6C 7C 8C QC,KD
+pararolooo hand 2S KS,7H 8H JH,4C 5C,3D 9D XD QD
+I hand 5S 6S 8S,4H XH QH KH,3C 9C JC AC,
+Fataneh hand 3S 7S QS AS,2C XC KC,5D 6D 8D JD
+Round 13, Trick 2, Turn: 1, Trump: S
++++ Trick id 2 turn 1 trump S +++
+RemoteInterAgent 1: Input: 4c
+RemoteInterAgent 2: Input: ac
+RemoteInterAgent 3: Input: 2c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led C trump S
+hand: 4S 9S XS JS,3H 5H,6C 7C 8C QC,KD
+op_b 3 last table 4D
+comp 2 last table 7D
+op_a 1 last table AD
+op_a 1 table 4C
+comp 2 table AC
+op_b 3 table 2C
+case 3:
+Companion's card is good enough.
+Alg. out card: 6C
+--- AI_0 --- out card: 6C ---
+AI_0 played 6C
+pararolooo played 4C
+I played AC
+Fataneh played 2C
+^^^ Trick id 2 turn 1 led C trump S ^^^
+AI_0 hand 4S 9S XS JS,3H 5H,7C 8C QC,KD
+pararolooo hand 2S KS,7H 8H JH,5C,3D 9D XD QD
+I hand 5S 6S 8S,4H XH QH KH,3C 9C JC,
+Fataneh hand 3S 7S QS AS,XC KC,5D 6D 8D JD
+Round 13, Trick 3, Turn: 2, Trump: S
++++ Trick id 3 turn 2 trump S +++
+RemoteInterAgent 2: Input: qh
+RemoteInterAgent 3: Input: 3s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led C led H trump S
+hand: 4S 9S XS JS,3H 5H,7C 8C QC,KD
+comp 2 table QH
+op_b 3 table 3S
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+RemoteInterAgent 1: Input: 7h
+AI_0 played 3H
+pararolooo played 7H
+I played QH
+Fataneh played 3S
+^^^ Trick id 3 turn 2 led H trump S ^^^
+AI_0 hand 4S 9S XS JS,5H,7C 8C QC,KD
+pararolooo hand 2S KS,8H JH,5C,3D 9D XD QD
+I hand 5S 6S 8S,4H XH KH,3C 9C JC,
+Fataneh hand 7S QS AS,XC KC,5D 6D 8D JD
+Round 13, Trick 4, Turn: 3, Trump: S
++++ Trick id 4 turn 3 trump S +++
+RemoteInterAgent 3: Input: kc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led H led C trump S
+hand: 4S 9S XS JS,5H,7C 8C QC,KD
+op_a 1 last table 7H
+op_b 3 table KC
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 7C
+--- AI_0 --- out card: 7C ---
+RemoteInterAgent 1: Input: 5c
+RemoteInterAgent 2: Input: 3c
+AI_0 played 7C
+pararolooo played 5C
+I played 3C
+Fataneh played KC
+^^^ Trick id 4 turn 3 led C trump S ^^^
+AI_0 hand 4S 9S XS JS,5H,8C QC,KD
+pararolooo hand 2S KS,8H JH,3D 9D XD QD
+I hand 5S 6S 8S,4H XH KH,9C JC,
+Fataneh hand 7S QS AS,XC,5D 6D 8D JD
+Round 13, Trick 5, Turn: 3, Trump: S
++++ Trick id 5 turn 3 trump S +++
+RemoteInterAgent 3: Input: xc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led C led C trump S
+hand: 4S 9S XS JS,5H,8C QC,KD
+comp 2 last table 3C
+op_a 1 last table 5C
+op_b 3 table XC
+case 1:
+pssbl_hi_hand: QC,
+prb_act QC 1
+out: QC, prb: 1
+Alg. out card: QC
+--- AI_0 --- out card: QC ---
+RemoteInterAgent 1: Input: 2s
+RemoteInterAgent 2: Input: 9c
+AI_0 played QC
+pararolooo played 2S
+I played 9C
+Fataneh played XC
+^^^ Trick id 5 turn 3 led C trump S ^^^
+AI_0 hand 4S 9S XS JS,5H,8C,KD
+pararolooo hand KS,8H JH,3D 9D XD QD
+I hand 5S 6S 8S,4H XH KH,JC,
+Fataneh hand 7S QS AS,5D 6D 8D JD
+Round 13, Trick 6, Turn: 1, Trump: S
++++ Trick id 6 turn 1 trump S +++
+RemoteInterAgent 1: Input: 8h
+RemoteInterAgent 2: Input: xh
+RemoteInterAgent 3: Input: 7s
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led C led H trump S
+hand: 4S 9S XS JS,5H,8C,KD
+comp 2 last table 9C
+op_a 1 last table 2S
+op_a 1 table 8H
+comp 2 table XH
+op_b 3 table 7S
+case 3:
+hi_hand: 
+Alg. out card: 5H
+--- AI_0 --- out card: 5H ---
+AI_0 played 5H
+pararolooo played 8H
+I played XH
+Fataneh played 7S
+^^^ Trick id 6 turn 1 led H trump S ^^^
+AI_0 hand 4S 9S XS JS,8C,KD
+pararolooo hand KS,JH,3D 9D XD QD
+I hand 5S 6S 8S,4H KH,JC,
+Fataneh hand QS AS,5D 6D 8D JD
+Round 13, Trick 7, Turn: 3, Trump: S
++++ Trick id 7 turn 3 trump S +++
+RemoteInterAgent 3: Input: jd
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led H led D trump S
+hand: 4S 9S XS JS,8C,KD
+op_b 3 table JD
+case 1:
+pssbl_hi_hand: KD
+prb_act KD 1
+out: KD, prb: 1
+Alg. out card: KD
+--- AI_0 --- out card: KD ---
+RemoteInterAgent 1: Input: 3d
+RemoteInterAgent 2: Input: 4h
+AI_0 played KD
+pararolooo played 3D
+I played 4H
+Fataneh played JD
+^^^ Trick id 7 turn 3 led D trump S ^^^
+AI_0 hand 4S 9S XS JS,8C,
+pararolooo hand KS,JH,9D XD QD
+I hand 5S 6S 8S,KH,JC,
+Fataneh hand QS AS,5D 6D 8D
+Round 13, Trick 8, Turn: 0, Trump: S
++++ Trick id 8 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led D led - trump S
+hand: 4S 9S XS JS,8C,
+comp 2 last table 4H
+op_a 1 last table 3D
+case 0:
+pssbl_hi_hand: 4S 9S XS JS,8C,
+prb_act 4S 0
+prb_act 9S 0.119048
+prb_act XS 0.119048
+prb_act JS 0.119048
+prb_act 8C 0.555556
+out: 8C, prb: 0.555556
+Alg. out card: 8C
+--- AI_0 --- out card: 8C ---
+RemoteInterAgent 1: Input: ks
+RemoteInterAgent 2: Input: jc
+RemoteInterAgent 3: Input: 5d
+AI_0 played 8C
+pararolooo played KS
+I played JC
+Fataneh played 5D
+^^^ Trick id 8 turn 0 led C trump S ^^^
+AI_0 hand 4S 9S XS JS,
+pararolooo hand JH,9D XD QD
+I hand 5S 6S 8S,KH,
+Fataneh hand QS AS,6D 8D
+Round 13, Trick 9, Turn: 1, Trump: S
++++ Trick id 9 turn 1 trump S +++
+RemoteInterAgent 1: Input: 9d
+RemoteInterAgent 2: Input: 8s
+RemoteInterAgent 3: Input: 6d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led D trump S
+hand: 4S 9S XS JS,
+op_b 3 last table 5D
+comp 2 last table JC
+op_a 1 last table KS
+op_a 1 table 9D
+comp 2 table 8S
+op_b 3 table 6D
+case 3:
+Companion's card is good enough.
+Alg. out card: 4S
+--- AI_0 --- out card: 4S ---
+AI_0 played 4S
+pararolooo played 9D
+I played 8S
+Fataneh played 6D
+^^^ Trick id 9 turn 1 led D trump S ^^^
+AI_0 hand 9S XS JS,
+pararolooo hand JH,XD QD
+I hand 5S 6S,KH,
+Fataneh hand QS AS,8D
+Round 13, Trick 10, Turn: 2, Trump: S
++++ Trick id 10 turn 2 trump S +++
+RemoteInterAgent 2: Input: 5s
+RemoteInterAgent 3: Input: as
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led D led S trump S
+hand: 9S XS JS,
+comp 2 table 5S
+op_b 3 table AS
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 9S
+--- AI_0 --- out card: 9S ---
+RemoteInterAgent 1: Input: xd
+AI_0 played 9S
+pararolooo played XD
+I played 5S
+Fataneh played AS
+^^^ Trick id 10 turn 2 led S trump S ^^^
+kot: 0, oth_scr: 4, winner_team: 1, trump_team: 1
+/ALR=== Round 13 winner team: 1  (Kot: 0) ===
+*** Team 1 is the winner of the game. ***

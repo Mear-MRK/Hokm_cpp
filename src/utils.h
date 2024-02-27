@@ -1,16 +1,11 @@
-/*
- *  utils.h
- *
- *  Created on: May 20, 2023
- *      Author: mear
- */
-
-#ifndef UTILS_HPP_
-#define UTILS_HPP_
+#pragma once
 
 #include <iostream>
+#include <sstream>
 #include <cstring>
 #include <cstdlib>
+#include <cassert>
+#include <cmath>
 
 #ifdef DEBUG
 #define LOG(x) std::cout << x << std::endl
@@ -19,11 +14,11 @@
 #endif
 
 template <typename T>
-void print_arr(const T *arr, size_t size, bool hex = false, size_t max = 128)
+std::string arr_toString(const T *arr, size_t size, bool hex = false, size_t max = 128)
 {
 	max = (max == 0) ? size : max;
-	std::cout << std::endl
-			  << "[";
+	std::ostringstream oss;
+	oss << "[";
 	if (hex)
 		std::cout << std::hex;
 	for (size_t i = 0; i < max && i < size; i++)
@@ -33,14 +28,21 @@ void print_arr(const T *arr, size_t size, bool hex = false, size_t max = 128)
 			int long long mask = ~0ull >> 8 * (sizeof(int long long) - sizeof(T));
 			int long long value = (*(int long long *)(arr + i)) // is this gonna work?
 								  & mask;
-			std::cout << " " << value;
+			oss << " " << value;
 		}
 		else
-			std::cout << " " << arr[i];
+			oss << " " << arr[i];
 	}
 	if (hex)
-		std::cout << std::dec;
-	std::cout << " ]" << std::endl;
+		oss << std::dec;
+	oss << " ]";
+	return oss.str();
+}
+
+template <typename T>
+void print_arr(const T *arr, size_t size, bool hex = false, size_t max = 128)
+{
+	std::cout << arr_toString(arr, size, hex, max);
 }
 
 template <typename T>
@@ -221,4 +223,127 @@ T *inc_sort(const T *arr, T *sorted_arr, size_t size)
 	return sorted_arr;
 }
 
-#endif /* UTILS_HPP_ */
+template <typename T>
+bool inline static isFinite(T v)
+{
+	return !std::isnan(v) && !std::isinf(v);
+}
+
+template <int N_eq, int N_var, typename T>
+int leastSquaresSolver(const T A[N_eq][N_var], const T b[N_eq], T x[N_var])
+{
+	T AT[N_var][N_eq];
+	T ATA[N_var][N_var];
+	T ATb[N_var];
+	static constexpr bool isFloat = std::is_same_v<T, float>;
+	static constexpr T eps = isFloat ? 1e-6F : 1e-12;
+
+	int stat = 0;
+
+	// Transpose of A
+	for (int i = 0; i < N_eq; i++)
+	{
+		for (int j = 0; j < N_var; j++)
+		{
+			AT[j][i] = A[i][j];
+		}
+	}
+
+	// ATA = AT * A
+	for (int i = 0; i < N_var; i++)
+	{
+		for (int j = 0; j < N_var; j++)
+		{
+			ATA[i][j] = 0;
+			for (int k = 0; k < N_eq; k++)
+			{
+				ATA[i][j] += AT[i][k] * A[k][j];
+			}
+		}
+	}
+
+	// ATb = AT * b
+	for (int i = 0; i < N_var; i++)
+	{
+		ATb[i] = 0;
+		for (int j = 0; j < N_eq; j++)
+		{
+			ATb[i] += AT[i][j] * b[j];
+		}
+	}
+
+	// Solve ATA * x = ATb using Gaussian elimination with partial pivoting
+	for (int k = 0; k < N_var; k++)
+	{
+		// Partial pivoting
+		int maxRow = k;
+		T maxVal = std::abs(ATA[k][k]);
+		for (int i = k + 1; i < N_var; i++)
+		{
+			if (std::abs(ATA[i][k]) > maxVal)
+			{
+				maxVal = std::abs(ATA[i][k]);
+				maxRow = i;
+			}
+		}
+		if (maxRow != k)
+		{
+			// Swap rows k and maxRow in ATA
+			for (int j = 0; j < N_var; j++)
+			{
+				std::swap(ATA[k][j], ATA[maxRow][j]);
+			}
+			// Swap elements in ATb
+			std::swap(ATb[k], ATb[maxRow]);
+		}
+
+		for (int i = k + 1; i < N_var; i++)
+		{
+			T factor = (ATA[k][k] == 0 && ATA[i][k] == 0) ? 1 : ATA[i][k] / ATA[k][k];
+			for (int j = k; j < N_var; j++)
+			{
+				ATA[i][j] -= (0 == ATA[k][j]) ? 0 : factor * ATA[k][j];
+			}
+			ATb[i] -= (0 == ATb[k])? 0 : factor * ATb[k];
+		}
+	}
+
+	// Back substitution
+	for (int i = N_var - 1; i >= 0; i--)
+	{
+		x[i] = ATb[i];
+		for (int j = i + 1; j < N_var; j++)
+		{
+			x[i] -= ATA[i][j] * x[j];
+		}
+		x[i] = (ATA[i][i] == 0 && x[i] == 0) ? 1 : x[i] / ATA[i][i];
+		if (ATA[i][i] == 0)
+			stat |= 1;
+	}
+
+	// Ax - b
+	for (int i = 0; i < N_eq; i++)
+	{
+		T sum = 0;
+		for (int j = 0; j < N_var; j++)
+		{
+			sum += A[i][j] * x[j];
+		}
+		if (std::abs(sum - b[i]) > eps)
+		{
+			stat |= 2;
+			break;
+		}
+	}
+	return stat;
+}
+
+template <typename T>
+void mask_arr(T *arr, size_t size, bool *mask)
+{
+	assert(arr);
+	assert(mask);
+
+	for (size_t i = 0; i < size; i++)
+		arr[i] = mask[i] ? arr[i] : 0;
+}

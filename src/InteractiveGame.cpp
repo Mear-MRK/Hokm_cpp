@@ -16,64 +16,57 @@
 #include "SoundAgent.h"
 #include "utils.h"
 
-static Agent* newAgentFrom(char ag_typ, int id, bool show_hand = true)
+static Agent *newAgentFrom(char ag_typ, int id, bool show_hand = true)
 {
-	switch(ag_typ)
+	switch (ag_typ)
 	{
-		case 's':
-			return new SoundAgent(id);
-		case 'r':
-			return new RemoteInterAgent(id, show_hand);
-		case 'i':
-			return new InteractiveAgent(id, show_hand);
-		default:
-			return nullptr;
+	case 's':
+		return new SoundAgent();
+	case 'r':
+		return new RemoteInterAgent(show_hand);
+	case 'i':
+		return new InteractiveAgent(show_hand);
+	default:
+		return nullptr;
 	}
 }
 
 InteractiveGame::InteractiveGame(std::string ag_typs, bool show_hand)
 {
-	for(int pl = 0; pl < Hokm::N_PLAYERS; pl++)
-		agents[pl] = newAgentFrom(ag_typs[pl], pl, show_hand);
+	for (int pl = 0; pl < agent.size(); pl++)
+		agent[pl] = newAgentFrom(ag_typs[pl], pl, show_hand);
 
-	for (int pl = 0; pl < Hokm::N_PLAYERS; pl++)
-		agents[pl]->init_game();
+	for(auto ag : agent)
+		ag->init_game();
 
-	round = std::unique_ptr<GameRound>(new GameRound(agents));
+	round = std::unique_ptr<GameRound>(new GameRound(agent));
+	round->show_info = true;
 }
 
 InteractiveGame::~InteractiveGame()
 {
-
-	for (int pl = 0; pl < 4; pl++)
-		delete agents[pl];
+	for (auto ag : agent)
+		delete ag;
 }
 
 int InteractiveGame::play(int win_score, int round_win_score)
 {
-
 	int round_winner_team = -1;
-	for (int r = 1; r <= 2 * win_score - 1; r++)
+	for (int r = 0; r <= 2 * win_score - 1; r++)
 	{
-
-		std::string round_hdr_str = "/INF=== Round " + std::to_string(r) + " ===";
-		LOG(round_hdr_str);
-		broadcast_info(round_hdr_str);
-
 		round->reset();
-		round->set_round_id(r);
 		std::string start_round_str =
-			"/ALRWaiting for " + agents[round->start_player]->get_name() + " to call the trump suit... ";
+			"/ALRWaiting for " + agent[round->opening_player]->get_name() + " to call the trump suit... ";
 		broadcast_info(start_round_str);
 
 		round->trump_call();
 
-		broadcast_info("/INF" + agents[round->start_player]->get_name() + " called " + Card::SU_STR[round->state.trump] + " as trump.");
+		broadcast_info("/INF" + agent[round->opening_player]->get_name() + " called " + Card::SU_STR[round->state.trump] + " as trump.");
 		broadcast_info("/HED/TRM" + Card::SU_STR[round->state.trump]);
-		
+
 		round->deal_n_init();
 
-		round_winner_team = round->play(true, round_win_score);
+		round_winner_team = round->play(round_win_score);
 
 		team_scores[round_winner_team] += 1 + round->kot;
 
@@ -94,34 +87,18 @@ int InteractiveGame::play(int win_score, int round_win_score)
 		if (team_scores[round_winner_team] >= win_score)
 			break;
 	}
-
-	// int winner_teams[Hokm::N_TEAMS] = {-1};
-	// int max_score = 0;
-	// for(int team = 0; team < Hokm::N_TEAMS; team++)
-	// 	if (team_scores[team] > max_score){
-	// 		max_score = team_scores[team];
-	// 	}
-	// int n = 0;
-	// for(int team = 0; team < Hokm::N_TEAMS; team++){
-	// 	if (team_scores[team] == max_score)
-	// 		winner_teams[n++] = team;
-	// }
-
-	std::string endgame_str = "";
-	// if (n == 1) {
-	endgame_str = "*** Team " + std::to_string(round_winner_team) + " is the winner of the game. ***";
-
-	LOG(endgame_str);
-
-	broadcast_info("/ALR" + endgame_str);
-	for (int pl = 0; pl < Hokm::N_PLAYERS; pl++)
-		agents[pl]->end_game();
+	std::string fin_game_msg = "*** Team " + std::to_string(round_winner_team) + " is the winner of the game. ***";
+	LOG(fin_game_msg);
+	broadcast_info("/ALR" + fin_game_msg);
+	for(auto ag : agent)
+		ag->fin_game();
 
 	return round_winner_team;
 }
 
-void InteractiveGame::broadcast_info(std::string info_str)
+void InteractiveGame::broadcast_info(std::string info_str, int exclude)
 {
-	for (int pl = 0; pl < Hokm::N_PLAYERS; pl++)
-		agents[pl]->info(info_str);
+	for (int pl = 0; pl < agent.size(); pl++)
+		if (pl != exclude)
+			agent[pl]->info(info_str);
 }

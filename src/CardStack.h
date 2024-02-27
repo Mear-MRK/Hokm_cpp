@@ -1,13 +1,4 @@
-/*
- * CardArray.h
- *
- *  Created on: May 22, 2023
- *      Author: mear
- */
-
-#ifndef CARDSTACK_H_
-#define CARDSTACK_H_
-
+#pragma once
 
 #include <string>
 #include <random>
@@ -20,23 +11,25 @@ class CardStack {
 	int nbr_cards;
 	std::mt19937 mt_rnd_gen;
 public:
-	uint64_t bin64;
+	std::uint64_t bin64;
 
 	CardStack();
 	CardStack(std::uint64_t bin64);
-	CardStack(CID ids_arr[], int nbr_cards);
+	CardStack(Cid ids_arr[], int nbr_cards);
 
-	void append(const Card &c);
-	void append(const Card card_arr[], int nbr_cards);
+	CardStack& append(const Card &c);
+	CardStack& append(const Card card_arr[], int nbr_cards);
+	
 	Card pop();
 
-	void shuffle();
+	CardStack& shuffle();
 
 	Card at(int i) const ;
 
 	CardStack top(int n) const;
 
-	void reset();
+	void clear();
+
 	std::string to_string() const;
 
 	Hand to_Hand() const;
@@ -45,6 +38,3 @@ public:
 
 	static const CardStack EMPTY;
 };
-
-
-#endif /* CARDSTACK_H_ */

@@ -10,10 +10,11 @@
 #include <iostream>
 #include <algorithm>
 
-InteractiveAgent::InteractiveAgent(int player_id, bool show_hand, bool greeting) : 
-Agent(player_id, "INT " + std::to_string(player_id)),
+InteractiveAgent::InteractiveAgent(bool show_hand) : 
+Agent(),
 show_hand(show_hand)
 {
+	name = "IN_" + std::to_string(player_id);
 }
 
 void InteractiveAgent::init_game()
@@ -26,9 +27,9 @@ void InteractiveAgent::init_game()
 	output("/ALRWait...");
 }
 
-void InteractiveAgent::init_round(Hand &hand)
+void InteractiveAgent::init_round(const Hand &hand)
 {
-	this->hand = &hand;
+	this->hand = hand;
 	output("/HND"+ hand.to_string());
 }
 
@@ -37,7 +38,7 @@ Card InteractiveAgent::act(const State &state, const History &hist)
 
 	if (show_hand)
 	{
-		output("/HND" + hand->to_string());
+		output("/HND" + hand.to_string());
 	}
 
 	Card inp_card;
@@ -54,12 +55,12 @@ Card InteractiveAgent::act(const State &state, const History &hist)
 			output("/ALRWrong string!");
 			continue;
 		}
-		if (state.led != Card::NON_SU && hand->len[state.led] != 0 && inp_card.su != state.led)
+		if (state.led != Card::NON_SU && hand.len[state.led] != 0 && inp_card.su != state.led)
 		{
 			output("/ALRYou should play the led suit: " + Card::SU_STR[state.led]);
 			continue;
 		}
-		if (!hand->remove(inp_card))
+		if (!hand.remove(inp_card))
 		{
 			output("/ALRYou don't have this card!");
 			continue;
@@ -107,16 +108,6 @@ void InteractiveAgent::trick_result(const State &state,
 									const std::array<int, Hokm::N_TEAMS> &team_scores)
 {
 	int trick_taker = state.turn;
-	// std::string trick_team_str = "Trick-taker: team " + std::to_string(trick_taker % Hokm::N_TEAMS) +
-	// 							 +" (player " + std::to_string(trick_taker) + ")\n";
-	// std::string team_scores_str = "";
-	// for (int team = 0; team < Hokm::N_TEAMS; team++)
-	// {
-	// 	team_scores_str += "Team " + std::to_string(team) + " score: " + std::to_string(team_scores[team]) + "\n";
-	// }
-	// std::string ft_str = "\n";
-
-	// output(team_scores_str + ft_str);
 }
 
 void InteractiveAgent::info(const std::string &info_str)

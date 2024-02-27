@@ -1,12 +1,4 @@
-/*
- * Game.h
- *
- *  Created on: May 21, 2023
- *      Author: mear
- */
-
-#ifndef GAMEROUND_H_
-#define GAMEROUND_H_
+#pragma once
 
 #include <random>
 #include <memory>
@@ -23,18 +15,17 @@
 
 class Agent;
 
-class GameRound {
+class GameRound
+{
 	friend class LearningGame;
 
-
 private:
-
 	int round_id;
 	History hist;
 	Deck deck;
-	CardStack stacks[Hokm::N_PLAYERS];
-	Hand hands[Hokm::N_PLAYERS];
-	Agent** agents;
+	std::array<CardStack, Hokm::N_PLAYERS> stack;
+	std::array<Hand, Hokm::N_PLAYERS> hand;
+	std::array<Agent *, Hokm::N_PLAYERS> agent;
 	std::array<int, Hokm::N_TEAMS> team_scores;
 	std::mt19937 mt_rnd_gen;
 
@@ -42,16 +33,17 @@ public:
 	State state;
 	int winner_team;
 	int trump_team;
-	int start_player;
+	int opening_player;
 	int kot;
+	bool show_info = false;
+	int turn_sleep_ms = 500;
+	int rnd_sleep_ms = 1500;
 
-	GameRound(Agent*[]);
+	GameRound(std::array<Agent *, Hokm::N_PLAYERS>);
 
-	int trick(bool show_info = false);
+	int trick();
 
-	int play(bool show_info = false, int round_win_score=Hokm::RND_WIN_SCORE);
-
-	void set_round_id(int round_id);
+	int play(int round_win_score = Hokm::RND_WIN_SCORE);
 
 	void reset();
 
@@ -59,8 +51,5 @@ public:
 
 	void deal_n_init();
 
-	void broadcast_info(std::string info_str);
-
+	void broadcast_info(std::string info_str, int exclude = -1);
 };
-
-#endif /* GAMEROUND_H_ */

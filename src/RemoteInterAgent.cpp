@@ -8,11 +8,11 @@
 
 #include "utils.h"
 
-RemoteInterAgent::RemoteInterAgent(int player_id, bool show_hand) : InteractiveAgent(player_id, show_hand, false)
+RemoteInterAgent::RemoteInterAgent(bool show_hand) : InteractiveAgent(show_hand)
 {
     port = 23345 + player_id;
     client_connected = false;
-    name = "RMT " + std::to_string(player_id);
+    name = "RT_" + std::to_string(player_id);
     start_server();
     while (!server_conn_acc())
     {
@@ -25,7 +25,7 @@ bool RemoteInterAgent::start_server()
     // Create socket
     if ((server_socket = socket(AF_INET, SOCK_STREAM, 0)) == 0)
     {
-        std::cerr << "RemoteInterAgent " << player_id << ": ";
+        std::cerr << name << ": ";
         perror("Socket creation failed");
         return false;
     }
@@ -33,7 +33,7 @@ bool RemoteInterAgent::start_server()
     // Set socket options
     if (setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
     {
-        std::cerr << "RemoteInterAgent " << player_id << ": ";
+        std::cerr << name << ": ";
         perror("Setsockopt failed");
         return false;
     }
@@ -48,7 +48,7 @@ bool RemoteInterAgent::start_server()
     {
         if (port >= UINT16_MAX)
         {
-            std::cerr << "RemoteInterAgent " << player_id << ": ";
+            std::cerr << name << ": ";
             perror("Bind failed");
             close(server_socket);
             return false;
@@ -60,13 +60,13 @@ bool RemoteInterAgent::start_server()
     // Listen for incoming connections
     if (listen(server_socket, 0) < 0)
     {
-        std::cerr << "RemoteInterAgent " << player_id << ": ";
+        std::cerr << name << ": ";
         perror("Listen failed");
         close(server_socket);
         return false;
     }
 
-    std::cout << "RemoteInterAgent " << player_id << ": Server listening on port "
+    std::cout << name << ": Server listening on port "
               << port << std::endl;
 
     return true;
@@ -94,7 +94,7 @@ void RemoteInterAgent::output(const std::string &out_str)
     // Send message to client
     while (send(client_socket, message, strlen(message), 0) < 0)
     {
-        std::cerr << "RemoteInterAgent " << player_id << ": ";
+        std::cerr << name << ": ";
         perror("Send failed");
         close(client_socket);
         client_connected = false;
@@ -114,7 +114,7 @@ bool RemoteInterAgent::server_conn_acc()
     if(client_connected)
         return true;
     
-    std::cout << "RemoteInterAgent " << player_id << ": Server waiting for client connection..." << std::endl;
+    std::cout << name << ": Server waiting for client connection..." << std::endl;
 
     int clientAddressSize = sizeof(client_address);
 
@@ -123,12 +123,12 @@ bool RemoteInterAgent::server_conn_acc()
                            (struct sockaddr *)&client_address, (socklen_t*)&clientAddressSize);
     if (client_socket < 0)
     {
-        std::cerr << "RemoteInterAgent " << player_id << ": ";
+        std::cerr << name << ": ";
         perror("Accept failed");
         return false;
     }
 
-    std::cout << "RemoteInterAgent " << player_id << ": Client connected"
+    std::cout << name << ": Client connected"
               << std::endl;
     client_connected = true;
     return true;
@@ -146,7 +146,7 @@ std::string RemoteInterAgent::input(const std::string &prompt)
     int nbr_bytes_recv = recv(client_socket, buffer, buff_size, 0);
     while (nbr_bytes_recv < 0)
     {
-        std::cerr << "RemoteInterAgent " << player_id << ": ";
+        std::cerr << name << ": ";
         perror("Read failed");
         close(client_socket);
         client_connected = false;
@@ -158,13 +158,13 @@ std::string RemoteInterAgent::input(const std::string &prompt)
     {
         buffer[nbr_bytes_recv - 1] = 0;
         std::string inp_str = std::string(buffer);
-        LOG("RemoteInterAgent " << player_id << ": Input: " << inp_str);
+        LOG(name << ": Input: " << inp_str);
         return inp_str;
     }
     return "";
 }
 
-void RemoteInterAgent::end_game()
+void RemoteInterAgent::fin_game()
 {
     output("/END");
 }

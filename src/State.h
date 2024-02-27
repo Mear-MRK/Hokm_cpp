@@ -19,9 +19,9 @@
 class State {
 
 public:
-	std::uint8_t trick_id;
-	std::uint8_t turn;
-	std::uint8_t ord;
+	int trick_id;
+	int turn;
+	int ord;
 	Suit trump;
 	Suit led;
 	Card table[Hokm::N_PLAYERS];

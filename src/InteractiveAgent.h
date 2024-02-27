@@ -15,10 +15,10 @@
 class InteractiveAgent : public Agent {
 	bool show_hand;
 public:
-	InteractiveAgent(int player_id, bool show_hand = true, bool greetings = true);
+	InteractiveAgent(bool show_hand = true);
 
 	void init_game() override;
-	void init_round(Hand &hand) override;
+	void init_round(const Hand &hand) override;
 	Card act(const State&, const History&) override;
 	Suit call_trump(const CardStack&) override;
 

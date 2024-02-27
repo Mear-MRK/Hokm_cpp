@@ -11,7 +11,7 @@
 
 void Hand_test() {
 	Hand h0;
-	CID cids[] = { 0, 1, 2, 3, 3, 13, 26, 39, 51, 0 };
+	Cid cids[] = { 0, 1, 2, 3, 3, 13, 26, 39, 51, 0 };
 	Card cards[10];
 	for(int i = 0; i < 10; i++)
 		cards[i] = Card(cids[i]);

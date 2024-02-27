@@ -1,12 +1,4 @@
-/*
- * GameConfig.h
- *
- *  Created on: Jun 2, 2023
- *      Author: mear
- */
-
-#ifndef GAMECONFIG_H_
-#define GAMECONFIG_H_
+#pragma once
 
 #include "Card.h"
 
@@ -20,5 +12,3 @@ namespace Hokm {
 	inline const int WIN_SCORE = 7;
 	inline const int RND_WIN_SCORE = 7;
 }
-
-#endif /* GAMECONFIG_H_ */

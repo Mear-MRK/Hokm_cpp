@@ -24,14 +24,14 @@ bool RemoteInterAgent::start_server() {
 
 	// Initialize Winsock
 	if (WSAStartup(MAKEWORD(2, 2), &wsa_data) != 0) {
-		std::cerr << "RemoteInterAgent " << player_id
+		std::cerr << name
 				<< ": Failed to initialize Winsock" << std::endl;
 		return false;
 	}
 
 	// Create socket
 	if ((server_socket = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCKET) {
-		std::cerr << "RemoteInterAgent " << player_id << ": Socket creation failed: "
+		std::cerr << name << ": Socket creation failed: "
 				<< WSAGetLastError() << std::endl;
 		WSACleanup();
 		return false;
@@ -45,7 +45,7 @@ bool RemoteInterAgent::start_server() {
 	while (bind(server_socket, (struct sockaddr*) &server_address,
 			sizeof(server_address)) == SOCKET_ERROR) {
 		if (port >= UINT16_MAX) {
-			std::cerr << "RemoteInterAgent " << player_id << ": Bind failed: "
+			std::cerr << name << ": Bind failed: "
 					<< WSAGetLastError() << std::endl;
 			closesocket(server_socket);
 			WSACleanup();
@@ -57,14 +57,14 @@ bool RemoteInterAgent::start_server() {
 
 	// Listen for incoming connections
 	if (listen(server_socket, SOMAXCONN) == SOCKET_ERROR) {
-		std::cerr << "RemoteInterAgent " << player_id << ": Listen failed: "
+		std::cerr << name << ": Listen failed: "
 				<< WSAGetLastError() << std::endl;
 		closesocket(server_socket);
 		WSACleanup();
 		return false;
 	}
 
-	std::cout << "RemoteInterAgent " << player_id << ": Server listening on port "
+	std::cout << name << ": Server listening on port "
 			<< port << std::endl;
 
 	return true;
@@ -94,7 +94,7 @@ void RemoteInterAgent::output(const std::string &out_str) {
 
 	// Send message to client
 	while (send(client_socket, message, strlen(message), 0) == SOCKET_ERROR) {
-		std::cerr << "RemoteInterAgent " << player_id << ": Send failed: " << WSAGetLastError() << std::endl;
+		std::cerr << name << ": Send failed: " << WSAGetLastError() << std::endl;
 		closesocket(client_socket);
 		client_connected = false;
 		while(!server_conn_acc()){};
@@ -106,7 +106,7 @@ RemoteInterAgent::~RemoteInterAgent() {
 }
 
 bool RemoteInterAgent::server_conn_acc() {
-	std::cout << "RemoteInterAgent " << player_id << ": Server waiting for client connection..." << std::endl;
+	std::cout << name << ": Server waiting for client connection..." << std::endl;
 
 		int clientAddressSize = sizeof(client_address);
 
@@ -114,12 +114,12 @@ bool RemoteInterAgent::server_conn_acc() {
 		client_socket = accept(server_socket,
 				(struct sockaddr*) &client_address, &clientAddressSize);
 		if (client_socket == INVALID_SOCKET) {
-			std::cerr << "RemoteInterAgent " << player_id << ": Accept failed: "
+			std::cerr << name << ": Accept failed: "
 					<< WSAGetLastError() << std::endl;
 			return false;
 		}
 
-		std::cout << "RemoteInterAgent " << player_id << ": Client connected"
+		std::cout << name << ": Client connected"
 				<< std::endl;
 		client_connected = true;
 		return true;
@@ -135,7 +135,7 @@ std::string RemoteInterAgent::input(const std::string &prompt) {
 	// Read data from client
 	int nbr_bytes_recv = recv(client_socket, buffer, buff_size, 0);
 	while (nbr_bytes_recv == SOCKET_ERROR) {
-		std::cerr << "RemoteInterAgent " << player_id << ": Read failed: " << WSAGetLastError() << std::endl;
+		std::cerr << name << ": Read failed: " << WSAGetLastError() << std::endl;
 		closesocket(client_socket);
 		client_connected = false;
 		while(!server_conn_acc()){};
@@ -143,7 +143,7 @@ std::string RemoteInterAgent::input(const std::string &prompt) {
 	if (nbr_bytes_recv) {
 		buffer[nbr_bytes_recv-1] = 0;
 		std::string inp_str = std::string(buffer);
-		LOG("RemoteInterAgent " << player_id << ": Input: " << inp_str);
+		LOG(name << ": Input: " << inp_str);
 		return inp_str;
 	}
 	return "";

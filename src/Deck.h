@@ -25,9 +25,9 @@ public:
 
 	Deck();
 	Deck(const CardStack&);
+
 	void shuffle();
 	void shuffle_bag(int nbr_players);
-
 	void shuffle_deal(CardStack* stacks, int nbr_players);
 
 	void deal(CardStack* stacks, int);

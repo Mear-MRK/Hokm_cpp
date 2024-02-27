@@ -1,19 +1,11 @@
-/*
- * Card.h
- *
- *  Created on: May 19, 2023
- *      Author: mear
- */
-
-#ifndef CARD_H_
-#define CARD_H_
+#pragma once
 
 #include <string>
 #include <cstdint>
 
-using Suit = std::uint8_t;
-using Rank = std::uint8_t;
-using CID = std::uint8_t;
+using Suit = int;
+using Rank = int;
+using Cid = int;
 
 class Card
 {
@@ -21,26 +13,26 @@ class Card
 public:
 	Suit su;
 	Rank rnk;
-	CID id;
+	Cid id;
 
 	Card();
-	Card(CID id);
+	Card(Cid id);
 	Card(Suit su, Rank rnk);
 	Card(std::string str);
 
-	void set(Suit su, Rank rnk);
+	Card& set(Suit su, Rank rnk);
 
 	static int cmp(const Card &cl, const Card &cr, Suit led, Suit trump);
 	int cmp(const Card &rhs, Suit trump);
 
 	std::string to_string() const;
 	std::string to_unc_str() const;
-	std::string to_clr_unc_str() const;
+	std::string to_color_unc_str() const;
 
 	bool operator==(const Card &oth) const;
 	bool operator!=(const Card &oth) const;
 
-	enum SUIT : uint8_t
+	enum SUIT
 	{
 		Spade = 0,
 		Heart,
@@ -48,7 +40,7 @@ public:
 		Diamond,
 		NON_SU
 	};
-	enum RANK : uint8_t
+	enum RANK
 	{
 		two = 0,
 		three,
@@ -68,11 +60,11 @@ public:
 
 	static const Card NONE;
 
-	static const std::uint8_t N_CARDS = 52;
-	static const std::uint8_t N_SUITS = 4;
-	static const std::uint8_t N_RANKS = N_CARDS / N_SUITS;
+	static const int N_CARDS = 52;
+	static const int N_SUITS = 4;
+	static const int N_RANKS = N_CARDS / N_SUITS;
 
-	static const CID NON_ID = N_CARDS + N_RANKS;
+	static const Cid NON_ID = N_CARDS + N_RANKS;
 	//	static const Suit NON_SU = N_SUITS;
 	//	static const Rank NON_RNK = N_RANKS;
 
@@ -80,5 +72,3 @@ public:
 	static const std::string SU_STR[];
 	static const std::string SU_UNC_STR[];
 };
-
-#endif /* CARD_H_ */

@@ -14,7 +14,7 @@
 
 class LearningGame {
 	std::unique_ptr<GameRound> round;
-	Agent* agents[Hokm::N_PLAYERS];
+	std::array<Agent *, Hokm::N_PLAYERS> agent;
 	int nbr_probs;
 	int nbr_stats;
 	double *probs;

@@ -7,7 +7,10 @@
 
 #include "RndAgent.h"
 
-RndAgent::RndAgent(int player_id) : Agent(player_id, "RND"), mt_rnd_gen(std::mt19937(std::random_device()())) {
+#include "utils.h"
+
+RndAgent::RndAgent() : Agent(), mt_rnd_gen(std::mt19937(std::random_device()())) {
+	name = "RN_" + std::to_string(player_id);
 }
 
 
@@ -17,23 +20,24 @@ Suit RndAgent::call_trump(const CardStack &first_5cards) {
 
 
 Card RndAgent::act(const State &state, const History &hist) {
+	LOG(name + " internal hand: " + hand.to_string());
 	int ind;
-	if (state.led == Card::NON_SU || hand->len[state.led] == 0) {
+	if (state.led == Card::NON_SU || hand.len[state.led] == 0) {
 		int s;
 		Suit non_zero[Card::N_SUITS];
 		int nbr_nn = 0;
 		for (Suit su = 0; su < Card::N_SUITS; su++) {
-			if (hand->len[su] != 0) {
+			if (hand.len[su] != 0) {
 				non_zero[nbr_nn++] = su;
 			}
 		}
 		s = non_zero[std::uniform_int_distribution<int>(0, nbr_nn - 1)(
 				mt_rnd_gen)];
-		ind = std::uniform_int_distribution<int>(0, hand->len[s] - 1)(
+		ind = std::uniform_int_distribution<int>(0, hand.len[s] - 1)(
 				mt_rnd_gen);
-		return hand->pop(s, ind);
+		return hand.pop(s, ind);
 	}
-	ind = std::uniform_int_distribution<int>(0, hand->len[state.led] - 1)(
+	ind = std::uniform_int_distribution<int>(0, hand.len[state.led] - 1)(
 			mt_rnd_gen);
-	return hand->pop(state.led, ind);
+	return hand.pop(state.led, ind);
 }

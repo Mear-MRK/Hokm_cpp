@@ -16,7 +16,7 @@ class RemoteInterAgent: public InteractiveAgent {
 	bool client_connected {false};
 
 public:
-	RemoteInterAgent(int player_id, bool show_hand = true);
+	RemoteInterAgent(bool show_hand = true);
 	~RemoteInterAgent();
 
 	bool start_server();
@@ -26,5 +26,5 @@ public:
 	void output(const std::string &) override ;
 	std::string input(const std::string &prompt) override ;
 
-	void end_game() override;
+	void fin_game() override;
 };

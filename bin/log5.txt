@@ -1,0 +1,3945 @@
+RemoteInterAgent 1: Server listening on port 23346
+RemoteInterAgent 1: Server waiting for client connection...
+RemoteInterAgent 1: Client connected
+RemoteInterAgent 2: Server listening on port 23347
+RemoteInterAgent 2: Server waiting for client connection...
+RemoteInterAgent 2: Client connected
+RemoteInterAgent 3: Server listening on port 23348
+RemoteInterAgent 3: Server waiting for client connection...
+RemoteInterAgent 3: Client connected
+RemoteInterAgent 1: Input: yourking
+RemoteInterAgent 2: Input: Jujay
+RemoteInterAgent 3: Input: Ketab
+/INF=== Round 1 ===
+AI_0, trump call, first5:
+
+S: 8S
+H: 4H
+C: AC
+D: 5D9D
+
+AI_0, trump call, suit S, score: 2
+AI_0, trump call, suit H, score: 1.33333
+AI_0, trump call, suit C, score: 3
+AI_0, trump call, suit D, score: 3.66667
+AI_0, alg. trump: D
+AI_0 Habc: 2S 3S 4S 5S 6S 7S 9S XS JS QS KS AS,2H 5H 6H 7H 8H 9H QH AH,2C 3C 4C 5C 8C 9C XC JC KC,3D 4D 6D 7D 8D XD JD QD KD AD
+AI_0 hand 8S,3H 4H XH JH KH,6C 7C QC AC,2D 5D 9D
+yourking hand 3S 6S 7S 9S XS KS AS,8H,2C 4C 5C,JD QD
+Jujay hand 2S 5S JS,6H 9H QH,3C 8C XC,4D 7D KD AD
+Ketab hand 4S QS,2H 5H 7H AH,9C JC KC,3D 6D 8D XD
+Round 1, Trick 0, Turn: 0, Trump: D
++++ Trick id 0 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord -1 last_led - led - trump D
+hand: 8S,3H 4H XH JH KH,6C 7C QC AC,2D 5D 9D
+case 0:
+pssbl_hi_hand: 8S,3H 4H XH JH KH,6C 7C QC AC,2D 5D 9D
+prb_act 8S 0.000525957
+prb_act 3H 0.000111567
+prb_act 4H 0.000111567
+prb_act XH 0.105263
+prb_act JH 0.105263
+prb_act KH 0.333333
+prb_act 6C 0.00223532
+prb_act 7C 0.00223532
+prb_act QC 0.333333
+prb_act AC 1
+out: AC, prb: 1
+Alg. out card: AC
+--- AI_0 --- out card: AC ---
+RemoteInterAgent 1: Input: 2c
+RemoteInterAgent 2: Input: 3c
+RemoteInterAgent 3: Input: 9c
+AI_0 played AC
+yourking played 2C
+Jujay played 3C
+Ketab played 9C
+^^^ Trick id 0 turn 0 led C trump D ^^^
+AI_0 hand 8S,3H 4H XH JH KH,6C 7C QC,2D 5D 9D
+yourking hand 3S 6S 7S 9S XS KS AS,8H,4C 5C,JD QD
+Jujay hand 2S 5S JS,6H 9H QH,8C XC,4D 7D KD AD
+Ketab hand 4S QS,2H 5H 7H AH,JC KC,3D 6D 8D XD
+Round 1, Trick 1, Turn: 0, Trump: D
++++ Trick id 1 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump D
+hand: 8S,3H 4H XH JH KH,6C 7C QC,2D 5D 9D
+op_b 3 last table 9C
+comp 2 last table 3C
+op_a 1 last table 2C
+case 0:
+pssbl_hi_hand: 8S,3H 4H XH JH KH,6C 7C QC,2D 5D 9D
+prb_act 8S 0.000474383
+prb_act 3H 9.48767e-05
+prb_act 4H 9.48767e-05
+prb_act XH 0.104762
+prb_act JH 0.104762
+prb_act KH 0.333333
+prb_act 6C 0.00840336
+prb_act 7C 0.00840336
+prb_act QC 0.333333
+prb_act 2D 2.59652e-07
+prb_act 5D 1.6358e-05
+prb_act 9D 0.00210084
+out: --, prb: 0.333333
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+RemoteInterAgent 1: Input: 8h
+RemoteInterAgent 2: Input: 9h
+RemoteInterAgent 3: Input: ah
+AI_0 played 3H
+yourking played 8H
+Jujay played 9H
+Ketab played AH
+^^^ Trick id 1 turn 0 led H trump D ^^^
+AI_0 hand 8S,4H XH JH KH,6C 7C QC,2D 5D 9D
+yourking hand 3S 6S 7S 9S XS KS AS,4C 5C,JD QD
+Jujay hand 2S 5S JS,6H QH,8C XC,4D 7D KD AD
+Ketab hand 4S QS,2H 5H 7H,JC KC,3D 6D 8D XD
+Round 1, Trick 2, Turn: 3, Trump: D
++++ Trick id 2 turn 3 trump D +++
+RemoteInterAgent 3: Input: kc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led C trump D
+hand: 8S,4H XH JH KH,6C 7C QC,2D 5D 9D
+op_b 3 last table AH
+comp 2 last table 9H
+op_a 1 last table 8H
+op_b 3 table KC
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 6C
+--- AI_0 --- out card: 6C ---
+RemoteInterAgent 1: Input: 4c
+RemoteInterAgent 2: Input: 8c
+AI_0 played 6C
+yourking played 4C
+Jujay played 8C
+Ketab played KC
+^^^ Trick id 2 turn 3 led C trump D ^^^
+AI_0 hand 8S,4H XH JH KH,7C QC,2D 5D 9D
+yourking hand 3S 6S 7S 9S XS KS AS,5C,JD QD
+Jujay hand 2S 5S JS,6H QH,XC,4D 7D KD AD
+Ketab hand 4S QS,2H 5H 7H,JC,3D 6D 8D XD
+Round 1, Trick 3, Turn: 3, Trump: D
++++ Trick id 3 turn 3 trump D +++
+RemoteInterAgent 3: Input: jc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led C led C trump D
+hand: 8S,4H XH JH KH,7C QC,2D 5D 9D
+comp 2 last table 8C
+op_a 1 last table 4C
+op_b 3 table JC
+case 1:
+pssbl_hi_hand: QC,
+prb_act QC 1
+out: QC, prb: 1
+Alg. out card: QC
+--- AI_0 --- out card: QC ---
+RemoteInterAgent 1: Input: 5c
+RemoteInterAgent 2: Input: xc
+AI_0 played QC
+yourking played 5C
+Jujay played XC
+Ketab played JC
+^^^ Trick id 3 turn 3 led C trump D ^^^
+AI_0 hand 8S,4H XH JH KH,7C,2D 5D 9D
+yourking hand 3S 6S 7S 9S XS KS AS,JD QD
+Jujay hand 2S 5S JS,6H QH,4D 7D KD AD
+Ketab hand 4S QS,2H 5H 7H,3D 6D 8D XD
+Round 1, Trick 4, Turn: 0, Trump: D
++++ Trick id 4 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led C led - trump D
+hand: 8S,4H XH JH KH,7C,2D 5D 9D
+comp 2 last table XC
+op_a 1 last table 5C
+case 0:
+pssbl_hi_hand: 8S,4H XH JH KH,7C,2D 5D 9D
+prb_act 8S 0.000283774
+prb_act 4H 0.00717949
+prb_act XH 0.333333
+prb_act JH 0.333333
+prb_act KH 1
+out: KH, prb: 1
+Alg. out card: KH
+--- AI_0 --- out card: KH ---
+RemoteInterAgent 1: Input: jd
+RemoteInterAgent 2: Input: 6h
+RemoteInterAgent 3: Input: 2h
+AI_0 played KH
+yourking played JD
+Jujay played 6H
+Ketab played 2H
+^^^ Trick id 4 turn 0 led H trump D ^^^
+AI_0 hand 8S,4H XH JH,7C,2D 5D 9D
+yourking hand 3S 6S 7S 9S XS KS AS,QD
+Jujay hand 2S 5S JS,QH,4D 7D KD AD
+Ketab hand 4S QS,5H 7H,3D 6D 8D XD
+Round 1, Trick 5, Turn: 1, Trump: D
++++ Trick id 5 turn 1 trump D +++
+RemoteInterAgent 1: Input: as
+RemoteInterAgent 2: Input: 2s
+RemoteInterAgent 3: Input: 4s
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led S trump D
+hand: 8S,4H XH JH,7C,2D 5D 9D
+op_b 3 last table 2H
+comp 2 last table 6H
+op_a 1 last table JD
+op_a 1 table AS
+comp 2 table 2S
+op_b 3 table 4S
+case 3:
+hi_hand: 
+Alg. out card: 8S
+--- AI_0 --- out card: 8S ---
+AI_0 played 8S
+yourking played AS
+Jujay played 2S
+Ketab played 4S
+^^^ Trick id 5 turn 1 led S trump D ^^^
+AI_0 hand 4H XH JH,7C,2D 5D 9D
+yourking hand 3S 6S 7S 9S XS KS,QD
+Jujay hand 5S JS,QH,4D 7D KD AD
+Ketab hand QS,5H 7H,3D 6D 8D XD
+Round 1, Trick 6, Turn: 1, Trump: D
++++ Trick id 6 turn 1 trump D +++
+RemoteInterAgent 1: Input: ks
+RemoteInterAgent 2: Input: 5s
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led S led S trump D
+hand: 4H XH JH,7C,2D 5D 9D
+op_a 1 table KS
+comp 2 table 5S
+op_b 3 table QS
+case 3:
+hi_hand: 2D 5D 9D
+Alg. out card: 2D
+--- AI_0 --- out card: 2D ---
+AI_0 played 2D
+yourking played KS
+Jujay played 5S
+Ketab played QS
+^^^ Trick id 6 turn 1 led S trump D ^^^
+AI_0 hand 4H XH JH,7C,5D 9D
+yourking hand 3S 6S 7S 9S XS,QD
+Jujay hand JS,QH,4D 7D KD AD
+Ketab hand 5H 7H,3D 6D 8D XD
+Round 1, Trick 7, Turn: 0, Trump: D
++++ Trick id 7 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led S led - trump D
+hand: 4H XH JH,7C,5D 9D
+case 0:
+pssbl_hi_hand: 4H XH JH,7C,5D 9D
+prb_act 4H 0.0245098
+prb_act XH 0.333333
+prb_act JH 0.333333
+prb_act 7C 0
+prb_act 5D 0
+prb_act 9D 0.00490196
+out: --, prb: 0.333333
+Alg. out card: 4H
+--- AI_0 --- out card: 4H ---
+RemoteInterAgent 1: Input: qd
+RemoteInterAgent 2: Input: qh
+RemoteInterAgent 3: Input: 5h
+AI_0 played 4H
+yourking played QD
+Jujay played QH
+Ketab played 5H
+^^^ Trick id 7 turn 0 led H trump D ^^^
+AI_0 hand XH JH,7C,5D 9D
+yourking hand 3S 6S 7S 9S XS,
+Jujay hand JS,4D 7D KD AD
+Ketab hand 7H,3D 6D 8D XD
+Round 1, Trick 8, Turn: 1, Trump: D
++++ Trick id 8 turn 1 trump D +++
+RemoteInterAgent 1: Input: 3s
+RemoteInterAgent 2: Input: js
+RemoteInterAgent 3: Input: 3d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led S trump D
+hand: XH JH,7C,5D 9D
+op_b 3 last table 5H
+comp 2 last table QH
+op_a 1 last table QD
+op_a 1 table 3S
+comp 2 table JS
+op_b 3 table 3D
+case 3:
+hi_hand: 5D 9D
+Alg. out card: 5D
+--- AI_0 --- out card: 5D ---
+AI_0 played 5D
+yourking played 3S
+Jujay played JS
+Ketab played 3D
+^^^ Trick id 8 turn 1 led S trump D ^^^
+AI_0 hand XH JH,7C,9D
+yourking hand 6S 7S 9S XS,
+Jujay hand 4D 7D KD AD
+Ketab hand 7H,6D 8D XD
+Round 1, Trick 9, Turn: 0, Trump: D
++++ Trick id 9 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led S led - trump D
+hand: XH JH,7C,9D
+case 0:
+pssbl_hi_hand: XH JH,7C,9D
+prb_act XH 1
+out: XH, prb: 1
+Alg. out card: XH
+--- AI_0 --- out card: XH ---
+RemoteInterAgent 1: Input: 6s
+RemoteInterAgent 2: Input: 4d
+RemoteInterAgent 3: Input: 7h
+AI_0 played XH
+yourking played 6S
+Jujay played 4D
+Ketab played 7H
+^^^ Trick id 9 turn 0 led H trump D ^^^
+AI_0 hand JH,7C,9D
+yourking hand 7S 9S XS,
+Jujay hand 7D KD AD
+Ketab hand 6D 8D XD
+Round 1, Trick 10, Turn: 2, Trump: D
++++ Trick id 10 turn 2 trump D +++
+RemoteInterAgent 2: Input: ad
+RemoteInterAgent 3: Input: 6d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led D trump D
+hand: JH,7C,9D
+op_b 3 last table 7H
+comp 2 last table 4D
+op_a 1 last table 6S
+comp 2 table AD
+op_b 3 table 6D
+case 2:
+pssbl_hi_hand: 9D
+prb_act 9D 0.285714
+prb_act out: --, (max)prb: 0.285714
+Alg. out card: 9D
+--- AI_0 --- out card: 9D ---
+RemoteInterAgent 1: Input: 7s
+AI_0 played 9D
+yourking played 7S
+Jujay played AD
+Ketab played 6D
+^^^ Trick id 10 turn 2 led D trump D ^^^
+AI_0 hand JH,7C,
+yourking hand 9S XS,
+Jujay hand 7D KD
+Ketab hand 8D XD
+Round 1, Trick 11, Turn: 2, Trump: D
++++ Trick id 11 turn 2 trump D +++
+RemoteInterAgent 2: Input: kd
+RemoteInterAgent 3: Input: 8d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led D led D trump D
+hand: JH,7C,
+op_a 1 last table 7S
+comp 2 table KD
+op_b 3 table 8D
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 7C
+--- AI_0 --- out card: 7C ---
+RemoteInterAgent 1: Input: 9s
+AI_0 played 7C
+yourking played 9S
+Jujay played KD
+Ketab played 8D
+^^^ Trick id 11 turn 2 led D trump D ^^^
+kot: 0, oth_scr: 5, winner_team: 0, trump_team: 0
+/ALR=== Round 1 winner team: 0  (Kot: 0) ===
+/INF=== Round 2 ===
+AI_0, trump call, first5:
+
+S: 5S8S
+H: 9H
+C: 
+D: JDAD
+
+AI_0, trump call, suit S, score: 3.5
+AI_0, trump call, suit H, score: 2.16667
+AI_0, trump call, suit C, score: 0
+AI_0, trump call, suit D, score: 5.5
+AI_0, alg. trump: D
+AI_0 Habc: 2S 3S 4S 7S 9S JS QS KS AS,2H 3H 4H 5H 6H 7H 8H XH JH QH AH,3C 5C 6C 7C 8C 9C XC JC KC AC,2D 4D 5D 6D 8D 9D XD QD KD
+AI_0 hand 5S 6S 8S XS,9H KH,2C 4C QC,3D 7D JD AD
+yourking hand 3S 7S JS KS AS,2H QH,5C 6C 9C XC,4D 8D
+Jujay hand 2S 4S,7H XH,3C 8C JC KC AC,5D 6D 9D QD
+Ketab hand 9S QS,3H 4H 5H 6H 8H JH AH,7C,2D XD KD
+Round 2, Trick 0, Turn: 0, Trump: D
++++ Trick id 0 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord -1 last_led - led - trump D
+hand: 5S 6S 8S XS,9H KH,2C 4C QC,3D 7D JD AD
+case 0:
+pssbl_hi_hand: 5S 6S 8S XS,9H KH,2C 4C QC,3D 7D JD AD
+prb_act 5S 0.000525957
+prb_act 6S 0.000525957
+prb_act 8S 0.00223532
+prb_act XS 0.0086929
+prb_act 9H 0.0086929
+prb_act KH 0.333333
+prb_act 2C 4.49866e-07
+prb_act 4C 3.37399e-06
+prb_act QC 0.105263
+prb_act 3D 2.09188e-05
+prb_act 7D 0.00223532
+prb_act JD 0.105263
+prb_act AD 1
+out: --, prb: 1
+Alg. out card: 2C
+--- AI_0 --- out card: 2C ---
+RemoteInterAgent 1: Input: 
+RemoteInterAgent 1: Input: 5c
+RemoteInterAgent 2: Input: ac
+RemoteInterAgent 3: Input: 7c
+AI_0 played 2C
+yourking played 5C
+Jujay played AC
+Ketab played 7C
+^^^ Trick id 0 turn 0 led C trump D ^^^
+AI_0 hand 5S 6S 8S XS,9H KH,4C QC,3D 7D JD AD
+yourking hand 3S 7S JS KS AS,2H QH,6C 9C XC,4D 8D
+Jujay hand 2S 4S,7H XH,3C 8C JC KC,5D 6D 9D QD
+Ketab hand 9S QS,3H 4H 5H 6H 8H JH AH,2D XD KD
+Round 2, Trick 1, Turn: 2, Trump: D
++++ Trick id 1 turn 2 trump D +++
+RemoteInterAgent 2: Input: kc
+RemoteInterAgent 3: Input: 2d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led C trump D
+hand: 5S 6S 8S XS,9H KH,4C QC,3D 7D JD AD
+op_b 3 last table 7C
+comp 2 last table AC
+op_a 1 last table 5C
+comp 2 table KC
+op_b 3 table 2D
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 4C
+--- AI_0 --- out card: 4C ---
+RemoteInterAgent 1: Input: 6c
+AI_0 played 4C
+yourking played 6C
+Jujay played KC
+Ketab played 2D
+^^^ Trick id 1 turn 2 led C trump D ^^^
+AI_0 hand 5S 6S 8S XS,9H KH,QC,3D 7D JD AD
+yourking hand 3S 7S JS KS AS,2H QH,9C XC,4D 8D
+Jujay hand 2S 4S,7H XH,3C 8C JC,5D 6D 9D QD
+Ketab hand 9S QS,3H 4H 5H 6H 8H JH AH,XD KD
+Round 2, Trick 2, Turn: 3, Trump: D
++++ Trick id 2 turn 3 trump D +++
+RemoteInterAgent 3: Input: ah
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led C led H trump D
+hand: 5S 6S 8S XS,9H KH,QC,3D 7D JD AD
+op_a 1 last table 6C
+op_b 3 table AH
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 9H
+--- AI_0 --- out card: 9H ---
+RemoteInterAgent 1: Input: 2h
+RemoteInterAgent 2: Input: 7h
+AI_0 played 9H
+yourking played 2H
+Jujay played 7H
+Ketab played AH
+^^^ Trick id 2 turn 3 led H trump D ^^^
+AI_0 hand 5S 6S 8S XS,KH,QC,3D 7D JD AD
+yourking hand 3S 7S JS KS AS,QH,9C XC,4D 8D
+Jujay hand 2S 4S,XH,3C 8C JC,5D 6D 9D QD
+Ketab hand 9S QS,3H 4H 5H 6H 8H JH,XD KD
+Round 2, Trick 3, Turn: 3, Trump: D
++++ Trick id 3 turn 3 trump D +++
+RemoteInterAgent 3: Input: 8h
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led H trump D
+hand: 5S 6S 8S XS,KH,QC,3D 7D JD AD
+comp 2 last table 7H
+op_a 1 last table 2H
+op_b 3 table 8H
+case 1:
+pssbl_hi_hand: KH,
+prb_act KH 1
+out: KH, prb: 1
+Alg. out card: KH
+--- AI_0 --- out card: KH ---
+RemoteInterAgent 1: Input: qh
+RemoteInterAgent 2: Input: xh
+AI_0 played KH
+yourking played QH
+Jujay played XH
+Ketab played 8H
+^^^ Trick id 3 turn 3 led H trump D ^^^
+AI_0 hand 5S 6S 8S XS,QC,3D 7D JD AD
+yourking hand 3S 7S JS KS AS,9C XC,4D 8D
+Jujay hand 2S 4S,3C 8C JC,5D 6D 9D QD
+Ketab hand 9S QS,3H 4H 5H 6H JH,XD KD
+Round 2, Trick 4, Turn: 0, Trump: D
++++ Trick id 4 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led H led - trump D
+hand: 5S 6S 8S XS,QC,3D 7D JD AD
+comp 2 last table XH
+op_a 1 last table QH
+case 0:
+pssbl_hi_hand: 5S 6S 8S XS,QC,3D 7D JD AD
+prb_act 5S 0.000283774
+prb_act 6S 0.000283774
+prb_act 8S 0.00156076
+prb_act XS 0.00717949
+prb_act QC 1
+out: QC, prb: 1
+Alg. out card: QC
+--- AI_0 --- out card: QC ---
+RemoteInterAgent 1: Input: 9c
+RemoteInterAgent 2: Input: 3c
+RemoteInterAgent 3: Input: xd
+AI_0 played QC
+yourking played 9C
+Jujay played 3C
+Ketab played XD
+^^^ Trick id 4 turn 0 led C trump D ^^^
+AI_0 hand 5S 6S 8S XS,3D 7D JD AD
+yourking hand 3S 7S JS KS AS,XC,4D 8D
+Jujay hand 2S 4S,8C JC,5D 6D 9D QD
+Ketab hand 9S QS,3H 4H 5H 6H JH,KD
+Round 2, Trick 5, Turn: 3, Trump: D
++++ Trick id 5 turn 3 trump D +++
+RemoteInterAgent 3: Input: 9s
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led S trump D
+hand: 5S 6S 8S XS,3D 7D JD AD
+op_b 3 last table XD
+comp 2 last table 3C
+op_a 1 last table 9C
+op_b 3 table 9S
+case 1:
+pssbl_hi_hand: XS,
+prb_act XS 0.15415
+out: --, prb: 0.15415
+Alg. out card: 5S
+--- AI_0 --- out card: 5S ---
+RemoteInterAgent 1: Input: as
+RemoteInterAgent 2: Input: 2s
+AI_0 played 5S
+yourking played AS
+Jujay played 2S
+Ketab played 9S
+^^^ Trick id 5 turn 3 led S trump D ^^^
+AI_0 hand 6S 8S XS,3D 7D JD AD
+yourking hand 3S 7S JS KS,XC,4D 8D
+Jujay hand 4S,8C JC,5D 6D 9D QD
+Ketab hand QS,3H 4H 5H 6H JH,KD
+Round 2, Trick 6, Turn: 1, Trump: D
++++ Trick id 6 turn 1 trump D +++
+RemoteInterAgent 1: Input: ks
+RemoteInterAgent 2: Input: 4s
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led S led S trump D
+hand: 6S 8S XS,3D 7D JD AD
+comp 2 last table 2S
+op_a 1 last table AS
+op_a 1 table KS
+comp 2 table 4S
+op_b 3 table QS
+case 3:
+hi_hand: 
+Alg. out card: 6S
+--- AI_0 --- out card: 6S ---
+AI_0 played 6S
+yourking played KS
+Jujay played 4S
+Ketab played QS
+^^^ Trick id 6 turn 1 led S trump D ^^^
+AI_0 hand 8S XS,3D 7D JD AD
+yourking hand 3S 7S JS,XC,4D 8D
+Jujay hand 8C JC,5D 6D 9D QD
+Ketab hand 3H 4H 5H 6H JH,KD
+Round 2, Trick 7, Turn: 1, Trump: D
++++ Trick id 7 turn 1 trump D +++
+RemoteInterAgent 1: Input: xc
+RemoteInterAgent 2: Input: jc
+RemoteInterAgent 3: Input: 3h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led S led C trump D
+hand: 8S XS,3D 7D JD AD
+op_a 1 table XC
+comp 2 table JC
+op_b 3 table 3H
+case 3:
+Companion's card is good enough.
+Alg. out card: 8S
+--- AI_0 --- out card: 8S ---
+AI_0 played 8S
+yourking played XC
+Jujay played JC
+Ketab played 3H
+^^^ Trick id 7 turn 1 led C trump D ^^^
+AI_0 hand XS,3D 7D JD AD
+yourking hand 3S 7S JS,4D 8D
+Jujay hand 8C,5D 6D 9D QD
+Ketab hand 4H 5H 6H JH,KD
+Round 2, Trick 8, Turn: 2, Trump: D
++++ Trick id 8 turn 2 trump D +++
+RemoteInterAgent 2: Input: 9d
+RemoteInterAgent 3: Input: kd
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led C led D trump D
+hand: XS,3D 7D JD AD
+comp 2 table 9D
+op_b 3 table KD
+case 2:
+pssbl_hi_hand: AD
+prb_act AD 1
+prb_act out: --, (max)prb: 1
+Alg. out card: 3D
+--- AI_0 --- out card: 3D ---
+RemoteInterAgent 1: Input: 4d
+AI_0 played 3D
+yourking played 4D
+Jujay played 9D
+Ketab played KD
+^^^ Trick id 8 turn 2 led D trump D ^^^
+AI_0 hand XS,7D JD AD
+yourking hand 3S 7S JS,8D
+Jujay hand 8C,5D 6D QD
+Ketab hand 4H 5H 6H JH,
+Round 2, Trick 9, Turn: 3, Trump: D
++++ Trick id 9 turn 3 trump D +++
+RemoteInterAgent 3: Input: 6h
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led D led H trump D
+hand: XS,7D JD AD
+op_a 1 last table 4D
+op_b 3 table 6H
+case 1:
+pssbl_hi_hand: 7D JD AD
+prb_act 7D 1
+out: 7D, prb: 1
+Alg. out card: 7D
+--- AI_0 --- out card: 7D ---
+RemoteInterAgent 1: Input: 8d
+RemoteInterAgent 2: Input: qd
+AI_0 played 7D
+yourking played 8D
+Jujay played QD
+Ketab played 6H
+^^^ Trick id 9 turn 3 led H trump D ^^^
+AI_0 hand XS,JD AD
+yourking hand 3S 7S JS,
+Jujay hand 8C,5D 6D
+Ketab hand 4H 5H JH,
+Round 2, Trick 10, Turn: 2, Trump: D
++++ Trick id 10 turn 2 trump D +++
+RemoteInterAgent 2: Input: 6d
+RemoteInterAgent 3: Input: 4h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led H led D trump D
+hand: XS,JD AD
+comp 2 last table QD
+op_a 1 last table 8D
+comp 2 table 6D
+op_b 3 table 4H
+case 2:
+pssbl_hi_hand: JD AD
+prb_act JD 1
+prb_act AD 1
+prb_act out: --, (max)prb: 1
+Alg. out card: JD
+--- AI_0 --- out card: JD ---
+RemoteInterAgent 1: Input: 3s
+AI_0 played JD
+yourking played 3S
+Jujay played 6D
+Ketab played 4H
+^^^ Trick id 10 turn 2 led D trump D ^^^
+AI_0 hand XS,AD
+yourking hand 7S JS,
+Jujay hand 8C,5D
+Ketab hand 5H JH,
+Round 2, Trick 11, Turn: 0, Trump: D
++++ Trick id 11 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led D led - trump D
+hand: XS,AD
+op_a 1 last table 3S
+case 0:
+pssbl_hi_hand: XS,AD
+prb_act XS 0.333333
+prb_act AD 1
+out: --, prb: 1
+Alg. out card: XS
+--- AI_0 --- out card: XS ---
+RemoteInterAgent 1: Input: 7s
+RemoteInterAgent 2: Input: 5d
+RemoteInterAgent 3: Input: 5h
+AI_0 played XS
+yourking played 7S
+Jujay played 5D
+Ketab played 5H
+^^^ Trick id 11 turn 0 led S trump D ^^^
+AI_0 hand AD
+yourking hand JS,
+Jujay hand 8C,
+Ketab hand JH,
+Round 2, Trick 12, Turn: 2, Trump: D
++++ Trick id 12 turn 2 trump D +++
+RemoteInterAgent 2: Input: 8c
+RemoteInterAgent 3: Input: jh
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led C trump D
+hand: AD
+op_b 3 last table 5H
+comp 2 last table 5D
+op_a 1 last table 7S
+comp 2 table 8C
+op_b 3 table JH
+case 2:
+pssbl_hi_hand: AD
+prb_act AD 1
+prb_act out: AD, (max)prb: 1
+c_card: 8C, prb: 1
+diff of 8C-AD: -52
+Companion's card is good enough.
+Alg. out card: AD
+--- AI_0 --- out card: AD ---
+RemoteInterAgent 1: Input: js
+AI_0 played AD
+yourking played JS
+Jujay played 8C
+Ketab played JH
+^^^ Trick id 12 turn 2 led C trump D ^^^
+kot: 0, oth_scr: 6, winner_team: 0, trump_team: 0
+/ALR=== Round 2 winner team: 0  (Kot: 0) ===
+/INF=== Round 3 ===
+AI_0, trump call, first5:
+
+S: 8S
+H: 7HJH
+C: KCAC
+D: 
+
+AI_0, trump call, suit S, score: 2
+AI_0, trump call, suit H, score: 4.33333
+AI_0, trump call, suit C, score: 5.83333
+AI_0, trump call, suit D, score: 0
+AI_0, alg. trump: C
+AI_0 Habc: 2S 3S 4S 7S 9S JS QS KS AS,4H 5H 6H 8H 9H XH QH KH AH,2C 3C 4C 5C 6C 7C 8C 9C XC JC,2D 3D 5D 6D 7D 8D XD JD QD KD AD
+AI_0 hand 5S 6S 8S XS,2H 3H 7H JH,QC KC AC,4D 9D
+yourking hand 7S,6H 8H 9H KH,3C 4C JC,2D 5D XD QD AD
+Jujay hand 2S 3S 9S JS KS AS,4H QH,5C 6C 8C XC,7D
+Ketab hand 4S QS,5H XH AH,2C 7C 9C,3D 6D 8D JD KD
+Round 3, Trick 0, Turn: 0, Trump: C
++++ Trick id 0 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord -1 last_led - led - trump C
+hand: 5S 6S 8S XS,2H 3H 7H JH,QC KC AC,4D 9D
+case 0:
+pssbl_hi_hand: 5S 6S 8S XS,2H 3H 7H JH,QC KC AC,4D 9D
+prb_act 5S 0.000525957
+prb_act 6S 0.000525957
+prb_act 8S 0.00223532
+prb_act XS 0.0086929
+prb_act 2H 3.37399e-06
+prb_act 3H 3.37399e-06
+prb_act 7H 0.000525957
+prb_act JH 0.0312945
+prb_act QC 1
+out: QC, prb: 1
+Alg. out card: QC
+--- AI_0 --- out card: QC ---
+RemoteInterAgent 1: Input: 3c
+RemoteInterAgent 2: Input: 5c
+RemoteInterAgent 3: Input: 2c
+AI_0 played QC
+yourking played 3C
+Jujay played 5C
+Ketab played 2C
+^^^ Trick id 0 turn 0 led C trump C ^^^
+AI_0 hand 5S 6S 8S XS,2H 3H 7H JH,KC AC,4D 9D
+yourking hand 7S,6H 8H 9H KH,4C JC,2D 5D XD QD AD
+Jujay hand 2S 3S 9S JS KS AS,4H QH,6C 8C XC,7D
+Ketab hand 4S QS,5H XH AH,7C 9C,3D 6D 8D JD KD
+Round 3, Trick 1, Turn: 0, Trump: C
++++ Trick id 1 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump C
+hand: 5S 6S 8S XS,2H 3H 7H JH,KC AC,4D 9D
+op_b 3 last table 2C
+comp 2 last table 5C
+op_a 1 last table 3C
+case 0:
+pssbl_hi_hand: 5S 6S 8S XS,2H 3H 7H JH,KC AC,4D 9D
+prb_act 5S 0.000474383
+prb_act 6S 0.000474383
+prb_act 8S 0.00210084
+prb_act XS 0.00840336
+prb_act 2H 2.33686e-06
+prb_act 3H 2.33686e-06
+prb_act 7H 0.000474383
+prb_act JH 0.0308123
+prb_act KC 1
+prb_act AC 1
+prb_act 4D 2.33686e-06
+prb_act 9D 0.00210084
+out: --, prb: 1
+Alg. out card: 2H
+--- AI_0 --- out card: 2H ---
+RemoteInterAgent 1: Input: 9h
+RemoteInterAgent 2: Input: qh
+RemoteInterAgent 3: Input: ah
+AI_0 played 2H
+yourking played 9H
+Jujay played QH
+Ketab played AH
+^^^ Trick id 1 turn 0 led H trump C ^^^
+AI_0 hand 5S 6S 8S XS,3H 7H JH,KC AC,4D 9D
+yourking hand 7S,6H 8H KH,4C JC,2D 5D XD QD AD
+Jujay hand 2S 3S 9S JS KS AS,4H,6C 8C XC,7D
+Ketab hand 4S QS,5H XH,7C 9C,3D 6D 8D JD KD
+Round 3, Trick 2, Turn: 3, Trump: C
++++ Trick id 2 turn 3 trump C +++
+RemoteInterAgent 3: Input: jd
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led D trump C
+hand: 5S 6S 8S XS,3H 7H JH,KC AC,4D 9D
+op_b 3 last table AH
+comp 2 last table QH
+op_a 1 last table 9H
+op_b 3 table JD
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 4D
+--- AI_0 --- out card: 4D ---
+RemoteInterAgent 1: Input: ad
+RemoteInterAgent 2: Input: 7d
+AI_0 played 4D
+yourking played AD
+Jujay played 7D
+Ketab played JD
+^^^ Trick id 2 turn 3 led D trump C ^^^
+AI_0 hand 5S 6S 8S XS,3H 7H JH,KC AC,9D
+yourking hand 7S,6H 8H KH,4C JC,2D 5D XD QD
+Jujay hand 2S 3S 9S JS KS AS,4H,6C 8C XC,
+Ketab hand 4S QS,5H XH,7C 9C,3D 6D 8D KD
+Round 3, Trick 3, Turn: 1, Trump: C
++++ Trick id 3 turn 1 trump C +++
+RemoteInterAgent 1: Input: kh
+RemoteInterAgent 2: Input: 4h
+RemoteInterAgent 3: Input: 5h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led D led H trump C
+hand: 5S 6S 8S XS,3H 7H JH,KC AC,9D
+comp 2 last table 7D
+op_a 1 last table AD
+op_a 1 table KH
+comp 2 table 4H
+op_b 3 table 5H
+case 3:
+hi_hand: 
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+AI_0 played 3H
+yourking played KH
+Jujay played 4H
+Ketab played 5H
+^^^ Trick id 3 turn 1 led H trump C ^^^
+AI_0 hand 5S 6S 8S XS,7H JH,KC AC,9D
+yourking hand 7S,6H 8H,4C JC,2D 5D XD QD
+Jujay hand 2S 3S 9S JS KS AS,6C 8C XC,
+Ketab hand 4S QS,XH,7C 9C,3D 6D 8D KD
+Round 3, Trick 4, Turn: 1, Trump: C
++++ Trick id 4 turn 1 trump C +++
+RemoteInterAgent 1: Input: 5d
+RemoteInterAgent 2: Input: 2s
+RemoteInterAgent 3: Input: kd
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led H led D trump C
+hand: 5S 6S 8S XS,7H JH,KC AC,9D
+op_a 1 table 5D
+comp 2 table 2S
+op_b 3 table KD
+case 3:
+hi_hand: 
+Alg. out card: 9D
+--- AI_0 --- out card: 9D ---
+AI_0 played 9D
+yourking played 5D
+Jujay played 2S
+Ketab played KD
+^^^ Trick id 4 turn 1 led D trump C ^^^
+AI_0 hand 5S 6S 8S XS,7H JH,KC AC,
+yourking hand 7S,6H 8H,4C JC,2D XD QD
+Jujay hand 3S 9S JS KS AS,6C 8C XC,
+Ketab hand 4S QS,XH,7C 9C,3D 6D 8D
+Round 3, Trick 5, Turn: 3, Trump: C
++++ Trick id 5 turn 3 trump C +++
+RemoteInterAgent 3: Input: xh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led D led H trump C
+hand: 5S 6S 8S XS,7H JH,KC AC,
+op_b 3 table XH
+case 1:
+pssbl_hi_hand: JH,
+prb_act JH 1
+out: JH, prb: 1
+Alg. out card: JH
+--- AI_0 --- out card: JH ---
+RemoteInterAgent 1: Input: 6h
+RemoteInterAgent 2: Input: 3s
+AI_0 played JH
+yourking played 6H
+Jujay played 3S
+Ketab played XH
+^^^ Trick id 5 turn 3 led H trump C ^^^
+AI_0 hand 5S 6S 8S XS,7H,KC AC,
+yourking hand 7S,8H,4C JC,2D XD QD
+Jujay hand 9S JS KS AS,6C 8C XC,
+Ketab hand 4S QS,7C 9C,3D 6D 8D
+Round 3, Trick 6, Turn: 0, Trump: C
++++ Trick id 6 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led H led - trump C
+hand: 5S 6S 8S XS,7H,KC AC,
+comp 2 last table 3S
+op_a 1 last table 6H
+case 0:
+pssbl_hi_hand: 5S 6S 8S XS,KC AC,
+prb_act 5S 0.002331
+prb_act 6S 0.002331
+prb_act 8S 0.0104895
+prb_act XS 0.034965
+prb_act KC 1
+prb_act AC 1
+out: --, prb: 1
+Alg. out card: 5S
+--- AI_0 --- out card: 5S ---
+RemoteInterAgent 1: Input: 7s
+RemoteInterAgent 2: Input: as
+RemoteInterAgent 3: Input: 4s
+AI_0 played 5S
+yourking played 7S
+Jujay played AS
+Ketab played 4S
+^^^ Trick id 6 turn 0 led S trump C ^^^
+AI_0 hand 6S 8S XS,7H,KC AC,
+yourking hand 8H,4C JC,2D XD QD
+Jujay hand 9S JS KS,6C 8C XC,
+Ketab hand QS,7C 9C,3D 6D 8D
+Round 3, Trick 7, Turn: 2, Trump: C
++++ Trick id 7 turn 2 trump C +++
+RemoteInterAgent 2: Input: ks
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led S trump C
+hand: 6S 8S XS,7H,KC AC,
+op_b 3 last table 4S
+comp 2 last table AS
+op_a 1 last table 7S
+comp 2 table KS
+op_b 3 table QS
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 6S
+--- AI_0 --- out card: 6S ---
+RemoteInterAgent 1: Input: 4c
+AI_0 played 6S
+yourking played 4C
+Jujay played KS
+Ketab played QS
+^^^ Trick id 7 turn 2 led S trump C ^^^
+AI_0 hand 8S XS,7H,KC AC,
+yourking hand 8H,JC,2D XD QD
+Jujay hand 9S JS,6C 8C XC,
+Ketab hand 7C 9C,3D 6D 8D
+Round 3, Trick 8, Turn: 1, Trump: C
++++ Trick id 8 turn 1 trump C +++
+RemoteInterAgent 1: Input: 8h
+RemoteInterAgent 2: Input: 6c
+RemoteInterAgent 3: Input: 7c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led S led H trump C
+hand: 8S XS,7H,KC AC,
+op_a 1 last table 4C
+op_a 1 table 8H
+comp 2 table 6C
+op_b 3 table 7C
+case 3:
+hi_hand: 
+Alg. out card: 7H
+--- AI_0 --- out card: 7H ---
+AI_0 played 7H
+yourking played 8H
+Jujay played 6C
+Ketab played 7C
+^^^ Trick id 8 turn 1 led H trump C ^^^
+AI_0 hand 8S XS,KC AC,
+yourking hand JC,2D XD QD
+Jujay hand 9S JS,8C XC,
+Ketab hand 9C,3D 6D 8D
+Round 3, Trick 9, Turn: 3, Trump: C
++++ Trick id 9 turn 3 trump C +++
+RemoteInterAgent 3: Input: 6d
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led H led D trump C
+hand: 8S XS,KC AC,
+op_b 3 table 6D
+case 1:
+pssbl_hi_hand: KC AC,
+prb_act KC 1
+prb_act AC 1
+out: --, prb: 1
+Alg. out card: 8S
+--- AI_0 --- out card: 8S ---
+RemoteInterAgent 1: Input: qd
+RemoteInterAgent 2: Input: 8c
+AI_0 played 8S
+yourking played QD
+Jujay played 8C
+Ketab played 6D
+^^^ Trick id 9 turn 3 led D trump C ^^^
+AI_0 hand XS,KC AC,
+yourking hand JC,2D XD
+Jujay hand 9S JS,XC,
+Ketab hand 9C,3D 8D
+Round 3, Trick 10, Turn: 2, Trump: C
++++ Trick id 10 turn 2 trump C +++
+RemoteInterAgent 2: Input: js
+RemoteInterAgent 3: Input: 9c
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led D led S trump C
+hand: XS,KC AC,
+comp 2 last table 8C
+op_a 1 last table QD
+comp 2 table JS
+op_b 3 table 9C
+case 2:
+pssbl_hi_hand: 
+Alg. out card: XS
+--- AI_0 --- out card: XS ---
+RemoteInterAgent 1: Input: 2d
+AI_0 played XS
+yourking played 2D
+Jujay played JS
+Ketab played 9C
+^^^ Trick id 10 turn 2 led S trump C ^^^
+kot: 0, oth_scr: 4, winner_team: 1, trump_team: 0
+/ALR=== Round 3 winner team: 1  (Kot: 0) ===
+/INF=== Round 4 ===
+RemoteInterAgent 1: Input: h
+AI_0 Habc: 2S 5S 6S 8S 9S XS JS QS AS,3H 4H 5H 6H 7H 9H XH QH KH AH,2C 3C 4C 6C 7C 8C XC JC QC KC AC,2D 3D 4D 5D 7D 8D 9D JD KD
+AI_0 hand 3S 4S 7S KS,2H 8H JH,5C 9C,6D XD QD AD
+yourking hand 2S 5S XS QS,3H 7H 9H,6C 8C KC AC,4D JD
+Jujay hand 9S JS,4H 6H XH QH AH,3C,2D 5D 7D 8D KD
+Ketab hand 6S 8S AS,5H KH,2C 4C 7C XC JC QC,3D 9D
+Round 4, Trick 0, Turn: 1, Trump: H
++++ Trick id 0 turn 1 trump H +++
+RemoteInterAgent 1: Input: ac
+RemoteInterAgent 2: Input: 3c
+RemoteInterAgent 3: Input: 2c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord -1 last_led - led C trump H
+hand: 3S 4S 7S KS,2H 8H JH,5C 9C,6D XD QD AD
+op_a 1 table AC
+comp 2 table 3C
+op_b 3 table 2C
+case 3:
+hi_hand: 
+Alg. out card: 5C
+--- AI_0 --- out card: 5C ---
+AI_0 played 5C
+yourking played AC
+Jujay played 3C
+Ketab played 2C
+^^^ Trick id 0 turn 1 led C trump H ^^^
+AI_0 hand 3S 4S 7S KS,2H 8H JH,9C,6D XD QD AD
+yourking hand 2S 5S XS QS,3H 7H 9H,6C 8C KC,4D JD
+Jujay hand 9S JS,4H 6H XH QH AH,2D 5D 7D 8D KD
+Ketab hand 6S 8S AS,5H KH,4C 7C XC JC QC,3D 9D
+Round 4, Trick 1, Turn: 1, Trump: H
++++ Trick id 1 turn 1 trump H +++
+RemoteInterAgent 1: Input: kc
+RemoteInterAgent 2: Input: 4h
+RemoteInterAgent 3: Input: 4c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led C trump H
+hand: 3S 4S 7S KS,2H 8H JH,9C,6D XD QD AD
+op_a 1 table KC
+comp 2 table 4H
+op_b 3 table 4C
+case 3:
+Companion's card is good enough.
+Alg. out card: 9C
+--- AI_0 --- out card: 9C ---
+AI_0 played 9C
+yourking played KC
+Jujay played 4H
+Ketab played 4C
+^^^ Trick id 1 turn 1 led C trump H ^^^
+AI_0 hand 3S 4S 7S KS,2H 8H JH,6D XD QD AD
+yourking hand 2S 5S XS QS,3H 7H 9H,6C 8C,4D JD
+Jujay hand 9S JS,6H XH QH AH,2D 5D 7D 8D KD
+Ketab hand 6S 8S AS,5H KH,7C XC JC QC,3D 9D
+Round 4, Trick 2, Turn: 2, Trump: H
++++ Trick id 2 turn 2 trump H +++
+RemoteInterAgent 2: Input: 8d
+RemoteInterAgent 3: Input: 9d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led C led D trump H
+hand: 3S 4S 7S KS,2H 8H JH,6D XD QD AD
+comp 2 table 8D
+op_b 3 table 9D
+case 2:
+pssbl_hi_hand: XD QD AD
+prb_act XD 0.408602
+prb_act QD 0.645161
+prb_act out: QD, (max)prb: 0.645161
+c_card: 8D, prb: 0.408602
+diff of 8D-QD: -2
+Alg. out card: QD
+--- AI_0 --- out card: QD ---
+RemoteInterAgent 1: Input: xs4d
+RemoteInterAgent 1: Input: 4d
+AI_0 played QD
+yourking played 4D
+Jujay played 8D
+Ketab played 9D
+^^^ Trick id 2 turn 2 led D trump H ^^^
+AI_0 hand 3S 4S 7S KS,2H 8H JH,6D XD AD
+yourking hand 2S 5S XS QS,3H 7H 9H,6C 8C,JD
+Jujay hand 9S JS,6H XH QH AH,2D 5D 7D KD
+Ketab hand 6S 8S AS,5H KH,7C XC JC QC,3D
+Round 4, Trick 3, Turn: 0, Trump: H
++++ Trick id 3 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led D led - trump H
+hand: 3S 4S 7S KS,2H 8H JH,6D XD AD
+op_a 1 last table 4D
+case 0:
+pssbl_hi_hand: 3S 4S 7S KS,2H 8H JH,6D XD AD
+prb_act 3S 6.11853e-05
+prb_act 4S 6.11853e-05
+prb_act 7S 0.00156022
+prb_act KS 0.416667
+prb_act 2H 7.64816e-06
+prb_act 8H 0.00592885
+prb_act JH 0.0592885
+prb_act 6D 0.0592885
+prb_act XD 0.163043
+prb_act AD 1
+out: AD, prb: 1
+Alg. out card: AD
+--- AI_0 --- out card: AD ---
+RemoteInterAgent 1: Input: jd
+RemoteInterAgent 2: Input: 2d
+RemoteInterAgent 3: Input: 3d
+AI_0 played AD
+yourking played JD
+Jujay played 2D
+Ketab played 3D
+^^^ Trick id 3 turn 0 led D trump H ^^^
+AI_0 hand 3S 4S 7S KS,2H 8H JH,6D XD
+yourking hand 2S 5S XS QS,3H 7H 9H,6C 8C,
+Jujay hand 9S JS,6H XH QH AH,5D 7D KD
+Ketab hand 6S 8S AS,5H KH,7C XC JC QC,
+Round 4, Trick 4, Turn: 0, Trump: H
++++ Trick id 4 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump H
+hand: 3S 4S 7S KS,2H 8H JH,6D XD
+op_b 3 last table 3D
+comp 2 last table 2D
+op_a 1 last table JD
+case 0:
+pssbl_hi_hand: 3S 4S 7S KS,2H 8H JH,6D XD
+prb_act 3S 4.42282e-05
+prb_act 4S 4.42282e-05
+prb_act 7S 0.00154799
+prb_act KS 0.428571
+prb_act 2H 3.40217e-06
+prb_act 8H 0.00619195
+prb_act JH 0.0631579
+prb_act 6D 0.171429
+prb_act XD 0.428571
+out: --, prb: 0.428571
+Alg. out card: 3S
+--- AI_0 --- out card: 3S ---
+RemoteInterAgent 1: Input: xs
+RemoteInterAgent 2: Input: js
+RemoteInterAgent 3: Input: as
+AI_0 played 3S
+yourking played XS
+Jujay played JS
+Ketab played AS
+^^^ Trick id 4 turn 0 led S trump H ^^^
+AI_0 hand 4S 7S KS,2H 8H JH,6D XD
+yourking hand 2S 5S QS,3H 7H 9H,6C 8C,
+Jujay hand 9S,6H XH QH AH,5D 7D KD
+Ketab hand 6S 8S,5H KH,7C XC JC QC,
+Round 4, Trick 5, Turn: 3, Trump: H
++++ Trick id 5 turn 3 trump H +++
+RemoteInterAgent 3: Input: jc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led C trump H
+hand: 4S 7S KS,2H 8H JH,6D XD
+op_b 3 last table AS
+comp 2 last table JS
+op_a 1 last table XS
+op_b 3 table JC
+case 1:
+pssbl_hi_hand: 2H 8H JH,
+prb_act 2H 1
+out: 2H, prb: 1
+Alg. out card: 2H
+--- AI_0 --- out card: 2H ---
+RemoteInterAgent 1: Input: 8c
+RemoteInterAgent 2: Input: 9s
+AI_0 played 2H
+yourking played 8C
+Jujay played 9S
+Ketab played JC
+^^^ Trick id 5 turn 3 led C trump H ^^^
+AI_0 hand 4S 7S KS,8H JH,6D XD
+yourking hand 2S 5S QS,3H 7H 9H,6C,
+Jujay hand 6H XH QH AH,5D 7D KD
+Ketab hand 6S 8S,5H KH,7C XC QC,
+Round 4, Trick 6, Turn: 0, Trump: H
++++ Trick id 6 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led C led - trump H
+hand: 4S 7S KS,8H JH,6D XD
+comp 2 last table 9S
+op_a 1 last table 8C
+case 0:
+pssbl_hi_hand: 4S 7S KS,8H JH,6D XD
+prb_act 4S 0.0147059
+prb_act 7S 0.154412
+prb_act KS 1
+out: KS, prb: 1
+Alg. out card: KS
+--- AI_0 --- out card: KS ---
+RemoteInterAgent 1: Input: 2s
+RemoteInterAgent 2: Input: 5d
+RemoteInterAgent 3: Input: 6s
+AI_0 played KS
+yourking played 2S
+Jujay played 5D
+Ketab played 6S
+^^^ Trick id 6 turn 0 led S trump H ^^^
+AI_0 hand 4S 7S,8H JH,6D XD
+yourking hand 5S QS,3H 7H 9H,6C,
+Jujay hand 6H XH QH AH,7D KD
+Ketab hand 8S,5H KH,7C XC QC,
+Round 4, Trick 7, Turn: 0, Trump: H
++++ Trick id 7 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump H
+hand: 4S 7S,8H JH,6D XD
+op_b 3 last table 6S
+comp 2 last table 5D
+op_a 1 last table 2S
+case 0:
+pssbl_hi_hand: 4S 7S,8H JH,6D XD
+prb_act 4S 0.0549451
+prb_act 7S 0.164835
+prb_act 8H 0.002997
+prb_act JH 0.0549451
+prb_act 6D 0.164835
+prb_act XD 0.428571
+out: --, prb: 0.428571
+Alg. out card: 4S
+--- AI_0 --- out card: 4S ---
+RemoteInterAgent 1: Input: qs
+RemoteInterAgent 2: Input: 6h
+RemoteInterAgent 3: Input: 8s
+AI_0 played 4S
+yourking played QS
+Jujay played 6H
+Ketab played 8S
+^^^ Trick id 7 turn 0 led S trump H ^^^
+AI_0 hand 7S,8H JH,6D XD
+yourking hand 5S,3H 7H 9H,6C,
+Jujay hand XH QH AH,7D KD
+Ketab hand 5H KH,7C XC QC,
+Round 4, Trick 8, Turn: 2, Trump: H
++++ Trick id 8 turn 2 trump H +++
+RemoteInterAgent 2: Input: kd
+RemoteInterAgent 3: Input: 5h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led D trump H
+hand: 7S,8H JH,6D XD
+op_b 3 last table 8S
+comp 2 last table 6H
+op_a 1 last table QS
+comp 2 table KD
+op_b 3 table 5H
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 6D
+--- AI_0 --- out card: 6D ---
+RemoteInterAgent 1: Input: 6c
+AI_0 played 6D
+yourking played 6C
+Jujay played KD
+Ketab played 5H
+^^^ Trick id 8 turn 2 led D trump H ^^^
+AI_0 hand 7S,8H JH,XD
+yourking hand 5S,3H 7H 9H,
+Jujay hand XH QH AH,7D
+Ketab hand KH,7C XC QC,
+Round 4, Trick 9, Turn: 3, Trump: H
++++ Trick id 9 turn 3 trump H +++
+RemoteInterAgent 3: Input: kh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led D led H trump H
+hand: 7S,8H JH,XD
+op_a 1 last table 6C
+op_b 3 table KH
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 8H
+--- AI_0 --- out card: 8H ---
+RemoteInterAgent 1: Input: 3h
+RemoteInterAgent 2: Input: ah
+AI_0 played 8H
+yourking played 3H
+Jujay played AH
+Ketab played KH
+^^^ Trick id 9 turn 3 led H trump H ^^^
+kot: 0, oth_scr: 3, winner_team: 0, trump_team: 1
+/ALR=== Round 4 winner team: 0  (Kot: 0) ===
+/INF=== Round 5 ===
+RemoteInterAgent 2: Input: c
+AI_0 Habc: 3S 4S 5S 6S 7S 8S 9S AS,2H 3H 4H 5H 8H XH JH QH KH AH,2C 3C 6C 7C 9C XC JC QC KC,2D 4D 5D 6D 7D 8D 9D XD JD QD KD AD
+AI_0 hand 2S XS JS QS KS,6H 7H 9H,4C 5C 8C AC,3D
+yourking hand 4S 5S 7S,2H 3H XH JH KH AH,9C,6D 8D QD
+Jujay hand 3S 8S AS,QH,2C 6C XC JC KC,4D 5D 7D 9D
+Ketab hand 6S 9S,4H 5H 8H,3C 7C QC,2D XD JD KD AD
+Round 5, Trick 0, Turn: 2, Trump: C
++++ Trick id 0 turn 2 trump C +++
+RemoteInterAgent 2: Input: as
+RemoteInterAgent 3: Input: 6s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord -1 last_led - led S trump C
+hand: 2S XS JS QS KS,6H 7H 9H,4C 5C 8C AC,3D
+comp 2 table AS
+op_b 3 table 6S
+case 2:
+pssbl_hi_hand: XS JS QS KS,
+prb_act XS 1
+prb_act out: XS, (max)prb: 1
+c_card: AS, prb: 1
+diff of AS-XS: 0
+Companion's card is good enough.
+Alg. out card: 2S
+--- AI_0 --- out card: 2S ---
+RemoteInterAgent 1: Input: 4s
+AI_0 played 2S
+yourking played 4S
+Jujay played AS
+Ketab played 6S
+^^^ Trick id 0 turn 2 led S trump C ^^^
+AI_0 hand XS JS QS KS,6H 7H 9H,4C 5C 8C AC,3D
+yourking hand 5S 7S,2H 3H XH JH KH AH,9C,6D 8D QD
+Jujay hand 3S 8S,QH,2C 6C XC JC KC,4D 5D 7D 9D
+Ketab hand 9S,4H 5H 8H,3C 7C QC,2D XD JD KD AD
+Round 5, Trick 1, Turn: 2, Trump: C
++++ Trick id 1 turn 2 trump C +++
+RemoteInterAgent 2: Input: 4d
+RemoteInterAgent 3: Input: kd
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led S led D trump C
+hand: XS JS QS KS,6H 7H 9H,4C 5C 8C AC,3D
+op_a 1 last table 4S
+comp 2 table 4D
+op_b 3 table KD
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 3D
+--- AI_0 --- out card: 3D ---
+RemoteInterAgent 1: Input: 6d
+AI_0 played 3D
+yourking played 6D
+Jujay played 4D
+Ketab played KD
+^^^ Trick id 1 turn 2 led D trump C ^^^
+AI_0 hand XS JS QS KS,6H 7H 9H,4C 5C 8C AC,
+yourking hand 5S 7S,2H 3H XH JH KH AH,9C,8D QD
+Jujay hand 3S 8S,QH,2C 6C XC JC KC,5D 7D 9D
+Ketab hand 9S,4H 5H 8H,3C 7C QC,2D XD JD AD
+Round 5, Trick 2, Turn: 3, Trump: C
++++ Trick id 2 turn 3 trump C +++
+RemoteInterAgent 3: Input: ad
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led D led D trump C
+hand: XS JS QS KS,6H 7H 9H,4C 5C 8C AC,
+op_a 1 last table 6D
+op_b 3 table AD
+case 1:
+pssbl_hi_hand: 4C 5C 8C AC,
+prb_act 4C 1
+out: 4C, prb: 1
+Alg. out card: 4C
+--- AI_0 --- out card: 4C ---
+RemoteInterAgent 1: Input: 8d
+RemoteInterAgent 2: Input: 5d
+AI_0 played 4C
+yourking played 8D
+Jujay played 5D
+Ketab played AD
+^^^ Trick id 2 turn 3 led D trump C ^^^
+AI_0 hand XS JS QS KS,6H 7H 9H,5C 8C AC,
+yourking hand 5S 7S,2H 3H XH JH KH AH,9C,QD
+Jujay hand 3S 8S,QH,2C 6C XC JC KC,7D 9D
+Ketab hand 9S,4H 5H 8H,3C 7C QC,2D XD JD
+Round 5, Trick 3, Turn: 0, Trump: C
++++ Trick id 3 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led D led - trump C
+hand: XS JS QS KS,6H 7H 9H,5C 8C AC,
+comp 2 last table 5D
+op_a 1 last table 8D
+case 0:
+pssbl_hi_hand: XS JS QS KS,6H 7H 9H,5C 8C AC,
+prb_act XS 1
+out: XS, prb: 1
+Alg. out card: XS
+--- AI_0 --- out card: XS ---
+RemoteInterAgent 1: Input: 5s
+RemoteInterAgent 2: Input: 3s
+RemoteInterAgent 3: Input: 9s
+AI_0 played XS
+yourking played 5S
+Jujay played 3S
+Ketab played 9S
+^^^ Trick id 3 turn 0 led S trump C ^^^
+AI_0 hand JS QS KS,6H 7H 9H,5C 8C AC,
+yourking hand 7S,2H 3H XH JH KH AH,9C,QD
+Jujay hand 8S,QH,2C 6C XC JC KC,7D 9D
+Ketab hand 4H 5H 8H,3C 7C QC,2D XD JD
+Round 5, Trick 4, Turn: 0, Trump: C
++++ Trick id 4 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump C
+hand: JS QS KS,6H 7H 9H,5C 8C AC,
+op_b 3 last table 9S
+comp 2 last table 3S
+op_a 1 last table 5S
+case 0:
+pssbl_hi_hand: JS QS KS,6H 7H 9H,5C 8C AC,
+prb_act JS 1
+out: JS, prb: 1
+Alg. out card: JS
+--- AI_0 --- out card: JS ---
+RemoteInterAgent 1: Input: 7s
+RemoteInterAgent 2: Input: 8s
+RemoteInterAgent 3: Input: 3c
+AI_0 played JS
+yourking played 7S
+Jujay played 8S
+Ketab played 3C
+^^^ Trick id 4 turn 0 led S trump C ^^^
+AI_0 hand QS KS,6H 7H 9H,5C 8C AC,
+yourking hand 2H 3H XH JH KH AH,9C,QD
+Jujay hand QH,2C 6C XC JC KC,7D 9D
+Ketab hand 4H 5H 8H,7C QC,2D XD JD
+Round 5, Trick 5, Turn: 3, Trump: C
++++ Trick id 5 turn 3 trump C +++
+RemoteInterAgent 3: Input: xd
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led D trump C
+hand: QS KS,6H 7H 9H,5C 8C AC,
+op_b 3 last table 3C
+comp 2 last table 8S
+op_a 1 last table 7S
+op_b 3 table XD
+case 1:
+pssbl_hi_hand: 5C 8C AC,
+prb_act 5C 1
+out: 5C, prb: 1
+Alg. out card: 5C
+--- AI_0 --- out card: 5C ---
+RemoteInterAgent 1: Input: qd
+RemoteInterAgent 2: Input: 7d
+AI_0 played 5C
+yourking played QD
+Jujay played 7D
+Ketab played XD
+^^^ Trick id 5 turn 3 led D trump C ^^^
+AI_0 hand QS KS,6H 7H 9H,8C AC,
+yourking hand 2H 3H XH JH KH AH,9C,
+Jujay hand QH,2C 6C XC JC KC,9D
+Ketab hand 4H 5H 8H,7C QC,2D JD
+Round 5, Trick 6, Turn: 0, Trump: C
++++ Trick id 6 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led D led - trump C
+hand: QS KS,6H 7H 9H,8C AC,
+comp 2 last table 7D
+op_a 1 last table QD
+case 0:
+pssbl_hi_hand: QS KS,6H 7H 9H,8C AC,
+prb_act QS 0
+prb_act KS 0
+prb_act 6H 0.000128999
+prb_act 7H 0.000128999
+prb_act 9H 0.00103199
+prb_act 8C 0.00103199
+prb_act AC 1
+out: --, prb: 1
+Alg. out card: 6H
+--- AI_0 --- out card: 6H ---
+RemoteInterAgent 1: Input: ah
+RemoteInterAgent 2: Input: qh
+RemoteInterAgent 3: Input: 4h
+AI_0 played 6H
+yourking played AH
+Jujay played QH
+Ketab played 4H
+^^^ Trick id 6 turn 0 led H trump C ^^^
+AI_0 hand QS KS,7H 9H,8C AC,
+yourking hand 2H 3H XH JH KH,9C,
+Jujay hand 2C 6C XC JC KC,9D
+Ketab hand 5H 8H,7C QC,2D JD
+Round 5, Trick 7, Turn: 1, Trump: C
++++ Trick id 7 turn 1 trump C +++
+RemoteInterAgent 1: Input: kh
+RemoteInterAgent 2: Input: 2c
+RemoteInterAgent 3: Input: 5h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led H trump C
+hand: QS KS,7H 9H,8C AC,
+op_b 3 last table 4H
+comp 2 last table QH
+op_a 1 last table AH
+op_a 1 table KH
+comp 2 table 2C
+op_b 3 table 5H
+case 3:
+Companion's card is good enough.
+Alg. out card: 7H
+--- AI_0 --- out card: 7H ---
+AI_0 played 7H
+yourking played KH
+Jujay played 2C
+Ketab played 5H
+^^^ Trick id 7 turn 1 led H trump C ^^^
+AI_0 hand QS KS,9H,8C AC,
+yourking hand 2H 3H XH JH,9C,
+Jujay hand 6C XC JC KC,9D
+Ketab hand 8H,7C QC,2D JD
+Round 5, Trick 8, Turn: 2, Trump: C
++++ Trick id 8 turn 2 trump C +++
+RemoteInterAgent 2: Input: 9d
+RemoteInterAgent 3: Input: 2d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led H led D trump C
+hand: QS KS,9H,8C AC,
+comp 2 table 9D
+op_b 3 table 2D
+case 2:
+pssbl_hi_hand: 8C AC,
+prb_act 8C 1
+prb_act out: 8C, (max)prb: 1
+c_card: 9D, prb: 0.615385
+diff of 9D-8C: -52
+Companion's card is good enough.
+Alg. out card: 9H
+--- AI_0 --- out card: 9H ---
+RemoteInterAgent 1: Input: 9c
+AI_0 played 9H
+yourking played 9C
+Jujay played 9D
+Ketab played 2D
+^^^ Trick id 8 turn 2 led D trump C ^^^
+AI_0 hand QS KS,8C AC,
+yourking hand 2H 3H XH JH,
+Jujay hand 6C XC JC KC,
+Ketab hand 8H,7C QC,JD
+Round 5, Trick 9, Turn: 1, Trump: C
++++ Trick id 9 turn 1 trump C +++
+RemoteInterAgent 1: Input: 2h
+RemoteInterAgent 2: Input: 6c
+RemoteInterAgent 3: Input: 8h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led D led H trump C
+hand: QS KS,8C AC,
+op_a 1 last table 9C
+op_a 1 table 2H
+comp 2 table 6C
+op_b 3 table 8H
+case 3:
+Companion's card is good enough.
+Alg. out card: QS
+--- AI_0 --- out card: QS ---
+AI_0 played QS
+yourking played 2H
+Jujay played 6C
+Ketab played 8H
+^^^ Trick id 9 turn 1 led H trump C ^^^
+AI_0 hand KS,8C AC,
+yourking hand 3H XH JH,
+Jujay hand XC JC KC,
+Ketab hand 7C QC,JD
+Round 5, Trick 10, Turn: 2, Trump: C
++++ Trick id 10 turn 2 trump C +++
+RemoteInterAgent 2: Input: xc
+RemoteInterAgent 3: Input: qc
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led H led C trump C
+hand: KS,8C AC,
+comp 2 table XC
+op_b 3 table QC
+case 2:
+pssbl_hi_hand: AC,
+prb_act AC 1
+prb_act out: --, (max)prb: 1
+Alg. out card: 8C
+--- AI_0 --- out card: 8C ---
+RemoteInterAgent 1: Input: 3h
+AI_0 played 8C
+yourking played 3H
+Jujay played XC
+Ketab played QC
+^^^ Trick id 10 turn 2 led C trump C ^^^
+AI_0 hand KS,AC,
+yourking hand XH JH,
+Jujay hand JC KC,
+Ketab hand 7C,JD
+Round 5, Trick 11, Turn: 3, Trump: C
++++ Trick id 11 turn 3 trump C +++
+RemoteInterAgent 3: Input: jd
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led C led D trump C
+hand: KS,AC,
+op_a 1 last table 3H
+op_b 3 table JD
+case 1:
+pssbl_hi_hand: AC,
+prb_act AC 1
+out: --, prb: 1
+Alg. out card: KS
+--- AI_0 --- out card: KS ---
+RemoteInterAgent 1: Input: xh
+RemoteInterAgent 2: Input: jc
+AI_0 played KS
+yourking played XH
+Jujay played JC
+Ketab played JD
+^^^ Trick id 11 turn 3 led D trump C ^^^
+kot: 0, oth_scr: 5, winner_team: 0, trump_team: 0
+/ALR=== Round 5 winner team: 0  (Kot: 0) ===
+/INF=== Round 6 ===
+RemoteInterAgent 2: Input: d
+AI_0 Habc: 2S 3S 4S 5S 6S 7S 8S 9S XS JS KS AS,2H 4H 5H 6H 7H 8H 9H XH QH AH,3C 4C 7C 9C JC QC KC,2D 3D 5D 6D 8D XD JD QD KD AD
+AI_0 hand QS,3H JH KH,2C 5C 6C 8C XC AC,4D 7D 9D
+yourking hand 5S 8S XS AS,QH,3C 4C 7C 9C JC KC,2D 6D
+Jujay hand 3S 4S 7S,2H 5H 6H 9H XH AH,8D JD QD KD
+Ketab hand 2S 6S 9S JS KS,4H 7H 8H,QC,3D 5D XD AD
+Round 6, Trick 0, Turn: 2, Trump: D
++++ Trick id 0 turn 2 trump D +++
+RemoteInterAgent 2: Input: ah
+RemoteInterAgent 3: Input: 4h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord -1 last_led - led H trump D
+hand: QS,3H JH KH,2C 5C 6C 8C XC AC,4D 7D 9D
+comp 2 table AH
+op_b 3 table 4H
+case 2:
+pssbl_hi_hand: JH KH,
+prb_act JH 0.648649
+prb_act out: JH, (max)prb: 0.648649
+c_card: AH, prb: 1
+diff of AH-JH: 1
+Companion's card is good enough.
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+RemoteInterAgent 1: Input: jhqh
+RemoteInterAgent 1: Input: qh
+AI_0 played 3H
+yourking played QH
+Jujay played AH
+Ketab played 4H
+^^^ Trick id 0 turn 2 led H trump D ^^^
+AI_0 hand QS,JH KH,2C 5C 6C 8C XC AC,4D 7D 9D
+yourking hand 5S 8S XS AS,3C 4C 7C 9C JC KC,2D 6D
+Jujay hand 3S 4S 7S,2H 5H 6H 9H XH,8D JD QD KD
+Ketab hand 2S 6S 9S JS KS,7H 8H,QC,3D 5D XD AD
+Round 6, Trick 1, Turn: 2, Trump: D
++++ Trick id 1 turn 2 trump D +++
+RemoteInterAgent 2: Input: 7s
+RemoteInterAgent 3: Input: 9s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led H led S trump D
+hand: QS,JH KH,2C 5C 6C 8C XC AC,4D 7D 9D
+op_a 1 last table QH
+comp 2 table 7S
+op_b 3 table 9S
+case 2:
+pssbl_hi_hand: QS,
+prb_act QS 0.411765
+prb_act out: --, (max)prb: 0.411765
+Alg. out card: QS
+--- AI_0 --- out card: QS ---
+RemoteInterAgent 1: Input: as
+AI_0 played QS
+yourking played AS
+Jujay played 7S
+Ketab played 9S
+^^^ Trick id 1 turn 2 led S trump D ^^^
+AI_0 hand JH KH,2C 5C 6C 8C XC AC,4D 7D 9D
+yourking hand 5S 8S XS,3C 4C 7C 9C JC KC,2D 6D
+Jujay hand 3S 4S,2H 5H 6H 9H XH,8D JD QD KD
+Ketab hand 2S 6S JS KS,7H 8H,QC,3D 5D XD AD
+Round 6, Trick 2, Turn: 1, Trump: D
++++ Trick id 2 turn 1 trump D +++
+RemoteInterAgent 1: Input: jc
+RemoteInterAgent 2: Input: 8d
+RemoteInterAgent 3: Input: qc
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led S led C trump D
+hand: JH KH,2C 5C 6C 8C XC AC,4D 7D 9D
+op_a 1 last table AS
+op_a 1 table JC
+comp 2 table 8D
+op_b 3 table QC
+case 3:
+Companion's card is good enough.
+Alg. out card: 2C
+--- AI_0 --- out card: 2C ---
+AI_0 played 2C
+yourking played JC
+Jujay played 8D
+Ketab played QC
+^^^ Trick id 2 turn 1 led C trump D ^^^
+AI_0 hand JH KH,5C 6C 8C XC AC,4D 7D 9D
+yourking hand 5S 8S XS,3C 4C 7C 9C KC,2D 6D
+Jujay hand 3S 4S,2H 5H 6H 9H XH,JD QD KD
+Ketab hand 2S 6S JS KS,7H 8H,3D 5D XD AD
+Round 6, Trick 3, Turn: 2, Trump: D
++++ Trick id 3 turn 2 trump D +++
+RemoteInterAgent 2: Input: 9h
+RemoteInterAgent 3: Input: 7h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led C led H trump D
+hand: JH KH,5C 6C 8C XC AC,4D 7D 9D
+comp 2 table 9H
+op_b 3 table 7H
+case 2:
+pssbl_hi_hand: JH KH,
+prb_act JH 1
+prb_act out: JH, (max)prb: 1
+c_card: 9H, prb: 0.642857
+diff of 9H-JH: -1
+Companion's card is good enough.
+Alg. out card: JH
+--- AI_0 --- out card: JH ---
+RemoteInterAgent 1: Input: 2d
+AI_0 played JH
+yourking played 2D
+Jujay played 9H
+Ketab played 7H
+^^^ Trick id 3 turn 2 led H trump D ^^^
+AI_0 hand KH,5C 6C 8C XC AC,4D 7D 9D
+yourking hand 5S 8S XS,3C 4C 7C 9C KC,6D
+Jujay hand 3S 4S,2H 5H 6H XH,JD QD KD
+Ketab hand 2S 6S JS KS,8H,3D 5D XD AD
+Round 6, Trick 4, Turn: 1, Trump: D
++++ Trick id 4 turn 1 trump D +++
+RemoteInterAgent 1: Input: kc
+RemoteInterAgent 2: Input: jd
+RemoteInterAgent 3: Input: ad
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led H led C trump D
+hand: KH,5C 6C 8C XC AC,4D 7D 9D
+op_a 1 last table 2D
+op_a 1 table KC
+comp 2 table JD
+op_b 3 table AD
+case 3:
+hi_hand: 
+Alg. out card: 5C
+--- AI_0 --- out card: 5C ---
+AI_0 played 5C
+yourking played KC
+Jujay played JD
+Ketab played AD
+^^^ Trick id 4 turn 1 led C trump D ^^^
+AI_0 hand KH,6C 8C XC AC,4D 7D 9D
+yourking hand 5S 8S XS,3C 4C 7C 9C,6D
+Jujay hand 3S 4S,2H 5H 6H XH,QD KD
+Ketab hand 2S 6S JS KS,8H,3D 5D XD
+Round 6, Trick 5, Turn: 3, Trump: D
++++ Trick id 5 turn 3 trump D +++
+RemoteInterAgent 3: Input: js
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led C led S trump D
+hand: KH,6C 8C XC AC,4D 7D 9D
+op_b 3 table JS
+case 1:
+pssbl_hi_hand: 4D 7D 9D
+prb_act 4D 1
+out: 4D, prb: 1
+Alg. out card: 4D
+--- AI_0 --- out card: 4D ---
+RemoteInterAgent 1: Input: 5s
+RemoteInterAgent 2: Input: 3s
+AI_0 played 4D
+yourking played 5S
+Jujay played 3S
+Ketab played JS
+^^^ Trick id 5 turn 3 led S trump D ^^^
+AI_0 hand KH,6C 8C XC AC,7D 9D
+yourking hand 8S XS,3C 4C 7C 9C,6D
+Jujay hand 4S,2H 5H 6H XH,QD KD
+Ketab hand 2S 6S KS,8H,3D 5D XD
+Round 6, Trick 6, Turn: 0, Trump: D
++++ Trick id 6 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led S led - trump D
+hand: KH,6C 8C XC AC,7D 9D
+comp 2 last table 3S
+op_a 1 last table 5S
+case 0:
+pssbl_hi_hand: KH,XC AC,7D 9D
+prb_act KH 1
+out: KH, prb: 1
+Alg. out card: KH
+--- AI_0 --- out card: KH ---
+RemoteInterAgent 1: Input: 6d
+RemoteInterAgent 2: Input: 2h
+RemoteInterAgent 3: Input: 8h
+AI_0 played KH
+yourking played 6D
+Jujay played 2H
+Ketab played 8H
+^^^ Trick id 6 turn 0 led H trump D ^^^
+AI_0 hand 6C 8C XC AC,7D 9D
+yourking hand 8S XS,3C 4C 7C 9C,
+Jujay hand 4S,5H 6H XH,QD KD
+Ketab hand 2S 6S KS,3D 5D XD
+Round 6, Trick 7, Turn: 1, Trump: D
++++ Trick id 7 turn 1 trump D +++
+RemoteInterAgent 1: Input: xs
+RemoteInterAgent 2: Input: 4s
+RemoteInterAgent 3: Input: 6s
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led S trump D
+hand: 6C 8C XC AC,7D 9D
+op_b 3 last table 8H
+comp 2 last table 2H
+op_a 1 last table 6D
+op_a 1 table XS
+comp 2 table 4S
+op_b 3 table 6S
+case 3:
+hi_hand: 7D 9D
+Alg. out card: 7D
+--- AI_0 --- out card: 7D ---
+AI_0 played 7D
+yourking played XS
+Jujay played 4S
+Ketab played 6S
+^^^ Trick id 7 turn 1 led S trump D ^^^
+AI_0 hand 6C 8C XC AC,9D
+yourking hand 8S,3C 4C 7C 9C,
+Jujay hand 5H 6H XH,QD KD
+Ketab hand 2S KS,3D 5D XD
+Round 6, Trick 8, Turn: 0, Trump: D
++++ Trick id 8 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led S led - trump D
+hand: 6C 8C XC AC,9D
+case 0:
+pssbl_hi_hand: XC AC,9D
+prb_act XC 0.0021645
+prb_act AC 0.0021645
+prb_act 9D 0.0606061
+out: --, prb: 0.0606061
+Alg. out card: 6C
+--- AI_0 --- out card: 6C ---
+RemoteInterAgent 1: Input: 9c
+RemoteInterAgent 2: Input: 5h
+RemoteInterAgent 3: Input: 2s
+AI_0 played 6C
+yourking played 9C
+Jujay played 5H
+Ketab played 2S
+^^^ Trick id 8 turn 0 led C trump D ^^^
+AI_0 hand 8C XC AC,9D
+yourking hand 8S,3C 4C 7C,
+Jujay hand 6H XH,QD KD
+Ketab hand KS,3D 5D XD
+Round 6, Trick 9, Turn: 1, Trump: D
++++ Trick id 9 turn 1 trump D +++
+RemoteInterAgent 1: Input: 8s
+RemoteInterAgent 2: Input: 6h
+RemoteInterAgent 3: Input: ks
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led S trump D
+hand: 8C XC AC,9D
+op_b 3 last table 2S
+comp 2 last table 5H
+op_a 1 last table 9C
+op_a 1 table 8S
+comp 2 table 6H
+op_b 3 table KS
+case 3:
+hi_hand: 9D
+Alg. out card: 9D
+--- AI_0 --- out card: 9D ---
+AI_0 played 9D
+yourking played 8S
+Jujay played 6H
+Ketab played KS
+^^^ Trick id 9 turn 1 led S trump D ^^^
+AI_0 hand 8C XC AC,
+yourking hand 3C 4C 7C,
+Jujay hand XH,QD KD
+Ketab hand 3D 5D XD
+Round 6, Trick 10, Turn: 0, Trump: D
++++ Trick id 10 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led S led - trump D
+hand: 8C XC AC,
+case 0:
+pssbl_hi_hand: 8C XC AC,
+prb_act 8C 0
+prb_act XC 0
+prb_act AC 0
+out: --, prb: 0
+Alg. out card: 8C
+--- AI_0 --- out card: 8C ---
+RemoteInterAgent 1: Input: 3c
+RemoteInterAgent 2: Input: kd
+RemoteInterAgent 3: Input: 3d
+AI_0 played 8C
+yourking played 3C
+Jujay played KD
+Ketab played 3D
+^^^ Trick id 10 turn 0 led C trump D ^^^
+AI_0 hand XC AC,
+yourking hand 4C 7C,
+Jujay hand XH,QD
+Ketab hand 5D XD
+Round 6, Trick 11, Turn: 2, Trump: D
++++ Trick id 11 turn 2 trump D +++
+RemoteInterAgent 2: Input: qd
+RemoteInterAgent 3: Input: 5d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led D trump D
+hand: XC AC,
+op_b 3 last table 3D
+comp 2 last table KD
+op_a 1 last table 3C
+comp 2 table QD
+op_b 3 table 5D
+case 2:
+pssbl_hi_hand: 
+Alg. out card: XC
+--- AI_0 --- out card: XC ---
+RemoteInterAgent 1: Input: 4c
+AI_0 played XC
+yourking played 4C
+Jujay played QD
+Ketab played 5D
+^^^ Trick id 11 turn 2 led D trump D ^^^
+kot: 0, oth_scr: 5, winner_team: 0, trump_team: 0
+/ALR=== Round 6 winner team: 0  (Kot: 0) ===
+/INF=== Round 7 ===
+RemoteInterAgent 2: Input: c
+AI_0 Habc: 3S 4S 5S 9S QS KS AS,2H 3H 4H 5H 6H 7H 8H XH JH QH KH AH,2C 5C 6C 7C 8C 9C XC JC QC AC,2D 3D 4D 6D 7D 8D 9D XD JD KD
+AI_0 hand 2S 6S 7S 8S XS JS,9H,3C 4C KC,5D QD AD
+yourking hand 3S,2H KH AH,5C 6C 8C QC,4D 7D 9D XD JD
+Jujay hand 4S QS,5H 6H 7H,9C XC JC AC,2D 3D 8D KD
+Ketab hand 5S 9S KS AS,3H 4H 8H XH JH QH,2C 7C,6D
+Round 7, Trick 0, Turn: 2, Trump: C
++++ Trick id 0 turn 2 trump C +++
+RemoteInterAgent 2: Input: 8d
+RemoteInterAgent 3: Input: 6d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord -1 last_led - led D trump C
+hand: 2S 6S 7S 8S XS JS,9H,3C 4C KC,5D QD AD
+comp 2 table 8D
+op_b 3 table 6D
+case 2:
+pssbl_hi_hand: QD AD
+prb_act QD 0.648649
+prb_act out: QD, (max)prb: 0.648649
+c_card: 8D, prb: 0.16089
+diff of 8D-QD: -3
+Alg. out card: QD
+--- AI_0 --- out card: QD ---
+RemoteInterAgent 1: Input: 4d
+AI_0 played QD
+yourking played 4D
+Jujay played 8D
+Ketab played 6D
+^^^ Trick id 0 turn 2 led D trump C ^^^
+AI_0 hand 2S 6S 7S 8S XS JS,9H,3C 4C KC,5D AD
+yourking hand 3S,2H KH AH,5C 6C 8C QC,7D 9D XD JD
+Jujay hand 4S QS,5H 6H 7H,9C XC JC AC,2D 3D KD
+Ketab hand 5S 9S KS AS,3H 4H 8H XH JH QH,2C 7C,
+Round 7, Trick 1, Turn: 0, Trump: C
++++ Trick id 1 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led D led - trump C
+hand: 2S 6S 7S 8S XS JS,9H,3C 4C KC,5D AD
+op_a 1 last table 4D
+case 0:
+pssbl_hi_hand: 2S 6S 7S 8S XS JS,9H,3C 4C KC,5D AD
+prb_act 2S 9.48767e-05
+prb_act 6S 0.00840336
+prb_act 7S 0.00840336
+prb_act 8S 0.00840336
+prb_act XS 0.0308123
+prb_act JS 0.0308123
+prb_act 9H 0.00210084
+prb_act 3C 2.33686e-06
+prb_act 4C 2.33686e-06
+prb_act KC 0.333333
+prb_act 5D 0.00210084
+prb_act AD 1
+out: AD, prb: 1
+Alg. out card: AD
+--- AI_0 --- out card: AD ---
+RemoteInterAgent 1: Input: 7d
+RemoteInterAgent 2: Input: 2d
+RemoteInterAgent 3: Input: 2c
+AI_0 played AD
+yourking played 7D
+Jujay played 2D
+Ketab played 2C
+^^^ Trick id 1 turn 0 led D trump C ^^^
+AI_0 hand 2S 6S 7S 8S XS JS,9H,3C 4C KC,5D
+yourking hand 3S,2H KH AH,5C 6C 8C QC,9D XD JD
+Jujay hand 4S QS,5H 6H 7H,9C XC JC AC,3D KD
+Ketab hand 5S 9S KS AS,3H 4H 8H XH JH QH,7C,
+Round 7, Trick 2, Turn: 3, Trump: C
++++ Trick id 2 turn 3 trump C +++
+RemoteInterAgent 3: Input: as
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led S trump C
+hand: 2S 6S 7S 8S XS JS,9H,3C 4C KC,5D
+op_b 3 last table 2C
+comp 2 last table 2D
+op_a 1 last table 7D
+op_b 3 table AS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 2S
+--- AI_0 --- out card: 2S ---
+RemoteInterAgent 1: Input: 3s
+RemoteInterAgent 2: Input: 4s
+AI_0 played 2S
+yourking played 3S
+Jujay played 4S
+Ketab played AS
+^^^ Trick id 2 turn 3 led S trump C ^^^
+AI_0 hand 6S 7S 8S XS JS,9H,3C 4C KC,5D
+yourking hand 2H KH AH,5C 6C 8C QC,9D XD JD
+Jujay hand QS,5H 6H 7H,9C XC JC AC,3D KD
+Ketab hand 5S 9S KS,3H 4H 8H XH JH QH,7C,
+Round 7, Trick 3, Turn: 3, Trump: C
++++ Trick id 3 turn 3 trump C +++
+RemoteInterAgent 3: Input: ks
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led S led S trump C
+hand: 6S 7S 8S XS JS,9H,3C 4C KC,5D
+comp 2 last table 4S
+op_a 1 last table 3S
+op_b 3 table KS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 6S
+--- AI_0 --- out card: 6S ---
+RemoteInterAgent 1: Input: 9d
+RemoteInterAgent 2: Input: qs
+AI_0 played 6S
+yourking played 9D
+Jujay played QS
+Ketab played KS
+^^^ Trick id 3 turn 3 led S trump C ^^^
+AI_0 hand 7S 8S XS JS,9H,3C 4C KC,5D
+yourking hand 2H KH AH,5C 6C 8C QC,XD JD
+Jujay hand 5H 6H 7H,9C XC JC AC,3D KD
+Ketab hand 5S 9S,3H 4H 8H XH JH QH,7C,
+Round 7, Trick 4, Turn: 3, Trump: C
++++ Trick id 4 turn 3 trump C +++
+RemoteInterAgent 3: Input: xh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led S led H trump C
+hand: 7S 8S XS JS,9H,3C 4C KC,5D
+comp 2 last table QS
+op_a 1 last table 9D
+op_b 3 table XH
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 9H
+--- AI_0 --- out card: 9H ---
+RemoteInterAgent 1: Input: ah
+RemoteInterAgent 2: Input: 5h
+AI_0 played 9H
+yourking played AH
+Jujay played 5H
+Ketab played XH
+^^^ Trick id 4 turn 3 led H trump C ^^^
+AI_0 hand 7S 8S XS JS,3C 4C KC,5D
+yourking hand 2H KH,5C 6C 8C QC,XD JD
+Jujay hand 6H 7H,9C XC JC AC,3D KD
+Ketab hand 5S 9S,3H 4H 8H JH QH,7C,
+Round 7, Trick 5, Turn: 1, Trump: C
++++ Trick id 5 turn 1 trump C +++
+RemoteInterAgent 1: Input: kh
+RemoteInterAgent 2: Input: 6h
+RemoteInterAgent 3: Input: 3h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led H led H trump C
+hand: 7S 8S XS JS,3C 4C KC,5D
+comp 2 last table 5H
+op_a 1 last table AH
+op_a 1 table KH
+comp 2 table 6H
+op_b 3 table 3H
+case 3:
+hi_hand: 3C 4C KC,
+Alg. out card: 3C
+--- AI_0 --- out card: 3C ---
+AI_0 played 3C
+yourking played KH
+Jujay played 6H
+Ketab played 3H
+^^^ Trick id 5 turn 1 led H trump C ^^^
+AI_0 hand 7S 8S XS JS,4C KC,5D
+yourking hand 2H,5C 6C 8C QC,XD JD
+Jujay hand 7H,9C XC JC AC,3D KD
+Ketab hand 5S 9S,4H 8H JH QH,7C,
+Round 7, Trick 6, Turn: 0, Trump: C
++++ Trick id 6 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led H led - trump C
+hand: 7S 8S XS JS,4C KC,5D
+case 0:
+pssbl_hi_hand: 7S 8S XS JS,4C KC,5D
+prb_act 7S 0.333333
+prb_act 8S 0.333333
+prb_act XS 1
+out: XS, prb: 1
+Alg. out card: XS
+--- AI_0 --- out card: XS ---
+RemoteInterAgent 1: Input: 6c
+RemoteInterAgent 2: Input: 9c
+RemoteInterAgent 3: Input: 5s
+AI_0 played XS
+yourking played 6C
+Jujay played 9C
+Ketab played 5S
+^^^ Trick id 6 turn 0 led S trump C ^^^
+AI_0 hand 7S 8S JS,4C KC,5D
+yourking hand 2H,5C 8C QC,XD JD
+Jujay hand 7H,XC JC AC,3D KD
+Ketab hand 9S,4H 8H JH QH,7C,
+Round 7, Trick 7, Turn: 2, Trump: C
++++ Trick id 7 turn 2 trump C +++
+RemoteInterAgent 2: Input: kd
+RemoteInterAgent 3: Input: 7c
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led D trump C
+hand: 7S 8S JS,4C KC,5D
+op_b 3 last table 5S
+comp 2 last table 9C
+op_a 1 last table 6C
+comp 2 table KD
+op_b 3 table 7C
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 5D
+--- AI_0 --- out card: 5D ---
+RemoteInterAgent 1: Input: xd
+AI_0 played 5D
+yourking played XD
+Jujay played KD
+Ketab played 7C
+^^^ Trick id 7 turn 2 led D trump C ^^^
+AI_0 hand 7S 8S JS,4C KC,
+yourking hand 2H,5C 8C QC,JD
+Jujay hand 7H,XC JC AC,3D
+Ketab hand 9S,4H 8H JH QH,
+Round 7, Trick 8, Turn: 3, Trump: C
++++ Trick id 8 turn 3 trump C +++
+RemoteInterAgent 3: Input: jh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led D led H trump C
+hand: 7S 8S JS,4C KC,
+op_a 1 last table XD
+op_b 3 table JH
+case 1:
+pssbl_hi_hand: 4C KC,
+prb_act 4C 1
+out: 4C, prb: 1
+Alg. out card: 4C
+--- AI_0 --- out card: 4C ---
+RemoteInterAgent 1: Input: 2h
+RemoteInterAgent 2: Input: 7h
+AI_0 played 4C
+yourking played 2H
+Jujay played 7H
+Ketab played JH
+^^^ Trick id 8 turn 3 led H trump C ^^^
+AI_0 hand 7S 8S JS,KC,
+yourking hand 5C 8C QC,JD
+Jujay hand XC JC AC,3D
+Ketab hand 9S,4H 8H QH,
+Round 7, Trick 9, Turn: 0, Trump: C
++++ Trick id 9 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led H led - trump C
+hand: 7S 8S JS,KC,
+comp 2 last table 7H
+op_a 1 last table 2H
+case 0:
+pssbl_hi_hand: 7S 8S JS,KC,
+prb_act 7S 0.333333
+prb_act 8S 0.333333
+prb_act JS 1
+out: JS, prb: 1
+Alg. out card: JS
+--- AI_0 --- out card: JS ---
+RemoteInterAgent 1: Input: jd
+RemoteInterAgent 2: Input: xc
+RemoteInterAgent 3: Input: 9s
+AI_0 played JS
+yourking played JD
+Jujay played XC
+Ketab played 9S
+^^^ Trick id 9 turn 0 led S trump C ^^^
+AI_0 hand 7S 8S,KC,
+yourking hand 5C 8C QC,
+Jujay hand JC AC,3D
+Ketab hand 4H 8H QH,
+Round 7, Trick 10, Turn: 2, Trump: C
++++ Trick id 10 turn 2 trump C +++
+RemoteInterAgent 2: Input: 3d
+RemoteInterAgent 3: Input: 4h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led D trump C
+hand: 7S 8S,KC,
+op_b 3 last table 9S
+comp 2 last table XC
+op_a 1 last table JD
+comp 2 table 3D
+op_b 3 table 4H
+case 2:
+pssbl_hi_hand: KC,
+prb_act KC 0.571429
+prb_act out: KC, (max)prb: 0.571429
+c_card: 3D, prb: 0
+diff of 3D-KC: -52
+Alg. out card: KC
+--- AI_0 --- out card: KC ---
+RemoteInterAgent 1: Input: 5c
+AI_0 played KC
+yourking played 5C
+Jujay played 3D
+Ketab played 4H
+^^^ Trick id 10 turn 2 led D trump C ^^^
+AI_0 hand 7S 8S,
+yourking hand 8C QC,
+Jujay hand JC AC,
+Ketab hand 8H QH,
+Round 7, Trick 11, Turn: 0, Trump: C
++++ Trick id 11 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led D led - trump C
+hand: 7S 8S,
+op_a 1 last table 5C
+case 0:
+pssbl_hi_hand: 7S 8S,
+prb_act 7S 0
+prb_act 8S 0
+out: --, prb: 0
+Alg. out card: 7S
+--- AI_0 --- out card: 7S ---
+RemoteInterAgent 1: Input: 8c
+RemoteInterAgent 2: Input: ac
+RemoteInterAgent 3: Input: 8h
+AI_0 played 7S
+yourking played 8C
+Jujay played AC
+Ketab played 8H
+^^^ Trick id 11 turn 0 led S trump C ^^^
+kot: 0, oth_scr: 5, winner_team: 0, trump_team: 0
+/ALR=== Round 7 winner team: 0  (Kot: 0) ===
+/INF=== Round 8 ===
+RemoteInterAgent 2: Input: h
+AI_0 Habc: 2S 3S 5S 6S 7S 8S 9S XS JS QS KS AS,3H 4H 5H 6H 7H 8H 9H XH QH KH AH,2C 4C 5C 8C XC JC,2D 3D 4D 6D 7D 9D JD QD KD AD
+AI_0 hand 4S,2H JH,3C 6C 7C 9C QC KC AC,5D 8D XD
+yourking hand 2S 3S 5S 8S XS JS AS,9H KH,4C,6D 7D QD
+Jujay hand 6S 9S,3H 5H 7H XH QH,8C,2D 4D JD KD AD
+Ketab hand 7S QS KS,4H 6H 8H AH,2C 5C XC JC,3D 9D
+Round 8, Trick 0, Turn: 2, Trump: H
++++ Trick id 0 turn 2 trump H +++
+RemoteInterAgent 2: Input: ad
+RemoteInterAgent 3: Input: 3d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord -1 last_led - led D trump H
+hand: 4S,2H JH,3C 6C 7C 9C QC KC AC,5D 8D XD
+comp 2 table AD
+op_b 3 table 3D
+case 2:
+pssbl_hi_hand: 5D 8D XD
+prb_act 5D 0.0578961
+prb_act 8D 0.16089
+prb_act XD 0.260489
+prb_act out: --, (max)prb: 0.260489
+Alg. out card: 5D
+--- AI_0 --- out card: 5D ---
+RemoteInterAgent 1: Input: 6d
+AI_0 played 5D
+yourking played 6D
+Jujay played AD
+Ketab played 3D
+^^^ Trick id 0 turn 2 led D trump H ^^^
+AI_0 hand 4S,2H JH,3C 6C 7C 9C QC KC AC,8D XD
+yourking hand 2S 3S 5S 8S XS JS AS,9H KH,4C,7D QD
+Jujay hand 6S 9S,3H 5H 7H XH QH,8C,2D 4D JD KD
+Ketab hand 7S QS KS,4H 6H 8H AH,2C 5C XC JC,9D
+Round 8, Trick 1, Turn: 2, Trump: H
++++ Trick id 1 turn 2 trump H +++
+RemoteInterAgent 2: Input: kd
+RemoteInterAgent 3: Input: 9d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led D led D trump H
+hand: 4S,2H JH,3C 6C 7C 9C QC KC AC,8D XD
+op_a 1 last table 6D
+comp 2 table KD
+op_b 3 table 9D
+case 2:
+pssbl_hi_hand: XD
+prb_act XD 0.411765
+prb_act out: --, (max)prb: 0.411765
+Alg. out card: 8D
+--- AI_0 --- out card: 8D ---
+RemoteInterAgent 1: Input: 7d
+AI_0 played 8D
+yourking played 7D
+Jujay played KD
+Ketab played 9D
+^^^ Trick id 1 turn 2 led D trump H ^^^
+AI_0 hand 4S,2H JH,3C 6C 7C 9C QC KC AC,XD
+yourking hand 2S 3S 5S 8S XS JS AS,9H KH,4C,QD
+Jujay hand 6S 9S,3H 5H 7H XH QH,8C,2D 4D JD
+Ketab hand 7S QS KS,4H 6H 8H AH,2C 5C XC JC,
+Round 8, Trick 2, Turn: 2, Trump: H
++++ Trick id 2 turn 2 trump H +++
+RemoteInterAgent 2: Input: 8c
+RemoteInterAgent 3: Input: xc
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led D led C trump H
+hand: 4S,2H JH,3C 6C 7C 9C QC KC AC,XD
+op_a 1 last table 7D
+comp 2 table 8C
+op_b 3 table XC
+case 2:
+pssbl_hi_hand: QC KC AC,
+prb_act QC 1
+prb_act out: QC, (max)prb: 1
+c_card: 8C, prb: 0.645161
+diff of 8C-QC: -2
+Companion's card is good enough.
+Alg. out card: 3C
+--- AI_0 --- out card: 3C ---
+RemoteInterAgent 1: Input: 4c
+AI_0 played 3C
+yourking played 4C
+Jujay played 8C
+Ketab played XC
+^^^ Trick id 2 turn 2 led C trump H ^^^
+AI_0 hand 4S,2H JH,6C 7C 9C QC KC AC,XD
+yourking hand 2S 3S 5S 8S XS JS AS,9H KH,QD
+Jujay hand 6S 9S,3H 5H 7H XH QH,2D 4D JD
+Ketab hand 7S QS KS,4H 6H 8H AH,2C 5C JC,
+Round 8, Trick 3, Turn: 3, Trump: H
++++ Trick id 3 turn 3 trump H +++
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led C led S trump H
+hand: 4S,2H JH,6C 7C 9C QC KC AC,XD
+op_a 1 last table 4C
+op_b 3 table QS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 4S
+--- AI_0 --- out card: 4S ---
+RemoteInterAgent 1: Input: as
+RemoteInterAgent 2: Input: 6s
+AI_0 played 4S
+yourking played AS
+Jujay played 6S
+Ketab played QS
+^^^ Trick id 3 turn 3 led S trump H ^^^
+AI_0 hand 2H JH,6C 7C 9C QC KC AC,XD
+yourking hand 2S 3S 5S 8S XS JS,9H KH,QD
+Jujay hand 9S,3H 5H 7H XH QH,2D 4D JD
+Ketab hand 7S KS,4H 6H 8H AH,2C 5C JC,
+Round 8, Trick 4, Turn: 1, Trump: H
++++ Trick id 4 turn 1 trump H +++
+RemoteInterAgent 1: Input: js
+RemoteInterAgent 2: Input: 9s
+RemoteInterAgent 3: Input: 7s
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led S led S trump H
+hand: 2H JH,6C 7C 9C QC KC AC,XD
+comp 2 last table 6S
+op_a 1 last table AS
+op_a 1 table JS
+comp 2 table 9S
+op_b 3 table 7S
+case 3:
+hi_hand: 2H JH,
+Alg. out card: 2H
+--- AI_0 --- out card: 2H ---
+AI_0 played 2H
+yourking played JS
+Jujay played 9S
+Ketab played 7S
+^^^ Trick id 4 turn 1 led S trump H ^^^
+AI_0 hand JH,6C 7C 9C QC KC AC,XD
+yourking hand 2S 3S 5S 8S XS,9H KH,QD
+Jujay hand 3H 5H 7H XH QH,2D 4D JD
+Ketab hand KS,4H 6H 8H AH,2C 5C JC,
+Round 8, Trick 5, Turn: 0, Trump: H
++++ Trick id 5 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led S led - trump H
+hand: JH,6C 7C 9C QC KC AC,XD
+case 0:
+pssbl_hi_hand: JH,6C 7C 9C QC KC AC,XD
+prb_act JH 0.027668
+prb_act 6C 0.333333
+prb_act 7C 0.333333
+prb_act 9C 0.333333
+prb_act QC 1
+out: QC, prb: 1
+Alg. out card: QC
+--- AI_0 --- out card: QC ---
+RemoteInterAgent 1: Input: 9h
+RemoteInterAgent 2: Input: xh
+RemoteInterAgent 3: Input: 2c
+AI_0 played QC
+yourking played 9H
+Jujay played XH
+Ketab played 2C
+^^^ Trick id 5 turn 0 led C trump H ^^^
+AI_0 hand JH,6C 7C 9C KC AC,XD
+yourking hand 2S 3S 5S 8S XS,KH,QD
+Jujay hand 3H 5H 7H QH,2D 4D JD
+Ketab hand KS,4H 6H 8H AH,5C JC,
+Round 8, Trick 6, Turn: 2, Trump: H
++++ Trick id 6 turn 2 trump H +++
+RemoteInterAgent 2: Input: 7h
+RemoteInterAgent 3: Input: 8h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led H trump H
+hand: JH,6C 7C 9C KC AC,XD
+op_b 3 last table 2C
+comp 2 last table XH
+op_a 1 last table 9H
+comp 2 table 7H
+op_b 3 table 8H
+case 2:
+pssbl_hi_hand: JH,
+prb_act JH 0.227038
+prb_act out: --, (max)prb: 0.227038
+Alg. out card: JH
+--- AI_0 --- out card: JH ---
+RemoteInterAgent 1: Input: kh
+AI_0 played JH
+yourking played KH
+Jujay played 7H
+Ketab played 8H
+^^^ Trick id 6 turn 2 led H trump H ^^^
+AI_0 hand 6C 7C 9C KC AC,XD
+yourking hand 2S 3S 5S 8S XS,QD
+Jujay hand 3H 5H QH,2D 4D JD
+Ketab hand KS,4H 6H AH,5C JC,
+Round 8, Trick 7, Turn: 1, Trump: H
++++ Trick id 7 turn 1 trump H +++
+RemoteInterAgent 1: Input: qd
+RemoteInterAgent 2: Input: 2d
+RemoteInterAgent 3: Input: 5c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led H led D trump H
+hand: 6C 7C 9C KC AC,XD
+op_a 1 last table KH
+op_a 1 table QD
+comp 2 table 2D
+op_b 3 table 5C
+case 3:
+hi_hand: 
+Alg. out card: XD
+--- AI_0 --- out card: XD ---
+AI_0 played XD
+yourking played QD
+Jujay played 2D
+Ketab played 5C
+^^^ Trick id 7 turn 1 led D trump H ^^^
+AI_0 hand 6C 7C 9C KC AC,
+yourking hand 2S 3S 5S 8S XS,
+Jujay hand 3H 5H QH,4D JD
+Ketab hand KS,4H 6H AH,JC,
+Round 8, Trick 8, Turn: 1, Trump: H
++++ Trick id 8 turn 1 trump H +++
+RemoteInterAgent 1: Input: xs
+RemoteInterAgent 2: Input: 5h
+RemoteInterAgent 3: Input: ks
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led D led S trump H
+hand: 6C 7C 9C KC AC,
+op_a 1 table XS
+comp 2 table 5H
+op_b 3 table KS
+case 3:
+Companion's card is good enough.
+Alg. out card: 6C
+--- AI_0 --- out card: 6C ---
+AI_0 played 6C
+yourking played XS
+Jujay played 5H
+Ketab played KS
+^^^ Trick id 8 turn 1 led S trump H ^^^
+AI_0 hand 7C 9C KC AC,
+yourking hand 2S 3S 5S 8S,
+Jujay hand 3H QH,4D JD
+Ketab hand 4H 6H AH,JC,
+Round 8, Trick 9, Turn: 2, Trump: H
++++ Trick id 9 turn 2 trump H +++
+RemoteInterAgent 2: Input: jd
+RemoteInterAgent 3: Input: 4h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led S led D trump H
+hand: 7C 9C KC AC,
+comp 2 table JD
+op_b 3 table 4H
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 7C
+--- AI_0 --- out card: 7C ---
+RemoteInterAgent 1: Input: 2s
+AI_0 played 7C
+yourking played 2S
+Jujay played JD
+Ketab played 4H
+^^^ Trick id 9 turn 2 led D trump H ^^^
+AI_0 hand 9C KC AC,
+yourking hand 3S 5S 8S,
+Jujay hand 3H QH,4D
+Ketab hand 6H AH,JC,
+Round 8, Trick 10, Turn: 3, Trump: H
++++ Trick id 10 turn 3 trump H +++
+RemoteInterAgent 3: Input: jc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led D led C trump H
+hand: 9C KC AC,
+op_a 1 last table 2S
+op_b 3 table JC
+case 1:
+pssbl_hi_hand: KC AC,
+prb_act KC 0.0285714
+prb_act AC 0.0285714
+out: --, prb: 0.0285714
+Alg. out card: 9C
+--- AI_0 --- out card: 9C ---
+RemoteInterAgent 1: Input: 3s
+RemoteInterAgent 2: Input: 3h
+AI_0 played 9C
+yourking played 3S
+Jujay played 3H
+Ketab played JC
+^^^ Trick id 10 turn 3 led C trump H ^^^
+AI_0 hand KC AC,
+yourking hand 5S 8S,
+Jujay hand QH,4D
+Ketab hand 6H AH,
+Round 8, Trick 11, Turn: 2, Trump: H
++++ Trick id 11 turn 2 trump H +++
+RemoteInterAgent 2: Input: qh
+RemoteInterAgent 3: Input: ah
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led C led H trump H
+hand: KC AC,
+comp 2 last table 3H
+op_a 1 last table 3S
+comp 2 table QH
+op_b 3 table AH
+case 2:
+pssbl_hi_hand: 
+Alg. out card: KC
+--- AI_0 --- out card: KC ---
+RemoteInterAgent 1: Input: 5s
+AI_0 played KC
+yourking played 5S
+Jujay played QH
+Ketab played AH
+^^^ Trick id 11 turn 2 led H trump H ^^^
+AI_0 hand AC,
+yourking hand 8S,
+Jujay hand 4D
+Ketab hand 6H,
+Round 8, Trick 12, Turn: 3, Trump: H
++++ Trick id 12 turn 3 trump H +++
+RemoteInterAgent 3: Input: 6h
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led H led H trump H
+hand: AC,
+op_a 1 last table 5S
+op_b 3 table 6H
+case 1:
+pssbl_hi_hand: 
+Alg. out card: AC
+--- AI_0 --- out card: AC ---
+RemoteInterAgent 1: Input: 8c
+RemoteInterAgent 1: Input: 8s
+RemoteInterAgent 2: Input: 4d
+AI_0 played AC
+yourking played 8S
+Jujay played 4D
+Ketab played 6H
+^^^ Trick id 12 turn 3 led H trump H ^^^
+kot: 0, oth_scr: 6, winner_team: 1, trump_team: 0
+/ALR=== Round 8 winner team: 1  (Kot: 0) ===
+/INF=== Round 9 ===
+RemoteInterAgent 3: Input: s
+AI_0 Habc: 2S 3S 4S 5S 6S 8S 9S XS JS QS KS AS,2H 3H 5H 6H 7H 8H 9H QH KH,4C 5C 6C 7C 8C XC JC AC,2D 3D 4D 7D 9D XD JD QD KD AD
+AI_0 hand 7S,4H XH JH AH,2C 3C 9C QC KC,5D 6D 8D
+yourking hand 3S,2H 5H 6H 8H,4C XC,7D 9D JD QD KD AD
+Jujay hand 2S 5S JS KS,3H 9H QH,6C 7C 8C AC,4D XD
+Ketab hand 4S 6S 8S 9S XS QS AS,7H KH,5C JC,2D 3D
+Round 9, Trick 0, Turn: 3, Trump: S
++++ Trick id 0 turn 3 trump S +++
+RemoteInterAgent 3: Input: 7h
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led H trump S
+hand: 7S,4H XH JH AH,2C 3C 9C QC KC,5D 6D 8D
+op_b 3 table 7H
+case 1:
+pssbl_hi_hand: XH JH AH,
+prb_act XH 0.426743
+prb_act JH 0.426743
+prb_act AH 1
+out: AH, prb: 1
+Alg. out card: AH
+--- AI_0 --- out card: AH ---
+RemoteInterAgent 1: Input: 2h
+RemoteInterAgent 2: Input: 3h
+AI_0 played AH
+yourking played 2H
+Jujay played 3H
+Ketab played 7H
+^^^ Trick id 0 turn 3 led H trump S ^^^
+AI_0 hand 7S,4H XH JH,2C 3C 9C QC KC,5D 6D 8D
+yourking hand 3S,5H 6H 8H,4C XC,7D 9D JD QD KD AD
+Jujay hand 2S 5S JS KS,9H QH,6C 7C 8C AC,4D XD
+Ketab hand 4S 6S 8S 9S XS QS AS,KH,5C JC,2D 3D
+Round 9, Trick 1, Turn: 0, Trump: S
++++ Trick id 1 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led H led - trump S
+hand: 7S,4H XH JH,2C 3C 9C QC KC,5D 6D 8D
+comp 2 last table 3H
+op_a 1 last table 2H
+case 0:
+pssbl_hi_hand: 7S,4H XH JH,2C 3C 9C QC KC,5D 6D 8D
+prb_act 7S 9.48767e-05
+prb_act 4H 0.000474383
+prb_act XH 0.104762
+prb_act JH 0.104762
+prb_act 2C 1.6358e-05
+prb_act 3C 1.6358e-05
+prb_act 9C 0.0308123
+prb_act QC 0.333333
+prb_act KC 0.333333
+prb_act 5D 9.48767e-05
+prb_act 6D 9.48767e-05
+prb_act 8D 0.000474383
+out: --, prb: 0.333333
+Alg. out card: 2C
+--- AI_0 --- out card: 2C ---
+RemoteInterAgent 1: Input: 4c
+RemoteInterAgent 2: Input: ac
+RemoteInterAgent 3: Input: 5c
+AI_0 played 2C
+yourking played 4C
+Jujay played AC
+Ketab played 5C
+^^^ Trick id 1 turn 0 led C trump S ^^^
+AI_0 hand 7S,4H XH JH,3C 9C QC KC,5D 6D 8D
+yourking hand 3S,5H 6H 8H,XC,7D 9D JD QD KD AD
+Jujay hand 2S 5S JS KS,9H QH,6C 7C 8C,4D XD
+Ketab hand 4S 6S 8S 9S XS QS AS,KH,JC,2D 3D
+Round 9, Trick 2, Turn: 2, Trump: S
++++ Trick id 2 turn 2 trump S +++
+RemoteInterAgent 2: Input: js
+RemoteInterAgent 3: Input: as
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led S trump S
+hand: 7S,4H XH JH,3C 9C QC KC,5D 6D 8D
+op_b 3 last table 5C
+comp 2 last table AC
+op_a 1 last table 4C
+comp 2 table JS
+op_b 3 table AS
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 7S
+--- AI_0 --- out card: 7S ---
+RemoteInterAgent 1: Input: 3s
+AI_0 played 7S
+yourking played 3S
+Jujay played JS
+Ketab played AS
+^^^ Trick id 2 turn 2 led S trump S ^^^
+AI_0 hand 4H XH JH,3C 9C QC KC,5D 6D 8D
+yourking hand 5H 6H 8H,XC,7D 9D JD QD KD AD
+Jujay hand 2S 5S KS,9H QH,6C 7C 8C,4D XD
+Ketab hand 4S 6S 8S 9S XS QS,KH,JC,2D 3D
+Round 9, Trick 3, Turn: 3, Trump: S
++++ Trick id 3 turn 3 trump S +++
+RemoteInterAgent 3: Input: kh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led S led H trump S
+hand: 4H XH JH,3C 9C QC KC,5D 6D 8D
+op_a 1 last table 3S
+op_b 3 table KH
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 4H
+--- AI_0 --- out card: 4H ---
+RemoteInterAgent 1: Input: 5h
+RemoteInterAgent 2: Input: 9h
+AI_0 played 4H
+yourking played 5H
+Jujay played 9H
+Ketab played KH
+^^^ Trick id 3 turn 3 led H trump S ^^^
+AI_0 hand XH JH,3C 9C QC KC,5D 6D 8D
+yourking hand 6H 8H,XC,7D 9D JD QD KD AD
+Jujay hand 2S 5S KS,QH,6C 7C 8C,4D XD
+Ketab hand 4S 6S 8S 9S XS QS,JC,2D 3D
+Round 9, Trick 4, Turn: 3, Trump: S
++++ Trick id 4 turn 3 trump S +++
+RemoteInterAgent 3: Input: jc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led C trump S
+hand: XH JH,3C 9C QC KC,5D 6D 8D
+comp 2 last table 9H
+op_a 1 last table 5H
+op_b 3 table JC
+case 1:
+pssbl_hi_hand: QC KC,
+prb_act QC 1
+out: QC, prb: 1
+Alg. out card: QC
+--- AI_0 --- out card: QC ---
+RemoteInterAgent 1: Input: xc
+RemoteInterAgent 2: Input: 6c
+AI_0 played QC
+yourking played XC
+Jujay played 6C
+Ketab played JC
+^^^ Trick id 4 turn 3 led C trump S ^^^
+AI_0 hand XH JH,3C 9C KC,5D 6D 8D
+yourking hand 6H 8H,7D 9D JD QD KD AD
+Jujay hand 2S 5S KS,QH,7C 8C,4D XD
+Ketab hand 4S 6S 8S 9S XS QS,2D 3D
+Round 9, Trick 5, Turn: 0, Trump: S
++++ Trick id 5 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led C led - trump S
+hand: XH JH,3C 9C KC,5D 6D 8D
+comp 2 last table 6C
+op_a 1 last table XC
+case 0:
+pssbl_hi_hand: XH JH,3C 9C KC,5D 6D 8D
+prb_act XH 0.333333
+prb_act JH 0.333333
+prb_act 3C 0.101449
+prb_act 9C 1
+out: 9C, prb: 1
+Alg. out card: 9C
+--- AI_0 --- out card: 9C ---
+RemoteInterAgent 1: Input: 6h
+RemoteInterAgent 2: Input: 7c
+RemoteInterAgent 3: Input: 4s
+AI_0 played 9C
+yourking played 6H
+Jujay played 7C
+Ketab played 4S
+^^^ Trick id 5 turn 0 led C trump S ^^^
+AI_0 hand XH JH,3C KC,5D 6D 8D
+yourking hand 8H,7D 9D JD QD KD AD
+Jujay hand 2S 5S KS,QH,8C,4D XD
+Ketab hand 6S 8S 9S XS QS,2D 3D
+Round 9, Trick 6, Turn: 3, Trump: S
++++ Trick id 6 turn 3 trump S +++
+RemoteInterAgent 3: Input: 2d
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led D trump S
+hand: XH JH,3C KC,5D 6D 8D
+op_b 3 last table 4S
+comp 2 last table 7C
+op_a 1 last table 6H
+op_b 3 table 2D
+case 1:
+pssbl_hi_hand: 5D 6D 8D
+prb_act 5D 0.0221362
+prb_act 6D 0.0221362
+prb_act 8D 0.0442724
+out: --, prb: 0.0442724
+Alg. out card: 5D
+--- AI_0 --- out card: 5D ---
+RemoteInterAgent 1: Input: ad
+RemoteInterAgent 2: Input: 4d
+AI_0 played 5D
+yourking played AD
+Jujay played 4D
+Ketab played 2D
+^^^ Trick id 6 turn 3 led D trump S ^^^
+AI_0 hand XH JH,3C KC,6D 8D
+yourking hand 8H,7D 9D JD QD KD
+Jujay hand 2S 5S KS,QH,8C,XD
+Ketab hand 6S 8S 9S XS QS,3D
+Round 9, Trick 7, Turn: 1, Trump: S
++++ Trick id 7 turn 1 trump S +++
+RemoteInterAgent 1: Input: kd
+RemoteInterAgent 2: Input: xd
+RemoteInterAgent 3: Input: 3d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led D led D trump S
+hand: XH JH,3C KC,6D 8D
+comp 2 last table 4D
+op_a 1 last table AD
+op_a 1 table KD
+comp 2 table XD
+op_b 3 table 3D
+case 3:
+hi_hand: 
+Alg. out card: 6D
+--- AI_0 --- out card: 6D ---
+AI_0 played 6D
+yourking played KD
+Jujay played XD
+Ketab played 3D
+^^^ Trick id 7 turn 1 led D trump S ^^^
+AI_0 hand XH JH,3C KC,8D
+yourking hand 8H,7D 9D JD QD
+Jujay hand 2S 5S KS,QH,8C,
+Ketab hand 6S 8S 9S XS QS,
+Round 9, Trick 8, Turn: 1, Trump: S
++++ Trick id 8 turn 1 trump S +++
+RemoteInterAgent 1: Input: qd
+RemoteInterAgent 2: Input: 5s
+RemoteInterAgent 3: Input: xs
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led D led D trump S
+hand: XH JH,3C KC,8D
+op_a 1 table QD
+comp 2 table 5S
+op_b 3 table XS
+case 3:
+hi_hand: 
+Alg. out card: 8D
+--- AI_0 --- out card: 8D ---
+AI_0 played 8D
+yourking played QD
+Jujay played 5S
+Ketab played XS
+^^^ Trick id 8 turn 1 led D trump S ^^^
+AI_0 hand XH JH,3C KC,
+yourking hand 8H,7D 9D JD
+Jujay hand 2S KS,QH,8C,
+Ketab hand 6S 8S 9S QS,
+Round 9, Trick 9, Turn: 3, Trump: S
++++ Trick id 9 turn 3 trump S +++
+RemoteInterAgent 3: Input: 8s
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led D led S trump S
+hand: XH JH,3C KC,
+op_b 3 table 8S
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 3C
+--- AI_0 --- out card: 3C ---
+RemoteInterAgent 1: Input: 7d
+RemoteInterAgent 2: Input: ks
+AI_0 played 3C
+yourking played 7D
+Jujay played KS
+Ketab played 8S
+^^^ Trick id 9 turn 3 led S trump S ^^^
+AI_0 hand XH JH,KC,
+yourking hand 8H,9D JD
+Jujay hand 2S,QH,8C,
+Ketab hand 6S 9S QS,
+Round 9, Trick 10, Turn: 2, Trump: S
++++ Trick id 10 turn 2 trump S +++
+RemoteInterAgent 2: Input: qh
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led S led H trump S
+hand: XH JH,KC,
+comp 2 last table KS
+op_a 1 last table 7D
+comp 2 table QH
+op_b 3 table QS
+case 2:
+pssbl_hi_hand: 
+Alg. out card: XH
+--- AI_0 --- out card: XH ---
+RemoteInterAgent 1: Input: 8h
+AI_0 played XH
+yourking played 8H
+Jujay played QH
+Ketab played QS
+^^^ Trick id 10 turn 2 led H trump S ^^^
+kot: 0, oth_scr: 4, winner_team: 1, trump_team: 1
+/ALR=== Round 9 winner team: 1  (Kot: 0) ===
+/INF=== Round 10 ===
+RemoteInterAgent 3: Input: c
+AI_0 Habc: 2S 3S 6S 9S JS QS KS,2H 4H 5H 6H 7H 8H 9H XH JH QH KH AH,2C 3C 4C 5C 6C 7C 8C 9C XC JC AC,3D 4D 5D 7D 8D XD QD KD AD
+AI_0 hand 4S 5S 7S 8S XS AS,3H,QC KC,2D 6D 9D JD
+yourking hand 2S 9S JS,4H 6H 7H 8H,XC AC,3D 5D QD KD
+Jujay hand 3S 6S KS,2H 9H XH QH,5C 8C JC,4D 7D AD
+Ketab hand QS,5H JH KH AH,2C 3C 4C 6C 7C 9C,8D XD
+Round 10, Trick 0, Turn: 3, Trump: C
++++ Trick id 0 turn 3 trump C +++
+RemoteInterAgent 3: Input: ah
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led H trump C
+hand: 4S 5S 7S 8S XS AS,3H,QC KC,2D 6D 9D JD
+op_b 3 table AH
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+RemoteInterAgent 1: Input: 
+RemoteInterAgent 1: Input: 4h
+RemoteInterAgent 2: Input: 2h
+AI_0 played 3H
+yourking played 4H
+Jujay played 2H
+Ketab played AH
+^^^ Trick id 0 turn 3 led H trump C ^^^
+AI_0 hand 4S 5S 7S 8S XS AS,QC KC,2D 6D 9D JD
+yourking hand 2S 9S JS,6H 7H 8H,XC AC,3D 5D QD KD
+Jujay hand 3S 6S KS,9H XH QH,5C 8C JC,4D 7D AD
+Ketab hand QS,5H JH KH,2C 3C 4C 6C 7C 9C,8D XD
+Round 10, Trick 1, Turn: 3, Trump: C
++++ Trick id 1 turn 3 trump C +++
+RemoteInterAgent 3: Input: kh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led H trump C
+hand: 4S 5S 7S 8S XS AS,QC KC,2D 6D 9D JD
+comp 2 last table 2H
+op_a 1 last table 4H
+op_b 3 table KH
+case 1:
+pssbl_hi_hand: QC KC,
+prb_act QC 1
+prb_act KC 1
+out: --, prb: 1
+Alg. out card: 2D
+--- AI_0 --- out card: 2D ---
+RemoteInterAgent 1: Input: 6h
+RemoteInterAgent 2: Input: 9h
+AI_0 played 2D
+yourking played 6H
+Jujay played 9H
+Ketab played KH
+^^^ Trick id 1 turn 3 led H trump C ^^^
+AI_0 hand 4S 5S 7S 8S XS AS,QC KC,6D 9D JD
+yourking hand 2S 9S JS,7H 8H,XC AC,3D 5D QD KD
+Jujay hand 3S 6S KS,XH QH,5C 8C JC,4D 7D AD
+Ketab hand QS,5H JH,2C 3C 4C 6C 7C 9C,8D XD
+Round 10, Trick 2, Turn: 3, Trump: C
++++ Trick id 2 turn 3 trump C +++
+RemoteInterAgent 3: Input: 5h
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led H trump C
+hand: 4S 5S 7S 8S XS AS,QC KC,6D 9D JD
+comp 2 last table 9H
+op_a 1 last table 6H
+op_b 3 table 5H
+case 1:
+pssbl_hi_hand: QC KC,
+prb_act QC 1
+prb_act KC 1
+out: --, prb: 1
+Alg. out card: 4S
+--- AI_0 --- out card: 4S ---
+RemoteInterAgent 1: Input: 7h
+RemoteInterAgent 2: Input: xh
+AI_0 played 4S
+yourking played 7H
+Jujay played XH
+Ketab played 5H
+^^^ Trick id 2 turn 3 led H trump C ^^^
+AI_0 hand 5S 7S 8S XS AS,QC KC,6D 9D JD
+yourking hand 2S 9S JS,8H,XC AC,3D 5D QD KD
+Jujay hand 3S 6S KS,QH,5C 8C JC,4D 7D AD
+Ketab hand QS,JH,2C 3C 4C 6C 7C 9C,8D XD
+Round 10, Trick 3, Turn: 2, Trump: C
++++ Trick id 3 turn 2 trump C +++
+RemoteInterAgent 2: Input: ad
+RemoteInterAgent 3: Input: 8d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led H led D trump C
+hand: 5S 7S 8S XS AS,QC KC,6D 9D JD
+comp 2 last table XH
+op_a 1 last table 7H
+comp 2 table AD
+op_b 3 table 8D
+case 2:
+pssbl_hi_hand: 9D JD
+prb_act 9D 0.249084
+prb_act JD 0.404762
+prb_act out: --, (max)prb: 0.404762
+Alg. out card: 6D
+--- AI_0 --- out card: 6D ---
+RemoteInterAgent 1: Input: 3d
+AI_0 played 6D
+yourking played 3D
+Jujay played AD
+Ketab played 8D
+^^^ Trick id 3 turn 2 led D trump C ^^^
+AI_0 hand 5S 7S 8S XS AS,QC KC,9D JD
+yourking hand 2S 9S JS,8H,XC AC,5D QD KD
+Jujay hand 3S 6S KS,QH,5C 8C JC,4D 7D
+Ketab hand QS,JH,2C 3C 4C 6C 7C 9C,XD
+Round 10, Trick 4, Turn: 2, Trump: C
++++ Trick id 4 turn 2 trump C +++
+RemoteInterAgent 2: Input: qh
+RemoteInterAgent 3: Input: jh
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led D led H trump C
+hand: 5S 7S 8S XS AS,QC KC,9D JD
+op_a 1 last table 3D
+comp 2 table QH
+op_b 3 table JH
+case 2:
+pssbl_hi_hand: QC KC,
+prb_act QC 1
+prb_act KC 1
+prb_act out: --, (max)prb: 1
+Alg. out card: 5S
+--- AI_0 --- out card: 5S ---
+RemoteInterAgent 1: Input: 8h
+AI_0 played 5S
+yourking played 8H
+Jujay played QH
+Ketab played JH
+^^^ Trick id 4 turn 2 led H trump C ^^^
+AI_0 hand 7S 8S XS AS,QC KC,9D JD
+yourking hand 2S 9S JS,XC AC,5D QD KD
+Jujay hand 3S 6S KS,5C 8C JC,4D 7D
+Ketab hand QS,2C 3C 4C 6C 7C 9C,XD
+Round 10, Trick 5, Turn: 2, Trump: C
++++ Trick id 5 turn 2 trump C +++
+RemoteInterAgent 2: Input: 7d
+RemoteInterAgent 3: Input: xd
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led H led D trump C
+hand: 7S 8S XS AS,QC KC,9D JD
+op_a 1 last table 8H
+comp 2 table 7D
+op_b 3 table XD
+case 2:
+pssbl_hi_hand: JD
+prb_act JD 0.393939
+prb_act out: --, (max)prb: 0.393939
+Alg. out card: 9D
+--- AI_0 --- out card: 9D ---
+RemoteInterAgent 1: Input: kd
+AI_0 played 9D
+yourking played KD
+Jujay played 7D
+Ketab played XD
+^^^ Trick id 5 turn 2 led D trump C ^^^
+AI_0 hand 7S 8S XS AS,QC KC,JD
+yourking hand 2S 9S JS,XC AC,5D QD
+Jujay hand 3S 6S KS,5C 8C JC,4D
+Ketab hand QS,2C 3C 4C 6C 7C 9C,
+Round 10, Trick 6, Turn: 1, Trump: C
++++ Trick id 6 turn 1 trump C +++
+RemoteInterAgent 1: Input: qd
+RemoteInterAgent 2: Input: 4d
+RemoteInterAgent 3: Input: 2c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led D led D trump C
+hand: 7S 8S XS AS,QC KC,JD
+op_a 1 last table KD
+op_a 1 table QD
+comp 2 table 4D
+op_b 3 table 2C
+case 3:
+hi_hand: 
+Alg. out card: JD
+--- AI_0 --- out card: JD ---
+AI_0 played JD
+yourking played QD
+Jujay played 4D
+Ketab played 2C
+^^^ Trick id 6 turn 1 led D trump C ^^^
+AI_0 hand 7S 8S XS AS,QC KC,
+yourking hand 2S 9S JS,XC AC,5D
+Jujay hand 3S 6S KS,5C 8C JC,
+Ketab hand QS,3C 4C 6C 7C 9C,
+Round 10, Trick 7, Turn: 3, Trump: C
++++ Trick id 7 turn 3 trump C +++
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led D led S trump C
+hand: 7S 8S XS AS,QC KC,
+op_b 3 table QS
+case 1:
+pssbl_hi_hand: AS,
+prb_act AS 1
+out: AS, prb: 1
+Alg. out card: AS
+--- AI_0 --- out card: AS ---
+RemoteInterAgent 1: Input: 2s
+RemoteInterAgent 2: Input: 3s
+AI_0 played AS
+yourking played 2S
+Jujay played 3S
+Ketab played QS
+^^^ Trick id 7 turn 3 led S trump C ^^^
+AI_0 hand 7S 8S XS,QC KC,
+yourking hand 9S JS,XC AC,5D
+Jujay hand 6S KS,5C 8C JC,
+Ketab hand 3C 4C 6C 7C 9C,
+Round 10, Trick 8, Turn: 0, Trump: C
++++ Trick id 8 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led S led - trump C
+hand: 7S 8S XS,QC KC,
+comp 2 last table 3S
+op_a 1 last table 2S
+case 0:
+pssbl_hi_hand: 7S 8S XS,QC KC,
+prb_act 7S 0.021978
+prb_act 8S 0.021978
+prb_act XS 0.0952381
+prb_act QC 0.333333
+prb_act KC 0.333333
+out: --, prb: 0.333333
+Alg. out card: 7S
+--- AI_0 --- out card: 7S ---
+RemoteInterAgent 1: Input: 9s
+RemoteInterAgent 2: Input: ks
+RemoteInterAgent 3: Input: 3c
+AI_0 played 7S
+yourking played 9S
+Jujay played KS
+Ketab played 3C
+^^^ Trick id 8 turn 0 led S trump C ^^^
+AI_0 hand 8S XS,QC KC,
+yourking hand JS,XC AC,5D
+Jujay hand 6S,5C 8C JC,
+Ketab hand 4C 6C 7C 9C,
+Round 10, Trick 9, Turn: 3, Trump: C
++++ Trick id 9 turn 3 trump C +++
+RemoteInterAgent 3: Input: 6c
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led C trump C
+hand: 8S XS,QC KC,
+op_b 3 last table 3C
+comp 2 last table KS
+op_a 1 last table 9S
+op_b 3 table 6C
+case 1:
+pssbl_hi_hand: QC KC,
+prb_act QC 0.636364
+out: QC, prb: 0.636364
+Alg. out card: QC
+--- AI_0 --- out card: QC ---
+RemoteInterAgent 1: Input: ac
+RemoteInterAgent 2: Input: 5c
+AI_0 played QC
+yourking played AC
+Jujay played 5C
+Ketab played 6C
+^^^ Trick id 9 turn 3 led C trump C ^^^
+AI_0 hand 8S XS,KC,
+yourking hand JS,XC,5D
+Jujay hand 6S,8C JC,
+Ketab hand 4C 7C 9C,
+Round 10, Trick 10, Turn: 1, Trump: C
++++ Trick id 10 turn 1 trump C +++
+RemoteInterAgent 1: Input: xc
+RemoteInterAgent 2: Input: jc
+RemoteInterAgent 3: Input: 4c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led C led C trump C
+hand: 8S XS,KC,
+comp 2 last table 5C
+op_a 1 last table AC
+op_a 1 table XC
+comp 2 table JC
+op_b 3 table 4C
+case 3:
+Companion's card is good enough.
+Alg. out card: KC
+--- AI_0 --- out card: KC ---
+AI_0 played KC
+yourking played XC
+Jujay played JC
+Ketab played 4C
+^^^ Trick id 10 turn 1 led C trump C ^^^
+AI_0 hand 8S XS,
+yourking hand JS,5D
+Jujay hand 6S,8C,
+Ketab hand 7C 9C,
+Round 10, Trick 11, Turn: 0, Trump: C
++++ Trick id 11 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led C led - trump C
+hand: 8S XS,
+case 0:
+pssbl_hi_hand: 8S XS,
+prb_act 8S 0.333333
+prb_act XS 0.333333
+out: --, prb: 0.333333
+Alg. out card: 8S
+--- AI_0 --- out card: 8S ---
+RemoteInterAgent 1: Input: js
+RemoteInterAgent 2: Input: 6s
+RemoteInterAgent 3: Input: 7c
+AI_0 played 8S
+yourking played JS
+Jujay played 6S
+Ketab played 7C
+^^^ Trick id 11 turn 0 led S trump C ^^^
+kot: 0, oth_scr: 5, winner_team: 1, trump_team: 1
+/ALR=== Round 10 winner team: 1  (Kot: 0) ===
+/INF=== Round 11 ===
+RemoteInterAgent 3: Input: c
+AI_0 Habc: 2S 3S 5S 7S 8S 9S XS JS QS AS,3H 4H 5H 6H 7H 8H XH JH QH KH,2C 4C 6C 7C 8C 9C XC QC KC AC,2D 3D 4D 5D 6D 9D JD KD AD
+AI_0 hand 4S 6S KS,2H 9H AH,3C 5C JC,7D 8D XD QD
+yourking hand 2S 9S AS,3H 7H 8H XH JH KH,QC,4D 5D 6D
+Jujay hand 7S 8S XS JS,4H 5H QH,2C 6C 9C AC,3D KD
+Ketab hand 3S 5S QS,6H,4C 7C 8C XC KC,2D 9D JD AD
+Round 11, Trick 0, Turn: 3, Trump: C
++++ Trick id 0 turn 3 trump C +++
+RemoteInterAgent 3: Input: ad
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led D trump C
+hand: 4S 6S KS,2H 9H AH,3C 5C JC,7D 8D XD QD
+op_b 3 table AD
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 7D
+--- AI_0 --- out card: 7D ---
+RemoteInterAgent 1: Input: 4d
+RemoteInterAgent 2: Input: 3d
+AI_0 played 7D
+yourking played 4D
+Jujay played 3D
+Ketab played AD
+^^^ Trick id 0 turn 3 led D trump C ^^^
+AI_0 hand 4S 6S KS,2H 9H AH,3C 5C JC,8D XD QD
+yourking hand 2S 9S AS,3H 7H 8H XH JH KH,QC,5D 6D
+Jujay hand 7S 8S XS JS,4H 5H QH,2C 6C 9C AC,KD
+Ketab hand 3S 5S QS,6H,4C 7C 8C XC KC,2D 9D JD
+Round 11, Trick 1, Turn: 3, Trump: C
++++ Trick id 1 turn 3 trump C +++
+RemoteInterAgent 3: Input: 9d
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led D led D trump C
+hand: 4S 6S KS,2H 9H AH,3C 5C JC,8D XD QD
+comp 2 last table 3D
+op_a 1 last table 4D
+op_b 3 table 9D
+case 1:
+pssbl_hi_hand: XD QD
+prb_act XD 0.42521
+prb_act QD 0.657143
+out: QD, prb: 0.657143
+Alg. out card: QD
+--- AI_0 --- out card: QD ---
+RemoteInterAgent 1: Input: 5d
+RemoteInterAgent 2: Input: kd
+AI_0 played QD
+yourking played 5D
+Jujay played KD
+Ketab played 9D
+^^^ Trick id 1 turn 3 led D trump C ^^^
+AI_0 hand 4S 6S KS,2H 9H AH,3C 5C JC,8D XD
+yourking hand 2S 9S AS,3H 7H 8H XH JH KH,QC,6D
+Jujay hand 7S 8S XS JS,4H 5H QH,2C 6C 9C AC,
+Ketab hand 3S 5S QS,6H,4C 7C 8C XC KC,2D JD
+Round 11, Trick 2, Turn: 2, Trump: C
++++ Trick id 2 turn 2 trump C +++
+RemoteInterAgent 2: Input: 4h
+RemoteInterAgent 3: Input: 6h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led D led H trump C
+hand: 4S 6S KS,2H 9H AH,3C 5C JC,8D XD
+comp 2 last table KD
+op_a 1 last table 5D
+comp 2 table 4H
+op_b 3 table 6H
+case 2:
+pssbl_hi_hand: 9H AH,
+prb_act 9H 0.153981
+prb_act AH 1
+prb_act out: AH, (max)prb: 1
+c_card: 4H, prb: 0.02948
+diff of 4H-AH: -8
+Alg. out card: AH
+--- AI_0 --- out card: AH ---
+RemoteInterAgent 1: Input: 3h
+AI_0 played AH
+yourking played 3H
+Jujay played 4H
+Ketab played 6H
+^^^ Trick id 2 turn 2 led H trump C ^^^
+AI_0 hand 4S 6S KS,2H 9H,3C 5C JC,8D XD
+yourking hand 2S 9S AS,7H 8H XH JH KH,QC,6D
+Jujay hand 7S 8S XS JS,5H QH,2C 6C 9C AC,
+Ketab hand 3S 5S QS,4C 7C 8C XC KC,2D JD
+Round 11, Trick 3, Turn: 0, Trump: C
++++ Trick id 3 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led H led - trump C
+hand: 4S 6S KS,2H 9H,3C 5C JC,8D XD
+op_a 1 last table 3H
+case 0:
+pssbl_hi_hand: 4S 6S KS,2H 9H,3C 5C JC,8D XD
+prb_act 4S 7.68846e-06
+prb_act 6S 5.89449e-05
+prb_act KS 0.333333
+prb_act 2H 5.89449e-05
+prb_act 9H 0.00766284
+prb_act 3C 6.98951e-07
+prb_act 5C 7.68846e-06
+prb_act JC 0.0295567
+prb_act 8D 0.333333
+prb_act XD 0.333333
+out: --, prb: 0.333333
+Alg. out card: 2H
+--- AI_0 --- out card: 2H ---
+RemoteInterAgent 1: Input: kh
+RemoteInterAgent 2: Input: 5h
+RemoteInterAgent 3: Input: 2d
+AI_0 played 2H
+yourking played KH
+Jujay played 5H
+Ketab played 2D
+^^^ Trick id 3 turn 0 led H trump C ^^^
+AI_0 hand 4S 6S KS,9H,3C 5C JC,8D XD
+yourking hand 2S 9S AS,7H 8H XH JH,QC,6D
+Jujay hand 7S 8S XS JS,QH,2C 6C 9C AC,
+Ketab hand 3S 5S QS,4C 7C 8C XC KC,JD
+Round 11, Trick 4, Turn: 1, Trump: C
++++ Trick id 4 turn 1 trump C +++
+RemoteInterAgent 1: Input: as
+RemoteInterAgent 2: Input: 7s
+RemoteInterAgent 3: Input: 3s
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led S trump C
+hand: 4S 6S KS,9H,3C 5C JC,8D XD
+op_b 3 last table 2D
+comp 2 last table 5H
+op_a 1 last table KH
+op_a 1 table AS
+comp 2 table 7S
+op_b 3 table 3S
+case 3:
+hi_hand: 
+Alg. out card: 4S
+--- AI_0 --- out card: 4S ---
+AI_0 played 4S
+yourking played AS
+Jujay played 7S
+Ketab played 3S
+^^^ Trick id 4 turn 1 led S trump C ^^^
+AI_0 hand 6S KS,9H,3C 5C JC,8D XD
+yourking hand 2S 9S,7H 8H XH JH,QC,6D
+Jujay hand 8S XS JS,QH,2C 6C 9C AC,
+Ketab hand 5S QS,4C 7C 8C XC KC,JD
+Round 11, Trick 5, Turn: 1, Trump: C
++++ Trick id 5 turn 1 trump C +++
+RemoteInterAgent 1: Input: 7h
+RemoteInterAgent 2: Input: qh
+RemoteInterAgent 3: Input: 4c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led S led H trump C
+hand: 6S KS,9H,3C 5C JC,8D XD
+op_a 1 table 7H
+comp 2 table QH
+op_b 3 table 4C
+case 3:
+hi_hand: 
+Alg. out card: 9H
+--- AI_0 --- out card: 9H ---
+AI_0 played 9H
+yourking played 7H
+Jujay played QH
+Ketab played 4C
+^^^ Trick id 5 turn 1 led H trump C ^^^
+AI_0 hand 6S KS,3C 5C JC,8D XD
+yourking hand 2S 9S,8H XH JH,QC,6D
+Jujay hand 8S XS JS,2C 6C 9C AC,
+Ketab hand 5S QS,7C 8C XC KC,JD
+Round 11, Trick 6, Turn: 3, Trump: C
++++ Trick id 6 turn 3 trump C +++
+RemoteInterAgent 3: Input: jd
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led H led D trump C
+hand: 6S KS,3C 5C JC,8D XD
+op_b 3 table JD
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 8D
+--- AI_0 --- out card: 8D ---
+RemoteInterAgent 1: Input: 6d
+RemoteInterAgent 2: Input: 2c
+AI_0 played 8D
+yourking played 6D
+Jujay played 2C
+Ketab played JD
+^^^ Trick id 6 turn 3 led D trump C ^^^
+AI_0 hand 6S KS,3C 5C JC,XD
+yourking hand 2S 9S,8H XH JH,QC,
+Jujay hand 8S XS JS,6C 9C AC,
+Ketab hand 5S QS,7C 8C XC KC,
+Round 11, Trick 7, Turn: 2, Trump: C
++++ Trick id 7 turn 2 trump C +++
+RemoteInterAgent 2: Input: xs
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led D led S trump C
+hand: 6S KS,3C 5C JC,XD
+comp 2 last table 2C
+op_a 1 last table 6D
+comp 2 table XS
+op_b 3 table QS
+case 2:
+pssbl_hi_hand: KS,
+prb_act KS 1
+prb_act out: KS, (max)prb: 1
+c_card: XS, prb: 0.625
+diff of XS-KS: -2
+Companion's card is good enough.
+Alg. out card: 6S
+--- AI_0 --- out card: 6S ---
+RemoteInterAgent 1: Input: 2s
+AI_0 played 6S
+yourking played 2S
+Jujay played XS
+Ketab played QS
+^^^ Trick id 7 turn 2 led S trump C ^^^
+AI_0 hand KS,3C 5C JC,XD
+yourking hand 9S,8H XH JH,QC,
+Jujay hand 8S JS,6C 9C AC,
+Ketab hand 5S,7C 8C XC KC,
+Round 11, Trick 8, Turn: 3, Trump: C
++++ Trick id 8 turn 3 trump C +++
+RemoteInterAgent 3: Input: 5s
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led S led S trump C
+hand: KS,3C 5C JC,XD
+op_a 1 last table 2S
+op_b 3 table 5S
+case 1:
+pssbl_hi_hand: KS,
+prb_act KS 1
+out: KS, prb: 1
+Alg. out card: KS
+--- AI_0 --- out card: KS ---
+RemoteInterAgent 1: Input: 9s
+RemoteInterAgent 2: Input: 8s
+AI_0 played KS
+yourking played 9S
+Jujay played 8S
+Ketab played 5S
+^^^ Trick id 8 turn 3 led S trump C ^^^
+AI_0 hand 3C 5C JC,XD
+yourking hand 8H XH JH,QC,
+Jujay hand JS,6C 9C AC,
+Ketab hand 7C 8C XC KC,
+Round 11, Trick 9, Turn: 0, Trump: C
++++ Trick id 9 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led S led - trump C
+hand: 3C 5C JC,XD
+comp 2 last table 8S
+op_a 1 last table 9S
+case 0:
+pssbl_hi_hand: 3C 5C JC,XD
+prb_act 3C 0
+prb_act 5C 0
+prb_act JC 0.0181818
+prb_act XD 0
+out: --, prb: 0.0181818
+Alg. out card: XD
+--- AI_0 --- out card: XD ---
+RemoteInterAgent 1: Input: qc
+RemoteInterAgent 2: Input: ac
+RemoteInterAgent 3: Input: 7c
+AI_0 played XD
+yourking played QC
+Jujay played AC
+Ketab played 7C
+^^^ Trick id 9 turn 0 led D trump C ^^^
+AI_0 hand 3C 5C JC,
+yourking hand 8H XH JH,
+Jujay hand JS,6C 9C,
+Ketab hand 8C XC KC,
+Round 11, Trick 10, Turn: 2, Trump: C
++++ Trick id 10 turn 2 trump C +++
+RemoteInterAgent 2: Input: js
+RemoteInterAgent 3: Input: xc
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 0 last_led - led S trump C
+hand: 3C 5C JC,
+op_b 3 last table 7C
+comp 2 last table AC
+op_a 1 last table QC
+comp 2 table JS
+op_b 3 table XC
+case 2:
+pssbl_hi_hand: JC,
+prb_act JC 0.571429
+prb_act out: JC, (max)prb: 0.571429
+c_card: JS, prb: 0.0285714
+diff of JS-JC: -52
+Alg. out card: JC
+--- AI_0 --- out card: JC ---
+RemoteInterAgent 1: Input: 8h
+AI_0 played JC
+yourking played 8H
+Jujay played JS
+Ketab played XC
+^^^ Trick id 10 turn 2 led S trump C ^^^
+AI_0 hand 3C 5C,
+yourking hand XH JH,
+Jujay hand 6C 9C,
+Ketab hand 8C KC,
+Round 11, Trick 11, Turn: 0, Trump: C
++++ Trick id 11 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led S led - trump C
+hand: 3C 5C,
+op_a 1 last table 8H
+case 0:
+pssbl_hi_hand: 3C 5C,
+prb_act 3C 0
+prb_act 5C 0
+out: --, prb: 0
+Alg. out card: 3C
+--- AI_0 --- out card: 3C ---
+RemoteInterAgent 1: Input: xh
+RemoteInterAgent 2: Input: 9c
+RemoteInterAgent 3: Input: kc
+AI_0 played 3C
+yourking played XH
+Jujay played 9C
+Ketab played KC
+^^^ Trick id 11 turn 0 led C trump C ^^^
+AI_0 hand 5C,
+yourking hand JH,
+Jujay hand 6C,
+Ketab hand 8C,
+Round 11, Trick 12, Turn: 3, Trump: C
++++ Trick id 12 turn 3 trump C +++
+RemoteInterAgent 3: Input: 8c
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led C trump C
+hand: 5C,
+op_b 3 last table KC
+comp 2 last table 9C
+op_a 1 last table XH
+op_b 3 table 8C
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 5C
+--- AI_0 --- out card: 5C ---
+RemoteInterAgent 1: Input: jh
+RemoteInterAgent 2: Input: 6c
+AI_0 played 5C
+yourking played JH
+Jujay played 6C
+Ketab played 8C
+^^^ Trick id 12 turn 3 led C trump C ^^^
+kot: 0, oth_scr: 6, winner_team: 1, trump_team: 1
+/ALR=== Round 11 winner team: 1  (Kot: 0) ===
+/INF=== Round 12 ===
+RemoteInterAgent 3: Input: h
+AI_0 Habc: 2S 3S 4S 5S 6S 7S 9S JS QS AS,2H 3H 7H 8H 9H XH QH KH AH,2C 4C 5C 6C 7C 8C 9C XC JC QC KC,3D 4D 5D 6D 8D XD JD KD AD
+AI_0 hand 8S XS KS,4H 5H 6H JH,3C AC,2D 7D 9D QD
+yourking hand 4S 7S JS,8H XH QH KH AH,2C 9C,3D 5D 6D
+Jujay hand 2S 3S 5S 6S 9S QS,7C JC,4D 8D XD KD AD
+Ketab hand AS,2H 3H 7H 9H,4C 5C 6C 8C XC QC KC,JD
+Round 12, Trick 0, Turn: 3, Trump: H
++++ Trick id 0 turn 3 trump H +++
+RemoteInterAgent 3: Input: as
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led S trump H
+hand: 8S XS KS,4H 5H 6H JH,3C AC,2D 7D 9D QD
+op_b 3 table AS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 8S
+--- AI_0 --- out card: 8S ---
+RemoteInterAgent 1: Input: 4s
+RemoteInterAgent 2: Input: 2s
+AI_0 played 8S
+yourking played 4S
+Jujay played 2S
+Ketab played AS
+^^^ Trick id 0 turn 3 led S trump H ^^^
+AI_0 hand XS KS,4H 5H 6H JH,3C AC,2D 7D 9D QD
+yourking hand 7S JS,8H XH QH KH AH,2C 9C,3D 5D 6D
+Jujay hand 3S 5S 6S 9S QS,7C JC,4D 8D XD KD AD
+Ketab hand 2H 3H 7H 9H,4C 5C 6C 8C XC QC KC,JD
+Round 12, Trick 1, Turn: 3, Trump: H
++++ Trick id 1 turn 3 trump H +++
+RemoteInterAgent 3: Input: qc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led S led C trump H
+hand: XS KS,4H 5H 6H JH,3C AC,2D 7D 9D QD
+comp 2 last table 2S
+op_a 1 last table 4S
+op_b 3 table QC
+case 1:
+pssbl_hi_hand: AC,
+prb_act AC 1
+out: AC, prb: 1
+Alg. out card: AC
+--- AI_0 --- out card: AC ---
+RemoteInterAgent 1: Input: 2c
+RemoteInterAgent 2: Input: 7c
+AI_0 played AC
+yourking played 2C
+Jujay played 7C
+Ketab played QC
+^^^ Trick id 1 turn 3 led C trump H ^^^
+AI_0 hand XS KS,4H 5H 6H JH,3C,2D 7D 9D QD
+yourking hand 7S JS,8H XH QH KH AH,9C,3D 5D 6D
+Jujay hand 3S 5S 6S 9S QS,JC,4D 8D XD KD AD
+Ketab hand 2H 3H 7H 9H,4C 5C 6C 8C XC KC,JD
+Round 12, Trick 2, Turn: 0, Trump: H
++++ Trick id 2 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led C led - trump H
+hand: XS KS,4H 5H 6H JH,3C,2D 7D 9D QD
+comp 2 last table 7C
+op_a 1 last table 2C
+case 0:
+pssbl_hi_hand: XS KS,4H 5H 6H JH,3C,2D 7D 9D QD
+prb_act XS 0.104167
+prb_act KS 1
+out: KS, prb: 1
+Alg. out card: KS
+--- AI_0 --- out card: KS ---
+RemoteInterAgent 1: Input: 7s
+RemoteInterAgent 2: Input: 3s
+RemoteInterAgent 3: Input: 2h
+AI_0 played KS
+yourking played 7S
+Jujay played 3S
+Ketab played 2H
+^^^ Trick id 2 turn 0 led S trump H ^^^
+AI_0 hand XS,4H 5H 6H JH,3C,2D 7D 9D QD
+yourking hand JS,8H XH QH KH AH,9C,3D 5D 6D
+Jujay hand 5S 6S 9S QS,JC,4D 8D XD KD AD
+Ketab hand 3H 7H 9H,4C 5C 6C 8C XC KC,JD
+Round 12, Trick 3, Turn: 3, Trump: H
++++ Trick id 3 turn 3 trump H +++
+RemoteInterAgent 3: Input: kc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led C trump H
+hand: XS,4H 5H 6H JH,3C,2D 7D 9D QD
+op_b 3 last table 2H
+comp 2 last table 3S
+op_a 1 last table 7S
+op_b 3 table KC
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 3C
+--- AI_0 --- out card: 3C ---
+RemoteInterAgent 1: Input: 9c
+RemoteInterAgent 2: Input: jc
+AI_0 played 3C
+yourking played 9C
+Jujay played JC
+Ketab played KC
+^^^ Trick id 3 turn 3 led C trump H ^^^
+AI_0 hand XS,4H 5H 6H JH,2D 7D 9D QD
+yourking hand JS,8H XH QH KH AH,3D 5D 6D
+Jujay hand 5S 6S 9S QS,4D 8D XD KD AD
+Ketab hand 3H 7H 9H,4C 5C 6C 8C XC,JD
+Round 12, Trick 4, Turn: 3, Trump: H
++++ Trick id 4 turn 3 trump H +++
+RemoteInterAgent 3: Input: xc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led C led C trump H
+hand: XS,4H 5H 6H JH,2D 7D 9D QD
+comp 2 last table JC
+op_a 1 last table 9C
+op_b 3 table XC
+case 1:
+pssbl_hi_hand: 4H 5H 6H JH,
+prb_act 4H 1
+out: 4H, prb: 1
+Alg. out card: 4H
+--- AI_0 --- out card: 4H ---
+RemoteInterAgent 1: Input: xh
+RemoteInterAgent 2: Input: 4d
+AI_0 played 4H
+yourking played XH
+Jujay played 4D
+Ketab played XC
+^^^ Trick id 4 turn 3 led C trump H ^^^
+AI_0 hand XS,5H 6H JH,2D 7D 9D QD
+yourking hand JS,8H QH KH AH,3D 5D 6D
+Jujay hand 5S 6S 9S QS,8D XD KD AD
+Ketab hand 3H 7H 9H,4C 5C 6C 8C,JD
+Round 12, Trick 5, Turn: 1, Trump: H
++++ Trick id 5 turn 1 trump H +++
+RemoteInterAgent 1: Input: ah
+RemoteInterAgent 2: Input: 5s
+RemoteInterAgent 3: Input: 3h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led C led H trump H
+hand: XS,5H 6H JH,2D 7D 9D QD
+comp 2 last table 4D
+op_a 1 last table XH
+op_a 1 table AH
+comp 2 table 5S
+op_b 3 table 3H
+case 3:
+hi_hand: 
+Alg. out card: 5H
+--- AI_0 --- out card: 5H ---
+AI_0 played 5H
+yourking played AH
+Jujay played 5S
+Ketab played 3H
+^^^ Trick id 5 turn 1 led H trump H ^^^
+AI_0 hand XS,6H JH,2D 7D 9D QD
+yourking hand JS,8H QH KH,3D 5D 6D
+Jujay hand 6S 9S QS,8D XD KD AD
+Ketab hand 7H 9H,4C 5C 6C 8C,JD
+Round 12, Trick 6, Turn: 1, Trump: H
++++ Trick id 6 turn 1 trump H +++
+RemoteInterAgent 1: Input: kh
+RemoteInterAgent 2: Input: 8d
+RemoteInterAgent 3: Input: 7h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led H led H trump H
+hand: XS,6H JH,2D 7D 9D QD
+op_a 1 table KH
+comp 2 table 8D
+op_b 3 table 7H
+case 3:
+hi_hand: 
+Alg. out card: 6H
+--- AI_0 --- out card: 6H ---
+AI_0 played 6H
+yourking played KH
+Jujay played 8D
+Ketab played 7H
+^^^ Trick id 6 turn 1 led H trump H ^^^
+AI_0 hand XS,JH,2D 7D 9D QD
+yourking hand JS,8H QH,3D 5D 6D
+Jujay hand 6S 9S QS,XD KD AD
+Ketab hand 9H,4C 5C 6C 8C,JD
+Round 12, Trick 7, Turn: 1, Trump: H
++++ Trick id 7 turn 1 trump H +++
+RemoteInterAgent 1: Input: qh
+RemoteInterAgent 2: Input: xd
+RemoteInterAgent 3: Input: 9h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led H led H trump H
+hand: XS,JH,2D 7D 9D QD
+op_a 1 table QH
+comp 2 table XD
+op_b 3 table 9H
+case 3:
+hi_hand: 
+Alg. out card: JH
+--- AI_0 --- out card: JH ---
+AI_0 played JH
+yourking played QH
+Jujay played XD
+Ketab played 9H
+^^^ Trick id 7 turn 1 led H trump H ^^^
+kot: 0, oth_scr: 1, winner_team: 1, trump_team: 1
+/ALR=== Round 12 winner team: 1  (Kot: 0) ===
+/INF=== Round 13 ===
+RemoteInterAgent 3: Input: c
+AI_0 Habc: 2S 4S 5S 6S 7S 8S 9S JS QS AS,3H 4H 5H 6H 7H 9H XH QH KH AH,2C 3C 8C 9C XC JC QC KC AC,2D 3D 4D 5D 6D 7D 8D XD JD KD
+AI_0 hand 3S XS KS,2H 8H JH,4C 5C 6C 7C,9D QD AD
+yourking hand 4S 6S 9S JS QS AS,3H,8C KC,2D 5D 7D XD
+Jujay hand 5S 8S,4H 7H 9H XH QH KH,2C AC,3D 6D JD
+Ketab hand 2S 7S,5H 6H AH,3C 9C XC JC QC,4D 8D KD
+Round 13, Trick 0, Turn: 3, Trump: C
++++ Trick id 0 turn 3 trump C +++
+RemoteInterAgent 3: Input: ah
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led H trump C
+hand: 3S XS KS,2H 8H JH,4C 5C 6C 7C,9D QD AD
+op_b 3 table AH
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 2H
+--- AI_0 --- out card: 2H ---
+RemoteInterAgent 1: Input: 3h
+RemoteInterAgent 2: Input: 4h
+AI_0 played 2H
+yourking played 3H
+Jujay played 4H
+Ketab played AH
+^^^ Trick id 0 turn 3 led H trump C ^^^
+AI_0 hand 3S XS KS,8H JH,4C 5C 6C 7C,9D QD AD
+yourking hand 4S 6S 9S JS QS AS,8C KC,2D 5D 7D XD
+Jujay hand 5S 8S,7H 9H XH QH KH,2C AC,3D 6D JD
+Ketab hand 2S 7S,5H 6H,3C 9C XC JC QC,4D 8D KD
+Round 13, Trick 1, Turn: 3, Trump: C
++++ Trick id 1 turn 3 trump C +++
+RemoteInterAgent 3: Input: 8d
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led D trump C
+hand: 3S XS KS,8H JH,4C 5C 6C 7C,9D QD AD
+comp 2 last table 4H
+op_a 1 last table 3H
+op_b 3 table 8D
+case 1:
+pssbl_hi_hand: 9D QD AD
+prb_act 9D 0.270588
+prb_act QD 0.657143
+out: QD, prb: 0.657143
+Alg. out card: QD
+--- AI_0 --- out card: QD ---
+RemoteInterAgent 1: Input: 2d
+RemoteInterAgent 2: Input: 3d
+AI_0 played QD
+yourking played 2D
+Jujay played 3D
+Ketab played 8D
+^^^ Trick id 1 turn 3 led D trump C ^^^
+AI_0 hand 3S XS KS,8H JH,4C 5C 6C 7C,9D AD
+yourking hand 4S 6S 9S JS QS AS,8C KC,5D 7D XD
+Jujay hand 5S 8S,7H 9H XH QH KH,2C AC,6D JD
+Ketab hand 2S 7S,5H 6H,3C 9C XC JC QC,4D KD
+Round 13, Trick 2, Turn: 0, Trump: C
++++ Trick id 2 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led D led - trump C
+hand: 3S XS KS,8H JH,4C 5C 6C 7C,9D AD
+comp 2 last table 3D
+op_a 1 last table 2D
+case 0:
+pssbl_hi_hand: 3S XS KS,8H JH,4C 5C 6C 7C,9D AD
+prb_act 3S 1.42609e-06
+prb_act XS 0.0302419
+prb_act KS 0.333333
+prb_act 8H 0.00806452
+prb_act JH 0.104167
+prb_act 4C 7.72463e-05
+prb_act 5C 7.72463e-05
+prb_act 6C 7.72463e-05
+prb_act 7C 7.72463e-05
+prb_act 9D 0.0302419
+prb_act AD 1
+out: AD, prb: 1
+Alg. out card: AD
+--- AI_0 --- out card: AD ---
+RemoteInterAgent 1: Input: 5d
+RemoteInterAgent 2: Input: 6d
+RemoteInterAgent 3: Input: 4d
+AI_0 played AD
+yourking played 5D
+Jujay played 6D
+Ketab played 4D
+^^^ Trick id 2 turn 0 led D trump C ^^^
+AI_0 hand 3S XS KS,8H JH,4C 5C 6C 7C,9D
+yourking hand 4S 6S 9S JS QS AS,8C KC,7D XD
+Jujay hand 5S 8S,7H 9H XH QH KH,2C AC,JD
+Ketab hand 2S 7S,5H 6H,3C 9C XC JC QC,KD
+Round 13, Trick 3, Turn: 0, Trump: C
++++ Trick id 3 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump C
+hand: 3S XS KS,8H JH,4C 5C 6C 7C,9D
+op_b 3 last table 4D
+comp 2 last table 6D
+op_a 1 last table 5D
+case 0:
+pssbl_hi_hand: 3S XS KS,8H JH,4C 5C 6C 7C,9D
+prb_act 3S 6.98951e-07
+prb_act XS 0.0295567
+prb_act KS 0.333333
+prb_act 8H 0.00766284
+prb_act JH 0.103448
+prb_act 4C 5.89449e-05
+prb_act 5C 5.89449e-05
+prb_act 6C 5.89449e-05
+prb_act 7C 5.89449e-05
+prb_act 9D 0.0295567
+out: --, prb: 0.333333
+Alg. out card: 3S
+--- AI_0 --- out card: 3S ---
+RemoteInterAgent 1: Input: as
+RemoteInterAgent 2: Input: 5s
+RemoteInterAgent 3: Input: 2s
+AI_0 played 3S
+yourking played AS
+Jujay played 5S
+Ketab played 2S
+^^^ Trick id 3 turn 0 led S trump C ^^^
+AI_0 hand XS KS,8H JH,4C 5C 6C 7C,9D
+yourking hand 4S 6S 9S JS QS,8C KC,7D XD
+Jujay hand 8S,7H 9H XH QH KH,2C AC,JD
+Ketab hand 7S,5H 6H,3C 9C XC JC QC,KD
+Round 13, Trick 4, Turn: 1, Trump: C
++++ Trick id 4 turn 1 trump C +++
+RemoteInterAgent 1: Input: 9s
+RemoteInterAgent 2: Input: 8s
+RemoteInterAgent 3: Input: 7s
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led S trump C
+hand: XS KS,8H JH,4C 5C 6C 7C,9D
+op_b 3 last table 2S
+comp 2 last table 5S
+op_a 1 last table AS
+op_a 1 table 9S
+comp 2 table 8S
+op_b 3 table 7S
+case 3:
+hi_hand: XS KS,
+Alg. out card: XS
+--- AI_0 --- out card: XS ---
+AI_0 played XS
+yourking played 9S
+Jujay played 8S
+Ketab played 7S
+^^^ Trick id 4 turn 1 led S trump C ^^^
+AI_0 hand KS,8H JH,4C 5C 6C 7C,9D
+yourking hand 4S 6S JS QS,8C KC,7D XD
+Jujay hand 7H 9H XH QH KH,2C AC,JD
+Ketab hand 5H 6H,3C 9C XC JC QC,KD
+Round 13, Trick 5, Turn: 0, Trump: C
++++ Trick id 5 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led S led - trump C
+hand: KS,8H JH,4C 5C 6C 7C,9D
+case 0:
+pssbl_hi_hand: KS,8H JH,4C 5C 6C 7C,9D
+prb_act KS 1
+out: KS, prb: 1
+Alg. out card: KS
+--- AI_0 --- out card: KS ---
+RemoteInterAgent 1: Input: 4s
+RemoteInterAgent 2: Input: 7h
+RemoteInterAgent 3: Input: 3c
+AI_0 played KS
+yourking played 4S
+Jujay played 7H
+Ketab played 3C
+^^^ Trick id 5 turn 0 led S trump C ^^^
+AI_0 hand 8H JH,4C 5C 6C 7C,9D
+yourking hand 6S JS QS,8C KC,7D XD
+Jujay hand 9H XH QH KH,2C AC,JD
+Ketab hand 5H 6H,9C XC JC QC,KD
+Round 13, Trick 6, Turn: 3, Trump: C
++++ Trick id 6 turn 3 trump C +++
+RemoteInterAgent 3: Input: kd
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led D trump C
+hand: 8H JH,4C 5C 6C 7C,9D
+op_b 3 last table 3C
+comp 2 last table 7H
+op_a 1 last table 4S
+op_b 3 table KD
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 9D
+--- AI_0 --- out card: 9D ---
+RemoteInterAgent 1: Input: 7d
+RemoteInterAgent 2: Input: jd
+AI_0 played 9D
+yourking played 7D
+Jujay played JD
+Ketab played KD
+^^^ Trick id 6 turn 3 led D trump C ^^^
+AI_0 hand 8H JH,4C 5C 6C 7C,
+yourking hand 6S JS QS,8C KC,XD
+Jujay hand 9H XH QH KH,2C AC,
+Ketab hand 5H 6H,9C XC JC QC,
+Round 13, Trick 7, Turn: 3, Trump: C
++++ Trick id 7 turn 3 trump C +++
+RemoteInterAgent 3: Input: xc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led D led C trump C
+hand: 8H JH,4C 5C 6C 7C,
+comp 2 last table JD
+op_a 1 last table 7D
+op_b 3 table XC
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 4C
+--- AI_0 --- out card: 4C ---
+RemoteInterAgent 1: Input: kc
+RemoteInterAgent 2: Input: ac
+AI_0 played 4C
+yourking played KC
+Jujay played AC
+Ketab played XC
+^^^ Trick id 7 turn 3 led C trump C ^^^
+AI_0 hand 8H JH,5C 6C 7C,
+yourking hand 6S JS QS,8C,XD
+Jujay hand 9H XH QH KH,2C,
+Ketab hand 5H 6H,9C JC QC,
+Round 13, Trick 8, Turn: 2, Trump: C
++++ Trick id 8 turn 2 trump C +++
+RemoteInterAgent 2: Input: kh
+RemoteInterAgent 3: Input: 5h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led C led H trump C
+hand: 8H JH,5C 6C 7C,
+comp 2 last table AC
+op_a 1 last table KC
+comp 2 table KH
+op_b 3 table 5H
+case 2:
+pssbl_hi_hand: 8H JH,
+prb_act 8H 0.195804
+prb_act JH 0.615385
+prb_act out: JH, (max)prb: 0.615385
+c_card: KH, prb: 1
+diff of KH-JH: 1
+Companion's card is good enough.
+Alg. out card: 8H
+--- AI_0 --- out card: 8H ---
+RemoteInterAgent 1: Input: 8c
+AI_0 played 8H
+yourking played 8C
+Jujay played KH
+Ketab played 5H
+^^^ Trick id 8 turn 2 led H trump C ^^^
+AI_0 hand JH,5C 6C 7C,
+yourking hand 6S JS QS,XD
+Jujay hand 9H XH QH,2C,
+Ketab hand 6H,9C JC QC,
+Round 13, Trick 9, Turn: 1, Trump: C
++++ Trick id 9 turn 1 trump C +++
+RemoteInterAgent 1: Input: xd
+RemoteInterAgent 2: Input: 2c
+RemoteInterAgent 3: Input: jc
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led H led D trump C
+hand: JH,5C 6C 7C,
+op_a 1 last table 8C
+op_a 1 table XD
+comp 2 table 2C
+op_b 3 table JC
+case 3:
+hi_hand: 
+Alg. out card: JH
+--- AI_0 --- out card: JH ---
+AI_0 played JH
+yourking played XD
+Jujay played 2C
+Ketab played JC
+^^^ Trick id 9 turn 1 led D trump C ^^^
+AI_0 hand 5C 6C 7C,
+yourking hand 6S JS QS,
+Jujay hand 9H XH QH,
+Ketab hand 6H,9C QC,
+Round 13, Trick 10, Turn: 3, Trump: C
++++ Trick id 10 turn 3 trump C +++
+RemoteInterAgent 3: Input: qc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led D led C trump C
+hand: 5C 6C 7C,
+op_b 3 table QC
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 5C
+--- AI_0 --- out card: 5C ---
+RemoteInterAgent 1: Input: 6s
+RemoteInterAgent 2: Input: 9h
+AI_0 played 5C
+yourking played 6S
+Jujay played 9H
+Ketab played QC
+^^^ Trick id 10 turn 3 led C trump C ^^^
+kot: 0, oth_scr: 4, winner_team: 1, trump_team: 1
+/ALR=== Round 13 winner team: 1  (Kot: 0) ===
+*** Team 1 is the winner of the game. ***

@@ -1,0 +1,2274 @@
+RemoteInterAgent 1: Server listening on port 23346
+RemoteInterAgent 1: Server waiting for client connection...
+RemoteInterAgent 1: Client connected
+RemoteInterAgent 2: Server listening on port 23347
+RemoteInterAgent 2: Server waiting for client connection...
+RemoteInterAgent 2: Client connected
+RemoteInterAgent 3: Server listening on port 23348
+RemoteInterAgent 3: Server waiting for client connection...
+RemoteInterAgent 3: Client connected
+RemoteInterAgent 1: Input: Kalagh
+RemoteInterAgent 2: Input: parisa
+RemoteInterAgent 3: Input: Chakavak
+/INF=== Round 1 ===
+AI_0, trump call, first5:
+
+S: 6SJS
+H: 7H
+C: 
+D: 4D5D
+
+AI_0, trump call, suit S, score: 4.16667
+AI_0, trump call, suit H, score: 1.83333
+AI_0, trump call, suit C, score: 0
+AI_0, trump call, suit D, score: 2.83333
+AI_0, alg. trump: S
+AI_0 Habc: 2S 3S 4S 5S 7S 8S 9S QS KS AS,3H 4H 5H 6H 8H 9H XH JH QH AH,2C 4C 5C 6C 7C 9C XC JC QC KC AC,2D 3D 6D 7D 8D XD JD KD
+AI_0 hand 6S XS JS,2H 7H KH,3C 8C,4D 5D 9D QD AD
+Kalagh hand 7S 8S,3H 4H 9H JH,2C 5C 6C XC QC AC,KD
+parisa hand 4S KS AS,5H 6H 8H XH QH,9C JC,2D 3D 7D
+Chakavak hand 2S 3S 5S 9S QS,AH,4C 7C KC,6D 8D XD JD
+Round 1, Trick 0, Turn: 0, Trump: S
++++ Trick id 0 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord -1 last_led - led - trump S
+hand: 6S XS JS,2H 7H KH,3C 8C,4D 5D 9D QD AD
+case 0:
+pssbl_hi_hand: 6S XS JS,2H 7H KH,3C 8C,4D 5D 9D QD AD
+prb_act 6S 0.000525957
+prb_act XS 0.0312945
+prb_act JS 0.0312945
+prb_act 2H 4.49866e-07
+prb_act 7H 0.000525957
+prb_act KH 0.333333
+prb_act 3C 4.49866e-07
+prb_act 8C 0.000525957
+prb_act 4D 0.000525957
+prb_act 5D 0.000525957
+prb_act 9D 0.0312945
+prb_act QD 0.333333
+prb_act AD 1
+out: AD, prb: 1
+Alg. out card: AD
+--- AI_0 --- out card: AD ---
+RemoteInterAgent 1: Input: kd
+RemoteInterAgent 2: Input: 2d
+RemoteInterAgent 3: Input: 6d
+AI_0 played AD
+Kalagh played KD
+parisa played 2D
+Chakavak played 6D
+^^^ Trick id 0 turn 0 led D trump S ^^^
+AI_0 hand 6S XS JS,2H 7H KH,3C 8C,4D 5D 9D QD
+Kalagh hand 7S 8S,3H 4H 9H JH,2C 5C 6C XC QC AC,
+parisa hand 4S KS AS,5H 6H 8H XH QH,9C JC,3D 7D
+Chakavak hand 2S 3S 5S 9S QS,AH,4C 7C KC,8D XD JD
+Round 1, Trick 1, Turn: 0, Trump: S
++++ Trick id 1 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump S
+hand: 6S XS JS,2H 7H KH,3C 8C,4D 5D 9D QD
+op_b 3 last table 6D
+comp 2 last table 2D
+op_a 1 last table KD
+case 0:
+pssbl_hi_hand: 6S XS JS,2H 7H KH,3C 8C,4D 5D 9D QD
+prb_act 6S 0.000474383
+prb_act XS 0.0308123
+prb_act JS 0.0308123
+prb_act 2H 2.59652e-07
+prb_act 7H 0.000474383
+prb_act KH 0.333333
+prb_act 3C 2.59652e-07
+prb_act 8C 0.000474383
+prb_act 4D 0.00840336
+prb_act 5D 0.00840336
+prb_act 9D 0.104762
+prb_act QD 1
+out: QD, prb: 1
+Alg. out card: QD
+--- AI_0 --- out card: QD ---
+RemoteInterAgent 1: Input: 7s
+RemoteInterAgent 2: Input: 3d
+RemoteInterAgent 3: Input: 8d
+AI_0 played QD
+Kalagh played 7S
+parisa played 3D
+Chakavak played 8D
+^^^ Trick id 1 turn 0 led D trump S ^^^
+AI_0 hand 6S XS JS,2H 7H KH,3C 8C,4D 5D 9D
+Kalagh hand 8S,3H 4H 9H JH,2C 5C 6C XC QC AC,
+parisa hand 4S KS AS,5H 6H 8H XH QH,9C JC,7D
+Chakavak hand 2S 3S 5S 9S QS,AH,4C 7C KC,XD JD
+Round 1, Trick 2, Turn: 1, Trump: S
++++ Trick id 2 turn 1 trump S +++
+RemoteInterAgent 1: Input: as
+RemoteInterAgent 1: Input: ac
+RemoteInterAgent 2: Input: 9c
+RemoteInterAgent 3: Input: 4c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led C trump S
+hand: 6S XS JS,2H 7H KH,3C 8C,4D 5D 9D
+op_b 3 last table 8D
+comp 2 last table 3D
+op_a 1 last table 7S
+op_a 1 table AC
+comp 2 table 9C
+op_b 3 table 4C
+case 3:
+hi_hand: 
+Alg. out card: 3C
+--- AI_0 --- out card: 3C ---
+AI_0 played 3C
+Kalagh played AC
+parisa played 9C
+Chakavak played 4C
+^^^ Trick id 2 turn 1 led C trump S ^^^
+AI_0 hand 6S XS JS,2H 7H KH,8C,4D 5D 9D
+Kalagh hand 8S,3H 4H 9H JH,2C 5C 6C XC QC,
+parisa hand 4S KS AS,5H 6H 8H XH QH,JC,7D
+Chakavak hand 2S 3S 5S 9S QS,AH,7C KC,XD JD
+Round 1, Trick 3, Turn: 1, Trump: S
++++ Trick id 3 turn 1 trump S +++
+RemoteInterAgent 1: Input: xc
+RemoteInterAgent 2: Input: jc
+RemoteInterAgent 3: Input: kc
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led C trump S
+hand: 6S XS JS,2H 7H KH,8C,4D 5D 9D
+op_a 1 table XC
+comp 2 table JC
+op_b 3 table KC
+case 3:
+hi_hand: 
+Alg. out card: 8C
+--- AI_0 --- out card: 8C ---
+AI_0 played 8C
+Kalagh played XC
+parisa played JC
+Chakavak played KC
+^^^ Trick id 3 turn 1 led C trump S ^^^
+AI_0 hand 6S XS JS,2H 7H KH,4D 5D 9D
+Kalagh hand 8S,3H 4H 9H JH,2C 5C 6C QC,
+parisa hand 4S KS AS,5H 6H 8H XH QH,7D
+Chakavak hand 2S 3S 5S 9S QS,AH,7C,XD JD
+Round 1, Trick 4, Turn: 3, Trump: S
++++ Trick id 4 turn 3 trump S +++
+RemoteInterAgent 3: Input: ah
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led C led H trump S
+hand: 6S XS JS,2H 7H KH,4D 5D 9D
+op_b 3 table AH
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 2H
+--- AI_0 --- out card: 2H ---
+RemoteInterAgent 1: Input: 3h
+RemoteInterAgent 2: Input: 7d
+RemoteInterAgent 2: Input: 5h
+AI_0 played 2H
+Kalagh played 3H
+parisa played 5H
+Chakavak played AH
+^^^ Trick id 4 turn 3 led H trump S ^^^
+AI_0 hand 6S XS JS,7H KH,4D 5D 9D
+Kalagh hand 8S,4H 9H JH,2C 5C 6C QC,
+parisa hand 4S KS AS,6H 8H XH QH,7D
+Chakavak hand 2S 3S 5S 9S QS,7C,XD JD
+Round 1, Trick 5, Turn: 3, Trump: S
++++ Trick id 5 turn 3 trump S +++
+RemoteInterAgent 3: Input: jd
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led D trump S
+hand: 6S XS JS,7H KH,4D 5D 9D
+comp 2 last table 5H
+op_a 1 last table 3H
+op_b 3 table JD
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 4D
+--- AI_0 --- out card: 4D ---
+RemoteInterAgent 1: Input: 8s
+RemoteInterAgent 2: Input: 7d
+AI_0 played 4D
+Kalagh played 8S
+parisa played 7D
+Chakavak played JD
+^^^ Trick id 5 turn 3 led D trump S ^^^
+AI_0 hand 6S XS JS,7H KH,5D 9D
+Kalagh hand 4H 9H JH,2C 5C 6C QC,
+parisa hand 4S KS AS,6H 8H XH QH,
+Chakavak hand 2S 3S 5S 9S QS,7C,XD
+Round 1, Trick 6, Turn: 1, Trump: S
++++ Trick id 6 turn 1 trump S +++
+RemoteInterAgent 1: Input: qc
+RemoteInterAgent 2: Input: 4s
+RemoteInterAgent 3: Input: 7c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led D led C trump S
+hand: 6S XS JS,7H KH,5D 9D
+comp 2 last table 7D
+op_a 1 last table 8S
+op_a 1 table QC
+comp 2 table 4S
+op_b 3 table 7C
+case 3:
+Companion's card is good enough.
+Alg. out card: 5D
+--- AI_0 --- out card: 5D ---
+AI_0 played 5D
+Kalagh played QC
+parisa played 4S
+Chakavak played 7C
+^^^ Trick id 6 turn 1 led C trump S ^^^
+AI_0 hand 6S XS JS,7H KH,9D
+Kalagh hand 4H 9H JH,2C 5C 6C,
+parisa hand KS AS,6H 8H XH QH,
+Chakavak hand 2S 3S 5S 9S QS,XD
+Round 1, Trick 7, Turn: 2, Trump: S
++++ Trick id 7 turn 2 trump S +++
+RemoteInterAgent 2: Input: as
+RemoteInterAgent 3: Input: 2s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led C led S trump S
+hand: 6S XS JS,7H KH,9D
+comp 2 table AS
+op_b 3 table 2S
+case 2:
+pssbl_hi_hand: 6S XS JS,
+prb_act 6S 0.184615
+prb_act XS 0.342857
+prb_act JS 0.342857
+prb_act out: --, (max)prb: 0.342857
+Alg. out card: 6S
+--- AI_0 --- out card: 6S ---
+RemoteInterAgent 1: Input: 2c
+AI_0 played 6S
+Kalagh played 2C
+parisa played AS
+Chakavak played 2S
+^^^ Trick id 7 turn 2 led S trump S ^^^
+AI_0 hand XS JS,7H KH,9D
+Kalagh hand 4H 9H JH,5C 6C,
+parisa hand KS,6H 8H XH QH,
+Chakavak hand 3S 5S 9S QS,XD
+Round 1, Trick 8, Turn: 2, Trump: S
++++ Trick id 8 turn 2 trump S +++
+RemoteInterAgent 2: Input: ks
+RemoteInterAgent 3: Input: 3s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led S led S trump S
+hand: XS JS,7H KH,9D
+op_a 1 last table 2C
+comp 2 table KS
+op_b 3 table 3S
+case 2:
+pssbl_hi_hand: XS JS,
+prb_act XS 1
+prb_act JS 1
+prb_act out: --, (max)prb: 1
+Alg. out card: XS
+--- AI_0 --- out card: XS ---
+RemoteInterAgent 1: Input: 5c
+AI_0 played XS
+Kalagh played 5C
+parisa played KS
+Chakavak played 3S
+^^^ Trick id 8 turn 2 led S trump S ^^^
+AI_0 hand JS,7H KH,9D
+Kalagh hand 4H 9H JH,6C,
+parisa hand 6H 8H XH QH,
+Chakavak hand 5S 9S QS,XD
+Round 1, Trick 9, Turn: 2, Trump: S
++++ Trick id 9 turn 2 trump S +++
+RemoteInterAgent 2: Input: xh
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led S led H trump S
+hand: JS,7H KH,9D
+op_a 1 last table 5C
+comp 2 table XH
+op_b 3 table QS
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 7H
+--- AI_0 --- out card: 7H ---
+RemoteInterAgent 1: Input: 4h
+AI_0 played 7H
+Kalagh played 4H
+parisa played XH
+Chakavak played QS
+^^^ Trick id 9 turn 2 led H trump S ^^^
+AI_0 hand JS,KH,9D
+Kalagh hand 9H JH,6C,
+parisa hand 6H 8H QH,
+Chakavak hand 5S 9S,XD
+Round 1, Trick 10, Turn: 3, Trump: S
++++ Trick id 10 turn 3 trump S +++
+RemoteInterAgent 3: Input: 9s
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led H led S trump S
+hand: JS,KH,9D
+op_a 1 last table 4H
+op_b 3 table 9S
+case 1:
+pssbl_hi_hand: JS,
+prb_act JS 1
+out: --, prb: 1
+Alg. out card: JS
+--- AI_0 --- out card: JS ---
+RemoteInterAgent 1: Input: 6c
+RemoteInterAgent 2: Input: 6h
+AI_0 played JS
+Kalagh played 6C
+parisa played 6H
+Chakavak played 9S
+^^^ Trick id 10 turn 3 led S trump S ^^^
+AI_0 hand KH,9D
+Kalagh hand 9H JH,
+parisa hand 8H QH,
+Chakavak hand 5S,XD
+Round 1, Trick 11, Turn: 0, Trump: S
++++ Trick id 11 turn 0 trump S +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led S led - trump S
+hand: KH,9D
+comp 2 last table 6H
+op_a 1 last table 6C
+case 0:
+pssbl_hi_hand: 
+Alg. out card: 9D
+--- AI_0 --- out card: 9D ---
+RemoteInterAgent 1: Input: 9h
+RemoteInterAgent 2: Input: 8h
+RemoteInterAgent 3: Input: xd
+AI_0 played 9D
+Kalagh played 9H
+parisa played 8H
+Chakavak played XD
+^^^ Trick id 11 turn 0 led D trump S ^^^
+kot: 0, oth_scr: 5, winner_team: 1, trump_team: 0
+/ALR=== Round 1 winner team: 1  (Kot: 0) ===
+/INF=== Round 2 ===
+RemoteInterAgent 1: Input: d
+AI_0 Habc: 3S 4S 8S 9S XS JS QS KS,2H 3H 4H 5H 6H 7H 8H 9H XH JH KH AH,2C 4C 5C 6C 7C JC QC AC,2D 3D 5D 6D 7D 8D 9D XD QD KD AD
+AI_0 hand 2S 5S 6S 7S AS,QH,3C 8C 9C XC KC,4D JD
+Kalagh hand 3H 4H 8H XH JH,5C,2D 6D 7D 9D QD KD AD
+parisa hand 3S 8S 9S,5H 7H KH AH,2C 4C 6C JC QC,XD
+Chakavak hand 4S XS JS QS KS,2H 6H 9H,7C AC,3D 5D 8D
+Round 2, Trick 0, Turn: 1, Trump: D
++++ Trick id 0 turn 1 trump D +++
+RemoteInterAgent 1: Input: 5c
+RemoteInterAgent 2: Input: jc
+RemoteInterAgent 3: Input: ac
+--- AI_0 pl_id 0 team 0 ord 3 last_ord -1 last_led - led C trump D
+hand: 2S 5S 6S 7S AS,QH,3C 8C 9C XC KC,4D JD
+op_a 1 table 5C
+comp 2 table JC
+op_b 3 table AC
+case 3:
+hi_hand: 
+Alg. out card: 3C
+--- AI_0 --- out card: 3C ---
+AI_0 played 3C
+Kalagh played 5C
+parisa played JC
+Chakavak played AC
+^^^ Trick id 0 turn 1 led C trump D ^^^
+AI_0 hand 2S 5S 6S 7S AS,QH,8C 9C XC KC,4D JD
+Kalagh hand 3H 4H 8H XH JH,2D 6D 7D 9D QD KD AD
+parisa hand 3S 8S 9S,5H 7H KH AH,2C 4C 6C QC,XD
+Chakavak hand 4S XS JS QS KS,2H 6H 9H,7C,3D 5D 8D
+Round 2, Trick 1, Turn: 3, Trump: D
++++ Trick id 1 turn 3 trump D +++
+RemoteInterAgent 3: Input: 7c
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led C led C trump D
+hand: 2S 5S 6S 7S AS,QH,8C 9C XC KC,4D JD
+op_b 3 table 7C
+case 1:
+pssbl_hi_hand: 8C 9C XC KC,
+prb_act 8C 0.657143
+out: 8C, prb: 0.657143
+Alg. out card: 8C
+--- AI_0 --- out card: 8C ---
+RemoteInterAgent 1: Input: 2d
+RemoteInterAgent 2: Input: 2c
+AI_0 played 8C
+Kalagh played 2D
+parisa played 2C
+Chakavak played 7C
+^^^ Trick id 1 turn 3 led C trump D ^^^
+AI_0 hand 2S 5S 6S 7S AS,QH,9C XC KC,4D JD
+Kalagh hand 3H 4H 8H XH JH,6D 7D 9D QD KD AD
+parisa hand 3S 8S 9S,5H 7H KH AH,4C 6C QC,XD
+Chakavak hand 4S XS JS QS KS,2H 6H 9H,3D 5D 8D
+Round 2, Trick 2, Turn: 1, Trump: D
++++ Trick id 2 turn 1 trump D +++
+RemoteInterAgent 1: Input: 8h
+RemoteInterAgent 2: Input: ah
+RemoteInterAgent 3: Input: 9h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led C led H trump D
+hand: 2S 5S 6S 7S AS,QH,9C XC KC,4D JD
+comp 2 last table 2C
+op_a 1 last table 2D
+op_a 1 table 8H
+comp 2 table AH
+op_b 3 table 9H
+case 3:
+Companion's card is good enough.
+Alg. out card: QH
+--- AI_0 --- out card: QH ---
+AI_0 played QH
+Kalagh played 8H
+parisa played AH
+Chakavak played 9H
+^^^ Trick id 2 turn 1 led H trump D ^^^
+AI_0 hand 2S 5S 6S 7S AS,9C XC KC,4D JD
+Kalagh hand 3H 4H XH JH,6D 7D 9D QD KD AD
+parisa hand 3S 8S 9S,5H 7H KH,4C 6C QC,XD
+Chakavak hand 4S XS JS QS KS,2H 6H,3D 5D 8D
+Round 2, Trick 3, Turn: 2, Trump: D
++++ Trick id 3 turn 2 trump D +++
+RemoteInterAgent 2: Input: kh
+RemoteInterAgent 3: Input: 2h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led H led H trump D
+hand: 2S 5S 6S 7S AS,9C XC KC,4D JD
+comp 2 table KH
+op_b 3 table 2H
+case 2:
+pssbl_hi_hand: 4D JD
+prb_act 4D 1
+prb_act out: 4D, (max)prb: 1
+c_card: KH, prb: 1
+diff of KH-4D: -52
+Companion's card is good enough.
+Alg. out card: 2S
+--- AI_0 --- out card: 2S ---
+RemoteInterAgent 1: Input: 3h
+AI_0 played 2S
+Kalagh played 3H
+parisa played KH
+Chakavak played 2H
+^^^ Trick id 3 turn 2 led H trump D ^^^
+AI_0 hand 5S 6S 7S AS,9C XC KC,4D JD
+Kalagh hand 4H XH JH,6D 7D 9D QD KD AD
+parisa hand 3S 8S 9S,5H 7H,4C 6C QC,XD
+Chakavak hand 4S XS JS QS KS,6H,3D 5D 8D
+Round 2, Trick 4, Turn: 2, Trump: D
++++ Trick id 4 turn 2 trump D +++
+RemoteInterAgent 2: Input: 5h
+RemoteInterAgent 3: Input: 6h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led H led H trump D
+hand: 5S 6S 7S AS,9C XC KC,4D JD
+op_a 1 last table 3H
+comp 2 table 5H
+op_b 3 table 6H
+case 2:
+pssbl_hi_hand: 4D JD
+prb_act 4D 1
+prb_act out: 4D, (max)prb: 1
+c_card: 5H, prb: 0.185714
+diff of 5H-4D: -52
+Alg. out card: 4D
+--- AI_0 --- out card: 4D ---
+RemoteInterAgent 1: Input: 4h
+AI_0 played 4D
+Kalagh played 4H
+parisa played 5H
+Chakavak played 6H
+^^^ Trick id 4 turn 2 led H trump D ^^^
+AI_0 hand 5S 6S 7S AS,9C XC KC,JD
+Kalagh hand XH JH,6D 7D 9D QD KD AD
+parisa hand 3S 8S 9S,7H,4C 6C QC,XD
+Chakavak hand 4S XS JS QS KS,3D 5D 8D
+Round 2, Trick 5, Turn: 0, Trump: D
++++ Trick id 5 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led H led - trump D
+hand: 5S 6S 7S AS,9C XC KC,JD
+op_a 1 last table 4H
+case 0:
+pssbl_hi_hand: 5S 6S 7S AS,9C XC KC,JD
+prb_act 5S 0.00020803
+prb_act 6S 0.00020803
+prb_act 7S 0.00020803
+prb_act AS 1
+out: AS, prb: 1
+Alg. out card: AS
+--- AI_0 --- out card: AS ---
+RemoteInterAgent 1: Input: 6d
+RemoteInterAgent 2: Input: 3s
+RemoteInterAgent 3: Input: 4s
+AI_0 played AS
+Kalagh played 6D
+parisa played 3S
+Chakavak played 4S
+^^^ Trick id 5 turn 0 led S trump D ^^^
+AI_0 hand 5S 6S 7S,9C XC KC,JD
+Kalagh hand XH JH,7D 9D QD KD AD
+parisa hand 8S 9S,7H,4C 6C QC,XD
+Chakavak hand XS JS QS KS,3D 5D 8D
+Round 2, Trick 6, Turn: 1, Trump: D
++++ Trick id 6 turn 1 trump D +++
+RemoteInterAgent 1: Input: xh
+RemoteInterAgent 2: Input: 7h
+RemoteInterAgent 3: Input: 3d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led H trump D
+hand: 5S 6S 7S,9C XC KC,JD
+op_b 3 last table 4S
+comp 2 last table 3S
+op_a 1 last table 6D
+op_a 1 table XH
+comp 2 table 7H
+op_b 3 table 3D
+case 3:
+hi_hand: JD
+Alg. out card: JD
+--- AI_0 --- out card: JD ---
+AI_0 played JD
+Kalagh played XH
+parisa played 7H
+Chakavak played 3D
+^^^ Trick id 6 turn 1 led H trump D ^^^
+AI_0 hand 5S 6S 7S,9C XC KC,
+Kalagh hand JH,7D 9D QD KD AD
+parisa hand 8S 9S,4C 6C QC,XD
+Chakavak hand XS JS QS KS,5D 8D
+Round 2, Trick 7, Turn: 0, Trump: D
++++ Trick id 7 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led H led - trump D
+hand: 5S 6S 7S,9C XC KC,
+case 0:
+pssbl_hi_hand: 5S 6S 7S,9C XC KC,
+prb_act 5S 5.38677e-05
+prb_act 6S 5.38677e-05
+prb_act 7S 5.38677e-05
+prb_act 9C 0.333333
+prb_act XC 0.333333
+prb_act KC 1
+out: KC, prb: 1
+Alg. out card: KC
+--- AI_0 --- out card: KC ---
+RemoteInterAgent 1: Input: 9d
+RemoteInterAgent 2: Input: 4c
+RemoteInterAgent 3: Input: xs
+AI_0 played KC
+Kalagh played 9D
+parisa played 4C
+Chakavak played XS
+^^^ Trick id 7 turn 0 led C trump D ^^^
+AI_0 hand 5S 6S 7S,9C XC,
+Kalagh hand JH,7D QD KD AD
+parisa hand 8S 9S,6C QC,XD
+Chakavak hand JS QS KS,5D 8D
+Round 2, Trick 8, Turn: 1, Trump: D
++++ Trick id 8 turn 1 trump D +++
+RemoteInterAgent 1: Input: ad
+RemoteInterAgent 2: Input: xd
+RemoteInterAgent 3: Input: 5d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led D trump D
+hand: 5S 6S 7S,9C XC,
+op_b 3 last table XS
+comp 2 last table 4C
+op_a 1 last table 9D
+op_a 1 table AD
+comp 2 table XD
+op_b 3 table 5D
+case 3:
+hi_hand: 
+Alg. out card: 5S
+--- AI_0 --- out card: 5S ---
+AI_0 played 5S
+Kalagh played AD
+parisa played XD
+Chakavak played 5D
+^^^ Trick id 8 turn 1 led D trump D ^^^
+AI_0 hand 6S 7S,9C XC,
+Kalagh hand JH,7D QD KD
+parisa hand 8S 9S,6C QC,
+Chakavak hand JS QS KS,8D
+Round 2, Trick 9, Turn: 1, Trump: D
++++ Trick id 9 turn 1 trump D +++
+RemoteInterAgent 1: Input: kd
+RemoteInterAgent 2: Input: 6c
+RemoteInterAgent 3: Input: 8d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led D led D trump D
+hand: 6S 7S,9C XC,
+op_a 1 table KD
+comp 2 table 6C
+op_b 3 table 8D
+case 3:
+hi_hand: 
+Alg. out card: 6S
+--- AI_0 --- out card: 6S ---
+AI_0 played 6S
+Kalagh played KD
+parisa played 6C
+Chakavak played 8D
+^^^ Trick id 9 turn 1 led D trump D ^^^
+AI_0 hand 7S,9C XC,
+Kalagh hand JH,7D QD
+parisa hand 8S 9S,QC,
+Chakavak hand JS QS KS,
+Round 2, Trick 10, Turn: 1, Trump: D
++++ Trick id 10 turn 1 trump D +++
+RemoteInterAgent 1: Input: qd
+RemoteInterAgent 2: Input: 8s
+RemoteInterAgent 3: Input: js
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led D led D trump D
+hand: 7S,9C XC,
+op_a 1 table QD
+comp 2 table 8S
+op_b 3 table JS
+case 3:
+hi_hand: 
+Alg. out card: 7S
+--- AI_0 --- out card: 7S ---
+AI_0 played 7S
+Kalagh played QD
+parisa played 8S
+Chakavak played JS
+^^^ Trick id 10 turn 1 led D trump D ^^^
+kot: 0, oth_scr: 4, winner_team: 1, trump_team: 1
+/ALR=== Round 2 winner team: 1  (Kot: 0) ===
+/INF=== Round 3 ===
+RemoteInterAgent 1: Input: c
+AI_0 Habc: 2S 3S 4S 5S 6S 7S 8S 9S XS QS KS,2H 3H 5H 6H 7H 8H 9H XH JH QH AH,3C 4C 8C 9C XC JC KC AC,2D 4D 5D 6D 7D JD QD KD AD
+AI_0 hand JS AS,4H KH,2C 5C 6C 7C QC,3D 8D 9D XD
+Kalagh hand 2S 4S 5S QS,7H 8H 9H,3C XC KC AC,6D JD
+parisa hand 3S 7S 9S XS,6H JH,4C 8C,2D 5D QD KD AD
+Chakavak hand 6S 8S KS,2H 3H 5H XH QH AH,9C JC,4D 7D
+Round 3, Trick 0, Turn: 1, Trump: C
++++ Trick id 0 turn 1 trump C +++
+RemoteInterAgent 1: Input: 6d
+RemoteInterAgent 2: Input: ad
+RemoteInterAgent 3: Input: 4d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord -1 last_led - led D trump C
+hand: JS AS,4H KH,2C 5C 6C 7C QC,3D 8D 9D XD
+op_a 1 table 6D
+comp 2 table AD
+op_b 3 table 4D
+case 3:
+Companion's card is good enough.
+Alg. out card: 3D
+--- AI_0 --- out card: 3D ---
+AI_0 played 3D
+Kalagh played 6D
+parisa played AD
+Chakavak played 4D
+^^^ Trick id 0 turn 1 led D trump C ^^^
+AI_0 hand JS AS,4H KH,2C 5C 6C 7C QC,8D 9D XD
+Kalagh hand 2S 4S 5S QS,7H 8H 9H,3C XC KC AC,JD
+parisa hand 3S 7S 9S XS,6H JH,4C 8C,2D 5D QD KD
+Chakavak hand 6S 8S KS,2H 3H 5H XH QH AH,9C JC,7D
+Round 3, Trick 1, Turn: 2, Trump: C
++++ Trick id 1 turn 2 trump C +++
+RemoteInterAgent 2: Input: kd
+RemoteInterAgent 3: Input: 7d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led D led D trump C
+hand: JS AS,4H KH,2C 5C 6C 7C QC,8D 9D XD
+comp 2 table KD
+op_b 3 table 7D
+case 2:
+pssbl_hi_hand: 8D 9D XD
+prb_act 8D 0.411765
+prb_act 9D 0.411765
+prb_act XD 0.411765
+prb_act out: --, (max)prb: 0.411765
+Alg. out card: 8D
+--- AI_0 --- out card: 8D ---
+RemoteInterAgent 1: Input: jd
+AI_0 played 8D
+Kalagh played JD
+parisa played KD
+Chakavak played 7D
+^^^ Trick id 1 turn 2 led D trump C ^^^
+AI_0 hand JS AS,4H KH,2C 5C 6C 7C QC,9D XD
+Kalagh hand 2S 4S 5S QS,7H 8H 9H,3C XC KC AC,
+parisa hand 3S 7S 9S XS,6H JH,4C 8C,2D 5D QD
+Chakavak hand 6S 8S KS,2H 3H 5H XH QH AH,9C JC,
+Round 3, Trick 2, Turn: 2, Trump: C
++++ Trick id 2 turn 2 trump C +++
+RemoteInterAgent 2: Input: 6h
+RemoteInterAgent 3: Input: ah
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led D led H trump C
+hand: JS AS,4H KH,2C 5C 6C 7C QC,9D XD
+op_a 1 last table JD
+comp 2 table 6H
+op_b 3 table AH
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 4H
+--- AI_0 --- out card: 4H ---
+RemoteInterAgent 1: Input: 7h
+AI_0 played 4H
+Kalagh played 7H
+parisa played 6H
+Chakavak played AH
+^^^ Trick id 2 turn 2 led H trump C ^^^
+AI_0 hand JS AS,KH,2C 5C 6C 7C QC,9D XD
+Kalagh hand 2S 4S 5S QS,8H 9H,3C XC KC AC,
+parisa hand 3S 7S 9S XS,JH,4C 8C,2D 5D QD
+Chakavak hand 6S 8S KS,2H 3H 5H XH QH,9C JC,
+Round 3, Trick 3, Turn: 3, Trump: C
++++ Trick id 3 turn 3 trump C +++
+RemoteInterAgent 3: Input: xh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led H led H trump C
+hand: JS AS,KH,2C 5C 6C 7C QC,9D XD
+op_a 1 last table 7H
+op_b 3 table XH
+case 1:
+pssbl_hi_hand: KH,
+prb_act KH 1
+out: KH, prb: 1
+Alg. out card: KH
+--- AI_0 --- out card: KH ---
+RemoteInterAgent 1: Input: 8h
+RemoteInterAgent 2: Input: jh
+AI_0 played KH
+Kalagh played 8H
+parisa played JH
+Chakavak played XH
+^^^ Trick id 3 turn 3 led H trump C ^^^
+AI_0 hand JS AS,2C 5C 6C 7C QC,9D XD
+Kalagh hand 2S 4S 5S QS,9H,3C XC KC AC,
+parisa hand 3S 7S 9S XS,4C 8C,2D 5D QD
+Chakavak hand 6S 8S KS,2H 3H 5H QH,9C JC,
+Round 3, Trick 4, Turn: 0, Trump: C
++++ Trick id 4 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led H led - trump C
+hand: JS AS,2C 5C 6C 7C QC,9D XD
+comp 2 last table JH
+op_a 1 last table 8H
+case 0:
+pssbl_hi_hand: JS AS,2C 5C 6C 7C QC,9D XD
+prb_act JS 0.102564
+prb_act AS 1
+out: AS, prb: 1
+Alg. out card: AS
+--- AI_0 --- out card: AS ---
+RemoteInterAgent 1: Input: 2s
+RemoteInterAgent 2: Input: 3s
+RemoteInterAgent 3: Input: 6s
+AI_0 played AS
+Kalagh played 2S
+parisa played 3S
+Chakavak played 6S
+^^^ Trick id 4 turn 0 led S trump C ^^^
+AI_0 hand JS,2C 5C 6C 7C QC,9D XD
+Kalagh hand 4S 5S QS,9H,3C XC KC AC,
+parisa hand 7S 9S XS,4C 8C,2D 5D QD
+Chakavak hand 8S KS,2H 3H 5H QH,9C JC,
+Round 3, Trick 5, Turn: 0, Trump: C
++++ Trick id 5 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump C
+hand: JS,2C 5C 6C 7C QC,9D XD
+op_b 3 last table 6S
+comp 2 last table 3S
+op_a 1 last table 2S
+case 0:
+pssbl_hi_hand: JS,2C 5C 6C 7C QC,9D XD
+prb_act JS 0.101449
+prb_act 2C 1.35967e-06
+prb_act 5C 0.00020803
+prb_act 6C 0.00020803
+prb_act 7C 0.00020803
+prb_act QC 0.101449
+prb_act 9D 0.333333
+prb_act XD 0.333333
+out: --, prb: 0.333333
+Alg. out card: 9D
+--- AI_0 --- out card: 9D ---
+RemoteInterAgent 1: Input: 3c
+RemoteInterAgent 2: Input: 5d
+RemoteInterAgent 3: Input: 8s
+AI_0 played 9D
+Kalagh played 3C
+parisa played 5D
+Chakavak played 8S
+^^^ Trick id 5 turn 0 led D trump C ^^^
+AI_0 hand JS,2C 5C 6C 7C QC,XD
+Kalagh hand 4S 5S QS,9H,XC KC AC,
+parisa hand 7S 9S XS,4C 8C,2D QD
+Chakavak hand KS,2H 3H 5H QH,9C JC,
+Round 3, Trick 6, Turn: 1, Trump: C
++++ Trick id 6 turn 1 trump C +++
+RemoteInterAgent 1: Input: 5s
+RemoteInterAgent 2: Input: xs
+RemoteInterAgent 3: Input: ks
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led S trump C
+hand: JS,2C 5C 6C 7C QC,XD
+op_b 3 last table 8S
+comp 2 last table 5D
+op_a 1 last table 3C
+op_a 1 table 5S
+comp 2 table XS
+op_b 3 table KS
+case 3:
+hi_hand: 
+Alg. out card: JS
+--- AI_0 --- out card: JS ---
+AI_0 played JS
+Kalagh played 5S
+parisa played XS
+Chakavak played KS
+^^^ Trick id 6 turn 1 led S trump C ^^^
+AI_0 hand 2C 5C 6C 7C QC,XD
+Kalagh hand 4S QS,9H,XC KC AC,
+parisa hand 7S 9S,4C 8C,2D QD
+Chakavak hand 2H 3H 5H QH,9C JC,
+Round 3, Trick 7, Turn: 3, Trump: C
++++ Trick id 7 turn 3 trump C +++
+RemoteInterAgent 3: Input: qh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led S led H trump C
+hand: 2C 5C 6C 7C QC,XD
+op_b 3 table QH
+case 1:
+pssbl_hi_hand: 2C 5C 6C 7C QC,
+prb_act 2C 1
+out: 2C, prb: 1
+Alg. out card: 2C
+--- AI_0 --- out card: 2C ---
+RemoteInterAgent 1: Input: 9h
+RemoteInterAgent 2: Input: 7s
+AI_0 played 2C
+Kalagh played 9H
+parisa played 7S
+Chakavak played QH
+^^^ Trick id 7 turn 3 led H trump C ^^^
+AI_0 hand 5C 6C 7C QC,XD
+Kalagh hand 4S QS,XC KC AC,
+parisa hand 9S,4C 8C,2D QD
+Chakavak hand 2H 3H 5H,9C JC,
+Round 3, Trick 8, Turn: 0, Trump: C
++++ Trick id 8 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led H led - trump C
+hand: 5C 6C 7C QC,XD
+comp 2 last table 7S
+op_a 1 last table 9H
+case 0:
+pssbl_hi_hand: 5C 6C 7C QC,XD
+prb_act 5C 0
+prb_act 6C 0
+prb_act 7C 0
+prb_act QC 0.151515
+prb_act XD 0.416667
+out: --, prb: 0.416667
+Alg. out card: XD
+--- AI_0 --- out card: XD ---
+RemoteInterAgent 1: Input: xc
+RemoteInterAgent 2: Input: 2d
+RemoteInterAgent 3: Input: 2h
+AI_0 played XD
+Kalagh played XC
+parisa played 2D
+Chakavak played 2H
+^^^ Trick id 8 turn 0 led D trump C ^^^
+AI_0 hand 5C 6C 7C QC,
+Kalagh hand 4S QS,KC AC,
+parisa hand 9S,4C 8C,QD
+Chakavak hand 3H 5H,9C JC,
+Round 3, Trick 9, Turn: 1, Trump: C
++++ Trick id 9 turn 1 trump C +++
+RemoteInterAgent 1: Input: ac
+RemoteInterAgent 2: Input: 4c
+RemoteInterAgent 3: Input: 9c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led C trump C
+hand: 5C 6C 7C QC,
+op_b 3 last table 2H
+comp 2 last table 2D
+op_a 1 last table XC
+op_a 1 table AC
+comp 2 table 4C
+op_b 3 table 9C
+case 3:
+hi_hand: 
+Alg. out card: 5C
+--- AI_0 --- out card: 5C ---
+AI_0 played 5C
+Kalagh played AC
+parisa played 4C
+Chakavak played 9C
+^^^ Trick id 9 turn 1 led C trump C ^^^
+AI_0 hand 6C 7C QC,
+Kalagh hand 4S QS,KC,
+parisa hand 9S,8C,QD
+Chakavak hand 3H 5H,JC,
+Round 3, Trick 10, Turn: 1, Trump: C
++++ Trick id 10 turn 1 trump C +++
+RemoteInterAgent 1: Input: kc
+RemoteInterAgent 2: Input: 8c
+RemoteInterAgent 3: Input: jc
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led C trump C
+hand: 6C 7C QC,
+op_a 1 table KC
+comp 2 table 8C
+op_b 3 table JC
+case 3:
+hi_hand: 
+Alg. out card: 6C
+--- AI_0 --- out card: 6C ---
+AI_0 played 6C
+Kalagh played KC
+parisa played 8C
+Chakavak played JC
+^^^ Trick id 10 turn 1 led C trump C ^^^
+AI_0 hand 7C QC,
+Kalagh hand 4S QS,
+parisa hand 9S,QD
+Chakavak hand 3H 5H,
+Round 3, Trick 11, Turn: 1, Trump: C
++++ Trick id 11 turn 1 trump C +++
+RemoteInterAgent 1: Input: qc
+RemoteInterAgent 1: Input: qs
+RemoteInterAgent 2: Input: 9s
+RemoteInterAgent 3: Input: 3h
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led S trump C
+hand: 7C QC,
+op_a 1 table QS
+comp 2 table 9S
+op_b 3 table 3H
+case 3:
+hi_hand: 7C QC,
+Alg. out card: 7C
+--- AI_0 --- out card: 7C ---
+AI_0 played 7C
+Kalagh played QS
+parisa played 9S
+Chakavak played 3H
+^^^ Trick id 11 turn 1 led S trump C ^^^
+AI_0 hand QC,
+Kalagh hand 4S,
+parisa hand QD
+Chakavak hand 5H,
+Round 3, Trick 12, Turn: 0, Trump: C
++++ Trick id 12 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led S led - trump C
+hand: QC,
+case 0:
+pssbl_hi_hand: QC,
+prb_act QC 1
+out: QC, prb: 1
+Alg. out card: QC
+--- AI_0 --- out card: QC ---
+RemoteInterAgent 1: Input: 4s
+RemoteInterAgent 2: Input: qd
+RemoteInterAgent 3: Input: 5h
+AI_0 played QC
+Kalagh played 4S
+parisa played QD
+Chakavak played 5H
+^^^ Trick id 12 turn 0 led C trump C ^^^
+kot: 0, oth_scr: 6, winner_team: 0, trump_team: 1
+/ALR=== Round 3 winner team: 0  (Kot: 0) ===
+/INF=== Round 4 ===
+RemoteInterAgent 2: Input: d
+AI_0 Habc: 2S 3S 4S 5S 7S 8S XS JS KS AS,2H 3H 6H 7H 9H QH,2C 3C 4C 5C 6C 8C 9C XC JC QC KC AC,4D 5D 6D 7D 8D 9D XD JD QD KD AD
+AI_0 hand 6S 9S QS,4H 5H 8H XH JH KH AH,7C,2D 3D
+Kalagh hand 2S 4S XS,9H QH,3C 6C AC,5D 7D 8D JD KD
+parisa hand JS KS AS,2H 3H 7H,5C 8C,4D 6D 9D XD QD
+Chakavak hand 3S 5S 7S 8S,6H,2C 4C 9C XC JC QC KC,AD
+Round 4, Trick 0, Turn: 2, Trump: D
++++ Trick id 0 turn 2 trump D +++
+RemoteInterAgent 2: Input: as
+RemoteInterAgent 3: Input: 3s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord -1 last_led - led S trump D
+hand: 6S 9S QS,4H 5H 8H XH JH KH AH,7C,2D 3D
+comp 2 table AS
+op_b 3 table 3S
+case 2:
+pssbl_hi_hand: 6S 9S QS,
+prb_act 6S 0.0975093
+prb_act 9S 0.260489
+prb_act QS 0.648649
+prb_act out: QS, (max)prb: 0.648649
+c_card: AS, prb: 1
+diff of AS-QS: 1
+Companion's card is good enough.
+Alg. out card: 6S
+--- AI_0 --- out card: 6S ---
+RemoteInterAgent 1: Input: 2s
+AI_0 played 6S
+Kalagh played 2S
+parisa played AS
+Chakavak played 3S
+^^^ Trick id 0 turn 2 led S trump D ^^^
+AI_0 hand 9S QS,4H 5H 8H XH JH KH AH,7C,2D 3D
+Kalagh hand 4S XS,9H QH,3C 6C AC,5D 7D 8D JD KD
+parisa hand JS KS,2H 3H 7H,5C 8C,4D 6D 9D XD QD
+Chakavak hand 5S 7S 8S,6H,2C 4C 9C XC JC QC KC,AD
+Round 4, Trick 1, Turn: 2, Trump: D
++++ Trick id 1 turn 2 trump D +++
+RemoteInterAgent 2: Input: ks
+RemoteInterAgent 3: Input: 5s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led S led S trump D
+hand: 9S QS,4H 5H 8H XH JH KH AH,7C,2D 3D
+op_a 1 last table 2S
+comp 2 table KS
+op_b 3 table 5S
+case 2:
+pssbl_hi_hand: 9S QS,
+prb_act 9S 0.411765
+prb_act QS 1
+prb_act out: QS, (max)prb: 1
+c_card: KS, prb: 1
+diff of KS-QS: 0
+Companion's card is good enough.
+Alg. out card: 9S
+--- AI_0 --- out card: 9S ---
+RemoteInterAgent 1: Input: 4s
+AI_0 played 9S
+Kalagh played 4S
+parisa played KS
+Chakavak played 5S
+^^^ Trick id 1 turn 2 led S trump D ^^^
+AI_0 hand QS,4H 5H 8H XH JH KH AH,7C,2D 3D
+Kalagh hand XS,9H QH,3C 6C AC,5D 7D 8D JD KD
+parisa hand JS,2H 3H 7H,5C 8C,4D 6D 9D XD QD
+Chakavak hand 7S 8S,6H,2C 4C 9C XC JC QC KC,AD
+Round 4, Trick 2, Turn: 2, Trump: D
++++ Trick id 2 turn 2 trump D +++
+RemoteInterAgent 2: Input: js
+RemoteInterAgent 3: Input: 7s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led S led S trump D
+hand: QS,4H 5H 8H XH JH KH AH,7C,2D 3D
+op_a 1 last table 4S
+comp 2 table JS
+op_b 3 table 7S
+case 2:
+pssbl_hi_hand: QS,
+prb_act QS 1
+prb_act out: QS, (max)prb: 1
+c_card: JS, prb: 1
+diff of JS-QS: 0
+Companion's card is good enough.
+Alg. out card: QS
+--- AI_0 --- out card: QS ---
+RemoteInterAgent 1: Input: xs
+AI_0 played QS
+Kalagh played XS
+parisa played JS
+Chakavak played 7S
+^^^ Trick id 2 turn 2 led S trump D ^^^
+AI_0 hand 4H 5H 8H XH JH KH AH,7C,2D 3D
+Kalagh hand 9H QH,3C 6C AC,5D 7D 8D JD KD
+parisa hand 2H 3H 7H,5C 8C,4D 6D 9D XD QD
+Chakavak hand 8S,6H,2C 4C 9C XC JC QC KC,AD
+Round 4, Trick 3, Turn: 0, Trump: D
++++ Trick id 3 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led S led - trump D
+hand: 4H 5H 8H XH JH KH AH,7C,2D 3D
+op_a 1 last table XS
+case 0:
+pssbl_hi_hand: 4H 5H 8H XH JH KH AH,7C,2D 3D
+prb_act 4H 0.00766284
+prb_act 5H 0.00766284
+prb_act 8H 0.103448
+prb_act XH 0.333333
+prb_act JH 0.333333
+prb_act KH 1
+out: KH, prb: 1
+Alg. out card: KH
+--- AI_0 --- out card: KH ---
+RemoteInterAgent 1: Input: 9h
+RemoteInterAgent 2: Input: 2h
+RemoteInterAgent 3: Input: 6h
+AI_0 played KH
+Kalagh played 9H
+parisa played 2H
+Chakavak played 6H
+^^^ Trick id 3 turn 0 led H trump D ^^^
+AI_0 hand 4H 5H 8H XH JH AH,7C,2D 3D
+Kalagh hand QH,3C 6C AC,5D 7D 8D JD KD
+parisa hand 3H 7H,5C 8C,4D 6D 9D XD QD
+Chakavak hand 8S,2C 4C 9C XC JC QC KC,AD
+Round 4, Trick 4, Turn: 0, Trump: D
++++ Trick id 4 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump D
+hand: 4H 5H 8H XH JH AH,7C,2D 3D
+op_b 3 last table 6H
+comp 2 last table 2H
+op_a 1 last table 9H
+case 0:
+pssbl_hi_hand: 4H 5H 8H XH JH AH,7C,2D 3D
+prb_act 4H 0.102564
+prb_act 5H 0.102564
+prb_act 8H 0.333333
+prb_act XH 0.333333
+prb_act JH 0.333333
+prb_act AH 1
+out: AH, prb: 1
+Alg. out card: AH
+--- AI_0 --- out card: AH ---
+RemoteInterAgent 1: Input: qh
+RemoteInterAgent 2: Input: 3h
+RemoteInterAgent 3: Input: ad
+AI_0 played AH
+Kalagh played QH
+parisa played 3H
+Chakavak played AD
+^^^ Trick id 4 turn 0 led H trump D ^^^
+AI_0 hand 4H 5H 8H XH JH,7C,2D 3D
+Kalagh hand 3C 6C AC,5D 7D 8D JD KD
+parisa hand 7H,5C 8C,4D 6D 9D XD QD
+Chakavak hand 8S,2C 4C 9C XC JC QC KC,
+Round 4, Trick 5, Turn: 3, Trump: D
++++ Trick id 5 turn 3 trump D +++
+RemoteInterAgent 3: Input: jc
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led C trump D
+hand: 4H 5H 8H XH JH,7C,2D 3D
+op_b 3 last table AD
+comp 2 last table 3H
+op_a 1 last table QH
+op_b 3 table JC
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 7C
+--- AI_0 --- out card: 7C ---
+RemoteInterAgent 1: Input: ac
+RemoteInterAgent 2: Input: 5c
+AI_0 played 7C
+Kalagh played AC
+parisa played 5C
+Chakavak played JC
+^^^ Trick id 5 turn 3 led C trump D ^^^
+AI_0 hand 4H 5H 8H XH JH,2D 3D
+Kalagh hand 3C 6C,5D 7D 8D JD KD
+parisa hand 7H,8C,4D 6D 9D XD QD
+Chakavak hand 8S,2C 4C 9C XC QC KC,
+Round 4, Trick 6, Turn: 1, Trump: D
++++ Trick id 6 turn 1 trump D +++
+RemoteInterAgent 1: Input: 3c
+RemoteInterAgent 2: Input: 8c
+RemoteInterAgent 3: Input: kc
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led C led C trump D
+hand: 4H 5H 8H XH JH,2D 3D
+comp 2 last table 5C
+op_a 1 last table AC
+op_a 1 table 3C
+comp 2 table 8C
+op_b 3 table KC
+case 3:
+hi_hand: 2D 3D
+Alg. out card: 2D
+--- AI_0 --- out card: 2D ---
+AI_0 played 2D
+Kalagh played 3C
+parisa played 8C
+Chakavak played KC
+^^^ Trick id 6 turn 1 led C trump D ^^^
+AI_0 hand 4H 5H 8H XH JH,3D
+Kalagh hand 6C,5D 7D 8D JD KD
+parisa hand 7H,4D 6D 9D XD QD
+Chakavak hand 8S,2C 4C 9C XC QC,
+Round 4, Trick 7, Turn: 0, Trump: D
++++ Trick id 7 turn 0 trump D +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led C led - trump D
+hand: 4H 5H 8H XH JH,3D
+case 0:
+pssbl_hi_hand: 4H 5H 8H XH JH,3D
+prb_act 4H 0.333333
+prb_act 5H 0.333333
+prb_act 8H 1
+out: 8H, prb: 1
+Alg. out card: 8H
+--- AI_0 --- out card: 8H ---
+RemoteInterAgent 1: Input: 5d
+RemoteInterAgent 2: Input: 7h
+RemoteInterAgent 3: Input: 8s
+AI_0 played 8H
+Kalagh played 5D
+parisa played 7H
+Chakavak played 8S
+^^^ Trick id 7 turn 0 led H trump D ^^^
+AI_0 hand 4H 5H XH JH,3D
+Kalagh hand 6C,7D 8D JD KD
+parisa hand 4D 6D 9D XD QD
+Chakavak hand 2C 4C 9C XC QC,
+Round 4, Trick 8, Turn: 1, Trump: D
++++ Trick id 8 turn 1 trump D +++
+RemoteInterAgent 1: Input: 6c
+RemoteInterAgent 2: Input: xd
+RemoteInterAgent 3: Input: qc
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led C trump D
+hand: 4H 5H XH JH,3D
+op_b 3 last table 8S
+comp 2 last table 7H
+op_a 1 last table 5D
+op_a 1 table 6C
+comp 2 table XD
+op_b 3 table QC
+case 3:
+Companion's card is good enough.
+Alg. out card: 4H
+--- AI_0 --- out card: 4H ---
+AI_0 played 4H
+Kalagh played 6C
+parisa played XD
+Chakavak played QC
+^^^ Trick id 8 turn 1 led C trump D ^^^
+AI_0 hand 5H XH JH,3D
+Kalagh hand 7D 8D JD KD
+parisa hand 4D 6D 9D QD
+Chakavak hand 2C 4C 9C XC,
+Round 4, Trick 9, Turn: 2, Trump: D
++++ Trick id 9 turn 2 trump D +++
+RemoteInterAgent 2: Input: 9d
+RemoteInterAgent 3: Input: 2c
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led C led D trump D
+hand: 5H XH JH,3D
+comp 2 table 9D
+op_b 3 table 2C
+case 2:
+pssbl_hi_hand: 3D
+prb_act 3D 0
+prb_act out: --, (max)prb: 0
+Alg. out card: 3D
+--- AI_0 --- out card: 3D ---
+RemoteInterAgent 1: Input: jd
+AI_0 played 3D
+Kalagh played JD
+parisa played 9D
+Chakavak played 2C
+^^^ Trick id 9 turn 2 led D trump D ^^^
+AI_0 hand 5H XH JH,
+Kalagh hand 7D 8D KD
+parisa hand 4D 6D QD
+Chakavak hand 4C 9C XC,
+Round 4, Trick 10, Turn: 1, Trump: D
++++ Trick id 10 turn 1 trump D +++
+RemoteInterAgent 1: Input: 7d
+RemoteInterAgent 2: Input: 4d
+RemoteInterAgent 3: Input: 4c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 2 last_led D led D trump D
+hand: 5H XH JH,
+op_a 1 last table JD
+op_a 1 table 7D
+comp 2 table 4D
+op_b 3 table 4C
+case 3:
+hi_hand: 
+Alg. out card: 5H
+--- AI_0 --- out card: 5H ---
+AI_0 played 5H
+Kalagh played 7D
+parisa played 4D
+Chakavak played 4C
+^^^ Trick id 10 turn 1 led D trump D ^^^
+AI_0 hand XH JH,
+Kalagh hand 8D KD
+parisa hand 6D QD
+Chakavak hand 9C XC,
+Round 4, Trick 11, Turn: 1, Trump: D
++++ Trick id 11 turn 1 trump D +++
+RemoteInterAgent 1: Input: kd
+RemoteInterAgent 2: Input: 6d
+RemoteInterAgent 3: Input: 9c
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led D led D trump D
+hand: XH JH,
+op_a 1 table KD
+comp 2 table 6D
+op_b 3 table 9C
+case 3:
+hi_hand: 
+Alg. out card: XH
+--- AI_0 --- out card: XH ---
+AI_0 played XH
+Kalagh played KD
+parisa played 6D
+Chakavak played 9C
+^^^ Trick id 11 turn 1 led D trump D ^^^
+AI_0 hand JH,
+Kalagh hand 8D
+parisa hand QD
+Chakavak hand XC,
+Round 4, Trick 12, Turn: 1, Trump: D
++++ Trick id 12 turn 1 trump D +++
+RemoteInterAgent 1: Input: 8d
+RemoteInterAgent 2: Input: qd
+RemoteInterAgent 3: Input: xc
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led D led D trump D
+hand: JH,
+op_a 1 table 8D
+comp 2 table QD
+op_b 3 table XC
+case 3:
+Companion's card is good enough.
+Alg. out card: JH
+--- AI_0 --- out card: JH ---
+AI_0 played JH
+Kalagh played 8D
+parisa played QD
+Chakavak played XC
+^^^ Trick id 12 turn 1 led D trump D ^^^
+kot: 0, oth_scr: 6, winner_team: 0, trump_team: 0
+/ALR=== Round 4 winner team: 0  (Kot: 0) ===
+/INF=== Round 5 ===
+RemoteInterAgent 2: Input: h
+AI_0 Habc: 3S 4S 5S 6S 7S 8S XS QS KS AS,2H 4H 5H 6H 7H 9H XH JH QH KH AH,2C 3C 4C 8C 9C JC KC AC,2D 3D 5D 6D 7D 8D 9D XD JD QD
+AI_0 hand 2S 9S JS,3H 8H,5C 6C 7C XC QC,4D KD AD
+Kalagh hand 4S,5H 7H XH KH,2C 3C 9C JC AC,6D 8D QD
+parisa hand 5S 8S,2H 6H 9H QH AH,4C KC,3D 7D XD JD
+Chakavak hand 3S 6S 7S XS QS KS AS,4H JH,8C,2D 5D 9D
+Round 5, Trick 0, Turn: 2, Trump: H
++++ Trick id 0 turn 2 trump H +++
+RemoteInterAgent 2: Input: 4c
+RemoteInterAgent 3: Input: 8c
+--- AI_0 pl_id 0 team 0 ord 2 last_ord -1 last_led - led C trump H
+hand: 2S 9S JS,3H 8H,5C 6C 7C XC QC,4D KD AD
+comp 2 table 4C
+op_b 3 table 8C
+case 2:
+pssbl_hi_hand: XC QC,
+prb_act XC 0.260489
+prb_act QC 0.414414
+prb_act out: --, (max)prb: 0.414414
+Alg. out card: 5C
+--- AI_0 --- out card: 5C ---
+RemoteInterAgent 1: Input: 2c
+AI_0 played 5C
+Kalagh played 2C
+parisa played 4C
+Chakavak played 8C
+^^^ Trick id 0 turn 2 led C trump H ^^^
+AI_0 hand 2S 9S JS,3H 8H,6C 7C XC QC,4D KD AD
+Kalagh hand 4S,5H 7H XH KH,3C 9C JC AC,6D 8D QD
+parisa hand 5S 8S,2H 6H 9H QH AH,KC,3D 7D XD JD
+Chakavak hand 3S 6S 7S XS QS KS AS,4H JH,2D 5D 9D
+Round 5, Trick 1, Turn: 3, Trump: H
++++ Trick id 1 turn 3 trump H +++
+RemoteInterAgent 3: Input: as
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led C led S trump H
+hand: 2S 9S JS,3H 8H,6C 7C XC QC,4D KD AD
+op_a 1 last table 2C
+op_b 3 table AS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 2S
+--- AI_0 --- out card: 2S ---
+RemoteInterAgent 1: Input: 4s
+RemoteInterAgent 2: Input: 5s
+AI_0 played 2S
+Kalagh played 4S
+parisa played 5S
+Chakavak played AS
+^^^ Trick id 1 turn 3 led S trump H ^^^
+AI_0 hand 9S JS,3H 8H,6C 7C XC QC,4D KD AD
+Kalagh hand 5H 7H XH KH,3C 9C JC AC,6D 8D QD
+parisa hand 8S,2H 6H 9H QH AH,KC,3D 7D XD JD
+Chakavak hand 3S 6S 7S XS QS KS,4H JH,2D 5D 9D
+Round 5, Trick 2, Turn: 3, Trump: H
++++ Trick id 2 turn 3 trump H +++
+RemoteInterAgent 3: Input: ks
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led S led S trump H
+hand: 9S JS,3H 8H,6C 7C XC QC,4D KD AD
+comp 2 last table 5S
+op_a 1 last table 4S
+op_b 3 table KS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 9S
+--- AI_0 --- out card: 9S ---
+RemoteInterAgent 1: Input: 3c
+RemoteInterAgent 2: Input: 6s
+RemoteInterAgent 2: Input: 8s
+AI_0 played 9S
+Kalagh played 3C
+parisa played 8S
+Chakavak played KS
+^^^ Trick id 2 turn 3 led S trump H ^^^
+AI_0 hand JS,3H 8H,6C 7C XC QC,4D KD AD
+Kalagh hand 5H 7H XH KH,9C JC AC,6D 8D QD
+parisa hand 2H 6H 9H QH AH,KC,3D 7D XD JD
+Chakavak hand 3S 6S 7S XS QS,4H JH,2D 5D 9D
+Round 5, Trick 3, Turn: 3, Trump: H
++++ Trick id 3 turn 3 trump H +++
+RemoteInterAgent 3: Input: qd
+RemoteInterAgent 3: Input: qd
+RemoteInterAgent 3: Input: qs
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led S led S trump H
+hand: JS,3H 8H,6C 7C XC QC,4D KD AD
+comp 2 last table 8S
+op_a 1 last table 3C
+op_b 3 table QS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: JS
+--- AI_0 --- out card: JS ---
+RemoteInterAgent 1: Input: 6d
+RemoteInterAgent 2: Input: 2h
+AI_0 played JS
+Kalagh played 6D
+parisa played 2H
+Chakavak played QS
+^^^ Trick id 3 turn 3 led S trump H ^^^
+AI_0 hand 3H 8H,6C 7C XC QC,4D KD AD
+Kalagh hand 5H 7H XH KH,9C JC AC,8D QD
+parisa hand 6H 9H QH AH,KC,3D 7D XD JD
+Chakavak hand 3S 6S 7S XS,4H JH,2D 5D 9D
+Round 5, Trick 4, Turn: 2, Trump: H
++++ Trick id 4 turn 2 trump H +++
+RemoteInterAgent 2: Input: 3d
+RemoteInterAgent 3: Input: 9d
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led S led D trump H
+hand: 3H 8H,6C 7C XC QC,4D KD AD
+comp 2 last table 2H
+op_a 1 last table 6D
+comp 2 table 3D
+op_b 3 table 9D
+case 2:
+pssbl_hi_hand: KD AD
+prb_act KD 1
+prb_act out: KD, (max)prb: 1
+c_card: 3D, prb: 0.0170279
+diff of 3D-KD: -7
+Alg. out card: KD
+--- AI_0 --- out card: KD ---
+RemoteInterAgent 1: Input: 8d
+AI_0 played KD
+Kalagh played 8D
+parisa played 3D
+Chakavak played 9D
+^^^ Trick id 4 turn 2 led D trump H ^^^
+AI_0 hand 3H 8H,6C 7C XC QC,4D AD
+Kalagh hand 5H 7H XH KH,9C JC AC,QD
+parisa hand 6H 9H QH AH,KC,7D XD JD
+Chakavak hand 3S 6S 7S XS,4H JH,2D 5D
+Round 5, Trick 5, Turn: 0, Trump: H
++++ Trick id 5 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 2 last_led D led - trump H
+hand: 3H 8H,6C 7C XC QC,4D AD
+op_a 1 last table 8D
+case 0:
+pssbl_hi_hand: 3H 8H,6C 7C XC QC,4D AD
+prb_act 3H 0
+prb_act 8H 0.000722394
+prb_act 6C 0.0144479
+prb_act 7C 0.0144479
+prb_act XC 0.0491228
+prb_act QC 0.147368
+prb_act 4D 0.00361197
+prb_act AD 1
+out: AD, prb: 1
+Alg. out card: AD
+--- AI_0 --- out card: AD ---
+RemoteInterAgent 1: Input: qd
+RemoteInterAgent 2: Input: 7d
+RemoteInterAgent 3: Input: 2d
+AI_0 played AD
+Kalagh played QD
+parisa played 7D
+Chakavak played 2D
+^^^ Trick id 5 turn 0 led D trump H ^^^
+AI_0 hand 3H 8H,6C 7C XC QC,4D
+Kalagh hand 5H 7H XH KH,9C JC AC,
+parisa hand 6H 9H QH AH,KC,XD JD
+Chakavak hand 3S 6S 7S XS,4H JH,5D
+Round 5, Trick 6, Turn: 0, Trump: H
++++ Trick id 6 turn 0 trump H +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 0 last_led - led - trump H
+hand: 3H 8H,6C 7C XC QC,4D
+op_b 3 last table 2D
+comp 2 last table 7D
+op_a 1 last table QD
+case 0:
+pssbl_hi_hand: 3H 8H,6C 7C XC QC,4D
+prb_act 3H 0
+prb_act 8H 0.000565611
+prb_act 6C 0.0147059
+prb_act 7C 0.0147059
+prb_act XC 0.0514706
+prb_act QC 0.154412
+prb_act 4D 0.0514706
+out: --, prb: 0.154412
+Alg. out card: 4D
+--- AI_0 --- out card: 4D ---
+RemoteInterAgent 1: Input: 5h
+RemoteInterAgent 2: Input: xd
+RemoteInterAgent 3: Input: 5d
+AI_0 played 4D
+Kalagh played 5H
+parisa played XD
+Chakavak played 5D
+^^^ Trick id 6 turn 0 led D trump H ^^^
+AI_0 hand 3H 8H,6C 7C XC QC,
+Kalagh hand 7H XH KH,9C JC AC,
+parisa hand 6H 9H QH AH,KC,JD
+Chakavak hand 3S 6S 7S XS,4H JH,
+Round 5, Trick 7, Turn: 1, Trump: H
++++ Trick id 7 turn 1 trump H +++
+RemoteInterAgent 1: Input: ac
+RemoteInterAgent 2: Input: kc
+RemoteInterAgent 3: Input: 3s
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led C trump H
+hand: 3H 8H,6C 7C XC QC,
+op_b 3 last table 5D
+comp 2 last table XD
+op_a 1 last table 5H
+op_a 1 table AC
+comp 2 table KC
+op_b 3 table 3S
+case 3:
+hi_hand: 
+Alg. out card: 6C
+--- AI_0 --- out card: 6C ---
+AI_0 played 6C
+Kalagh played AC
+parisa played KC
+Chakavak played 3S
+^^^ Trick id 7 turn 1 led C trump H ^^^
+AI_0 hand 3H 8H,7C XC QC,
+Kalagh hand 7H XH KH,9C JC,
+parisa hand 6H 9H QH AH,JD
+Chakavak hand 6S 7S XS,4H JH,
+Round 5, Trick 8, Turn: 1, Trump: H
++++ Trick id 8 turn 1 trump H +++
+RemoteInterAgent 1: Input: 9c
+RemoteInterAgent 2: Input: 6h
+RemoteInterAgent 3: Input: jh
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led C led C trump H
+hand: 3H 8H,7C XC QC,
+op_a 1 table 9C
+comp 2 table 6H
+op_b 3 table JH
+case 3:
+hi_hand: 
+Alg. out card: 7C
+--- AI_0 --- out card: 7C ---
+AI_0 played 7C
+Kalagh played 9C
+parisa played 6H
+Chakavak played JH
+^^^ Trick id 8 turn 1 led C trump H ^^^
+AI_0 hand 3H 8H,XC QC,
+Kalagh hand 7H XH KH,JC,
+parisa hand 9H QH AH,JD
+Chakavak hand 6S 7S XS,4H,
+Round 5, Trick 9, Turn: 3, Trump: H
++++ Trick id 9 turn 3 trump H +++
+RemoteInterAgent 3: Input: xs
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 3 last_led C led S trump H
+hand: 3H 8H,XC QC,
+op_b 3 table XS
+case 1:
+pssbl_hi_hand: 3H 8H,
+prb_act 3H 0
+prb_act 8H 0.0178571
+out: --, prb: 0.0178571
+Alg. out card: XC
+--- AI_0 --- out card: XC ---
+RemoteInterAgent 1: Input: 7h
+RemoteInterAgent 2: Input: 9h
+AI_0 played XC
+Kalagh played 7H
+parisa played 9H
+Chakavak played XS
+^^^ Trick id 9 turn 3 led S trump H ^^^
+AI_0 hand 3H 8H,QC,
+Kalagh hand XH KH,JC,
+parisa hand QH AH,JD
+Chakavak hand 6S 7S,4H,
+Round 5, Trick 10, Turn: 2, Trump: H
++++ Trick id 10 turn 2 trump H +++
+RemoteInterAgent 2: Input: ah
+RemoteInterAgent 3: Input: 4h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led S led H trump H
+hand: 3H 8H,QC,
+comp 2 last table 9H
+op_a 1 last table 7H
+comp 2 table AH
+op_b 3 table 4H
+case 2:
+pssbl_hi_hand: 8H,
+prb_act 8H 0
+prb_act out: --, (max)prb: 0
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+RemoteInterAgent 1: Input: xh
+AI_0 played 3H
+Kalagh played XH
+parisa played AH
+Chakavak played 4H
+^^^ Trick id 10 turn 2 led H trump H ^^^
+AI_0 hand 8H,QC,
+Kalagh hand KH,JC,
+parisa hand QH,JD
+Chakavak hand 6S 7S,
+Round 5, Trick 11, Turn: 2, Trump: H
++++ Trick id 11 turn 2 trump H +++
+RemoteInterAgent 2: Input: qh
+RemoteInterAgent 3: Input: 6s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 2 last_led H led H trump H
+hand: 8H,QC,
+op_a 1 last table XH
+comp 2 table QH
+op_b 3 table 6S
+case 2:
+pssbl_hi_hand: 8H,
+prb_act 8H 0.5
+prb_act out: --, (max)prb: 0.5
+Alg. out card: 8H
+--- AI_0 --- out card: 8H ---
+RemoteInterAgent 1: Input: kh
+AI_0 played 8H
+Kalagh played KH
+parisa played QH
+Chakavak played 6S
+^^^ Trick id 11 turn 2 led H trump H ^^^
+kot: 0, oth_scr: 5, winner_team: 1, trump_team: 0
+/ALR=== Round 5 winner team: 1  (Kot: 0) ===
+/INF=== Round 6 ===
+RemoteInterAgent 3: Input: h
+AI_0 Habc: 3S 4S 5S 6S 8S 9S XS JS QS KS AS,2H 4H 7H 8H XH JH QH KH AH,2C 3C 5C 6C 7C 9C XC JC QC KC AC,2D 3D 4D 5D 6D 7D 8D 9D
+AI_0 hand 2S 7S,3H 5H 6H 9H,4C 8C,XD JD QD KD AD
+Kalagh hand 4S 6S 9S XS QS AS,2H 8H JH KH,3C 5C 7C,
+parisa hand 3S 5S,7H AH,6C 9C XC JC QC KC,2D 4D 8D
+Chakavak hand 8S JS KS,4H XH QH,2C AC,3D 5D 6D 7D 9D
+Round 6, Trick 0, Turn: 3, Trump: H
++++ Trick id 0 turn 3 trump H +++
+RemoteInterAgent 3: Input: ac
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led C trump H
+hand: 2S 7S,3H 5H 6H 9H,4C 8C,XD JD QD KD AD
+op_b 3 table AC
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 4C
+--- AI_0 --- out card: 4C ---
+RemoteInterAgent 1: Input: 3c
+RemoteInterAgent 2: Input: 6c
+AI_0 played 4C
+Kalagh played 3C
+parisa played 6C
+Chakavak played AC
+^^^ Trick id 0 turn 3 led C trump H ^^^
+AI_0 hand 2S 7S,3H 5H 6H 9H,8C,XD JD QD KD AD
+Kalagh hand 4S 6S 9S XS QS AS,2H 8H JH KH,5C 7C,
+parisa hand 3S 5S,7H AH,9C XC JC QC KC,2D 4D 8D
+Chakavak hand 8S JS KS,4H XH QH,2C,3D 5D 6D 7D 9D
+Round 6, Trick 1, Turn: 3, Trump: H
++++ Trick id 1 turn 3 trump H +++
+RemoteInterAgent 3: Input: 2c
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led C led C trump H
+hand: 2S 7S,3H 5H 6H 9H,8C,XD JD QD KD AD
+comp 2 last table 6C
+op_a 1 last table 3C
+op_b 3 table 2C
+case 1:
+pssbl_hi_hand: 8C,
+prb_act 8C 0.103653
+out: --, prb: 0.103653
+Alg. out card: 8C
+--- AI_0 --- out card: 8C ---
+RemoteInterAgent 1: Input: 5c
+RemoteInterAgent 2: Input: 9c
+AI_0 played 8C
+Kalagh played 5C
+parisa played 9C
+Chakavak played 2C
+^^^ Trick id 1 turn 3 led C trump H ^^^
+AI_0 hand 2S 7S,3H 5H 6H 9H,XD JD QD KD AD
+Kalagh hand 4S 6S 9S XS QS AS,2H 8H JH KH,7C,
+parisa hand 3S 5S,7H AH,XC JC QC KC,2D 4D 8D
+Chakavak hand 8S JS KS,4H XH QH,3D 5D 6D 7D 9D
+Round 6, Trick 2, Turn: 2, Trump: H
++++ Trick id 2 turn 2 trump H +++
+RemoteInterAgent 2: Input: 3s
+RemoteInterAgent 3: Input: 8s
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led C led S trump H
+hand: 2S 7S,3H 5H 6H 9H,XD JD QD KD AD
+comp 2 last table 9C
+op_a 1 last table 5C
+comp 2 table 3S
+op_b 3 table 8S
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 2S
+--- AI_0 --- out card: 2S ---
+RemoteInterAgent 1: Input: 4s
+AI_0 played 2S
+Kalagh played 4S
+parisa played 3S
+Chakavak played 8S
+^^^ Trick id 2 turn 2 led S trump H ^^^
+AI_0 hand 7S,3H 5H 6H 9H,XD JD QD KD AD
+Kalagh hand 6S 9S XS QS AS,2H 8H JH KH,7C,
+parisa hand 5S,7H AH,XC JC QC KC,2D 4D 8D
+Chakavak hand JS KS,4H XH QH,3D 5D 6D 7D 9D
+Round 6, Trick 3, Turn: 3, Trump: H
++++ Trick id 3 turn 3 trump H +++
+RemoteInterAgent 3: Input: js
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led S led S trump H
+hand: 7S,3H 5H 6H 9H,XD JD QD KD AD
+op_a 1 last table 4S
+op_b 3 table JS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 7S
+--- AI_0 --- out card: 7S ---
+RemoteInterAgent 1: Input: as
+RemoteInterAgent 2: Input: 5s
+AI_0 played 7S
+Kalagh played AS
+parisa played 5S
+Chakavak played JS
+^^^ Trick id 3 turn 3 led S trump H ^^^
+AI_0 hand 3H 5H 6H 9H,XD JD QD KD AD
+Kalagh hand 6S 9S XS QS,2H 8H JH KH,7C,
+parisa hand 7H AH,XC JC QC KC,2D 4D 8D
+Chakavak hand KS,4H XH QH,3D 5D 6D 7D 9D
+Round 6, Trick 4, Turn: 1, Trump: H
++++ Trick id 4 turn 1 trump H +++
+RemoteInterAgent 1: Input: xs
+RemoteInterAgent 2: Input: 7h
+RemoteInterAgent 3: Input: ks
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led S led S trump H
+hand: 3H 5H 6H 9H,XD JD QD KD AD
+comp 2 last table 5S
+op_a 1 last table AS
+op_a 1 table XS
+comp 2 table 7H
+op_b 3 table KS
+case 3:
+Companion's card is good enough.
+Alg. out card: XD
+--- AI_0 --- out card: XD ---
+AI_0 played XD
+Kalagh played XS
+parisa played 7H
+Chakavak played KS
+^^^ Trick id 4 turn 1 led S trump H ^^^
+AI_0 hand 3H 5H 6H 9H,JD QD KD AD
+Kalagh hand 6S 9S QS,2H 8H JH KH,7C,
+parisa hand AH,XC JC QC KC,2D 4D 8D
+Chakavak hand 4H XH QH,3D 5D 6D 7D 9D
+Round 6, Trick 5, Turn: 2, Trump: H
++++ Trick id 5 turn 2 trump H +++
+RemoteInterAgent 2: Input: kc
+RemoteInterAgent 3: Input: 4h
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led S led C trump H
+hand: 3H 5H 6H 9H,JD QD KD AD
+comp 2 table KC
+op_b 3 table 4H
+case 2:
+pssbl_hi_hand: 5H 6H 9H,
+prb_act 5H 1
+prb_act out: 5H, (max)prb: 1
+c_card: KC, prb: 1
+diff of KC-5H: -52
+Companion's card is good enough.
+Alg. out card: JD
+--- AI_0 --- out card: JD ---
+RemoteInterAgent 1: Input: 7c
+AI_0 played JD
+Kalagh played 7C
+parisa played KC
+Chakavak played 4H
+^^^ Trick id 5 turn 2 led C trump H ^^^
+AI_0 hand 3H 5H 6H 9H,QD KD AD
+Kalagh hand 6S 9S QS,2H 8H JH KH,
+parisa hand AH,XC JC QC,2D 4D 8D
+Chakavak hand XH QH,3D 5D 6D 7D 9D
+Round 6, Trick 6, Turn: 3, Trump: H
++++ Trick id 6 turn 3 trump H +++
+RemoteInterAgent 3: Input: 9d
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led C led D trump H
+hand: 3H 5H 6H 9H,QD KD AD
+op_a 1 last table 7C
+op_b 3 table 9D
+case 1:
+pssbl_hi_hand: QD KD AD
+prb_act QD 1
+out: QD, prb: 1
+Alg. out card: QD
+--- AI_0 --- out card: QD ---
+RemoteInterAgent 1: Input: 2h
+RemoteInterAgent 2: Input: 2d
+AI_0 played QD
+Kalagh played 2H
+parisa played 2D
+Chakavak played 9D
+^^^ Trick id 6 turn 3 led D trump H ^^^
+AI_0 hand 3H 5H 6H 9H,KD AD
+Kalagh hand 6S 9S QS,8H JH KH,
+parisa hand AH,XC JC QC,4D 8D
+Chakavak hand XH QH,3D 5D 6D 7D
+Round 6, Trick 7, Turn: 1, Trump: H
++++ Trick id 7 turn 1 trump H +++
+RemoteInterAgent 1: Input: 8h
+RemoteInterAgent 2: Input: ah
+RemoteInterAgent 3: Input: xh
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led D led H trump H
+hand: 3H 5H 6H 9H,KD AD
+comp 2 last table 2D
+op_a 1 last table 2H
+op_a 1 table 8H
+comp 2 table AH
+op_b 3 table XH
+case 3:
+Companion's card is good enough.
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+AI_0 played 3H
+Kalagh played 8H
+parisa played AH
+Chakavak played XH
+^^^ Trick id 7 turn 1 led H trump H ^^^
+AI_0 hand 5H 6H 9H,KD AD
+Kalagh hand 6S 9S QS,JH KH,
+parisa hand XC JC QC,4D 8D
+Chakavak hand QH,3D 5D 6D 7D
+Round 6, Trick 8, Turn: 2, Trump: H
++++ Trick id 8 turn 2 trump H +++
+RemoteInterAgent 2: Input: xc
+RemoteInterAgent 3: Input: qh
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 3 last_led H led C trump H
+hand: 5H 6H 9H,KD AD
+comp 2 table XC
+op_b 3 table QH
+case 2:
+pssbl_hi_hand: 
+Alg. out card: KD
+--- AI_0 --- out card: KD ---
+RemoteInterAgent 1: Input: 6s
+AI_0 played KD
+Kalagh played 6S
+parisa played XC
+Chakavak played QH
+^^^ Trick id 8 turn 2 led C trump H ^^^
+AI_0 hand 5H 6H 9H,AD
+Kalagh hand 9S QS,JH KH,
+parisa hand JC QC,4D 8D
+Chakavak hand 3D 5D 6D 7D
+Round 6, Trick 9, Turn: 3, Trump: H
++++ Trick id 9 turn 3 trump H +++
+RemoteInterAgent 3: Input: 7d
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led C led D trump H
+hand: 5H 6H 9H,AD
+op_a 1 last table 6S
+op_b 3 table 7D
+case 1:
+pssbl_hi_hand: AD
+prb_act AD 0
+out: --, prb: 0
+Alg. out card: AD
+--- AI_0 --- out card: AD ---
+RemoteInterAgent 1: Input: kh
+RemoteInterAgent 2: Input: 4d
+AI_0 played AD
+Kalagh played KH
+parisa played 4D
+Chakavak played 7D
+^^^ Trick id 9 turn 3 led D trump H ^^^
+kot: 0, oth_scr: 3, winner_team: 1, trump_team: 1
+/ALR=== Round 6 winner team: 1  (Kot: 0) ===
+/INF=== Round 7 ===
+RemoteInterAgent 3: Input: h
+AI_0 Habc: 2S 3S 4S 8S 9S XS JS QS KS AS,2H 3H 4H 5H 6H 7H 8H 9H JH QH KH AH,4C 5C 6C 7C 9C XC JC KC,2D 3D 5D 6D 7D 8D XD QD AD
+AI_0 hand 5S 6S 7S,XH,2C 3C 8C QC AC,4D 9D JD KD
+Kalagh hand JS QS KS AS,4H 7H,5C 9C XC,2D 3D 6D 8D
+parisa hand 2S 9S XS,3H 8H,4C 6C 7C JC KC,5D QD AD
+Chakavak hand 3S 4S 8S,2H 5H 6H 9H JH QH KH AH,7D XD
+Round 7, Trick 0, Turn: 3, Trump: H
++++ Trick id 0 turn 3 trump H +++
+RemoteInterAgent 3: Input: ah
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led H trump H
+hand: 5S 6S 7S,XH,2C 3C 8C QC AC,4D 9D JD KD
+op_b 3 table AH
+case 1:
+pssbl_hi_hand: 
+Alg. out card: XH
+--- AI_0 --- out card: XH ---
+RemoteInterAgent 1: Input: 4h
+RemoteInterAgent 2: Input: 3h
+AI_0 played XH
+Kalagh played 4H
+parisa played 3H
+Chakavak played AH
+^^^ Trick id 0 turn 3 led H trump H ^^^
+AI_0 hand 5S 6S 7S,2C 3C 8C QC AC,4D 9D JD KD
+Kalagh hand JS QS KS AS,7H,5C 9C XC,2D 3D 6D 8D
+parisa hand 2S 9S XS,8H,4C 6C 7C JC KC,5D QD AD
+Chakavak hand 3S 4S 8S,2H 5H 6H 9H JH QH KH,7D XD
+Round 7, Trick 1, Turn: 3, Trump: H
++++ Trick id 1 turn 3 trump H +++
+RemoteInterAgent 3: Input: kh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led H trump H
+hand: 5S 6S 7S,2C 3C 8C QC AC,4D 9D JD KD
+comp 2 last table 3H
+op_a 1 last table 4H
+op_b 3 table KH
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 2C
+--- AI_0 --- out card: 2C ---
+RemoteInterAgent 1: Input: 7h
+RemoteInterAgent 2: Input: 8h
+AI_0 played 2C
+Kalagh played 7H
+parisa played 8H
+Chakavak played KH
+^^^ Trick id 1 turn 3 led H trump H ^^^
+AI_0 hand 5S 6S 7S,3C 8C QC AC,4D 9D JD KD
+Kalagh hand JS QS KS AS,5C 9C XC,2D 3D 6D 8D
+parisa hand 2S 9S XS,4C 6C 7C JC KC,5D QD AD
+Chakavak hand 3S 4S 8S,2H 5H 6H 9H JH QH,7D XD
+Round 7, Trick 2, Turn: 3, Trump: H
++++ Trick id 2 turn 3 trump H +++
+RemoteInterAgent 3: Input: qh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led H trump H
+hand: 5S 6S 7S,3C 8C QC AC,4D 9D JD KD
+comp 2 last table 8H
+op_a 1 last table 7H
+op_b 3 table QH
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 3C
+--- AI_0 --- out card: 3C ---
+RemoteInterAgent 1: Input: 2d
+RemoteInterAgent 2: Input: 4c
+AI_0 played 3C
+Kalagh played 2D
+parisa played 4C
+Chakavak played QH
+^^^ Trick id 2 turn 3 led H trump H ^^^
+AI_0 hand 5S 6S 7S,8C QC AC,4D 9D JD KD
+Kalagh hand JS QS KS AS,5C 9C XC,3D 6D 8D
+parisa hand 2S 9S XS,6C 7C JC KC,5D QD AD
+Chakavak hand 3S 4S 8S,2H 5H 6H 9H JH,7D XD
+Round 7, Trick 3, Turn: 3, Trump: H
++++ Trick id 3 turn 3 trump H +++
+RemoteInterAgent 3: Input: jh
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led H trump H
+hand: 5S 6S 7S,8C QC AC,4D 9D JD KD
+comp 2 last table 4C
+op_a 1 last table 2D
+op_b 3 table JH
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 4D
+--- AI_0 --- out card: 4D ---
+RemoteInterAgent 1: Input: 3d
+RemoteInterAgent 2: Input: 6c
+AI_0 played 4D
+Kalagh played 3D
+parisa played 6C
+Chakavak played JH
+^^^ Trick id 3 turn 3 led H trump H ^^^
+AI_0 hand 5S 6S 7S,8C QC AC,9D JD KD
+Kalagh hand JS QS KS AS,5C 9C XC,6D 8D
+parisa hand 2S 9S XS,7C JC KC,5D QD AD
+Chakavak hand 3S 4S 8S,2H 5H 6H 9H,7D XD
+Round 7, Trick 4, Turn: 3, Trump: H
++++ Trick id 4 turn 3 trump H +++
+RemoteInterAgent 3: Input: 9h
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led H trump H
+hand: 5S 6S 7S,8C QC AC,9D JD KD
+comp 2 last table 6C
+op_a 1 last table 3D
+op_b 3 table 9H
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 5S
+--- AI_0 --- out card: 5S ---
+RemoteInterAgent 1: Input: 6d
+RemoteInterAgent 2: Input: 7c
+AI_0 played 5S
+Kalagh played 6D
+parisa played 7C
+Chakavak played 9H
+^^^ Trick id 4 turn 3 led H trump H ^^^
+AI_0 hand 6S 7S,8C QC AC,9D JD KD
+Kalagh hand JS QS KS AS,5C 9C XC,8D
+parisa hand 2S 9S XS,JC KC,5D QD AD
+Chakavak hand 3S 4S 8S,2H 5H 6H,7D XD
+Round 7, Trick 5, Turn: 3, Trump: H
++++ Trick id 5 turn 3 trump H +++
+RemoteInterAgent 3: Input: 6h
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led H trump H
+hand: 6S 7S,8C QC AC,9D JD KD
+comp 2 last table 7C
+op_a 1 last table 6D
+op_b 3 table 6H
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 6S
+--- AI_0 --- out card: 6S ---
+RemoteInterAgent 1: Input: 8d
+RemoteInterAgent 2: Input: 2s
+AI_0 played 6S
+Kalagh played 8D
+parisa played 2S
+Chakavak played 6H
+^^^ Trick id 5 turn 3 led H trump H ^^^
+AI_0 hand 7S,8C QC AC,9D JD KD
+Kalagh hand JS QS KS AS,5C 9C XC,
+parisa hand 9S XS,JC KC,5D QD AD
+Chakavak hand 3S 4S 8S,2H 5H,7D XD
+Round 7, Trick 6, Turn: 3, Trump: H
++++ Trick id 6 turn 3 trump H +++
+RemoteInterAgent 3: Input: 5h
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led H led H trump H
+hand: 7S,8C QC AC,9D JD KD
+comp 2 last table 2S
+op_a 1 last table 8D
+op_b 3 table 5H
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 7S
+--- AI_0 --- out card: 7S ---
+RemoteInterAgent 1: Input: 5c
+RemoteInterAgent 2: Input: 9s
+AI_0 played 7S
+Kalagh played 5C
+parisa played 9S
+Chakavak played 5H
+^^^ Trick id 6 turn 3 led H trump H ^^^
+kot: 1, oth_scr: 0, winner_team: 1, trump_team: 1
+/ALR=== Round 7 winner team: 1  (Kot: 1) ===
+/INF=== Round 8 ===
+RemoteInterAgent 3: Input: 2h
+RemoteInterAgent 3: Input: c
+AI_0 Habc: 2S 3S 6S 7S 9S QS KS AS,2H 4H 5H 7H 8H 9H XH JH KH,3C 4C 5C 6C 7C 8C 9C XC JC QC KC AC,2D 3D 4D 5D 6D 8D XD JD QD AD
+AI_0 hand 4S 5S 8S XS JS,3H 6H QH AH,2C,7D 9D KD
+Kalagh hand QS,2H 5H XH JH,6C 7C 9C KC,3D 4D 8D AD
+parisa hand 2S 6S 9S AS,4H 7H 8H KH,3C JC QC,5D XD
+Chakavak hand 3S 7S KS,9H,4C 5C 8C XC AC,2D 6D JD QD
+Round 8, Trick 0, Turn: 3, Trump: C
++++ Trick id 0 turn 3 trump C +++
+RemoteInterAgent 3: Input: 8h
+RemoteInterAgent 3: Input: 9h
+--- AI_0 pl_id 0 team 0 ord 1 last_ord -1 last_led - led H trump C
+hand: 4S 5S 8S XS JS,3H 6H QH AH,2C,7D 9D KD
+op_b 3 table 9H
+case 1:
+pssbl_hi_hand: QH AH,
+prb_act QH 0.657895
+out: QH, prb: 0.657895
+Alg. out card: QH
+--- AI_0 --- out card: QH ---
+RemoteInterAgent 1: Input: 2h
+RemoteInterAgent 2: Input: 4h
+AI_0 played QH
+Kalagh played 2H
+parisa played 4H
+Chakavak played 9H
+^^^ Trick id 0 turn 3 led H trump C ^^^
+AI_0 hand 4S 5S 8S XS JS,3H 6H AH,2C,7D 9D KD
+Kalagh hand QS,5H XH JH,6C 7C 9C KC,3D 4D 8D AD
+parisa hand 2S 6S 9S AS,7H 8H KH,3C JC QC,5D XD
+Chakavak hand 3S 7S KS,4C 5C 8C XC AC,2D 6D JD QD
+Round 8, Trick 1, Turn: 0, Trump: C
++++ Trick id 1 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 1 last_led H led - trump C
+hand: 4S 5S 8S XS JS,3H 6H AH,2C,7D 9D KD
+comp 2 last table 4H
+op_a 1 last table 2H
+case 0:
+pssbl_hi_hand: 4S 5S 8S XS JS,3H 6H AH,2C,7D 9D KD
+prb_act 4S 0.000474383
+prb_act 5S 0.000474383
+prb_act 8S 0.00840336
+prb_act XS 0.0308123
+prb_act JS 0.0308123
+prb_act 3H 0.000474383
+prb_act 6H 0.00210084
+prb_act AH 1
+out: AH, prb: 1
+Alg. out card: AH
+--- AI_0 --- out card: AH ---
+RemoteInterAgent 1: Input: 5h
+RemoteInterAgent 2: Input: 7h
+RemoteInterAgent 3: Input: 4c
+AI_0 played AH
+Kalagh played 5H
+parisa played 7H
+Chakavak played 4C
+^^^ Trick id 1 turn 0 led H trump C ^^^
+AI_0 hand 4S 5S 8S XS JS,3H 6H,2C,7D 9D KD
+Kalagh hand QS,XH JH,6C 7C 9C KC,3D 4D 8D AD
+parisa hand 2S 6S 9S AS,8H KH,3C JC QC,5D XD
+Chakavak hand 3S 7S KS,5C 8C XC AC,2D 6D JD QD
+Round 8, Trick 2, Turn: 3, Trump: C
++++ Trick id 2 turn 3 trump C +++
+RemoteInterAgent 3: Input: 7s
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 0 last_led - led S trump C
+hand: 4S 5S 8S XS JS,3H 6H,2C,7D 9D KD
+op_b 3 last table 4C
+comp 2 last table 7H
+op_a 1 last table 5H
+op_b 3 table 7S
+case 1:
+pssbl_hi_hand: 8S XS JS,
+prb_act 8S 0.166435
+prb_act XS 0.268145
+prb_act JS 0.268145
+out: --, prb: 0.268145
+Alg. out card: 4S
+--- AI_0 --- out card: 4S ---
+RemoteInterAgent 1: Input: qs
+RemoteInterAgent 2: Input: as
+AI_0 played 4S
+Kalagh played QS
+parisa played AS
+Chakavak played 7S
+^^^ Trick id 2 turn 3 led S trump C ^^^
+AI_0 hand 5S 8S XS JS,3H 6H,2C,7D 9D KD
+Kalagh hand XH JH,6C 7C 9C KC,3D 4D 8D AD
+parisa hand 2S 6S 9S,8H KH,3C JC QC,5D XD
+Chakavak hand 3S KS,5C 8C XC AC,2D 6D JD QD
+Round 8, Trick 3, Turn: 2, Trump: C
++++ Trick id 3 turn 2 trump C +++
+RemoteInterAgent 2: Input: kh
+RemoteInterAgent 3: Input: 5c
+--- AI_0 pl_id 0 team 0 ord 2 last_ord 1 last_led S led H trump C
+hand: 5S 8S XS JS,3H 6H,2C,7D 9D KD
+comp 2 last table AS
+op_a 1 last table QS
+comp 2 table KH
+op_b 3 table 5C
+case 2:
+pssbl_hi_hand: 
+Alg. out card: 3H
+--- AI_0 --- out card: 3H ---
+RemoteInterAgent 1: Input: x
+RemoteInterAgent 1: Input: xh
+AI_0 played 3H
+Kalagh played XH
+parisa played KH
+Chakavak played 5C
+^^^ Trick id 3 turn 2 led H trump C ^^^
+AI_0 hand 5S 8S XS JS,6H,2C,7D 9D KD
+Kalagh hand JH,6C 7C 9C KC,3D 4D 8D AD
+parisa hand 2S 6S 9S,8H,3C JC QC,5D XD
+Chakavak hand 3S KS,8C XC AC,2D 6D JD QD
+Round 8, Trick 4, Turn: 3, Trump: C
++++ Trick id 4 turn 3 trump C +++
+RemoteInterAgent 3: Input: ks
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 2 last_led H led S trump C
+hand: 5S 8S XS JS,6H,2C,7D 9D KD
+op_a 1 last table XH
+op_b 3 table KS
+case 1:
+pssbl_hi_hand: 
+Alg. out card: 5S
+--- AI_0 --- out card: 5S ---
+RemoteInterAgent 1: Input: jh
+RemoteInterAgent 2: Input: 2s
+AI_0 played 5S
+Kalagh played JH
+parisa played 2S
+Chakavak played KS
+^^^ Trick id 4 turn 3 led S trump C ^^^
+AI_0 hand 8S XS JS,6H,2C,7D 9D KD
+Kalagh hand 6C 7C 9C KC,3D 4D 8D AD
+parisa hand 6S 9S,8H,3C JC QC,5D XD
+Chakavak hand 3S,8C XC AC,2D 6D JD QD
+Round 8, Trick 5, Turn: 3, Trump: C
++++ Trick id 5 turn 3 trump C +++
+RemoteInterAgent 3: Input: 3s
+--- AI_0 pl_id 0 team 0 ord 1 last_ord 1 last_led S led S trump C
+hand: 8S XS JS,6H,2C,7D 9D KD
+comp 2 last table 2S
+op_a 1 last table JH
+op_b 3 table 3S
+case 1:
+pssbl_hi_hand: 8S XS JS,
+prb_act 8S 0.000810851
+prb_act XS 0.000810851
+prb_act JS 0.000810851
+out: --, prb: 0.000810851
+Alg. out card: 8S
+--- AI_0 --- out card: 8S ---
+RemoteInterAgent 1: Input: 6c
+RemoteInterAgent 2: Input: 6s
+AI_0 played 8S
+Kalagh played 6C
+parisa played 6S
+Chakavak played 3S
+^^^ Trick id 5 turn 3 led S trump C ^^^
+AI_0 hand XS JS,6H,2C,7D 9D KD
+Kalagh hand 7C 9C KC,3D 4D 8D AD
+parisa hand 9S,8H,3C JC QC,5D XD
+Chakavak hand 8C XC AC,2D 6D JD QD
+Round 8, Trick 6, Turn: 1, Trump: C
++++ Trick id 6 turn 1 trump C +++
+RemoteInterAgent 1: Input: ad
+RemoteInterAgent 2: Input: 5d
+RemoteInterAgent 3: Input: 2d
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 1 last_led S led D trump C
+hand: XS JS,6H,2C,7D 9D KD
+comp 2 last table 6S
+op_a 1 last table 6C
+op_a 1 table AD
+comp 2 table 5D
+op_b 3 table 2D
+case 3:
+hi_hand: 
+Alg. out card: 7D
+--- AI_0 --- out card: 7D ---
+AI_0 played 7D
+Kalagh played AD
+parisa played 5D
+Chakavak played 2D
+^^^ Trick id 6 turn 1 led D trump C ^^^
+AI_0 hand XS JS,6H,2C,9D KD
+Kalagh hand 7C 9C KC,3D 4D 8D
+parisa hand 9S,8H,3C JC QC,XD
+Chakavak hand 8C XC AC,6D JD QD
+Round 8, Trick 7, Turn: 1, Trump: C
++++ Trick id 7 turn 1 trump C +++
+RemoteInterAgent 1: Input: 3d
+RemoteInterAgent 2: Input: xd
+RemoteInterAgent 3: Input: qd
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 3 last_led D led D trump C
+hand: XS JS,6H,2C,9D KD
+op_a 1 table 3D
+comp 2 table XD
+op_b 3 table QD
+case 3:
+hi_hand: KD
+Alg. out card: KD
+--- AI_0 --- out card: KD ---
+AI_0 played KD
+Kalagh played 3D
+parisa played XD
+Chakavak played QD
+^^^ Trick id 7 turn 1 led D trump C ^^^
+AI_0 hand XS JS,6H,2C,9D
+Kalagh hand 7C 9C KC,4D 8D
+parisa hand 9S,8H,3C JC QC,
+Chakavak hand 8C XC AC,6D JD
+Round 8, Trick 8, Turn: 0, Trump: C
++++ Trick id 8 turn 0 trump C +++
+--- AI_0 pl_id 0 team 0 ord 0 last_ord 3 last_led D led - trump C
+hand: XS JS,6H,2C,9D
+case 0:
+pssbl_hi_hand: XS JS,6H,2C,9D
+prb_act XS 1
+out: XS, prb: 1
+Alg. out card: XS
+--- AI_0 --- out card: XS ---
+RemoteInterAgent 1: Input: 7c
+RemoteInterAgent 2: Input: 9s
+RemoteInterAgent 3: Input: 6d
+AI_0 played XS
+Kalagh played 7C
+parisa played 9S
+Chakavak played 6D
+^^^ Trick id 8 turn 0 led S trump C ^^^
+AI_0 hand JS,6H,2C,9D
+Kalagh hand 9C KC,4D 8D
+parisa hand 8H,3C JC QC,
+Chakavak hand 8C XC AC,JD
+Round 8, Trick 9, Turn: 1, Trump: C
++++ Trick id 9 turn 1 trump C +++
+RemoteInterAgent 1: Input: 9c
+RemoteInterAgent 2: Input: 3c
+RemoteInterAgent 3: Input: ac
+--- AI_0 pl_id 0 team 0 ord 3 last_ord 0 last_led - led C trump C
+hand: JS,6H,2C,9D
+op_b 3 last table 6D
+comp 2 last table 9S
+op_a 1 last table 7C
+op_a 1 table 9C
+comp 2 table 3C
+op_b 3 table AC
+case 3:
+hi_hand: 
+Alg. out card: 2C
+--- AI_0 --- out card: 2C ---
+AI_0 played 2C
+Kalagh played 9C
+parisa played 3C
+Chakavak played AC
+^^^ Trick id 9 turn 1 led C trump C ^^^
+kot: 0, oth_scr: 3, winner_team: 1, trump_team: 1
+/ALR=== Round 8 winner team: 1  (Kot: 0) ===
+*** Team 1 is the winner of the game. ***

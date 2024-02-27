@@ -1,7 +1,8 @@
 CXX=g++
 LD=g++
-FLAGS=-std=c++17 -DNDEBUG -O2
-DBG_FLAGS=-std=c++17 -g -DDEBUG -Wall -Wextra -O0
+INCFLAGS=-I/usr/include/eigen3
+FLAGS=-std=c++17 -DNDEBUG -O2 $(INCFLAGS)
+DBG_FLAGS=-std=c++17 -g -DDEBUG -Wall -Wextra -O2 $(INCFLAGS)
 
 OBJPATH = ./obj
 SRCPATH = ./src

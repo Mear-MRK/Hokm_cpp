@@ -71,7 +71,7 @@ void Deck::deal(CardStack *stacks, int nbr_players) {
 #endif
 	int nbr_delt = Card::N_CARDS / nbr_players;
 	for(int i = 0; i < nbr_players; i++) {
-		stacks[i].reset();
+		stacks[i].clear();
 		stacks[i].append(cards + i * nbr_delt, nbr_delt);
 	}
 }

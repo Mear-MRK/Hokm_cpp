@@ -16,21 +16,21 @@ const CardStack CardStack::EMPTY = CardStack();
 
 CardStack::CardStack(uint64_t bin64) : nbr_cards(0), mt_rnd_gen(std::mt19937(std::random_device()())) {
 	this->bin64 = bin64 & (~0ull << (64 - Card::N_CARDS) >> (64 - Card::N_CARDS));
-	for (CID id = 0; id < Card::N_CARDS; id++)
+	for (Cid id = 0; id < Card::N_CARDS; id++)
 		if (this->bin64 & (1ull << id)) {
 			append(Card(id));
 			nbr_cards++;
 		}
 }
 
-CardStack::CardStack(CID ids_arr[], int nbr_cards) : nbr_cards(0), bin64(0), mt_rnd_gen(std::mt19937(std::random_device()()))
+CardStack::CardStack(Cid ids_arr[], int nbr_cards) : nbr_cards(0), bin64(0), mt_rnd_gen(std::mt19937(std::random_device()()))
 {
 	for(int i = 0; i < nbr_cards; i++){
 		append(Card(ids_arr[i]));
 	}
 }
 
-void CardStack::append(const Card &c) {
+CardStack& CardStack::append(const Card &c) {
 #ifdef DEBUG
 	if (c == Card::NONE)
 		throw std::invalid_argument("Card::NONE can't be appended.");
@@ -39,6 +39,7 @@ void CardStack::append(const Card &c) {
 #endif
 	cards_arr[nbr_cards++] = c;
 	bin64 |= 1ull << c.id;
+	return *this;
 }
 
 Card CardStack::pop() {
@@ -66,7 +67,7 @@ Card CardStack::at(int i) const {
 	return cards_arr[i];
 }
 
-void CardStack::reset() {
+void CardStack::clear() {
 	nbr_cards = 0;
 	bin64 = 0;
 }
@@ -79,14 +80,15 @@ int CardStack::get_nbr_cards() const {
 	return nbr_cards;
 }
 
-void CardStack::append(const Card card_arr[], int nbr_cards) {
+CardStack& CardStack::append(const Card card_arr[], int nbr_cards) {
 	for(int i = 0; i < nbr_cards; i++)
 		append(card_arr[i]);
+	return *this;
 }
 
-void CardStack::shuffle() {
+CardStack& CardStack::shuffle() {
 	if (!nbr_cards)
-		return;
+		return *this;
 	for (int i = 0; i < nbr_cards - 1; i++) {
 		std::uniform_int_distribution<int> uint_rnd_dist(i, nbr_cards - 1);
 		int j = uint_rnd_dist(mt_rnd_gen);
@@ -96,6 +98,7 @@ void CardStack::shuffle() {
 			cards_arr[j] = tmp;
 		}
 	}
+	return *this;
 }
 
 CardStack CardStack::top(int n) const {

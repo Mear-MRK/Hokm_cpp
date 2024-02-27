@@ -19,21 +19,23 @@
 
 class Agent
 {
+private:
+	static int next_id;
 
 protected:
 	int player_id{-1};
 	int team_id{-1};
-	std::string name;
-	Hand *hand{nullptr};
+	std::string name{""};
+	Hand hand;
 
 public:
-	Agent(int player_id, std::string name) : player_id(player_id), team_id(player_id % Hokm::N_TEAMS),
-											 name(name), hand(nullptr){};
+	Agent();
+
 	virtual ~Agent(){};
 
 	virtual void init_game(){};
 
-	virtual void init_round(Hand &hand) { this->hand = &hand; };
+	virtual void init_round(const Hand &hand) { this->hand = hand; };
 
 	virtual Suit call_trump(const CardStack &) = 0;
 
@@ -43,16 +45,17 @@ public:
 
 	virtual void reset(){};
 
-	virtual void end_game(){};
+	virtual void fin_game(){};
 
 	virtual void info(const std::string &info_str){};
 
-	virtual Hand &get_hand()
-	{
-		return *hand;
-	};
+	int get_id() const;
 
-	virtual std::string get_name() const { return name; };
+	int get_team() const;
+
+	Hand get_hand() const;
+
+	std::string get_name() const;
 };
 
 #endif /* AGENT_HPP_ */
