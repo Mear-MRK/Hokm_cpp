@@ -1,11 +1,13 @@
-CXX=g++
-LD=g++
-INCFLAGS=-I/usr/include/eigen3
-FLAGS=-std=c++17 -DNDEBUG -O2 $(INCFLAGS)
-DBG_FLAGS=-std=c++17 -g -DDEBUG -Wall -Wextra -O2 $(INCFLAGS)
-
 OBJPATH = ./obj
 SRCPATH = ./src
+INCPATH = ./include
+
+CXX=g++
+LD=g++
+
+INCFLAGS=-I $(INCPATH)
+FLAGS=-std=c++17 -DNDEBUG -O2 $(INCFLAGS)
+DBG_FLAGS=-std=c++17 -g -DDEBUG -Wall -Wextra -O2 $(INCFLAGS)
 
 SRCFILES = $(filter-out %_test.cpp, $(wildcard $(SRCPATH)/*.cpp))
 TSTFILES = $(wildcard $(SRCPATH)/*_test.cpp)
@@ -16,23 +18,23 @@ TST_OBJFILES = $(patsubst $(SRCPATH)/%.cpp, $(OBJPATH)/%.o, $(TSTFILES))
 all: hokm.out hokm_dbg.out
 	@echo "====== make all ======"
 
-$(OBJPATH)/%.o: $(SRCPATH)/%.cpp $(SRCPATH)/%.h $(SRCPATH)/GameConfig.h
+$(OBJPATH)/%.o: $(SRCPATH)/%.cpp $(INCPATH)/%.h $(INCPATH)/GameConfig.h
 	@mkdir -p $(OBJPATH)
 	$(CXX) $(FLAGS) -o $@ -c $<
 
-$(OBJPATH)/%_dbg.o: $(SRCPATH)/%.cpp $(SRCPATH)/%.h $(SRCPATH)/GameConfig.h
+$(OBJPATH)/%_dbg.o: $(SRCPATH)/%.cpp $(INCPATH)/%.h $(INCPATH)/GameConfig.h
 	@mkdir -p $(OBJPATH)
 	$(CXX) $(DBG_FLAGS) -o $@ -c $<
 
-$(OBJPATH)/%_test.o: $(SRCPATH)/%_test.cpp $(SRCPATH)/%.h $(SRCPATH)/GameConfig.h
+$(OBJPATH)/%_test.o: $(SRCPATH)/%_test.cpp $(INCPATH)/%.h $(INCPATH)/GameConfig.h
 	@mkdir -p $(OBJPATH)
 	$(CXX) $(DBG_FLAGS) -o $@ -c $<
 
-$(OBJPATH)/main.o: $(SRCPATH)/main.cpp $(SRCPATH)/GameConfig.h
+$(OBJPATH)/main.o: $(SRCPATH)/main.cpp $(INCPATH)/GameConfig.h
 	@mkdir -p $(OBJPATH)
 	$(CXX) $(FLAGS) -o $@ -c $<
 
-$(OBJPATH)/main_dbg.o: $(SRCPATH)/main.cpp $(SRCPATH)/GameConfig.h
+$(OBJPATH)/main_dbg.o: $(SRCPATH)/main.cpp $(INCPATH)/GameConfig.h
 	@mkdir -p $(OBJPATH)
 	$(CXX) $(DBG_FLAGS) -o $@ -c $<
 
