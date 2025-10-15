@@ -16,7 +16,7 @@
 #include "SoundAgent.h"
 #include "utils.h"
 
-static Agent *newAgentFrom(char ag_typ, int id, bool show_hand = true)
+static Agent *newAgentFrom(char ag_typ, int, bool show_hand = true)
 {
 	switch (ag_typ)
 	{
@@ -33,7 +33,7 @@ static Agent *newAgentFrom(char ag_typ, int id, bool show_hand = true)
 
 InteractiveGame::InteractiveGame(std::string ag_typs, bool show_hand)
 {
-	for (int pl = 0; pl < agent.size(); pl++)
+	for (size_t pl = 0; pl < agent.size(); pl++)
 		agent[pl] = newAgentFrom(ag_typs[pl], pl, show_hand);
 
 	for(auto ag : agent)
@@ -98,7 +98,7 @@ int InteractiveGame::play(int win_score, int round_win_score)
 
 void InteractiveGame::broadcast_info(std::string info_str, int exclude)
 {
-	for (int pl = 0; pl < agent.size(); pl++)
-		if (pl != exclude)
+	for (size_t pl = 0; pl < agent.size(); pl++)
+		if ((int)pl != exclude)
 			agent[pl]->info(info_str);
 }

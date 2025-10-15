@@ -6,6 +6,9 @@
 *.lo
 *.o
 *.obj
+hokm_client.py
+__pycache__/
+build_warnings.log
 
 # Precompiled Headers
 *.gch

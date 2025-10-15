@@ -10,7 +10,7 @@
 #include <iostream>
 #include <algorithm>
 
-InteractiveAgent::InteractiveAgent(bool show_hand) : 
+InteractiveAgent::InteractiveAgent(bool show_hand) :
 Agent(),
 show_hand(show_hand)
 {
@@ -18,7 +18,7 @@ show_hand(show_hand)
 }
 
 void InteractiveAgent::init_game()
-{	
+{
 	name = "Pl_" + std::to_string(player_id);
 	output("/ALRGreetings " + name + ", you're part of team " + std::to_string(player_id % 2));
 	std::string ag_name = input("Enter your name: ");
@@ -33,7 +33,7 @@ void InteractiveAgent::init_round(const Hand &hand)
 	output("/HND"+ hand.to_string());
 }
 
-Card InteractiveAgent::act(const State &state, const History &hist)
+Card InteractiveAgent::act(const State &state, const History &)
 {
 
 	if (show_hand)
@@ -104,10 +104,10 @@ Suit InteractiveAgent::call_trump(const CardStack &first_5cards)
 	return trump;
 }
 
-void InteractiveAgent::trick_result(const State &state,
-									const std::array<int, Hokm::N_TEAMS> &team_scores)
+void InteractiveAgent::trick_result(const State &,
+									const std::array<int, Hokm::N_TEAMS> &)
 {
-	int trick_taker = state.turn;
+	// int trick_taker = state.turn;
 }
 
 void InteractiveAgent::info(const std::string &info_str)

@@ -19,7 +19,7 @@ Suit RndAgent::call_trump(const CardStack &first_5cards) {
 }
 
 
-Card RndAgent::act(const State &state, const History &hist) {
+Card RndAgent::act(const State &state, const History &) {
 	LOG(name + " internal hand: " + hand.to_string());
 	int ind;
 	if (state.led == Card::NON_SU || hand.len[state.led] == 0) {

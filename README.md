@@ -23,16 +23,16 @@ The project is organized into several C++ classes and a Python client for remote
 *   `InteractiveGame`: Facilitates interactive Hokm games with human players, either locally or remotely.
 *   `LearningGame`: A framework for training and evaluating AI agents by playing multiple rounds against each other.
 
-**Python Client (hokm\_client.py):**
+**Python Client:**
 
-*   Provides a curses-based terminal interface for remote interaction with the `RemoteInterAgent`.
-*   Allows human players to connect to the C++ server and play Hokm remotely.
+*   **`hokm_client`**: The main entry point for the Python client.
+*   **`hokm/client.py`**: Provides a `HokmClient` class that manages the connection to the server and the `curses`-based terminal interface.
 
 ## How to Use
 
-1.  **Compilation (C++):** Compile the C++ code using your preferred compiler (e.g., g++). Make sure to link the necessary libraries (e.g., Winsock for Windows).
-2.  **Running the Server (C++):** Execute the compiled C++ executable. It will start a Hokm server listening for client connections.
-3.  **Running the Client (Python):** Run the `hokm_client.py` script, providing the server's IP address (or 'localhost' if running on the same machine) and the player ID as command-line arguments.
+1.  **Compilation (C++):** Compile the C++ code using the provided `Makefile`. Simply run `make` in the root of the project. This will create the `hokm.out` and `hokm_dbg.out` executables.
+2.  **Running the Server (C++):** Execute the compiled C++ executable (e.g., `./hokm.out`). It will start a Hokm server listening for client connections.
+3.  **Running the Client (Python):** Run the `hokm_client` script, providing the server's IP address (or 'localhost' if running on the same machine) and the player ID as command-line arguments (e.g., `./hokm_client localhost 1`).
 4.  **Interactive Play:** The Python client will display the game interface in the terminal, allowing you to interact with the game.
 
 ## Key Features

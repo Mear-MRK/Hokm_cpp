@@ -244,7 +244,7 @@ void SoundAgent::updateHandsNcards()
 
 
 // {Nabc -> 0, Nab -> 0, Nca -> 0, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0000(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb0000(double p[9], double, double, double, double, double ua, double ub, double uc) {
 	assert(ua==0 && ub==0 && uc==0);
 p[0] = 0.3333333333333333;
 p[1] = 0.5;
@@ -259,7 +259,7 @@ p[8] = 0.5;
 
 
 // {Nabc -> 0, Nab -> 0, Nca -> 0, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0001(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb0001(double p[9], double, double, double, double bc, double ua, double ub, double uc) {
 	assert(ua==0);
 	assert(ub+uc==bc);
 p[0] = 0.3333333333333333;
@@ -275,7 +275,7 @@ p[8] = uc/bc;
 
 
 // {Nabc -> 0, Nab -> 0, Nca -> ca, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0010(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb0010(double p[9], double, double, double ca, double, double ua, double ub, double uc) {
 	assert(ub==0);
 	assert(uc+ua==ca);
 p[0] = 0.3333333333333333;
@@ -291,7 +291,7 @@ p[8] = 0.5;
 
 
 // {Nabc -> 0, Nab -> 0, Nca -> ca, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0011(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb0011(double p[9], double, double, double ca, double bc, double ua, double ub, double uc) {
 	assert(ca+bc==ua+ub+uc);
 p[0] = 0.3333333333333333;
 p[1] = 0.5;
@@ -306,7 +306,7 @@ p[8] = 1 - p[5];
 
 
 // {Nabc -> 0, Nab -> ab, Nca -> 0, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0100(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb0100(double p[9], double, double ab, double, double, double ua, double ub, double uc) {
 	assert(uc==0);
 	assert(ua+ub==ab);
 p[0] = 0.3333333333333333;
@@ -322,7 +322,7 @@ p[8] = 0.5;
 
 
 // {Nabc -> 0, Nab -> ab, Nca -> 0, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0101(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb0101(double p[9], double, double ab, double, double bc, double ua, double ub, double uc) {
 	assert(ua + ub + uc == ab + bc);
 p[0] = 0.3333333333333333;
 p[1] = ua / ab;
@@ -337,7 +337,7 @@ p[7] = 0.5;
 
 
 // {Nabc -> 0, Nab -> ab, Nca -> ca, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0110(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb0110(double p[9], double, double ab, double ca, double, double ua, double ub, double uc) {
 	assert(ua + ub + uc == ab + ca);
 p[0] = 0.3333333333333333;
 p[4] = ub / ab;
@@ -352,7 +352,7 @@ p[8] = 0.5;
 
 
 // {Nabc -> 0, Nab -> ab, Nca -> ca, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0111(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb0111(double p[9], double, double ab, double ca, double bc, double ua, double ub, double uc) {
 	assert(ua + ub + uc == ab + ca + bc);
 	double uap = ua * (1 - ab/(ua+ub) - ca/(uc+ua));
 	double ubp = ub * (1 - ab/(ua+ub) - bc/(ub+uc));
@@ -374,7 +374,7 @@ p[8] = uc / (ub + uc) - y / bc;
 
 
 // {Nabc -> w, Nab -> 0, Nca -> 0, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1000(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb1000(double p[9], double w, double, double, double, double ua, double ub, double uc) {
 	assert(ua + ub + uc == w);
 p[0] = ua/w;
 p[1] = 0.5;
@@ -389,7 +389,7 @@ p[8] = 0.5;
 
 
 // {Nabc -> w, Nab -> 0, Nca -> 0, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1001(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb1001(double p[9], double w, double, double, double bc, double ua, double ub, double uc) {
 	assert(w + bc == ua + ub + uc);
 	assert(w >= ua);
 p[0] = ua / w;
@@ -405,7 +405,7 @@ p[8] = uc / (ub + uc);
 
 
 // {Nabc -> w, Nab -> 0, Nca -> ca, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1010(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb1010(double p[9], double w, double, double ca, double, double ua, double ub, double uc) {
 	assert(w + ca == ua + ub + uc);
 	assert(w >= ub);
 p[3] = ub / w;
@@ -421,7 +421,7 @@ p[8] = 0.5;
 
 
 // {Nabc -> w, Nab -> 0, Nca -> ca, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1011(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb1011(double p[9], double w, double, double ca, double bc, double ua, double ub, double uc) {
 p[0] = (std::pow(bc,3)*(4 + std::pow(ca,2))*w + std::pow(bc,4)*(std::pow(ca,2) - 2*ca*w + 4*ua*w) + std::pow(bc,2)*(std::pow(ca,2)*(3 + std::pow(ca,2)) - 2*(ca + std::pow(ca,2)*(ca - 2*ua + ub) + 2*(-2*ua + ub + uc))*w + (4 + 3*std::pow(ca,2))*std::pow(w,2) - 4*(ca - 2*ua)*std::pow(w,3)) + 2*w*(std::pow(ca,2)*(ua - 2*ub - ca*(1 + ca*ub) + uc) + std::pow(ca,2)*(2 + std::pow(ca,2))*w - (ca + std::pow(ca,2)*(ca - 2*ua + ub) + 2*(-2*ua + ub + uc))*std::pow(w,2) + (2 + std::pow(ca,2))*std::pow(w,3) - (ca - 2*ua)*std::pow(w,4)) + bc*w*(std::pow(ca,4) + 4*std::pow(w,2) + std::pow(ca,2)*(1 + std::pow(w,2))))/((3 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 4*(std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
 p[1] = 0.5;
 p[2] = (3*std::pow(bc,2)*ca*(bc + ca + 2*ua + (std::pow(bc,2) + std::pow(ca,2))*ua - ub - uc) - std::pow(bc,2)*ca*(std::pow(bc,2) + std::pow(ca,2))*w + (2*std::pow(bc,4) - std::pow(bc,3)*ca - bc*ca*(-3 + std::pow(ca,2)) + std::pow(bc,2)*(6 + ca*(2*ca + 7*ua + 2*ub)) + 2*ca*(ca*(3 + ca*(2*ua + ub)) + 3*(ua - uc)))*std::pow(w,2) - ca*(3*std::pow(bc,2) + 2*std::pow(ca,2))*std::pow(w,3) + (6 + 4*std::pow(bc,2) - bc*ca + 2*ca*(ca + 2*ua + ub))*std::pow(w,4) - 2*ca*std::pow(w,5) + 2*std::pow(w,6))/((3 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 4*(std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
@@ -435,7 +435,7 @@ p[8] = (std::pow(bc,2)*(std::pow(ca,2) + std::pow(w,2))*(6 + 3*std::pow(ca,2) + 
 
 
 // {Nabc -> w, Nab -> ab, Nca -> 0, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1100(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb1100(double p[9], double w, double ab, double, double, double ua, double ub, double uc) {
 	assert(w + ab == ua + ub + uc);
 	assert(w >= uc);
 p[6] = uc / w;
@@ -451,7 +451,7 @@ p[8] = 0.5;
 
 
 // {Nabc -> w, Nab -> ab, Nca -> 0, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1101(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb1101(double p[9], double w, double ab, double, double bc, double ua, double ub, double uc) {
 p[0] = (-2*std::pow(ab,3)*w*(1 + std::pow(bc,2) + std::pow(w,2)) - 2*ab*w*(std::pow(bc,2) + std::pow(w,2))*(1 + std::pow(bc,2) + std::pow(w,2)) + std::pow(ab,4)*(std::pow(bc,2) + bc*w + 2*w*(-uc + w)) + 4*w*(std::pow(bc,2) + std::pow(w,2))*(bc + std::pow(bc,2)*ua - ub - uc + w + ua*(2 + std::pow(w,2))) + std::pow(ab,2)*(std::pow(bc,4) + std::pow(bc,3)*w + bc*(w + std::pow(w,3)) + std::pow(bc,2)*(3 + w*(4*ua - 2*uc + 3*w)) + 2*w*(ua + ub + 2*ua*std::pow(w,2) - (uc - w)*(2 + std::pow(w,2)))))/((3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(bc,2) + 4*(std::pow(ab,2) + std::pow(bc,2))*std::pow(w,2) + 4*std::pow(w,4)));
 p[1] = (3*ab*std::pow(bc,2)*(ab + bc + 2*ua + (std::pow(ab,2) + std::pow(bc,2))*ua - ub - uc) - ab*std::pow(bc,2)*(std::pow(ab,2) + std::pow(bc,2))*w + (2*std::pow(ab,2)*(3 + std::pow(bc,2)) + 2*std::pow(bc,2)*(3 + std::pow(bc,2)) + 6*ab*(ua - ub) + std::pow(ab,3)*(-bc + 4*ua + 2*uc) + ab*bc*(3 + bc*(-bc + 7*ua + 2*uc)))*std::pow(w,2) - ab*(2*std::pow(ab,2) + 3*std::pow(bc,2))*std::pow(w,3) + (6 + 2*std::pow(ab,2) + 4*std::pow(bc,2) + ab*(-bc + 4*ua + 2*uc))*std::pow(w,4) - 2*ab*std::pow(w,5) + 2*std::pow(w,6))/((3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(bc,2) + 4*(std::pow(ab,2) + std::pow(bc,2))*std::pow(w,2) + 4*std::pow(w,4)));
 p[2] = 0.5;
@@ -465,7 +465,7 @@ p[8] = (3*std::pow(ab,2)*bc*(ab + bc - ua - ub + (2 + std::pow(ab,2) + std::pow(
 
 
 // {Nabc -> w, Nab -> ab, Nca -> ca, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1110(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
+static void prb1110(double p[9], double w, double ab, double ca, double, double ua, double ub, double uc) {
 p[0] = (std::pow(ab,2)*std::pow(ca,2)*(3 + std::pow(ab,2) + std::pow(ca,2)) + (-2*std::pow(ab,3)*(1 + std::pow(ca,2)) + ab*(std::pow(ca,2) + std::pow(ca,4)) + std::pow(ab,4)*(ca - 2*uc) + 2*std::pow(ca,2)*(ua - 2*ub - ca*(1 + ca*ub) + uc) + std::pow(ab,2)*(ca + 2*(ua + ub - 2*uc) + std::pow(ca,2)*(-2*ca + 3*ua + ub + uc)))*w + 2*(std::pow(ab,4) + 2*std::pow(ca,2) + std::pow(ca,4) + std::pow(ab,2)*(2 + std::pow(ca,2)))*std::pow(w,2) - (2*std::pow(ab,3) + ab*(2 + std::pow(ca,2)) + std::pow(ab,2)*(ca - 4*ua + 2*uc) + 2*(ca + std::pow(ca,2)*(ca - 2*ua + ub) + 2*(-2*ua + ub + uc)))*std::pow(w,3) + 2*(2 + std::pow(ab,2) + std::pow(ca,2))*std::pow(w,4) - 2*(ab + ca - 2*ua)*std::pow(w,5))/((3 + std::pow(ab,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(ca,2) + 4*(std::pow(ab,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
 p[1] = (std::pow(ab,2)*(std::pow(ca,2) + std::pow(w,2))*(6 + 3*std::pow(ca,2) + 2*std::pow(w,2)) + std::pow(ab,3)*(3*std::pow(ca,2)*(-ca + ua + uc) - 2*std::pow(ca,2)*w + (-3*ca + 4*ua + 2*uc)*std::pow(w,2) - 2*std::pow(w,3)) + (std::pow(ca,2) + std::pow(w,2))*(3*(2 + std::pow(ca,2))*ub*(ca - ua - ub - uc) + 3*(2 + std::pow(ca,2))*ub*w + 2*(3 + std::pow(ca,2))*std::pow(w,2) + 2*std::pow(w,4)) + ab*(3*std::pow(ca,2)*(-ca + ua + uc) + std::pow(ca,4)*w + (6*ua + ca*(-3 + ca*(-3*ca + 4*ua + 2*uc)))*std::pow(w,2) - std::pow(ca,2)*std::pow(w,3) + (-3*ca + 4*ua + 2*uc)*std::pow(w,4) - 2*std::pow(w,5)))/((3 + std::pow(ab,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(ca,2) + 4*(std::pow(ab,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
 p[2] = (-3*std::pow(ab,3)*ca*(1 + std::pow(ca,2) + std::pow(w,2)) - 3*ab*ca*std::pow(w,2)*(1 + std::pow(ca,2) + std::pow(w,2)) + std::pow(ab,4)*(3*ca*(ca - uc) + ca*w + 2*std::pow(w,2)) + 2*std::pow(w,2)*(ca*(ca*(3 + ca*(2*ua + ub)) + 3*(ua - uc)) - std::pow(ca,3)*w + (3 + ca*(ca + 2*ua + ub))*std::pow(w,2) - ca*std::pow(w,3) + std::pow(w,4)) + std::pow(ab,2)*(3*ca*(ua + ub + ca*(2 + ca*(ua + ub)) - 2*uc) - 2*std::pow(ca,3)*w + (6 + ca*(5*ca + 4*ua + 2*ub - 3*uc))*std::pow(w,2) - ca*std::pow(w,3) + 4*std::pow(w,4)))/((3 + std::pow(ab,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(ca,2) + 4*(std::pow(ab,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
@@ -528,7 +528,7 @@ void SoundAgent::updateProbs()
 				if (Nbc > 0)
 					prb1001(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
 				else
-					prb1000(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);			
+					prb1000(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
 	else
 		if(Nab > 0)
 			if(Nca > 0)
@@ -607,10 +607,12 @@ Card SoundAgent::act(const State &state, const History &hist)
 		c = hist.played_cards[b_id].at(-1);
 		LOG("op_b " << b_id << " last table " << c.to_string());
 		update_oth_hands(b_id, c, last_led);
+		[[fallthrough]];
 	case 1:
 		c = hist.played_cards[c_id].at(-1);
 		LOG("comp " << c_id << " last table " << c.to_string());
 		update_oth_hands(c_id, c, last_led);
+		[[fallthrough]];
 	case 2:
 		c = hist.played_cards[a_id].at(-1);
 		LOG("op_a " << a_id << " last table " << c.to_string());
@@ -623,10 +625,12 @@ Card SoundAgent::act(const State &state, const History &hist)
 		c = state.table[a_id];
 		LOG("op_a " << a_id << " on table " << c.to_string());
 		update_oth_hands(a_id, c, state.led);
+		[[fallthrough]];
 	case 2:
 		c = state.table[c_id];
 		LOG("comp " << c_id << " on table " << c.to_string());
 		update_oth_hands(c_id, c, state.led);
+		[[fallthrough]];
 	case 1:
 		c = state.table[b_id];
 		LOG("op_b " << b_id << " on table " << c.to_string());
@@ -637,8 +641,10 @@ Card SoundAgent::act(const State &state, const History &hist)
 	{
 	case 3:
 		Ncards_a--;
+		[[fallthrough]];
 	case 2:
 		Ncards_c--;
+		[[fallthrough]];
 	case 1:
 		Ncards_b--;
 	}
@@ -846,8 +852,8 @@ SoundAgent::SoundAgent(double min_prob, double trump_prb_cap, double max_prob)
     : Agent(),
       mt_rnd_gen(std::mt19937(std::random_device()())),
       prob_floor(min_prob),
-      prob_ceiling(max_prob),
-      trump_prob_cap(trump_prb_cap)
+	  trump_prob_cap(trump_prb_cap),
+      prob_ceiling(max_prob)
 {
 	name = "AI_" + std::to_string(player_id);
 }

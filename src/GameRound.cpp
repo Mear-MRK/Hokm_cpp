@@ -13,14 +13,15 @@
 #include "utils.h"
 #include "table.h"
 
-GameRound::GameRound(std::array<Agent *, Hokm::N_PLAYERS> agent) : round_id(-1),
-																   agent(agent),
-																   kot(0),
-																   winner_team(-1),
-																   trump_team(-1),
-																   team_scores({0}),
-																   opening_player(-1),
-																   mt_rnd_gen(std::mt19937(std::random_device()()))
+GameRound::GameRound(std::array<Agent *, Hokm::N_PLAYERS> agent) :
+	round_id(-1),
+	agent(agent),
+	team_scores({0}),
+	mt_rnd_gen(std::mt19937(std::random_device()())),
+	winner_team(-1),
+	trump_team(-1),
+	opening_player(-1),
+	kot(0)
 {
 }
 

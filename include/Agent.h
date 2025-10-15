@@ -41,13 +41,13 @@ public:
 
 	virtual Card act(const State &, const History &) = 0;
 
-	virtual void trick_result(const State &, const std::array<int, Hokm::N_TEAMS> &team_scores){};
+	virtual void trick_result(const State &, const std::array<int, Hokm::N_TEAMS> &){};
 
 	virtual void reset(){};
 
 	virtual void fin_game(){};
 
-	virtual void info(const std::string &info_str){};
+	virtual void info(const std::string &){};
 
 	int get_id() const;
 
