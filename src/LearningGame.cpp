@@ -13,7 +13,10 @@
 #include "RndAgent.h"
 #include "utils.h"
 
-LearningGame::LearningGame(int nbr_probs, double min_prob, double max_prob) : stats{nullptr}, nbr_probs(nbr_probs), nbr_stats{0}
+LearningGame::LearningGame(int nbr_probs, double min_prob, double max_prob) :
+	nbr_probs(nbr_probs),
+	nbr_stats{0},
+	stats{nullptr}
 {
 	for (int pl = 0; pl < Hokm::N_PLAYERS; pl++)
 		agent[pl] = new SoundAgent();

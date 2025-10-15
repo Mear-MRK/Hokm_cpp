@@ -1,52 +1,119 @@
+# Makefile for Hokm Card Game (Linux)
+
+# Phony targets
+.PHONY: all test clean
+
+# Default target
+all: hokm.out hokm_dbg.out
+
+# Paths
 OBJPATH = ./obj
 SRCPATH = ./src
 INCPATH = ./include
 
-CXX=g++
-LD=g++
+# Compiler and Linker
+CXX = g++
+LD = g++
 
-INCFLAGS=-I $(INCPATH)
-FLAGS=-std=c++17 -DNDEBUG -O2 $(INCFLAGS)
-DBG_FLAGS=-std=c++17 -g -DDEBUG -Wall -Wextra -O2 $(INCFLAGS)
+# Executable names
+TARGET = hokm.out
+DBG_TARGET = hokm_dbg.out
+TEST_TARGET = hokm_test.out
 
-SRCFILES = $(filter-out %_test.cpp, $(wildcard $(SRCPATH)/*.cpp))
-TSTFILES = $(wildcard $(SRCPATH)/*_test.cpp)
-OBJFILES = $(patsubst $(SRCPATH)/%.cpp, $(OBJPATH)/%.o, $(SRCFILES))
-DBG_OBJFILES = $(patsubst %.o, %_dbg.o, $(OBJFILES))
-TST_OBJFILES = $(patsubst $(SRCPATH)/%.cpp, $(OBJPATH)/%.o, $(TSTFILES))
+# Flags
+DEPFLAGS = -MMD -MP
+INCFLAGS = -I$(INCPATH)
+CXXFLAGS_BASE = -std=c++17 $(INCFLAGS) $(DEPFLAGS)
 
-all: hokm.out hokm_dbg.out
-	@echo "====== make all ======"
+# Release flags
+CXXFLAGS = $(CXXFLAGS_BASE) -DNDEBUG -O2
 
-$(OBJPATH)/%.o: $(SRCPATH)/%.cpp $(INCPATH)/%.h $(INCPATH)/GameConfig.h
-	@mkdir -p $(OBJPATH)
-	$(CXX) $(FLAGS) -o $@ -c $<
+# Debug flags
+DBG_CXXFLAGS = $(CXXFLAGS_BASE) -g -DDEBUG -Wall -Wextra -O2 -DTEST
 
-$(OBJPATH)/%_dbg.o: $(SRCPATH)/%.cpp $(INCPATH)/%.h $(INCPATH)/GameConfig.h
-	@mkdir -p $(OBJPATH)
-	$(CXX) $(DBG_FLAGS) -o $@ -c $<
+# Source files
+SRC_FILES = \
+	Agent.cpp \
+	Card.cpp \
+	CardStack.cpp \
+	Deck.cpp \
+	GameRound.cpp \
+	Hand.cpp \
+	History.cpp \
+	InteractiveAgent.cpp \
+	InteractiveGame.cpp \
+	LearningGame.cpp \
+	ProbHand.cpp \
+	RemoteInterAgent.cpp \
+	RndAgent.cpp \
+	SoundAgent.cpp \
+	State.cpp \
+	main.cpp
 
-$(OBJPATH)/%_test.o: $(SRCPATH)/%_test.cpp $(INCPATH)/%.h $(INCPATH)/GameConfig.h
-	@mkdir -p $(OBJPATH)
-	$(CXX) $(DBG_FLAGS) -o $@ -c $<
+TEST_SRC_FILES = \
+	Card_test.cpp \
+	CardStack_test.cpp \
+	Deck_test.cpp \
+	Hand_test.cpp \
+	History_test.cpp \
+	State_test.cpp \
+	utils_test.cpp \
+	main_test.cpp
 
-$(OBJPATH)/main.o: $(SRCPATH)/main.cpp $(INCPATH)/GameConfig.h
-	@mkdir -p $(OBJPATH)
-	$(CXX) $(FLAGS) -o $@ -c $<
+# Object files
+OBJS = $(addprefix $(OBJPATH)/,$(SRC_FILES:.cpp=.o))
+DBG_OBJS = $(addprefix $(OBJPATH)/,$(SRC_FILES:.cpp=_dbg.o))
+TEST_OBJS = $(addprefix $(OBJPATH)/,$(TEST_SRC_FILES:.cpp=.o))
 
-$(OBJPATH)/main_dbg.o: $(SRCPATH)/main.cpp $(INCPATH)/GameConfig.h
-	@mkdir -p $(OBJPATH)
-	$(CXX) $(DBG_FLAGS) -o $@ -c $<
+# Dependencies
+DEPS = $(OBJS:.o=.d) $(DBG_OBJS:.o=.d) $(TEST_OBJS:.o=.d)
 
-hokm.out: $(OBJFILES)
-	$(LD) -o $@ $^ -lm
+# Include dependencies
+-include $(DEPS)
 
-hokm_dbg.out: $(DBG_OBJFILES) $(TST_OBJFILES)
-	$(LD) -o $@ $^ -lm
+# --- Targets ---
 
-hokm_dbg.out: $(DBG_OBJFILES) 
+# Build release executable
+$(TARGET): $(OBJS)
+	@echo "====== Linking Release Build: $(TARGET) ======"
+	$(LD) -o $@ $^ $(LDFLAGS)
 
+# Build debug executable
+$(DBG_TARGET): $(DBG_OBJS)
+	@echo "====== Linking Debug Build: $(DBG_TARGET) ======"
+	$(LD) -o $@ $^ $(LDFLAGS)
+
+# Build and run tests
+test: $(TEST_TARGET)
+	@echo "====== Running tests ======"
+	./$(TEST_TARGET)
+
+# Build test executable
+$(TEST_TARGET): $(filter-out $(OBJPATH)/main_dbg.o,$(DBG_OBJS)) $(TEST_OBJS)
+	@echo "====== Linking Test Build: $(TEST_TARGET) ======"
+	$(LD) -o $@ $^ $(LDFLAGS)
+
+# --- Rules ---
+
+$(OBJPATH)/%.o: $(SRCPATH)/%.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJPATH)/%_dbg.o: $(SRCPATH)/%.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(DBG_CXXFLAGS) -c $< -o $@
+
+$(OBJPATH)/%_test.o: $(SRCPATH)/%_test.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(DBG_CXXFLAGS) -c $< -o $@
+
+$(OBJPATH)/main_test.o: $(SRCPATH)/main_test.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(DBG_CXXFLAGS) -c $< -o $@
+
+
+# Clean up
 clean:
+	@echo "====== Cleaning build artifacts ======"
 	rm -rf $(OBJPATH)
-	rm -f hokm.out hokm_dbg.out
-	@echo "====== make clean ======"
+	rm -f $(TARGET) $(DBG_TARGET) $(TEST_TARGET)

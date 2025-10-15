@@ -26,7 +26,8 @@
 
 int main(int argc, char *argv[])
 {
-	struct sigaction sig_act = {SIG_IGN};
+	struct sigaction sig_act = {};
+	sig_act.sa_handler = SIG_IGN;
 	sigaction(SIGPIPE, &sig_act, NULL);
 	srand(time(NULL));
 
