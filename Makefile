@@ -19,6 +19,7 @@ LD = g++
 TARGET = hokm.out
 DBG_TARGET = hokm_dbg.out
 TEST_TARGET = hokm_test.out
+LRN_TARGET = hokm_learn.out
 
 # Flags
 DEPFLAGS = -MMD -MP
@@ -42,6 +43,7 @@ SRC_FILES = \
 	History.cpp \
 	InteractiveAgent.cpp \
 	InteractiveGame.cpp \
+	MultiClientServer.cpp \
 	LearningGame.cpp \
 	ProbHand.cpp \
 	RemoteInterAgent.cpp \

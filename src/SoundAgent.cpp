@@ -7,49 +7,13 @@
 
 #include "SoundAgent.h"
 
-#include <iostream>
 #include <cstring>
-#include <string>
 #include <cassert>
+#include <string>
+
 
 #include "utils.h"
 
-/*
-std::pair<Card, double> SoundAgent::prb_act(const Hand &ps_hi, const Hand &ps_oth, int N_ex, Suit led, Suit trump, bool critical) const
-{
-	Card c = Card::NONE;
-	double max_prb = 0;
-	Card max_c = Card::NONE;
-	for (Suit s = 0; s < Card::N_SUITS; s++)
-	{
-		for (int i = 0; i < ps_hi.len[s]; i++)
-		{
-			Rank r = ps_hi.cards[s][i];
-			c.set(s, r);
-			int k = ps_oth.gt_c_led(c, led, trump).nbr_cards; // not exactly correct; s may all be in comp
-			double prb = chs_prob(ps_oth.nbr_cards, k, N_ex);
-			LOG("prb_act " + c.to_string() + " " << prb);
-			if (prb > max_prb)
-			{
-				max_prb = prb;
-				max_c = c;
-			}
-			if (prb <= prob_floor)
-				continue;
-			if (s != trump || hand.len[trump] == hand.nbr_cards)
-			{
-				if (prb <= prob_ceiling || critical)
-				{
-					return std::make_pair(c, prb);
-				}
-			}
-			else if (prb < trump_prob_cap || critical || r < (2 * Card::N_RANKS / 3) || ps_hi.len[trump] > i + 2)
-				return std::make_pair(c, prb);
-		}
-	}
-	return std::make_pair((critical) ? max_c : Card::NONE, max_prb);
-}
-*/
 Suit SoundAgent::call_trump(const CardStack &first_5cards)
 {
 	Hand hand = first_5cards.to_Hand();
@@ -243,339 +207,340 @@ void SoundAgent::updateHandsNcards()
 }
 
 
-// {Nabc -> 0, Nab -> 0, Nca -> 0, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0000(double p[9], double, double, double, double, double ua, double ub, double uc) {
-	assert(ua==0 && ub==0 && uc==0);
-p[0] = 0.3333333333333333;
-p[1] = 0.5;
-p[2] = 0.5;
-p[3] = 0.3333333333333333;
-p[4] = 0.5;
-p[5] = 0.5;
-p[6] = 0.3333333333333333;
-p[7] = 0.5;
-p[8] = 0.5;
+
+// Player indices
+enum Player { A = 0, B = 1, C = 2 };
+
+// Bit masks for allowed sets
+constexpr int MASK_A = 1 << A;
+constexpr int MASK_B = 1 << B;
+constexpr int MASK_C = 1 << C;
+
+
+// Check membership of a specific card in a Hand
+inline bool inHand(const Hand& h, const Card& c) {
+    return h.is_in(c);
 }
 
+// Build the unknown universe U and per-card allowed masks from ambiguous sets
+void buildUnknownUniverseAndMasks(
+    const Hand& Habc, const Hand& Hab, const Hand& Hbc, const Hand& Hca,
+    std::vector<Card>& U, std::vector<int>& allowedMask // out
+) {
+    U.clear();
+    allowedMask.clear();
+    U.reserve(52);
+    allowedMask.reserve(52);
 
-// {Nabc -> 0, Nab -> 0, Nca -> 0, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0001(double p[9], double, double, double, double bc, double ua, double ub, double uc) {
-	assert(ua==0);
-	assert(ub+uc==bc);
-p[0] = 0.3333333333333333;
-p[1] = 0.5;
-p[2] = 0.5;
-p[3] = 0.3333333333333333;
-p[4] = 0.5;
-p[5] = ub/bc;
-p[6] = 0.3333333333333333;
-p[7] = 0.5;
-p[8] = uc/bc;
+    for (int su = 0; su < Card::N_SUITS; ++su) {
+        for (int r = 0; r < Card::N_RANKS; ++r) {
+            Card c(su, r);
+
+            int mask = 0;
+            if (inHand(Hab, c))  mask |= (MASK_A | MASK_B);
+            if (inHand(Hbc, c))  mask |= (MASK_B | MASK_C);
+            if (inHand(Hca, c))  mask |= (MASK_C | MASK_A);
+            if (inHand(Habc, c)) mask |= (MASK_A | MASK_B | MASK_C);
+
+            if (mask != 0) {
+                U.push_back(c);
+                allowedMask.push_back(mask);
+            }
+        }
+    }
 }
 
+// Forward DP over counts assigned to A and B (C is implicit)
+// Returns a table dp[ca][cb] = number of ways to assign all M cards where
+// A receives ca, B receives cb, C receives (M - ca - cb).
+// Bounds for ca, cb are clamped to [0..t_a], [0..t_b] to limit table size.
+std::vector<std::vector<long double>> countAssignmentsDP_AB(
+    const std::vector<int>& masksOther, int t_a, int t_b
+) {
+    const int M = static_cast<int>(masksOther.size());
+    std::vector<std::vector<long double>> dp_prev(t_a + 1, std::vector<long double>(t_b + 1, 0.0L));
+    std::vector<std::vector<long double>> dp_next(t_a + 1, std::vector<long double>(t_b + 1, 0.0L));
 
-// {Nabc -> 0, Nab -> 0, Nca -> ca, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0010(double p[9], double, double, double ca, double, double ua, double ub, double uc) {
-	assert(ub==0);
-	assert(uc+ua==ca);
-p[0] = 0.3333333333333333;
-p[1] = 0.5;
-p[2] = ua/ca;
-p[3] = 0.3333333333333333;
-p[4] = 0.5;
-p[5] = 0.5;
-p[6] = 0.3333333333333333;
-p[7] = uc/ca;
-p[8] = 0.5;
+    dp_prev[0][0] = 1.0L;
+
+    for (int i = 0; i < M; ++i) {
+        std::fill(dp_next.begin(), dp_next.end(), std::vector<long double>(t_b + 1, 0.0L));
+        const int mask = masksOther[i];
+
+        // ca ranges 0..min(i, t_a), cb ranges 0..min(i - ca, t_b)
+        const int ca_max = std::min(i, t_a);
+        for (int ca = 0; ca <= ca_max; ++ca) {
+            const int cb_max = std::min(i - ca, t_b);
+            for (int cb = 0; cb <= cb_max; ++cb) {
+                long double ways = dp_prev[ca][cb];
+                if (ways == 0.0L) continue;
+
+                // Assign current card to A
+                if ((mask & MASK_A) && ca + 1 <= t_a) {
+                    dp_next[ca + 1][cb] += ways;
+                }
+                // Assign to B
+                if ((mask & MASK_B) && cb + 1 <= t_b) {
+                    dp_next[ca][cb + 1] += ways;
+                }
+                // Assign to C
+                if (mask & MASK_C) {
+                    // C's count increments implicitly: no change to (ca, cb)
+                    dp_next[ca][cb] += ways;
+                }
+            }
+        }
+        dp_prev.swap(dp_next);
+    }
+
+    return dp_prev; // size (t_a+1) x (t_b+1)
 }
 
-
-// {Nabc -> 0, Nab -> 0, Nca -> ca, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0011(double p[9], double, double, double ca, double bc, double ua, double ub, double uc) {
-	assert(ca+bc==ua+ub+uc);
-p[0] = 0.3333333333333333;
-p[1] = 0.5;
-p[2] = ua / ca;
-p[3] = 0.3333333333333333;
-p[4] = 0.5;
-p[5] = ub / bc;
-p[6] = 0.3333333333333333;
-p[7] = 1 - p[2];
-p[8] = 1 - p[5];
+// Utility to set per-card probabilities in Pa, Pb, Pc
+inline void setCardProbs(ProbHand& Pa, ProbHand& Pb, ProbHand& Pc,
+                         const Card& c, double pa, double pb, double pc) {
+    Pa.update(c, pa);
+    Pb.update(c, pb);
+    Pc.update(c, pc);
 }
 
+// Main API:
+// Returns true on success, false if inputs are inconsistent (still fills what it can).
+bool computeProbabilitiesDP(
+    const Hand& Ha, const Hand& Hb, const Hand& Hc,
+    const Hand& Hab, const Hand& Hbc, const Hand& Hca, const Hand& Habc,
+    int Na, int Nb, int Nc,
+    ProbHand& Pa, ProbHand& Pb, ProbHand& Pc
+) {
+    // Clear outputs
+    Pa.clear(); Pb.clear(); Pc.clear();
 
-// {Nabc -> 0, Nab -> ab, Nca -> 0, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0100(double p[9], double, double ab, double, double, double ua, double ub, double uc) {
-	assert(uc==0);
-	assert(ua+ub==ab);
-p[0] = 0.3333333333333333;
-p[1] = ua / ab;
-p[2] = 0.5;
-p[3] = 0.3333333333333333;
-p[4] = ub / ab;
-p[5] = 0.5;
-p[6] = 0.3333333333333333;
-p[7] = 0.5;
-p[8] = 0.5;
+    // Known singletons counts and capacities t_j = N_j - |Hj|
+    const int Ka = (Ha.nbr_cards);
+    const int Kb = (Hb.nbr_cards);
+    const int Kc = (Hc.nbr_cards);
+
+    int t_a = Na - Ka;
+    int t_b = Nb - Kb;
+    int t_c = Nc - Kc;
+
+    if (t_a < 0 || t_b < 0 || t_c < 0) {
+        // Inconsistent: known singletons exceed targets
+        return false;
+    }
+
+    // Build unknown universe U and per-card allowed masks from ambiguous sets
+    std::vector<Card> U;
+    std::vector<int> allowedMask;
+    buildUnknownUniverseAndMasks(Habc, Hab, Hbc, Hca, U, allowedMask);
+    const int Usize = static_cast<int>(U.size());
+
+    // Basic consistency: total unknown to be assigned must match
+    if (t_a + t_b + t_c != Usize) {
+        // Inconsistent counts; we proceed but results may be degenerate
+        // You may prefer to return false here directly.
+        // return false;
+    }
+
+    // First, set known cards: Pa=1 on Ha, etc.
+    for (int su = 0; su < Card::N_SUITS; ++su) {
+        for (int r = 0; r < Card::N_RANKS; ++r) {
+            Card c(su, r);
+            if (inHand(Ha, c)) {
+                setCardProbs(Pa, Pb, Pc, c, 1.0, 0.0, 0.0);
+            } else if (inHand(Hb, c)) {
+                setCardProbs(Pa, Pb, Pc, c, 0.0, 1.0, 0.0);
+            } else if (inHand(Hc, c)) {
+                setCardProbs(Pa, Pb, Pc, c, 0.0, 0.0, 1.0);
+            } else {
+                // leave as zero for now; may be filled below if in U
+            }
+        }
+    }
+
+    // For each unknown card k in U, compute probabilities by DP counting
+    // Note: For each k, we build masks excluding k, run DP once, and then read counts for p in allowed(k).
+    for (int idx = 0; idx < Usize; ++idx) {
+        const Card& k = U[idx];
+        const int mask_k = allowedMask[idx];
+
+        // Build masks for the "other" cards
+        std::vector<int> masksOther;
+        masksOther.reserve(Usize - 1);
+        for (int j = 0; j < Usize; ++j) {
+            if (j == idx) continue;
+            masksOther.push_back(allowedMask[j]);
+        }
+        const int M = static_cast<int>(masksOther.size()); // equals Usize - 1
+
+        // Precompute DP table over A/B counts
+        auto dpAB = countAssignmentsDP_AB(masksOther, t_a, t_b);
+
+        // For each allowed player p, get completion count F_{k,p}
+        long double F[3] = {0.0L, 0.0L, 0.0L};
+        for (int p = 0; p < 3; ++p) {
+            if (!(mask_k & (1 << p))) continue;
+
+            const int ca_target = t_a - (p == A ? 1 : 0);
+            const int cb_target = t_b - (p == B ? 1 : 0);
+            const int cc_target = t_c - (p == C ? 1 : 0);
+
+            // Targets must be within bounds
+            if (ca_target < 0 || cb_target < 0 || cc_target < 0) {
+                F[p] = 0.0L;
+                continue;
+            }
+            // The implicit C count must match the remaining cards
+            if (cc_target != (M - ca_target - cb_target)) {
+                F[p] = 0.0L;
+                continue;
+            }
+            if (ca_target > t_a || cb_target > t_b) {
+                F[p] = 0.0L;
+                continue;
+            }
+            F[p] = dpAB[ca_target][cb_target];
+        }
+
+        long double denom = 0.0L;
+        if (mask_k & MASK_A) denom += F[A];
+        if (mask_k & MASK_B) denom += F[B];
+        if (mask_k & MASK_C) denom += F[C];
+
+        double pa = 0.0, pb = 0.0, pc = 0.0;
+
+        if (denom > 0.0L) {
+            if (mask_k & MASK_A) pa = static_cast<double>(F[A] / denom);
+            if (mask_k & MASK_B) pb = static_cast<double>(F[B] / denom);
+            if (mask_k & MASK_C) pc = static_cast<double>(F[C] / denom);
+        } else {
+            // Inconsistent inputs for this card; fallback to uniform over allowed players
+            int allowedCount = ((mask_k & MASK_A) ? 1 : 0) + ((mask_k & MASK_B) ? 1 : 0) + ((mask_k & MASK_C) ? 1 : 0);
+            double uniform = allowedCount > 0 ? (1.0 / allowedCount) : 0.0;
+            if (mask_k & MASK_A) pa = uniform;
+            if (mask_k & MASK_B) pb = uniform;
+            if (mask_k & MASK_C) pc = uniform;
+        }
+
+        setCardProbs(Pa, Pb, Pc, k, pa, pb, pc);
+    }
+
+    // Optional: sanity check sums close to targets
+    // You can enable/inspect these if desired.
+    // double sumA = Pa.total();
+    // double sumB = Pb.total();
+    // double sumC = Pc.total();
+
+    return true;
 }
 
+namespace {
 
-// {Nabc -> 0, Nab -> ab, Nca -> 0, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0101(double p[9], double, double ab, double, double bc, double ua, double ub, double uc) {
-	assert(ua + ub + uc == ab + bc);
-p[0] = 0.3333333333333333;
-p[1] = ua / ab;
-p[2] = 0.5;
-p[3] = 0.3333333333333333;
-p[4] = 1 - p[1];
-p[8] = uc / bc;
-p[5] = 1 - p[8];
-p[6] = 0.3333333333333333;
-p[7] = 0.5;
+// Clamp to [0,1]
+inline double clamp01(double x) {
+    if (x < 0.0) return 0.0;
+    if (x > 1.0) return 1.0;
+    return x;
 }
 
+// Product over cards in h_o that satisfy a suit/rank filter: ∏ (1 - Pp(card))
+long double product_none_owned_in(
+    const Hand& h_o,
+    int suit_filter,           // Suit code compatible with Card
+    bool use_rank_filter,
+    int rank_strict_greater_than, // Rank code; cards must have rank > this
+    const ProbHand& Pp
+) {
+    long double prod = 1.0L;
+    for (int su = 0; su < Card::N_SUITS; ++su) {
+        for (int r = 0; r < Card::N_RANKS; ++r) {
+            Card c(su, r);
+            if (!h_o.is_in(c)) continue;
+            if (su != suit_filter) continue;
+            if (use_rank_filter && !(r > rank_strict_greater_than)) continue;
 
-// {Nabc -> 0, Nab -> ab, Nca -> ca, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0110(double p[9], double, double ab, double ca, double, double ua, double ub, double uc) {
-	assert(ua + ub + uc == ab + ca);
-p[0] = 0.3333333333333333;
-p[4] = ub / ab;
-p[1] = 1 - p[4];
-p[7] = uc / ca;
-p[2] = 1 - p[7];
-p[3] = 0.3333333333333333;
-p[5] = 0.5;
-p[6] = 0.3333333333333333;
-p[8] = 0.5;
+            double p = Pp.getProb(c);
+            p = clamp01(p);
+            prod *= (1.0L - static_cast<long double>(p));
+            if (prod <= 1e-18L) return 0.0L;
+        }
+    }
+    if (prod < 0.0L) prod = 0.0L;
+    if (prod > 1.0L) prod = 1.0L;
+    return prod;
 }
 
+// Compute P(E_p): probability a single opponent p has a higher card than m_c
+double prob_any_higher_for_player(
+    const Hand& h_o,
+    const Card& m_c,
+    int s_led, // led suit
+    int s_tr,  // trump suit
+    const ProbHand& Pp
+) {
+    const long double prod_led_any   = product_none_owned_in(h_o, s_led, false, 0,       Pp);
+    const long double prod_led_high  = product_none_owned_in(h_o, s_led, true,  m_c.rnk, Pp);
+    const long double prod_trump_any = product_none_owned_in(h_o, s_tr,  false, 0,       Pp);
 
-// {Nabc -> 0, Nab -> ab, Nca -> ca, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb0111(double p[9], double, double ab, double ca, double bc, double ua, double ub, double uc) {
-	assert(ua + ub + uc == ab + ca + bc);
-	double uap = ua * (1 - ab/(ua+ub) - ca/(uc+ua));
-	double ubp = ub * (1 - ab/(ua+ub) - bc/(ub+uc));
-	double ucp = uc * (1 - ca/(uc+ua) - bc/(ub+uc));
-	double eta = 0;
-	double x = (uap - ubp) / 3 + eta;
-	double y = (ubp - ucp) / 3 + eta;
-	double z = (ucp - uap) / 3 + eta;
-p[0] = 0.3333333333333333;
-p[1] = ua / (ua + ub) + x / ab;
-p[2] = ua / (uc + ua) - z / ca;
-p[3] = 0.3333333333333333;
-p[4] = ub / (ua + ub) - x / ab;
-p[5] = ub / (ub + uc) + y / bc;
-p[6] = 0.3333333333333333;
-p[7] = uc / (uc + ua) + z / ca;
-p[8] = uc / (ub + uc) - y / bc;
+    const long double P_L = 1.0L - prod_led_any;
+    const long double P_H = 1.0L - prod_led_high;
+    const long double P_T = 1.0L - prod_trump_any;
+
+    // Unified conditional form
+    const long double P_H_given_L = (P_L > 0.0L) ? (P_H / P_L) : 0.0L;
+    const long double P_T_given_notL = (s_tr == s_led) ? 0.0L : P_T;
+
+    const long double P_E = P_L * P_H_given_L + (1.0L - P_L) * P_T_given_notL;
+
+    return clamp01(static_cast<double>(P_E));
 }
 
+} // namespace
 
-// {Nabc -> w, Nab -> 0, Nca -> 0, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1000(double p[9], double w, double, double, double, double ua, double ub, double uc) {
-	assert(ua + ub + uc == w);
-p[0] = ua/w;
-p[1] = 0.5;
-p[2] = 0.5;
-p[3] = ub/w;
-p[4] = 0.5;
-p[5] = 0.5;
-p[6] = uc/w;
-p[7] = 0.5;
-p[8] = 0.5;
+// ord = 0: either opponent a or b has a higher card than m_c
+double prob_higher_ord0(
+    const Hand& h_o,
+    const Card& m_c,
+    int s_tr,
+    const ProbHand& Pa,
+    const ProbHand& Pb
+) {
+    const int s_led = m_c.su; // you lead
+
+    const double Pa_higher = prob_any_higher_for_player(h_o, m_c, s_led, s_tr, Pa);
+    const double Pb_higher = prob_any_higher_for_player(h_o, m_c, s_led, s_tr, Pb);
+
+    const double none = (1.0 - Pa_higher) * (1.0 - Pb_higher);
+    return clamp01(1.0 - none);
 }
 
-
-// {Nabc -> w, Nab -> 0, Nca -> 0, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1001(double p[9], double w, double, double, double bc, double ua, double ub, double uc) {
-	assert(w + bc == ua + ub + uc);
-	assert(w >= ua);
-p[0] = ua / w;
-p[1] = 0.5;
-p[2] = 0.5;
-p[3] = (1 - p[0]) * ub / (ub + uc);
-p[4] = 0.5;
-p[5] = ub / (ub + uc);
-p[6] = (1 - p[0]) * uc / (ub + uc);
-p[7] = 0.5;
-p[8] = uc / (ub + uc);
+// ord = 1: b has led; only a can still beat your card
+double prob_higher_ord1(
+    const Hand& h_o,
+    const Card& m_c,
+    int s_led, // suit led by b
+    int s_tr,
+    const ProbHand& Pa
+) {
+    return prob_any_higher_for_player(h_o, m_c, s_led, s_tr, Pa);
 }
 
-
-// {Nabc -> w, Nab -> 0, Nca -> ca, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1010(double p[9], double w, double, double ca, double, double ua, double ub, double uc) {
-	assert(w + ca == ua + ub + uc);
-	assert(w >= ub);
-p[3] = ub / w;
-p[0] = (1 - p[3]) * ua / (ua + uc);
-p[1] = 0.5;
-p[2] = ua / (ua + uc);
-p[4] = 0.5;
-p[5] = 0.5;
-p[6] = (1 - p[3]) * uc / (ua + uc);
-p[7] = uc / (ua + uc);
-p[8] = 0.5;
+// ord = 2: b and c have played; only a remains
+double prob_higher_ord2(
+    const Hand& h_o,
+    const Card& m_c,
+    int s_led, // suit led by b
+    int s_tr,
+    const ProbHand& Pa
+) {
+    return prob_any_higher_for_player(h_o, m_c, s_led, s_tr, Pa);
 }
 
-
-// {Nabc -> w, Nab -> 0, Nca -> ca, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1011(double p[9], double w, double, double ca, double bc, double ua, double ub, double uc) {
-p[0] = (std::pow(bc,3)*(4 + std::pow(ca,2))*w + std::pow(bc,4)*(std::pow(ca,2) - 2*ca*w + 4*ua*w) + std::pow(bc,2)*(std::pow(ca,2)*(3 + std::pow(ca,2)) - 2*(ca + std::pow(ca,2)*(ca - 2*ua + ub) + 2*(-2*ua + ub + uc))*w + (4 + 3*std::pow(ca,2))*std::pow(w,2) - 4*(ca - 2*ua)*std::pow(w,3)) + 2*w*(std::pow(ca,2)*(ua - 2*ub - ca*(1 + ca*ub) + uc) + std::pow(ca,2)*(2 + std::pow(ca,2))*w - (ca + std::pow(ca,2)*(ca - 2*ua + ub) + 2*(-2*ua + ub + uc))*std::pow(w,2) + (2 + std::pow(ca,2))*std::pow(w,3) - (ca - 2*ua)*std::pow(w,4)) + bc*w*(std::pow(ca,4) + 4*std::pow(w,2) + std::pow(ca,2)*(1 + std::pow(w,2))))/((3 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 4*(std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[1] = 0.5;
-p[2] = (3*std::pow(bc,2)*ca*(bc + ca + 2*ua + (std::pow(bc,2) + std::pow(ca,2))*ua - ub - uc) - std::pow(bc,2)*ca*(std::pow(bc,2) + std::pow(ca,2))*w + (2*std::pow(bc,4) - std::pow(bc,3)*ca - bc*ca*(-3 + std::pow(ca,2)) + std::pow(bc,2)*(6 + ca*(2*ca + 7*ua + 2*ub)) + 2*ca*(ca*(3 + ca*(2*ua + ub)) + 3*(ua - uc)))*std::pow(w,2) - ca*(3*std::pow(bc,2) + 2*std::pow(ca,2))*std::pow(w,3) + (6 + 4*std::pow(bc,2) - bc*ca + 2*ca*(ca + 2*ua + ub))*std::pow(w,4) - 2*ca*std::pow(w,5) + 2*std::pow(w,6))/((3 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 4*(std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[3] = (-2*std::pow(bc,3)*w*(1 + std::pow(ca,2) + std::pow(w,2)) - 2*bc*w*(std::pow(ca,2) + std::pow(w,2))*(1 + std::pow(ca,2) + std::pow(w,2)) + std::pow(bc,4)*(std::pow(ca,2) + ca*w + 2*w*(-ua + w)) + 4*w*(std::pow(ca,2) + std::pow(w,2))*(ca - ua + std::pow(ca,2)*ub - uc + w + ub*(2 + std::pow(w,2))) + std::pow(bc,2)*(std::pow(ca,4) + std::pow(ca,3)*w + ca*(w + std::pow(w,3)) + std::pow(ca,2)*(3 + w*(-2*ua + 4*ub + 3*w)) + 2*w*(ub + uc + 2*w + 2*ub*std::pow(w,2) + std::pow(w,3) - ua*(2 + std::pow(w,2)))))/((3 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 4*(std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[4] = 0.5;
-p[5] = (3*bc*std::pow(ca,2)*(bc + ca - ua + 2*ub + (std::pow(bc,2) + std::pow(ca,2))*ub - uc) - bc*std::pow(ca,2)*(std::pow(bc,2) + std::pow(ca,2))*w + (2*std::pow(bc,2)*(3 + std::pow(ca,2)) + 2*std::pow(ca,2)*(3 + std::pow(ca,2)) + std::pow(bc,3)*(-ca + 2*ua + 4*ub) + bc*ca*(3 + ca*(-ca + 2*ua + 7*ub)) + 6*bc*(ub - uc))*std::pow(w,2) - bc*(2*std::pow(bc,2) + 3*std::pow(ca,2))*std::pow(w,3) + (6 + 2*std::pow(bc,2) + 4*std::pow(ca,2) + bc*(-ca + 2*ua + 4*ub))*std::pow(w,4) - 2*bc*std::pow(w,5) + 2*std::pow(w,6))/((3 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 4*(std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[6] = (std::pow(bc,2)*std::pow(ca,2)*(3 + std::pow(bc,2) + std::pow(ca,2)) + (-2*std::pow(bc,3)*(1 + std::pow(ca,2)) + bc*(std::pow(ca,2) + std::pow(ca,4)) + std::pow(bc,4)*(ca - 2*ua) + 2*std::pow(ca,2)*(ua - 2*ub - ca*(1 + ca*ub) + uc) + std::pow(bc,2)*(ca + 2*(-2*ua + ub + uc) + std::pow(ca,2)*(-2*ca + ua + ub + 3*uc)))*w + 2*(std::pow(bc,4) + 2*std::pow(ca,2) + std::pow(ca,4) + std::pow(bc,2)*(2 + std::pow(ca,2)))*std::pow(w,2) - (2*std::pow(bc,3) + bc*(2 + std::pow(ca,2)) + 2*(ca + std::pow(ca,2)*(ca + ub - 2*uc) + 2*(ua + ub - 2*uc)) + std::pow(bc,2)*(ca + 2*ua - 4*uc))*std::pow(w,3) + 2*(2 + std::pow(bc,2) + std::pow(ca,2))*std::pow(w,4) - 2*(bc + ca - 2*uc)*std::pow(w,5))/((3 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 4*(std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[7] = (-3*std::pow(bc,3)*ca*(1 + std::pow(ca,2) + std::pow(w,2)) - 3*bc*ca*std::pow(w,2)*(1 + std::pow(ca,2) + std::pow(w,2)) + std::pow(bc,4)*(3*ca*(ca - ua) + ca*w + 2*std::pow(w,2)) + 2*std::pow(w,2)*(ca*(-3*ua + 3*uc + ca*(3 + ca*(ub + 2*uc))) - std::pow(ca,3)*w + (3 + ca*(ca + ub + 2*uc))*std::pow(w,2) - ca*std::pow(w,3) + std::pow(w,4)) + std::pow(bc,2)*(3*ca*(-2*ua + ub + uc + ca*(2 + ca*(ub + uc))) - 2*std::pow(ca,3)*w + (6 + ca*(5*ca - 3*ua + 2*ub + 4*uc))*std::pow(w,2) - ca*std::pow(w,3) + 4*std::pow(w,4)))/((3 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 4*(std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[8] = (std::pow(bc,2)*(std::pow(ca,2) + std::pow(w,2))*(6 + 3*std::pow(ca,2) + 2*std::pow(w,2)) + std::pow(bc,3)*(3*std::pow(ca,2)*(-ca + ua + uc) - 2*std::pow(ca,2)*w + (-3*ca + 2*ua + 4*uc)*std::pow(w,2) - 2*std::pow(w,3)) + (std::pow(ca,2) + std::pow(w,2))*(3*(2 + std::pow(ca,2))*ub*(ca - ua - ub - uc) + 3*(2 + std::pow(ca,2))*ub*w + 2*(3 + std::pow(ca,2))*std::pow(w,2) + 2*std::pow(w,4)) + bc*(3*std::pow(ca,2)*(-ca + ua + uc) + std::pow(ca,4)*w + (6*uc + ca*(-3 + ca*(-3*ca + 2*ua + 4*uc)))*std::pow(w,2) - std::pow(ca,2)*std::pow(w,3) + (-3*ca + 2*ua + 4*uc)*std::pow(w,4) - 2*std::pow(w,5)))/((3 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 4*(std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-}
-
-
-// {Nabc -> w, Nab -> ab, Nca -> 0, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1100(double p[9], double w, double ab, double, double, double ua, double ub, double uc) {
-	assert(w + ab == ua + ub + uc);
-	assert(w >= uc);
-p[6] = uc / w;
-p[0] = (1 - p[6]) * ua / (ua + ub);
-p[1] = ua / (ua + ub);
-p[2] = 0.5;
-p[3] = (1 - p[6]) * ub / (ua + ub);
-p[4] = ub / (ua + ub);
-p[5] = 0.5;
-p[7] = 0.5;
-p[8] = 0.5;
-}
-
-
-// {Nabc -> w, Nab -> ab, Nca -> 0, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1101(double p[9], double w, double ab, double, double bc, double ua, double ub, double uc) {
-p[0] = (-2*std::pow(ab,3)*w*(1 + std::pow(bc,2) + std::pow(w,2)) - 2*ab*w*(std::pow(bc,2) + std::pow(w,2))*(1 + std::pow(bc,2) + std::pow(w,2)) + std::pow(ab,4)*(std::pow(bc,2) + bc*w + 2*w*(-uc + w)) + 4*w*(std::pow(bc,2) + std::pow(w,2))*(bc + std::pow(bc,2)*ua - ub - uc + w + ua*(2 + std::pow(w,2))) + std::pow(ab,2)*(std::pow(bc,4) + std::pow(bc,3)*w + bc*(w + std::pow(w,3)) + std::pow(bc,2)*(3 + w*(4*ua - 2*uc + 3*w)) + 2*w*(ua + ub + 2*ua*std::pow(w,2) - (uc - w)*(2 + std::pow(w,2)))))/((3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(bc,2) + 4*(std::pow(ab,2) + std::pow(bc,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[1] = (3*ab*std::pow(bc,2)*(ab + bc + 2*ua + (std::pow(ab,2) + std::pow(bc,2))*ua - ub - uc) - ab*std::pow(bc,2)*(std::pow(ab,2) + std::pow(bc,2))*w + (2*std::pow(ab,2)*(3 + std::pow(bc,2)) + 2*std::pow(bc,2)*(3 + std::pow(bc,2)) + 6*ab*(ua - ub) + std::pow(ab,3)*(-bc + 4*ua + 2*uc) + ab*bc*(3 + bc*(-bc + 7*ua + 2*uc)))*std::pow(w,2) - ab*(2*std::pow(ab,2) + 3*std::pow(bc,2))*std::pow(w,3) + (6 + 2*std::pow(ab,2) + 4*std::pow(bc,2) + ab*(-bc + 4*ua + 2*uc))*std::pow(w,4) - 2*ab*std::pow(w,5) + 2*std::pow(w,6))/((3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(bc,2) + 4*(std::pow(ab,2) + std::pow(bc,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[2] = 0.5;
-p[3] = (std::pow(ab,2)*std::pow(bc,2)*(3 + std::pow(ab,2) + std::pow(bc,2)) + (-2*std::pow(ab,3)*(1 + std::pow(bc,2)) + ab*(std::pow(bc,2) + std::pow(bc,4)) + std::pow(ab,4)*(bc - 2*uc) + 2*std::pow(bc,2)*(-2*ua - bc*(1 + bc*ua) + ub + uc) + std::pow(ab,2)*(bc + 2*(ua + ub - 2*uc) + std::pow(bc,2)*(-2*bc + ua + 3*ub + uc)))*w + 2*(std::pow(ab,4) + 2*std::pow(bc,2) + std::pow(bc,4) + std::pow(ab,2)*(2 + std::pow(bc,2)))*std::pow(w,2) - (2*std::pow(ab,3) + ab*(2 + std::pow(bc,2)) + std::pow(ab,2)*(bc - 4*ub + 2*uc) + 2*(bc + std::pow(bc,2)*(bc + ua - 2*ub) + 2*(ua - 2*ub + uc)))*std::pow(w,3) + 2*(2 + std::pow(ab,2) + std::pow(bc,2))*std::pow(w,4) - 2*(ab + bc - 2*ub)*std::pow(w,5))/((3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(bc,2) + 4*(std::pow(ab,2) + std::pow(bc,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[4] = (std::pow(ab,2)*(std::pow(bc,2) + std::pow(w,2))*(6 + 3*std::pow(bc,2) + 2*std::pow(w,2)) + std::pow(ab,3)*(3*std::pow(bc,2)*(-bc + ub + uc) - 2*std::pow(bc,2)*w + (-3*bc + 4*ub + 2*uc)*std::pow(w,2) - 2*std::pow(w,3)) + (std::pow(bc,2) + std::pow(w,2))*(3*(2 + std::pow(bc,2))*ua*(bc - ua - ub - uc) + 3*(2 + std::pow(bc,2))*ua*w + 2*(3 + std::pow(bc,2))*std::pow(w,2) + 2*std::pow(w,4)) + ab*(3*std::pow(bc,2)*(-bc + ub + uc) + std::pow(bc,4)*w + (6*ub + bc*(-3 + bc*(-3*bc + 4*ub + 2*uc)))*std::pow(w,2) - std::pow(bc,2)*std::pow(w,3) + (-3*bc + 4*ub + 2*uc)*std::pow(w,4) - 2*std::pow(w,5)))/((3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(bc,2) + 4*(std::pow(ab,2) + std::pow(bc,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[5] = (-3*std::pow(ab,3)*bc*(1 + std::pow(bc,2) + std::pow(w,2)) - 3*ab*bc*std::pow(w,2)*(1 + std::pow(bc,2) + std::pow(w,2)) + std::pow(ab,4)*(3*bc*(bc - uc) + bc*w + 2*std::pow(w,2)) + 2*std::pow(w,2)*(bc*(bc*(3 + bc*(ua + 2*ub)) + 3*(ub - uc)) - std::pow(bc,3)*w + (3 + bc*(bc + ua + 2*ub))*std::pow(w,2) - bc*std::pow(w,3) + std::pow(w,4)) + std::pow(ab,2)*(3*bc*(ua + ub + bc*(2 + bc*(ua + ub)) - 2*uc) - 2*std::pow(bc,3)*w + (6 + bc*(5*bc + 2*ua + 4*ub - 3*uc))*std::pow(w,2) - bc*std::pow(w,3) + 4*std::pow(w,4)))/((3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(bc,2) + 4*(std::pow(ab,2) + std::pow(bc,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[6] = (std::pow(ab,3)*(4 + std::pow(bc,2))*w + std::pow(ab,4)*(std::pow(bc,2) - 2*bc*w + 4*uc*w) + std::pow(ab,2)*(std::pow(bc,2)*(3 + std::pow(bc,2)) - 2*(bc + std::pow(bc,2)*(bc + ua - 2*uc) + 2*(ua + ub - 2*uc))*w + (4 + 3*std::pow(bc,2))*std::pow(w,2) - 4*(bc - 2*uc)*std::pow(w,3)) + 2*w*(std::pow(bc,2)*(-2*ua - bc*(1 + bc*ua) + ub + uc) + std::pow(bc,2)*(2 + std::pow(bc,2))*w - (bc + std::pow(bc,2)*(bc + ua - 2*uc) + 2*(ua + ub - 2*uc))*std::pow(w,2) + (2 + std::pow(bc,2))*std::pow(w,3) - (bc - 2*uc)*std::pow(w,4)) + ab*w*(std::pow(bc,4) + 4*std::pow(w,2) + std::pow(bc,2)*(1 + std::pow(w,2))))/((3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(bc,2) + 4*(std::pow(ab,2) + std::pow(bc,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[7] = 0.5;
-p[8] = (3*std::pow(ab,2)*bc*(ab + bc - ua - ub + (2 + std::pow(ab,2) + std::pow(bc,2))*uc) - std::pow(ab,2)*bc*(std::pow(ab,2) + std::pow(bc,2))*w + (2*std::pow(ab,4) - std::pow(ab,3)*bc - ab*bc*(-3 + std::pow(bc,2)) + std::pow(ab,2)*(6 + 2*bc*(bc + ua) + 7*bc*uc) + 2*bc*(-3*ub + 3*uc + bc*(3 + bc*(ua + 2*uc))))*std::pow(w,2) - bc*(3*std::pow(ab,2) + 2*std::pow(bc,2))*std::pow(w,3) + (6 + 4*std::pow(ab,2) - ab*bc + 2*bc*(bc + ua + 2*uc))*std::pow(w,4) - 2*bc*std::pow(w,5) + 2*std::pow(w,6))/((3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(bc,2) + 4*(std::pow(ab,2) + std::pow(bc,2))*std::pow(w,2) + 4*std::pow(w,4)));
-}
-
-
-// {Nabc -> w, Nab -> ab, Nca -> ca, Nbc -> 0, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1110(double p[9], double w, double ab, double ca, double, double ua, double ub, double uc) {
-p[0] = (std::pow(ab,2)*std::pow(ca,2)*(3 + std::pow(ab,2) + std::pow(ca,2)) + (-2*std::pow(ab,3)*(1 + std::pow(ca,2)) + ab*(std::pow(ca,2) + std::pow(ca,4)) + std::pow(ab,4)*(ca - 2*uc) + 2*std::pow(ca,2)*(ua - 2*ub - ca*(1 + ca*ub) + uc) + std::pow(ab,2)*(ca + 2*(ua + ub - 2*uc) + std::pow(ca,2)*(-2*ca + 3*ua + ub + uc)))*w + 2*(std::pow(ab,4) + 2*std::pow(ca,2) + std::pow(ca,4) + std::pow(ab,2)*(2 + std::pow(ca,2)))*std::pow(w,2) - (2*std::pow(ab,3) + ab*(2 + std::pow(ca,2)) + std::pow(ab,2)*(ca - 4*ua + 2*uc) + 2*(ca + std::pow(ca,2)*(ca - 2*ua + ub) + 2*(-2*ua + ub + uc)))*std::pow(w,3) + 2*(2 + std::pow(ab,2) + std::pow(ca,2))*std::pow(w,4) - 2*(ab + ca - 2*ua)*std::pow(w,5))/((3 + std::pow(ab,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(ca,2) + 4*(std::pow(ab,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[1] = (std::pow(ab,2)*(std::pow(ca,2) + std::pow(w,2))*(6 + 3*std::pow(ca,2) + 2*std::pow(w,2)) + std::pow(ab,3)*(3*std::pow(ca,2)*(-ca + ua + uc) - 2*std::pow(ca,2)*w + (-3*ca + 4*ua + 2*uc)*std::pow(w,2) - 2*std::pow(w,3)) + (std::pow(ca,2) + std::pow(w,2))*(3*(2 + std::pow(ca,2))*ub*(ca - ua - ub - uc) + 3*(2 + std::pow(ca,2))*ub*w + 2*(3 + std::pow(ca,2))*std::pow(w,2) + 2*std::pow(w,4)) + ab*(3*std::pow(ca,2)*(-ca + ua + uc) + std::pow(ca,4)*w + (6*ua + ca*(-3 + ca*(-3*ca + 4*ua + 2*uc)))*std::pow(w,2) - std::pow(ca,2)*std::pow(w,3) + (-3*ca + 4*ua + 2*uc)*std::pow(w,4) - 2*std::pow(w,5)))/((3 + std::pow(ab,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(ca,2) + 4*(std::pow(ab,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[2] = (-3*std::pow(ab,3)*ca*(1 + std::pow(ca,2) + std::pow(w,2)) - 3*ab*ca*std::pow(w,2)*(1 + std::pow(ca,2) + std::pow(w,2)) + std::pow(ab,4)*(3*ca*(ca - uc) + ca*w + 2*std::pow(w,2)) + 2*std::pow(w,2)*(ca*(ca*(3 + ca*(2*ua + ub)) + 3*(ua - uc)) - std::pow(ca,3)*w + (3 + ca*(ca + 2*ua + ub))*std::pow(w,2) - ca*std::pow(w,3) + std::pow(w,4)) + std::pow(ab,2)*(3*ca*(ua + ub + ca*(2 + ca*(ua + ub)) - 2*uc) - 2*std::pow(ca,3)*w + (6 + ca*(5*ca + 4*ua + 2*ub - 3*uc))*std::pow(w,2) - ca*std::pow(w,3) + 4*std::pow(w,4)))/((3 + std::pow(ab,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(ca,2) + 4*(std::pow(ab,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[3] = (-2*std::pow(ab,3)*w*(1 + std::pow(ca,2) + std::pow(w,2)) - 2*ab*w*(std::pow(ca,2) + std::pow(w,2))*(1 + std::pow(ca,2) + std::pow(w,2)) + std::pow(ab,4)*(std::pow(ca,2) + ca*w + 2*w*(-uc + w)) + 4*w*(std::pow(ca,2) + std::pow(w,2))*(ca - ua + std::pow(ca,2)*ub - uc + w + ub*(2 + std::pow(w,2))) + std::pow(ab,2)*(std::pow(ca,4) + std::pow(ca,3)*w + ca*(w + std::pow(w,3)) + std::pow(ca,2)*(3 + w*(4*ub - 2*uc + 3*w)) + 2*w*(ua + ub + 2*ub*std::pow(w,2) - (uc - w)*(2 + std::pow(w,2)))))/((3 + std::pow(ab,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(ca,2) + 4*(std::pow(ab,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[4] = (3*ab*std::pow(ca,2)*(ab + ca - ua + 2*ub + (std::pow(ab,2) + std::pow(ca,2))*ub - uc) - ab*std::pow(ca,2)*(std::pow(ab,2) + std::pow(ca,2))*w + (2*std::pow(ab,2)*(3 + std::pow(ca,2)) + 2*std::pow(ca,2)*(3 + std::pow(ca,2)) + std::pow(ab,3)*(-ca + 4*ub + 2*uc) + ab*(-6*ua + 6*ub + ca*(3 + ca*(-ca + 7*ub + 2*uc))))*std::pow(w,2) - ab*(2*std::pow(ab,2) + 3*std::pow(ca,2))*std::pow(w,3) + (6 + 2*std::pow(ab,2) + 4*std::pow(ca,2) + ab*(-ca + 4*ub + 2*uc))*std::pow(w,4) - 2*ab*std::pow(w,5) + 2*std::pow(w,6))/((3 + std::pow(ab,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(ca,2) + 4*(std::pow(ab,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[5] = 0.5;
-p[6] = (std::pow(ab,3)*(4 + std::pow(ca,2))*w + std::pow(ab,4)*(std::pow(ca,2) - 2*ca*w + 4*uc*w) + std::pow(ab,2)*(std::pow(ca,2)*(3 + std::pow(ca,2)) - 2*(ca + std::pow(ca,2)*(ca + ub - 2*uc) + 2*(ua + ub - 2*uc))*w + (4 + 3*std::pow(ca,2))*std::pow(w,2) - 4*(ca - 2*uc)*std::pow(w,3)) + 2*w*(std::pow(ca,2)*(ua - 2*ub - ca*(1 + ca*ub) + uc) + std::pow(ca,2)*(2 + std::pow(ca,2))*w - (ca + std::pow(ca,2)*(ca + ub - 2*uc) + 2*(ua + ub - 2*uc))*std::pow(w,2) + (2 + std::pow(ca,2))*std::pow(w,3) - (ca - 2*uc)*std::pow(w,4)) + ab*w*(std::pow(ca,4) + 4*std::pow(w,2) + std::pow(ca,2)*(1 + std::pow(w,2))))/((3 + std::pow(ab,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(ca,2) + 4*(std::pow(ab,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[7] = (3*std::pow(ab,2)*ca*(ab + ca - ua - ub + (2 + std::pow(ab,2) + std::pow(ca,2))*uc) - std::pow(ab,2)*ca*(std::pow(ab,2) + std::pow(ca,2))*w + (2*std::pow(ab,4) - std::pow(ab,3)*ca - ab*ca*(-3 + std::pow(ca,2)) + std::pow(ab,2)*(6 + 2*ca*(ca + ub) + 7*ca*uc) + 2*ca*(-3*ua + 3*uc + ca*(3 + ca*(ub + 2*uc))))*std::pow(w,2) - ca*(3*std::pow(ab,2) + 2*std::pow(ca,2))*std::pow(w,3) + (6 + 4*std::pow(ab,2) - ab*ca + 2*ca*(ca + ub + 2*uc))*std::pow(w,4) - 2*ca*std::pow(w,5) + 2*std::pow(w,6))/((3 + std::pow(ab,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(ab,2)*std::pow(ca,2) + 4*(std::pow(ab,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[8] = 0.5;
-}
-
-
-// {Nabc -> w, Nab -> ab, Nca -> ca, Nbc -> bc, aNu -> ua, bNu -> ub, cNu -> uc}
-static void prb1111(double p[9], double w, double ab, double ca, double bc, double ua, double ub, double uc) {
-p[0] = (std::pow(bc,3)*(4 + std::pow(ca,2))*w + std::pow(bc,4)*(std::pow(ca,2) - 2*ca*w + 4*ua*w) - 2*std::pow(ab,3)*w*(1 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2)) - ab*w*(1 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(2*std::pow(bc,2) - std::pow(ca,2) + 2*std::pow(w,2)) + std::pow(ab,4)*(std::pow(bc,2) + std::pow(ca,2) + (bc + ca - 2*uc)*w + 2*std::pow(w,2)) + std::pow(bc,2)*(std::pow(ca,2)*(3 + std::pow(ca,2)) - 2*(ca + std::pow(ca,2)*(ca - 2*ua + ub) + 2*(-2*ua + ub + uc))*w + (4 + 3*std::pow(ca,2))*std::pow(w,2) - 4*(ca - 2*ua)*std::pow(w,3)) + 2*w*(std::pow(ca,2)*(ua - 2*ub - ca*(1 + ca*ub) + uc) + std::pow(ca,2)*(2 + std::pow(ca,2))*w - (ca + std::pow(ca,2)*(ca - 2*ua + ub) + 2*(-2*ua + ub + uc))*std::pow(w,2) + (2 + std::pow(ca,2))*std::pow(w,3) - (ca - 2*ua)*std::pow(w,4)) + bc*w*(std::pow(ca,4) + 4*std::pow(w,2) + std::pow(ca,2)*(1 + std::pow(w,2))) + std::pow(ab,2)*(std::pow(bc,4) + std::pow(ca,4) + std::pow(bc,3)*w - 2*std::pow(ca,3)*w + ca*(w - std::pow(w,3)) + bc*(w - std::pow(ca,2)*w + std::pow(w,3)) + std::pow(ca,2)*(3 + w*(3*ua + ub + uc + 2*w)) + std::pow(bc,2)*(3 + 3*std::pow(ca,2) - ca*w + w*(4*ua - 2*uc + 3*w)) + 2*w*(ua + ub + 2*ua*std::pow(w,2) - (uc - w)*(2 + std::pow(w,2)))))/((3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 3*std::pow(ab,2)*(std::pow(bc,2) + std::pow(ca,2)) + 4*(std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[1] = (3*std::pow(bc,3)*(2 + std::pow(ca,2))*ub + 6*bc*(2 + std::pow(ca,2))*ub*(std::pow(ca,2) + std::pow(w,2)) + std::pow(bc,4)*(3*std::pow(ca,2) + 4*std::pow(w,2)) - std::pow(ab,3)*(3*bc*std::pow(ca,2) + 3*std::pow(bc,2)*(ca - 2*ua) + 6*std::pow(ca,2)*(ca - ua - uc) + 2*(std::pow(bc,2) + 2*std::pow(ca,2))*w + 2*(bc + 3*ca - 4*ua - 2*uc)*std::pow(w,2) + 4*std::pow(w,3)) + 2*(std::pow(ca,2) + std::pow(w,2))*(3*(2 + std::pow(ca,2))*ub*(ca - ua - ub - uc) + 3*(2 + std::pow(ca,2))*ub*w + 2*(3 + std::pow(ca,2))*std::pow(w,2) + 2*std::pow(w,4)) + ab*(3*(2*std::pow(bc,3) + bc*(std::pow(ca,2) + std::pow(ca,4)) - std::pow(bc,4)*(ca - 2*ua) + 2*std::pow(ca,2)*(-ca + ua + uc) + std::pow(bc,2)*(4*ua - 2*uc + ca*(-1 + ca*(-2*ca + 3*ua + uc)))) + (-2*std::pow(bc,4) - 3*std::pow(bc,2)*std::pow(ca,2) + 2*std::pow(ca,4))*w + (-2*std::pow(bc,3) + bc*(6 + std::pow(ca,2)) + 12*ua + std::pow(bc,2)*(-9*ca + 14*ua + 4*uc) + 2*ca*(-3 + ca*(-3*ca + 4*ua + 2*uc)))*std::pow(w,2) - 2*(3*std::pow(bc,2) + std::pow(ca,2))*std::pow(w,3) - 2*(bc + 3*ca - 4*ua - 2*uc)*std::pow(w,4) - 4*std::pow(w,5)) + 2*std::pow(ab,2)*(std::pow(bc,2)*(3 + 3*std::pow(ca,2) + 2*std::pow(w,2)) + (std::pow(ca,2) + std::pow(w,2))*(6 + 3*std::pow(ca,2) + 2*std::pow(w,2))) + std::pow(bc,2)*(3*std::pow(ca,4) + 6*ca*ub + 3*std::pow(ca,3)*ub - 6*ub*(ua + ub + uc) + 6*ub*w + 12*std::pow(w,2) + 8*std::pow(w,4) + std::pow(ca,2)*(9 - 3*ub*(ua + ub + uc) + 3*ub*w + 11*std::pow(w,2))))/(2.*(3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 3*std::pow(ab,2)*(std::pow(bc,2) + std::pow(ca,2)) + 4*(std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[2] = (-6*std::pow(ab,3)*ca*(1 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2)) + std::pow(ab,4)*(3*std::pow(bc,2) + 3*bc*ca + 6*ca*(ca - uc) + 2*ca*w + 4*std::pow(w,2)) + (3 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*ca*(bc + ca + ua - ub - uc) + std::pow(bc,2)*ca*w + 2*(2*std::pow(bc,2) + 2*bc*ca + ca*(3*ca + ua - ub - 3*uc))*std::pow(w,2) + 2*ca*std::pow(w,3) + 4*std::pow(w,4)) + std::pow(ab,2)*(3*std::pow(bc,4) + 6*ca*(ua + ub + ca*(2 + ca*(ua + ub)) - 2*uc) - 4*std::pow(ca,3)*w + 2*(6 + ca*(5*ca + 4*ua + 2*ub - 3*uc))*std::pow(w,2) - 2*ca*std::pow(w,3) + 8*std::pow(w,4) + bc*ca*(3 - 3*std::pow(ca,2) + std::pow(w,2)) + std::pow(bc,2)*(9 + 3*ca*(2*ca + 3*ua + ub - uc) - 3*ca*w + 11*std::pow(w,2))))/(2.*(3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 3*std::pow(ab,2)*(std::pow(bc,2) + std::pow(ca,2)) + 4*(std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[3] = (-2*std::pow(bc,3)*w*(1 + std::pow(ca,2) + std::pow(w,2)) - 2*bc*w*(std::pow(ca,2) + std::pow(w,2))*(1 + std::pow(ca,2) + std::pow(w,2)) - 2*std::pow(ab,3)*w*(1 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2)) + std::pow(ab,4)*(std::pow(bc,2) + std::pow(ca,2) + (bc + ca - 2*uc)*w + 2*std::pow(w,2)) + std::pow(bc,4)*(std::pow(ca,2) + ca*w + 2*w*(-ua + w)) + 4*w*(std::pow(ca,2) + std::pow(w,2))*(ca - ua + std::pow(ca,2)*ub - uc + w + ub*(2 + std::pow(w,2))) + ab*w*(1 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(std::pow(bc,2) - 2*(std::pow(ca,2) + std::pow(w,2))) + std::pow(bc,2)*(std::pow(ca,4) + std::pow(ca,3)*w + ca*(w + std::pow(w,3)) + std::pow(ca,2)*(3 + w*(-2*ua + 4*ub + 3*w)) + 2*w*(ub + uc + 2*w + 2*ub*std::pow(w,2) + std::pow(w,3) - ua*(2 + std::pow(w,2)))) + std::pow(ab,2)*(std::pow(bc,4) + std::pow(ca,4) - 2*std::pow(bc,3)*w + std::pow(ca,3)*w - bc*w*(-1 + std::pow(ca,2) + std::pow(w,2)) + ca*(w + std::pow(w,3)) + std::pow(bc,2)*(3 + 3*std::pow(ca,2) - ca*w + w*(ua + 3*ub + uc + 2*w)) + std::pow(ca,2)*(3 + w*(4*ub - 2*uc + 3*w)) + 2*w*(ua + ub + 2*ub*std::pow(w,2) - (uc - w)*(2 + std::pow(w,2)))))/((3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 3*std::pow(ab,2)*(std::pow(bc,2) + std::pow(ca,2)) + 4*(std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[4] = (6*std::pow(bc,5)*ua + 6*std::pow(ca,2)*ua*(ca - ua - ub - uc) + 6*std::pow(ca,2)*ua*w + 4*(3*std::pow(ca,2) + std::pow(ca,4) + 3*ca*ua - 3*ua*(ua + ub + uc))*std::pow(w,2) + 12*ua*std::pow(w,3) + 4*(3 + 2*std::pow(ca,2))*std::pow(w,4) + 4*std::pow(w,6) + 6*bc*ua*(std::pow(ca,2) + 2*std::pow(w,2)) + 3*std::pow(bc,3)*ua*(4 + std::pow(ca,2) + 2*std::pow(w,2)) + std::pow(bc,4)*(3*std::pow(ca,2) + 6*ca*ua - 6*ua*(ua + ub + uc) + 6*ua*w + 4*std::pow(w,2)) - std::pow(ab,3)*(6*std::pow(bc,3) + 3*bc*std::pow(ca,2) - 6*std::pow(ca,2)*ub + 3*std::pow(bc,2)*(ca - 2*(ub + uc)) + 2*(2*std::pow(bc,2) + std::pow(ca,2))*w + 2*(3*bc + ca - 4*ub - 2*uc)*std::pow(w,2) + 4*std::pow(w,3)) + 2*std::pow(ab,2)*(3*(std::pow(bc,4) + std::pow(ca,2) + std::pow(bc,2)*(2 + std::pow(ca,2))) + (6 + 5*std::pow(bc,2) + 2*std::pow(ca,2))*std::pow(w,2) + 2*std::pow(w,4)) + std::pow(bc,2)*(3*(std::pow(ca,4) + 4*ca*ua + std::pow(ca,3)*ua - 4*ua*(ua + ub + uc) - std::pow(ca,2)*(-3 + ua*(ua + ub + uc))) + 3*(4 + std::pow(ca,2))*ua*w + (12 + 11*std::pow(ca,2) + 6*ca*ua - 6*ua*(ua + ub + uc))*std::pow(w,2) + 6*ua*std::pow(w,3) + 8*std::pow(w,4)) + ab*(6*std::pow(ca,2)*(ca + 2*ub + std::pow(ca,2)*ub - uc) - 2*std::pow(ca,4)*w + 2*(6*ub + ca*(3 + ca*(-ca + 7*ub + 2*uc)))*std::pow(w,2) - 6*std::pow(ca,2)*std::pow(w,3) - 2*(ca - 4*ub - 2*uc)*std::pow(w,4) - 4*std::pow(w,5) + std::pow(bc,4)*(3*ca + 2*w) - 6*std::pow(bc,3)*(1 + std::pow(ca,2) + std::pow(w,2)) - 3*bc*(1 + std::pow(ca,2) + std::pow(w,2))*(std::pow(ca,2) + 2*std::pow(w,2)) + std::pow(bc,2)*(6*(ub + uc) + 3*ca*(1 + 3*ca*ub + ca*uc) - 3*std::pow(ca,2)*w + (ca + 8*ub + 4*uc)*std::pow(w,2) - 2*std::pow(w,3))))/(2.*(3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 3*std::pow(ab,2)*(std::pow(bc,2) + std::pow(ca,2)) + 4*(std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[5] = (-6*std::pow(ab,3)*bc*(1 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2)) + (3 + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*bc*std::pow(ca,2)*(bc + ca - ua + ub - uc) + bc*std::pow(ca,2)*w + 2*(3*std::pow(bc,2) + 2*std::pow(ca,2) + bc*(2*ca - ua + ub - 3*uc))*std::pow(w,2) + 2*bc*std::pow(w,3) + 4*std::pow(w,4)) + std::pow(ab,4)*(6*std::pow(bc,2) + 3*std::pow(ca,2) + 4*std::pow(w,2) + bc*(3*ca - 6*uc + 2*w)) + std::pow(ab,2)*(3*std::pow(ca,2)*(3 + std::pow(ca,2)) + std::pow(bc,3)*(-3*ca + 6*(ua + ub) - 4*w) + (12 + 11*std::pow(ca,2))*std::pow(w,2) + 8*std::pow(w,4) + 2*std::pow(bc,2)*(6 + 3*std::pow(ca,2) + 5*std::pow(w,2)) + bc*(3*ca*(1 + ca*(ua + 3*ub - uc)) + 6*(ua + ub - 2*uc) - 3*std::pow(ca,2)*w + (ca + 4*ua + 8*ub - 6*uc)*std::pow(w,2) - 2*std::pow(w,3))))/(2.*(3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 3*std::pow(ab,2)*(std::pow(bc,2) + std::pow(ca,2)) + 4*(std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[6] = (std::pow(bc,2)*std::pow(ca,2)*(3 + std::pow(bc,2) + std::pow(ca,2)) + std::pow(ab,3)*(4 + std::pow(bc,2) + std::pow(ca,2))*w + (-2*std::pow(bc,3)*(1 + std::pow(ca,2)) + bc*(std::pow(ca,2) + std::pow(ca,4)) + std::pow(bc,4)*(ca - 2*ua) - 2*std::pow(ca,2)*(ca - ua + 2*ub + std::pow(ca,2)*ub - uc) + std::pow(bc,2)*(ca + 2*(-2*ua + ub + uc) + std::pow(ca,2)*(-2*ca + ua + ub + 3*uc)))*w + 2*(std::pow(bc,4) + 2*std::pow(ca,2) + std::pow(ca,4) + std::pow(bc,2)*(2 + std::pow(ca,2)))*std::pow(w,2) - (2*std::pow(bc,3) + bc*(2 + std::pow(ca,2)) + 2*(ca + std::pow(ca,2)*(ca + ub - 2*uc) + 2*(ua + ub - 2*uc)) + std::pow(bc,2)*(ca + 2*ua - 4*uc))*std::pow(w,3) + 2*(2 + std::pow(bc,2) + std::pow(ca,2))*std::pow(w,4) - 2*(bc + ca - 2*uc)*std::pow(w,5) + std::pow(ab,4)*(std::pow(bc,2) + std::pow(ca,2) - 2*(bc + ca - 2*uc)*w) + ab*w*(std::pow(bc,2) + std::pow(bc,4) + std::pow(ca,2) - std::pow(bc,2)*std::pow(ca,2) + std::pow(ca,4) + (4 + std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2)) + std::pow(ab,2)*(3*std::pow(bc,2) + std::pow(bc,4) + 3*std::pow(ca,2) + 3*std::pow(bc,2)*std::pow(ca,2) + std::pow(ca,4) - (2*std::pow(bc,3) + bc*(2 + std::pow(ca,2)) + 2*(ca + std::pow(ca,2)*(ca + ub - 2*uc) + 2*(ua + ub - 2*uc)) + std::pow(bc,2)*(ca + 2*ua - 4*uc))*w + (4 + 3*std::pow(bc,2) + 3*std::pow(ca,2))*std::pow(w,2) - 4*(bc + ca - 2*uc)*std::pow(w,3)))/((3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 3*std::pow(ab,2)*(std::pow(bc,2) + std::pow(ca,2)) + 4*(std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[7] = (-2*std::pow(ab,3)*ca*(-3 + std::pow(w,2)) + std::pow(ab,4)*(3*std::pow(bc,2) - 3*bc*ca + 6*ca*uc - 2*ca*w + 4*std::pow(w,2)) + ab*ca*(3*std::pow(bc,4) + std::pow(bc,2)*(3 - 3*std::pow(ca,2) + std::pow(w,2)) - 2*std::pow(w,2)*(-3 + std::pow(ca,2) + std::pow(w,2))) + std::pow(ab,2)*(3*std::pow(bc,4) - 6*std::pow(bc,3)*ca + 6*ca*(ca - ua - ub + (2 + std::pow(ca,2))*uc) - 2*std::pow(ca,3)*w + 2*(6 + 2*ca*(ca + ub) + 7*ca*uc)*std::pow(w,2) - 6*ca*std::pow(w,3) + 8*std::pow(w,4) + std::pow(bc,2)*(9 + 3*ca*(2*ca - ua + ub + 3*uc) - 3*ca*w + 11*std::pow(w,2)) - 3*bc*(ca + std::pow(ca,3) + 3*ca*std::pow(w,2))) + 2*(-3*std::pow(bc,3)*ca*(1 + std::pow(ca,2) + std::pow(w,2)) - 3*bc*ca*std::pow(w,2)*(1 + std::pow(ca,2) + std::pow(w,2)) + std::pow(bc,4)*(3*ca*(ca - ua) + ca*w + 2*std::pow(w,2)) + 2*std::pow(w,2)*(ca*(-3*ua + 3*uc + ca*(3 + ca*ub + 2*ca*uc)) - std::pow(ca,3)*w + (3 + ca*(ca + ub + 2*uc))*std::pow(w,2) - ca*std::pow(w,3) + std::pow(w,4)) + std::pow(bc,2)*(3*ca*(-2*ua + ub + uc + ca*(2 + ca*(ub + uc))) - 2*std::pow(ca,3)*w + (6 + ca*(5*ca - 3*ua + 2*ub + 4*uc))*std::pow(w,2) - ca*std::pow(w,3) + 4*std::pow(w,4))))/(2.*(3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 3*std::pow(ab,2)*(std::pow(bc,2) + std::pow(ca,2)) + 4*(std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-p[8] = (-2*std::pow(ab,3)*bc*(-3 + std::pow(w,2)) + std::pow(ab,4)*(3*std::pow(ca,2) + bc*(-3*ca + 6*uc - 2*w) + 4*std::pow(w,2)) + ab*bc*(3*std::pow(ca,4) + std::pow(ca,2)*(3 - 3*std::pow(bc,2) + std::pow(w,2)) - 2*std::pow(w,2)*(-3 + std::pow(bc,2) + std::pow(w,2))) + 2*(2*std::pow(w,2)*(std::pow(ca,2) + std::pow(w,2))*(3 + std::pow(ca,2) + std::pow(w,2)) + std::pow(bc,2)*(std::pow(ca,2) + std::pow(w,2))*(6 + 3*std::pow(ca,2) + 2*std::pow(w,2)) + std::pow(bc,3)*(3*std::pow(ca,2)*(-ca + ua + uc) - 2*std::pow(ca,2)*w + (-3*ca + 2*ua + 4*uc)*std::pow(w,2) - 2*std::pow(w,3)) + bc*(-3*std::pow(ca,2)*(ca - ua + 2*ub + std::pow(ca,2)*ub - uc) + std::pow(ca,4)*w + (-6*ub + 6*uc + ca*(-3 + ca*(-3*ca + 2*ua - 3*ub + 4*uc)))*std::pow(w,2) - std::pow(ca,2)*std::pow(w,3) + (-3*ca + 2*ua + 4*uc)*std::pow(w,4) - 2*std::pow(w,5))) + std::pow(ab,2)*(3*std::pow(ca,2)*(3 + std::pow(ca,2)) + std::pow(bc,3)*(-3*ca + 6*uc - 2*w) + (12 + 11*std::pow(ca,2))*std::pow(w,2) + 8*std::pow(w,4) + std::pow(bc,2)*(6 + 6*std::pow(ca,2) + 4*std::pow(w,2)) - bc*(6*std::pow(ca,3) + 6*(ua + ub - 2*uc) + 3*std::pow(ca,2)*(-ua + ub - 3*uc + w) + 2*std::pow(w,2)*(-2*ua - 7*uc + 3*w) + ca*(3 + 9*std::pow(w,2)))))/(2.*(3 + std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2) + std::pow(w,2))*(3*std::pow(bc,2)*std::pow(ca,2) + 3*std::pow(ab,2)*(std::pow(bc,2) + std::pow(ca,2)) + 4*(std::pow(ab,2) + std::pow(bc,2) + std::pow(ca,2))*std::pow(w,2) + 4*std::pow(w,4)));
-}
 
 
 void SoundAgent::updateProbs()
 {
-	// a_abc a_ab a_ca b_abc b_ab b_bc c_abc c_ca c_bc
-
-	auto &Nabc = Habc.nbr_cards;
-	auto &Nab = Hab.nbr_cards;
-	auto &Nca = Hca.nbr_cards;
-	auto &Nbc = Hbc.nbr_cards;
-
-	LOG("Nabc: " << Nabc << ", Nab: " << Nab << ", Nca: " << Nca << ", Nbc: " << Nbc);
-	LOG("Nu_a: " << Nu_a << ", Nu_b: " << Nu_b << ", Nu_c: " << Nu_c);
-
-	double prb[9] = {0};
-
-	if(Nabc > 0)
-		if(Nab > 0)
-			if(Nca > 0)
-				if (Nbc > 0)
-					prb1111(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-				else
-					prb1110(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-			else
-				if (Nbc > 0)
-					prb1101(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-				else
-					prb1100(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-		else
-			if(Nca > 0)
-				if (Nbc > 0)
-					prb1011(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-				else
-					prb1010(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-			else
-				if (Nbc > 0)
-					prb1001(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-				else
-					prb1000(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-	else
-		if(Nab > 0)
-			if(Nca > 0)
-				if (Nbc > 0)
-					prb0111(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-				else
-					prb0110(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-			else
-				if (Nbc > 0)
-					prb0101(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-				else
-					prb0100(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-		else
-			if(Nca > 0)
-				if (Nbc > 0)
-					prb0011(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-				else
-					prb0010(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-			else
-				if (Nbc > 0)
-					prb0001(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-				else
-					prb0000(prb, Nabc, Nab, Nca, Nbc, Nu_a, Nu_b, Nu_c);
-
-	LOG("updateProbs: prb: " << arr_toString(prb, 9));
-
-	Pa.clear();
-	Pb.clear();
-	Pc.clear();
-	Pa.update(Habc, prb[0]);
-	Pa.update(Hab, prb[1]);
-	Pa.update(Hca, prb[2]);
-	Pb.update(Habc, prb[3]);
-	Pb.update(Hab, prb[4]);
-	Pb.update(Hbc, prb[5]);
-	Pc.update(Habc, prb[6]);
-	Pc.update(Hca, prb[7]);
-	Pc.update(Hbc, prb[8]);
-	Pa.update(Ha, 1.0);
-	Pb.update(Hb, 1.0);
-	Pc.update(Hc, 1.0);
-	const Hand &hna = Habc.uni(Hab).uni(Hca).uni(Ha).cmpl();
-	const Hand &hnb = Habc.uni(Hab).uni(Hbc).uni(Hb).cmpl();
-	const Hand &hnc = Habc.uni(Hbc).uni(Hca).uni(Hc).cmpl();
-	Pa.update(hna, 0.0);
-	Pb.update(hnb, 0.0);
-	Pc.update(hnc, 0.0);
+	computeProbabilitiesDP(Ha, Hb, Hc, Hab, Hbc, Hca, Habc, Ncards_a, Ncards_b, Ncards_c, Pa, Pb, Pc);
 }
 
 
@@ -705,14 +670,15 @@ Card SoundAgent::act(const State &state, const History &hist)
 			for (int i = 0; i < ps_hi.len[s]; i++)
 			{
 				c.set(s, ps_hi.cards[s][i]);
-				Hand ps_abc_hi = ps_ab.gt_c_led(c, state.led, state.trump);
-				double pr_na = Pa.probNotIn(ps_abc_hi);
-				double pr_nb = Pb.probNotIn(ps_abc_hi);
-				LOG("Card " << c.to_string() << ", prob: " << pr_na * pr_nb);
-				if (pr_na * pr_nb > this->prob_floor)
+				// Hand ps_abc_hi = ps_ab.gt_c_led(c, state.led, state.trump);
+				// double prb = Pc.probIn(ps_abc_hi);
+				double prb = 1 - prob_higher_ord0(ps_ab, c, state.trump, Pa, Pb);
+				LOG("Card " << c.to_string() << ", prob: " << prb << " / " << prob_floor);
+				if (prb > this->prob_floor)
 					ps_play.add(c);
 			}
 		}
+		LOG("Psbl. play: " << ps_play.to_string());
 		if (ps_play.nbr_cards == 0)
 		{
 			out = hand.min_mil_trl(Card::NON_SU, state.trump);
@@ -744,13 +710,14 @@ Card SoundAgent::act(const State &state, const History &hist)
 			for (int i = 0; i < ps_hi.len[s]; i++)
 			{
 				c.set(s, ps_hi.cards[s][i]);
-				Hand ps_ac_hi = ps_a.gt_c_led(c, state.led, state.trump);
-				double pr_na = Pa.probNotIn(ps_ac_hi);
-				LOG("Card " << c.to_string() << ", prob: " << pr_na);
-				if (pr_na > this->prob_floor)
+				// Hand ps_ac_hi = ps_a.gt_c_led(c, state.led, state.trump);
+				// double pr_na = Pa.probNotIn(ps_ac_hi);
+				double prb = 1 - prob_higher_ord1(ps_a, c, state.led, state.trump, Pa);
+				LOG("Card " << c.to_string() << ", prob: " << prb << " / " << prob_floor);
 					ps_play.add(c);
 			}
 		}
+		LOG("Psbl. play: " << ps_play.to_string());
 		if (ps_play.nbr_cards == 0)
 		{
 			out = hand.min_mil_trl(state.led, state.trump);
@@ -790,13 +757,15 @@ Card SoundAgent::act(const State &state, const History &hist)
 			for (int i = 0; i < ps_hi.len[s]; i++)
 			{
 				c.set(s, ps_hi.cards[s][i]);
-				Hand ps_ac_hi = ps_a.gt_c_led(c, state.led, state.trump);
-				double pr_na = Pa.probNotIn(ps_ac_hi);
-				LOG("Card " << c.to_string() << ", prob: " << pr_na);
-				if (pr_na > this->prob_floor)
+				// Hand ps_ac_hi = ps_a.gt_c_led(c, state.led, state.trump);
+				// double pr_na = Pa.probNotIn(ps_ac_hi);
+				double prb = 1 - prob_higher_ord2(ps_a, c, state.led, state.trump, Pa);
+				LOG("Card " << c.to_string() << ", prob: " << prb << " / " << prob_floor);
+				if (prb > this->prob_floor)
 					ps_play.add(c);
 			}
 		}
+		LOG("Pssbl. play: " << ps_play.to_string());
 		if (ps_play.nbr_cards == 0)
 		{
 			out = hand.min_mil_trl(state.led, state.trump);

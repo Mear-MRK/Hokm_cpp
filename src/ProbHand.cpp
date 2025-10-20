@@ -110,6 +110,18 @@ int ProbHand::nbr() const
     return static_cast<int>(round(total()));
 }
 
+double ProbHand::probIn(const Hand &h) const
+{
+    double prb = 1.0;
+    for (Suit s = 0; s < Card::N_SUITS; s++)
+        for (int i = 0; i < h.len[s]; i++)
+        {
+            Rank r = h.cards[s][i];
+            prb *= this->prob[s][r];
+        }
+    return prb;
+}
+
 double ProbHand::probNotIn(Suit s) const
 {
     assert(0 <= s && s < Card::N_SUITS);

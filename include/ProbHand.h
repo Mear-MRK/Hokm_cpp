@@ -23,6 +23,8 @@ public:
 
     ProbHand& renormalize(double N);
 
+    double probIn(const Hand&) const;
+
     double probNotIn(Suit s) const;
     double probNotIn(const Hand& filter) const;
 

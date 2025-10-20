@@ -9,10 +9,12 @@
 class CardStack {
 	Card cards_arr[Card::N_CARDS];
 	int nbr_cards;
-	std::mt19937 mt_rnd_gen;
 public:
 	std::uint64_t bin64;
+private:
+	std::mt19937 mt_rnd_gen;
 
+public:
 	CardStack();
 	CardStack(std::uint64_t bin64);
 	CardStack(Cid ids_arr[], int nbr_cards);

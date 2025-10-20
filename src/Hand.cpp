@@ -8,7 +8,6 @@
 
 #include <cstring>
 #include <cstdlib>
-#include <stdexcept>
 #include <cassert>
 
 #include "utils.h"

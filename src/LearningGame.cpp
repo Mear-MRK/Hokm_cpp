@@ -8,6 +8,7 @@
 #include "LearningGame.h"
 
 #include <cstring>
+#include <vector>
 
 #include "SoundAgent.h"
 #include "RndAgent.h"
@@ -223,7 +224,8 @@ void LearningGame::tweak_floor_prob_vs_rnd(int nbr_episodes)
 {
 	nbr_stats = nbr_probs;
 	stats = new double[nbr_stats];
-	int rnd_wins[nbr_stats] = {0};
+	// int rnd_wins[nbr_stats] = {0};
+	std::vector<int> rnd_wins(nbr_stats, 0);
 	std::fill(stats, stats + nbr_stats, 0);
 
 	for (int i = 0; i < nbr_probs; i++)

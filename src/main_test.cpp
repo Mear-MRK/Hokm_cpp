@@ -14,6 +14,16 @@ void State_test();
 void utils_test();
 
 int main() {
+    
+#ifdef DEBUG
+	utils_test();
+	Card_test();
+	CardStack_test();
+	Hand_test();
+	Deck_test();
+	State_test();
+	History_test();
+#endif
     std::cout << "Running all tests..." << std::endl;
     Card_test();
     CardStack_test();
