@@ -22,8 +22,9 @@ public:
 
 	Card& set(Suit su, Rank rnk);
 
+	// cl > cr ?
 	static int cmp(const Card &cl, const Card &cr, Suit led, Suit trump);
-	int cmp(const Card &rhs, Suit trump);
+	int cmp(const Card &rhs, Suit led, Suit trump);
 
 	std::string to_string() const;
 	std::string to_unc_str() const;

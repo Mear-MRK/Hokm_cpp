@@ -19,12 +19,12 @@ LearningGame::LearningGame(int nbr_probs, double min_prob, double max_prob) :
 	nbr_stats{0},
 	stats{nullptr}
 {
-	for (int pl = 0; pl < Hokm::N_PLAYERS; pl++)
-		agent[pl] = new SoundAgent();
-	// agent[0] = new SoundAgent();
-	// agent[1] = new RndAgent();
-	// agent[2] = new SoundAgent();
-	// agent[3] = new RndAgent();
+	// for (int pl = 0; pl < Hokm::N_PLAYERS; pl++)
+	// 	agent[pl] = new SoundAgent();
+	agent[0] = new SoundAgent();
+	agent[1] = new RndAgent();
+	agent[2] = new SoundAgent();
+	agent[3] = new RndAgent();
 
 	round = std::unique_ptr<GameRound>(new GameRound(agent));
 
@@ -285,8 +285,8 @@ void LearningGame::tweak_floor_prob_vs_rnd(int nbr_episodes)
 
 void LearningGame::play(int nbr_episodes)
 {
-	tweak_floor_prob(nbr_episodes);
-	// tweak_floor_prob_vs_rnd(nbr_episodes);
+	// tweak_floor_prob(nbr_episodes);
+	tweak_floor_prob_vs_rnd(nbr_episodes);
 }
 
 void LearningGame::cp_probs(double *probs_cp)

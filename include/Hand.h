@@ -28,6 +28,9 @@ public:
 	Hand& rm(const Card &c);
 	bool remove(const Card &c);
 	Hand& discard(Suit);
+	
+	Hand& rm_top(Suit su, int n);
+	Hand& restore_top(Suit su, int n);
 
 	bool is_in(const Card &c) const;
 
@@ -50,13 +53,14 @@ public:
 	Hand gt_h_lead(const Hand& h, Suit led, Suit trump) const;
 	Hand gt(const Card&, Suit led, Suit trump) const;
 
-
+	Card top(Suit su);
+	Card bottom(Suit su);
 	Card min_mil_trl(Suit led, Suit trump, const int* = nullptr) const;
-	Card max_mil_trl(Suit led, Suit trump) const;
+	Card maxLed_maxTr_min_mil(Suit led, Suit trump) const;
 
 	bool card_is_valid_move(const Card&, Suit led) const;
 
-	int diff_between(const Card &c_low, const Card &c_hi, Suit trump = Card::NON_SU) const;
+	int diff_between(const Card &c_low, const Card &c_hi) const;
 
 	static const Hand EMPTY;
 

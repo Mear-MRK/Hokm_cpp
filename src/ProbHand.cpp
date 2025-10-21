@@ -154,6 +154,17 @@ Hand ProbHand::gt(double prb) const
     return out;
 }
 
+Hand ProbHand::gte(double prob) const
+{
+    // assert(0 <= prb && prb <= 1);
+    Hand out;
+    for (Suit s = 0; s < Card::N_SUITS; s++)
+        for (Rank r = 0; r < Card::N_RANKS; r++)
+            if (this->prob[s][r] >= prob)
+                out.add(Card(s, r));
+    return out;
+}
+
 Hand ProbHand::lt(double prb) const
 {
     // assert(0 <= prb && prb <= 1);
@@ -171,6 +182,17 @@ Hand ProbHand::lte(double prob) const
     for (Suit s = 0; s < Card::N_SUITS; s++)
         for (Rank r = 0; r < Card::N_RANKS; r++)
             if (this->prob[s][r] <= prob)
+                out.add(Card(s, r));
+    return out;
+}
+
+Hand ProbHand::bound(double gte_prb, double lt_prb) const
+{
+    // assert(lt_prb > gte_prb);
+    Hand out;
+    for (Suit s = 0; s < Card::N_SUITS; s++)
+        for (Rank r = 0; r < Card::N_RANKS; r++)
+            if (this->prob[s][r] < lt_prb && this->prob[s][r] >= gte_prb)
                 out.add(Card(s, r));
     return out;
 }

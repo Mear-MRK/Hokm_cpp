@@ -29,8 +29,11 @@ public:
     double probNotIn(const Hand& filter) const;
 
     Hand gt(double prob) const;
+    Hand gte(double prob) const;
     Hand lt(double prob) const;
     Hand lte(double prob) const;
+    Hand bound(double gte_prb, double lt_prb) const;
+
     Hand lte(double prob, const Hand& filter) const;
 
     ProbHand& clear();

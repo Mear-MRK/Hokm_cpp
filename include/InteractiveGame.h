@@ -18,8 +18,9 @@ private:
 	std::array<Agent*, Hokm::N_PLAYERS>agent;
 	std::unique_ptr<GameRound> round;
 	std::array<int, Hokm::N_TEAMS>team_scores = {0};
+	bool prompt = false;
 public:
-	InteractiveGame(std::string ag_typs, bool show_hand = false);
+	InteractiveGame(std::string ag_typs, bool show_hand = false, bool prompt=false);
 	~InteractiveGame();
 
 	int play(int win_score = Hokm::WIN_SCORE, int round_win_score = Hokm::RND_WIN_SCORE);

@@ -22,7 +22,7 @@ const std::string Card::SU_STR[] = {"S", "H", "C", "D", "-"};
 Card::Card(Cid id)
 {
 #ifdef DEBUG
-	if (id >= N_CARDS && id != NON_ID || id < 0)
+	if ((id >= N_CARDS && id != NON_ID) || id < 0)
 		throw std::invalid_argument("Card::Card(id): Invalid card id.");
 	if (id == NON_ID)
 		throw std::invalid_argument("Card::Card(id): You can't construct NONE card this way!");
@@ -131,11 +131,12 @@ bool Card::operator!=(const Card &rhs) const
 	return id != rhs.id;
 }
 
-int Card::cmp(const Card &rhs, Suit trump)
+int Card::cmp(const Card &rhs, Suit led, Suit trump)
 {
-	return cmp(*this, rhs, this->su, trump);
+	return cmp(*this, rhs, led, trump);
 }
 
+// cl > cr ?
 int Card::cmp(const Card &cl, const Card &cr, Suit led, Suit trump)
 {
 	if (cl.su == cr.su)
