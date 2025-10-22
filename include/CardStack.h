@@ -17,10 +17,12 @@ private:
 public:
 	CardStack();
 	CardStack(std::uint64_t bin64);
-	CardStack(Cid ids_arr[], int nbr_cards);
+	CardStack(const Cid ids_arr[], int nbr_cards);
+	CardStack(const Card cards[], int nbr_cards);
 
 	CardStack& append(const Card &c);
 	CardStack& append(const Card card_arr[], int nbr_cards);
+	CardStack& append(const Hand& );
 	
 	Card pop();
 
@@ -29,6 +31,7 @@ public:
 	Card at(int i) const ;
 
 	CardStack top(int n) const;
+	CardStack bottom(int n) const;
 
 	void clear();
 

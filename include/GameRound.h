@@ -23,6 +23,7 @@ private:
 	int round_id;
 	History hist;
 	Deck deck;
+	CardStack collect = CardStack::EMPTY;
 	std::array<CardStack, Hokm::N_PLAYERS> stack;
 	std::array<Hand, Hokm::N_PLAYERS> hand;
 	std::array<Agent *, Hokm::N_PLAYERS> agent;

@@ -188,354 +188,261 @@ void SoundAgent::updateHandsNcards() {
   } while (changed);
 }
 
-// Player indices
-enum Player { A = 0, B = 1, C = 2 };
-
-// Bit masks for allowed sets
-constexpr int MASK_A = 1 << A;
-constexpr int MASK_B = 1 << B;
-constexpr int MASK_C = 1 << C;
-
-// Check membership of a specific card in a Hand
-inline bool inHand(const Hand &h, const Card &c) { return h.is_in(c); }
-
-// Build the unknown universe U and per-card allowed masks from ambiguous sets
-void buildUnknownUniverseAndMasks(const Hand &Habc, const Hand &Hab,
-                                  const Hand &Hbc, const Hand &Hca,
-                                  std::vector<Card> &U,
-                                  std::vector<int> &allowedMask // out
-) {
-  U.clear();
-  allowedMask.clear();
-  U.reserve(52);
-  allowedMask.reserve(52);
-
-  for (int su = 0; su < Card::N_SUITS; ++su) {
-    for (int r = 0; r < Card::N_RANKS; ++r) {
-      Card c(su, r);
-
-      int mask = 0;
-      if (inHand(Hab, c))
-        mask |= (MASK_A | MASK_B);
-      if (inHand(Hbc, c))
-        mask |= (MASK_B | MASK_C);
-      if (inHand(Hca, c))
-        mask |= (MASK_C | MASK_A);
-      if (inHand(Habc, c))
-        mask |= (MASK_A | MASK_B | MASK_C);
-
-      if (mask != 0) {
-        U.push_back(c);
-        allowedMask.push_back(mask);
-      }
-    }
-  }
-}
-
-// Forward DP over counts assigned to A and B (C is implicit)
-// Returns a table dp[ca][cb] = number of ways to assign all M cards where
-// A receives ca, B receives cb, C receives (M - ca - cb).
-// Bounds for ca, cb are clamped to [0..t_a], [0..t_b] to limit table size.
-std::vector<std::vector<long double>>
-countAssignmentsDP_AB(const std::vector<int> &masksOther, int t_a, int t_b) {
-  const int M = static_cast<int>(masksOther.size());
-  std::vector<std::vector<long double>> dp_prev(
-      t_a + 1, std::vector<long double>(t_b + 1, 0.0L));
-  std::vector<std::vector<long double>> dp_next(
-      t_a + 1, std::vector<long double>(t_b + 1, 0.0L));
-
-  dp_prev[0][0] = 1.0L;
-
-  for (int i = 0; i < M; ++i) {
-    std::fill(dp_next.begin(), dp_next.end(),
-              std::vector<long double>(t_b + 1, 0.0L));
-    const int mask = masksOther[i];
-
-    // ca ranges 0..min(i, t_a), cb ranges 0..min(i - ca, t_b)
-    const int ca_max = std::min(i, t_a);
-    for (int ca = 0; ca <= ca_max; ++ca) {
-      const int cb_max = std::min(i - ca, t_b);
-      for (int cb = 0; cb <= cb_max; ++cb) {
-        long double ways = dp_prev[ca][cb];
-        if (ways == 0.0L)
-          continue;
-
-        // Assign current card to A
-        if ((mask & MASK_A) && ca + 1 <= t_a) {
-          dp_next[ca + 1][cb] += ways;
-        }
-        // Assign to B
-        if ((mask & MASK_B) && cb + 1 <= t_b) {
-          dp_next[ca][cb + 1] += ways;
-        }
-        // Assign to C
-        if (mask & MASK_C) {
-          // C's count increments implicitly: no change to (ca, cb)
-          dp_next[ca][cb] += ways;
-        }
-      }
-    }
-    dp_prev.swap(dp_next);
-  }
-
-  return dp_prev; // size (t_a+1) x (t_b+1)
-}
-
-// Utility to set per-card probabilities in Pa, Pb, Pc
-inline void setCardProbs(ProbHand &Pa, ProbHand &Pb, ProbHand &Pc,
-                         const Card &c, double pa, double pb, double pc) {
-  Pa.update(c, pa);
-  Pb.update(c, pb);
-  Pc.update(c, pc);
-}
-
-// Main API:
-// Returns true on success, false if inputs are inconsistent (still fills what
-// it can).
-bool computeProbabilitiesDP(const Hand &Ha, const Hand &Hb, const Hand &Hc,
-                            const Hand &Hab, const Hand &Hbc, const Hand &Hca,
-                            const Hand &Habc, int Na, int Nb, int Nc,
-                            ProbHand &Pa, ProbHand &Pb, ProbHand &Pc) {
-  // Clear outputs
-  Pa.clear();
-  Pb.clear();
-  Pc.clear();
-
-  // Known singletons counts and capacities t_j = N_j - |Hj|
-  const int Ka = (Ha.nbr_cards);
-  const int Kb = (Hb.nbr_cards);
-  const int Kc = (Hc.nbr_cards);
-
-  int t_a = Na - Ka;
-  int t_b = Nb - Kb;
-  int t_c = Nc - Kc;
-
-  if (t_a < 0 || t_b < 0 || t_c < 0) {
-    // Inconsistent: known singletons exceed targets
-    return false;
-  }
-
-  // Build unknown universe U and per-card allowed masks from ambiguous sets
-  std::vector<Card> U;
-  std::vector<int> allowedMask;
-  buildUnknownUniverseAndMasks(Habc, Hab, Hbc, Hca, U, allowedMask);
-  const int Usize = static_cast<int>(U.size());
-
-  // Basic consistency: total unknown to be assigned must match
-  if (t_a + t_b + t_c != Usize) {
-    // Inconsistent counts; we proceed but results may be degenerate
-    // You may prefer to return false here directly.
-    // return false;
-  }
-
-  // First, set known cards: Pa=1 on Ha, etc.
-  for (int su = 0; su < Card::N_SUITS; ++su) {
-    for (int r = 0; r < Card::N_RANKS; ++r) {
-      Card c(su, r);
-      if (inHand(Ha, c)) {
-        setCardProbs(Pa, Pb, Pc, c, 1.0, 0.0, 0.0);
-      } else if (inHand(Hb, c)) {
-        setCardProbs(Pa, Pb, Pc, c, 0.0, 1.0, 0.0);
-      } else if (inHand(Hc, c)) {
-        setCardProbs(Pa, Pb, Pc, c, 0.0, 0.0, 1.0);
-      } else {
-        // leave as zero for now; may be filled below if in U
-      }
-    }
-  }
-
-  // For each unknown card k in U, compute probabilities by DP counting
-  // Note: For each k, we build masks excluding k, run DP once, and then read
-  // counts for p in allowed(k).
-  for (int idx = 0; idx < Usize; ++idx) {
-    const Card &k = U[idx];
-    const int mask_k = allowedMask[idx];
-
-    // Build masks for the "other" cards
-    std::vector<int> masksOther;
-    masksOther.reserve(Usize - 1);
-    for (int j = 0; j < Usize; ++j) {
-      if (j == idx)
-        continue;
-      masksOther.push_back(allowedMask[j]);
-    }
-    const int M = static_cast<int>(masksOther.size()); // equals Usize - 1
-
-    // Precompute DP table over A/B counts
-    auto dpAB = countAssignmentsDP_AB(masksOther, t_a, t_b);
-
-    // For each allowed player p, get completion count F_{k,p}
-    long double F[3] = {0.0L, 0.0L, 0.0L};
-    for (int p = 0; p < 3; ++p) {
-      if (!(mask_k & (1 << p)))
-        continue;
-
-      const int ca_target = t_a - (p == A ? 1 : 0);
-      const int cb_target = t_b - (p == B ? 1 : 0);
-      const int cc_target = t_c - (p == C ? 1 : 0);
-
-      // Targets must be within bounds
-      if (ca_target < 0 || cb_target < 0 || cc_target < 0) {
-        F[p] = 0.0L;
-        continue;
-      }
-      // The implicit C count must match the remaining cards
-      if (cc_target != (M - ca_target - cb_target)) {
-        F[p] = 0.0L;
-        continue;
-      }
-      if (ca_target > t_a || cb_target > t_b) {
-        F[p] = 0.0L;
-        continue;
-      }
-      F[p] = dpAB[ca_target][cb_target];
-    }
-
-    long double denom = 0.0L;
-    if (mask_k & MASK_A)
-      denom += F[A];
-    if (mask_k & MASK_B)
-      denom += F[B];
-    if (mask_k & MASK_C)
-      denom += F[C];
-
-    double pa = 0.0, pb = 0.0, pc = 0.0;
-
-    if (denom > 0.0L) {
-      if (mask_k & MASK_A)
-        pa = static_cast<double>(F[A] / denom);
-      if (mask_k & MASK_B)
-        pb = static_cast<double>(F[B] / denom);
-      if (mask_k & MASK_C)
-        pc = static_cast<double>(F[C] / denom);
-    } else {
-      // Inconsistent inputs for this card; fallback to uniform over allowed
-      // players
-      int allowedCount = ((mask_k & MASK_A) ? 1 : 0) +
-                         ((mask_k & MASK_B) ? 1 : 0) +
-                         ((mask_k & MASK_C) ? 1 : 0);
-      double uniform = allowedCount > 0 ? (1.0 / allowedCount) : 0.0;
-      if (mask_k & MASK_A)
-        pa = uniform;
-      if (mask_k & MASK_B)
-        pb = uniform;
-      if (mask_k & MASK_C)
-        pc = uniform;
-    }
-
-    setCardProbs(Pa, Pb, Pc, k, pa, pb, pc);
-  }
-
-  // Optional: sanity check sums close to targets
-  // You can enable/inspect these if desired.
-  // double sumA = Pa.total();
-  // double sumB = Pb.total();
-  // double sumC = Pc.total();
-
-  return true;
-}
-
-namespace {
-
-// Clamp to [0,1]
-inline double clamp01(double x) {
-  if (x < 0.0)
-    return 0.0;
-  if (x > 1.0)
-    return 1.0;
+// -----------------------------------------------------------------------------
+// Numeric helpers
+// -----------------------------------------------------------------------------
+inline long double clamp01l(long double x) {
+  if (x < 0.0L)
+    return 0.0L;
+  if (x > 1.0L)
+    return 1.0L;
   return x;
 }
 
-// Product over cards in h_o that satisfy a suit/rank filter: ∏ (1 - Pp(card))
-long double product_none_owned_in(
-    const Hand &h_o,
-    int suit_filter, // Suit code compatible with Card
-    bool use_rank_filter,
-    int rank_strict_greater_than, // Rank code; cards must have rank > this
-    const ProbHand &Pp) {
+// C(k,n)/C(m,n) with 0 <= n <= k <= m; O(n) stable product; stays in [0,1].
+long double comb_ratio_same_n_product(std::int64_t k, std::int64_t m,
+                                      std::int64_t n) {
+  if (n < 0 || k < 0 || m < 0)
+    return 0.0L;
+  if (n == 0)
+    return 1.0L;
+  if (k < n || m < n || k > m)
+    return 0.0L;
+  if (k == m)
+    return 1.0L;
+
   long double prod = 1.0L;
+  for (std::int64_t i = 0; i < n; ++i) {
+    long double num = static_cast<long double>(k - i);
+    long double den = static_cast<long double>(m - i);
+    if (den == 0.0L)
+      return 0.0L;
+    prod *= (num / den);
+    if (prod == 0.0L)
+      break;
+  }
+  return clamp01l(prod);
+}
+
+// log(C(k,n)/C(m,n)) via lgamma; robust for large params (may be slower).
+long double log_comb_ratio_same_n(std::int64_t k, std::int64_t m,
+                                  std::int64_t n) {
+  if (n < 0 || k < 0 || m < 0)
+    return -std::numeric_limits<long double>::infinity();
+  if (n == 0)
+    return 0.0L;
+  if (k < n || m < n || k > m)
+    return -std::numeric_limits<long double>::infinity();
+  if (k == m)
+    return 0.0L;
+
+  long double lk =
+      lgammal((long double)k + 1.0L) - lgammal((long double)(k - n) + 1.0L);
+  long double lm =
+      lgammal((long double)m + 1.0L) - lgammal((long double)(m - n) + 1.0L);
+  return lk - lm;
+}
+
+// Wrapper: uses product for typical n, log-domain for very large n.
+long double comb_ratio_same_n(std::int64_t k, std::int64_t m, std::int64_t n) {
+  if (n <= 1000) {
+    return comb_ratio_same_n_product(k, m, n);
+  } else {
+    return clamp01l(expl(log_comb_ratio_same_n(k, m, n)));
+  }
+}
+
+// log binomial C(n,k) via lgamma (for multinomial pieces; avoids overflow).
+inline long double log_nCk_ll(long double n, long double k) {
+  if (k < 0.0L || k > n)
+    return -std::numeric_limits<long double>::infinity();
+  if (k == 0.0L || k == n)
+    return 0.0L;
+  return lgammal(n + 1.0L) - lgammal(k + 1.0L) - lgammal(n - k + 1.0L);
+}
+
+// -----------------------------------------------------------------------------
+// Pool counting relative to m_c, s_led, s_tr
+// -----------------------------------------------------------------------------
+struct PoolCounts {
+  int M = 0;      // pool size
+  int a_led = 0;  // led-suit cards
+  int h_high = 0; // higher led-suit cards (> m_c) within a_led
+  int t_tr = 0;   // trump cards (disjoint from led if s_tr != s_led)
+  int o_oth = 0;  // others
+};
+
+PoolCounts compute_pool_counts(const Hand &h_o, const Card &m_c, int s_led,
+                               int s_tr) {
+  PoolCounts pc{};
   for (int su = 0; su < Card::N_SUITS; ++su) {
     for (int r = 0; r < Card::N_RANKS; ++r) {
-      Card c(su, r);
+      Card c{su, r};
       if (!h_o.is_in(c))
         continue;
-      if (su != suit_filter)
-        continue;
-      if (use_rank_filter && !(r > rank_strict_greater_than))
-        continue;
-
-      double p = Pp.getProb(c);
-      p = clamp01(p);
-      prod *= (1.0L - static_cast<long double>(p));
-      if (prod <= 1e-18L)
-        return 0.0L;
+      ++pc.M;
+      bool is_led = (su == s_led);
+      bool is_tr = (su == s_tr);
+      if (is_led) {
+        ++pc.a_led;
+        if (r > m_c.rnk)
+          ++pc.h_high;
+      } else if (is_tr && s_tr != s_led) {
+        ++pc.t_tr;
+      } else {
+        ++pc.o_oth;
+      }
     }
   }
-  if (prod < 0.0L)
-    prod = 0.0L;
-  if (prod > 1.0L)
-    prod = 1.0L;
-  return prod;
+  return pc;
 }
 
-// Compute P(E_p): probability a single opponent p has a higher card than m_c
-double prob_any_higher_for_player(const Hand &h_o, const Card &m_c,
-                                  int s_led, // led suit
-                                  int s_tr,  // trump suit
-                                  const ProbHand &Pp) {
-  const long double prod_led_any =
-      product_none_owned_in(h_o, s_led, false, 0, Pp);
-  const long double prod_led_high =
-      product_none_owned_in(h_o, s_led, true, m_c.rnk, Pp);
-  const long double prod_trump_any =
-      product_none_owned_in(h_o, s_tr, false, 0, Pp);
+// -----------------------------------------------------------------------------
+// Single-opponent exact probability (ord = 1 or 2): opponent beats m_c
+// -----------------------------------------------------------------------------
+double prob_higher_single_exact(const Hand &h_o, const Card &m_c, int s_led,
+                                int s_tr, int n_a) {
+  PoolCounts pc = compute_pool_counts(h_o, m_c, s_led, s_tr);
+  const int M = pc.M;
+  if (n_a <= 0 || M <= 0 || n_a > M)
+    return 0.0;
 
-  const long double P_L = 1.0L - prod_led_any;
-  const long double P_H = 1.0L - prod_led_high;
-  const long double P_T = 1.0L - prod_trump_any;
+  if (s_tr == s_led) {
+    // P(E) = 1 - C(M - h, n) / C(M, n)
+    long double p_noH = comb_ratio_same_n(M - pc.h_high, M, n_a);
+    return (double)clamp01l(1.0L - p_noH);
+  }
 
-  // Unified conditional form
-  const long double P_H_given_L = (P_L > 0.0L) ? (P_H / P_L) : 0.0L;
-  const long double P_T_given_notL = (s_tr == s_led) ? 0.0L : P_T;
+  // s_tr != s_led
+  const int a = pc.a_led;
+  const int h = pc.h_high;
+  const int t = pc.t_tr;
 
-  const long double P_E = P_L * P_H_given_L + (1.0L - P_L) * P_T_given_notL;
+  // P(H) = 1 - C(M - h, n) / C(M, n)
+  long double P_H = 1.0L - comb_ratio_same_n(M - h, M, n_a);
 
-  return clamp01(static_cast<double>(P_E));
+  // P(¬L ∧ T) = [C(M - a, n) - C(M - a - t, n)] / C(M, n)
+  long double p_notL = comb_ratio_same_n(M - a, M, n_a);
+  long double p_notL_notT = comb_ratio_same_n(M - a - t, M, n_a);
+  long double P_notL_T = clamp01l(p_notL - p_notL_notT);
+
+  long double P = P_H + P_notL_T;
+  return (double)clamp01l(P);
 }
 
-} // namespace
+// -----------------------------------------------------------------------------
+// ord = 0 helper: probability b fails given remaining pool (no replacement)
+// Conditions for failing to beat when s_tr != s_led:
+//  - no higher led-suit
+//  - and [has at least one led-low OR (no led AND no trump)]
+// -----------------------------------------------------------------------------
+long double prob_b_fail_given_rem(int h_rem, int aL_rem, int t_rem, int o_rem,
+                                  int n_b) {
+  int Mr = h_rem + aL_rem + t_rem + o_rem;
+  if (n_b < 0 || n_b > Mr)
+    return 0.0L;
+  if (n_b == 0)
+    return 1.0L;
 
-// ord = 0: either opponent a or b has a higher card than m_c
-double prob_higher_ord0(const Hand &h_o, const Card &m_c, int s_tr,
-                        const ProbHand &Pa, const ProbHand &Pb) {
-  const int s_led = m_c.su; // you lead
+  // No higher led-suit
+  long double p_noH = comb_ratio_same_n(Mr - h_rem, Mr, n_b);
+  if (p_noH == 0.0L)
+    return 0.0L;
 
-  const double Pa_higher =
-      prob_any_higher_for_player(h_o, m_c, s_led, s_tr, Pa);
-  const double Pb_higher =
-      prob_any_higher_for_player(h_o, m_c, s_led, s_tr, Pb);
+  int M_noH = Mr - h_rem;
+  // Within no-high pool: aL, t, o are available
+  long double p_al_ge1 = 1.0L - comb_ratio_same_n(t_rem + o_rem, M_noH, n_b);
+  long double p_all_o = comb_ratio_same_n(o_rem, M_noH, n_b);
 
-  const double none = (1.0 - Pa_higher) * (1.0 - Pb_higher);
-  return clamp01(1.0 - none);
+  long double p_fail_noH = clamp01l(p_al_ge1 + p_all_o);
+  return clamp01l(p_noH * p_fail_noH);
 }
 
-// ord = 1: b has led; only a can still beat your card
-double prob_higher_ord1(const Hand &h_o, const Card &m_c,
-                        int s_led, // suit led by b
-                        int s_tr, const ProbHand &Pa) {
-  return prob_any_higher_for_player(h_o, m_c, s_led, s_tr, Pa);
+// -----------------------------------------------------------------------------
+// Two-opponent exact probability (ord = 0): you lead; any opponent beats
+// n_a: cards that opponent a draws from pool h_o
+// n_b: cards that opponent b draws from the remaining pool
+// -----------------------------------------------------------------------------
+double prob_higher_ord0_exact(const Hand &h_o, const Card &m_c, int s_tr,
+                              int n_a, int n_b) {
+  const int s_led = m_c.su;
+  PoolCounts pc = compute_pool_counts(h_o, m_c, s_led, s_tr);
+  const int M = pc.M;
+  if (n_a < 0 || n_b < 0 || n_a + n_b > M)
+    return 0.0;
+
+  if (n_a == 0 && n_b == 0)
+    return 0.0;
+
+  // s_tr == s_led: "beats" == "has a higher led-suit"
+  if (s_tr == s_led) {
+    long double pA_noH = comb_ratio_same_n(M - pc.h_high, M, n_a);
+    long double pB_noH_givenA =
+        comb_ratio_same_n((M - n_a) - pc.h_high, (M - n_a), n_b);
+    long double P_any = 1.0L - clamp01l(pA_noH * pB_noH_givenA);
+    return (double)clamp01l(P_any);
+  }
+
+  // s_tr != s_led
+  const int h = pc.h_high;
+  const int aL = pc.a_led - pc.h_high; // led-low
+  const int t = pc.t_tr;
+  const int o = pc.o_oth;
+
+  // Sum over a's failing selections (no high, and [al>=1 or (al=0 & t=0)])
+  long double log_den_A = log_nCk_ll((long double)M, (long double)n_a);
+  long double P_both_fail = 0.0L;
+
+  for (int al_a = 0; al_a <= std::min(aL, n_a); ++al_a) {
+    int rem_after_al = n_a - al_a;
+    int t_a_max = std::min(t, rem_after_al);
+    for (int t_a = 0; t_a <= t_a_max; ++t_a) {
+      int o_a = rem_after_al - t_a;
+      if (o_a < 0 || o_a > o)
+        continue;
+
+      bool a_fails = (al_a >= 1) || (al_a == 0 && t_a == 0);
+      if (!a_fails)
+        continue; // al=0 and t>=1 -> would beat
+
+      // Probability of this exact (al_a, t_a, o_a) for a (no restriction on
+      // order)
+      long double log_num = log_nCk_ll((long double)aL, (long double)al_a) +
+                            log_nCk_ll((long double)t, (long double)t_a) +
+                            log_nCk_ll((long double)o, (long double)o_a);
+      long double pA_this = expl(log_num - log_den_A);
+      if (pA_this == 0.0L)
+        continue;
+
+      // Remaining counts for b (h remains since a had no high)
+      int h_rem = h;
+      int aL_rem = aL - al_a;
+      int t_rem = t - t_a;
+      int o_rem = o - o_a;
+
+      long double pB_fail =
+          prob_b_fail_given_rem(h_rem, aL_rem, t_rem, o_rem, n_b);
+      if (pB_fail == 0.0L)
+        continue;
+
+      P_both_fail += pA_this * pB_fail;
+    }
+  }
+
+  long double P_any = 1.0L - clamp01l(P_both_fail);
+  return (double)clamp01l(P_any);
 }
 
-// ord = 2: b and c have played; only a remains
-double prob_higher_ord2(const Hand &h_o, const Card &m_c,
-                        int s_led, // suit led by b
-                        int s_tr, const ProbHand &Pa) {
-  return prob_any_higher_for_player(h_o, m_c, s_led, s_tr, Pa);
+// -----------------------------------------------------------------------------
+// Convenience wrappers (ord 1 and ord 2 are identical structurally)
+// -----------------------------------------------------------------------------
+double prob_higher_ord1_exact(const Hand &h_o, const Card &m_c, int s_led,
+                              int s_tr, int n_a) {
+  return prob_higher_single_exact(h_o, m_c, s_led, s_tr, n_a);
 }
-
-void SoundAgent::updateProbs() {
-  computeProbabilitiesDP(Ha, Hb, Hc, Hab, Hbc, Hca, Habc, Ncards_a, Ncards_b,
-                         Ncards_c, Pa, Pb, Pc);
+double prob_higher_ord2_exact(const Hand &h_o, const Card &m_c, int s_led,
+                              int s_tr, int n_a) {
+  return prob_higher_single_exact(h_o, m_c, s_led, s_tr, n_a);
 }
 
 Card SoundAgent::act(const State &state, const History &hist) {
@@ -613,19 +520,21 @@ Card SoundAgent::act(const State &state, const History &hist) {
   LOG("Ha: " << Ha.to_string());
   LOG("Hb: " << Hb.to_string());
   LOG("Hc: " << Hc.to_string());
-  updateProbs();
-  LOG("Pa.nbr: " << Pa.nbr() << ", Pb.nbr: " << Pb.nbr()
-                 << ", Pc.nbr: " << Pc.nbr());
-  LOG("Pa: " << Pa.to_string());
-  LOG("Pb: " << Pb.to_string());
-  LOG("Pc: " << Pc.to_string());
-#ifdef DEBUG
-  if (Pa.nbr() != Ncards_a || Pb.nbr() != Ncards_b || Pc.nbr() != Ncards_c) {
-    LOG("Ncards_a: " << Ncards_a << " Ncards_b: " << Ncards_b
-                     << " Ncards_c: " << Ncards_c);
-    throw std::runtime_error("Nbr of cards inconsistencies!");
-  }
-#endif
+  LOG("Nu_a: " << Nu_a << ", Nu_b: " << Nu_b << ", Nu_c: " << Nu_c);
+  LOG("Ncards_a: " << Ncards_a << " Ncards_b: " << Ncards_b
+                   << " Ncards_c: " << Ncards_c);
+  //   updateProbs();
+  //   LOG("Pa.nbr: " << Pa.nbr() << ", Pb.nbr: " << Pb.nbr()
+  //                  << ", Pc.nbr: " << Pc.nbr());
+  //   LOG("Pa: " << Pa.to_string());
+  //   LOG("Pb: " << Pb.to_string());
+  //   LOG("Pc: " << Pc.to_string());
+  // #ifdef DEBUG
+  //   if (Pa.nbr() != Ncards_a || Pb.nbr() != Ncards_b || Pc.nbr() != Ncards_c)
+  //   {
+  //     throw std::runtime_error("Nbr of cards inconsistencies!");
+  //   }
+  // #endif
 
   last_ord = state.ord;
   last_led = state.led;
@@ -656,8 +565,8 @@ Card SoundAgent::act(const State &state, const History &hist) {
           int ls = hand.len[s] - 1;
           while (ls > 0) {
             ps_ab.rm_top(s, 1);
-            double prb =
-                1 - prob_higher_ord0(ps_ab, c_max, state.trump, Pa, Pb);
+            double prb = 1 - prob_higher_ord0_exact(ps_ab, c_max, state.trump,
+                                                    Nu_a, Nu_b);
             if (prb > this->prob_floor) {
               if (prb > prb_m) {
                 ps_play.clear();
@@ -681,7 +590,8 @@ Card SoundAgent::act(const State &state, const History &hist) {
     for (Suit s = 0; s < Card::N_SUITS; s++) {
       for (int i = 0; i < ps_hi.len[s]; i++) {
         c.set(s, ps_hi.cards[s][i]);
-        double prb = 1 - prob_higher_ord0(ps_ab, c, state.trump, Pa, Pb);
+        double prb =
+            1 - prob_higher_ord0_exact(ps_ab, c, state.trump, Nu_a, Nu_b);
         LOG("Card " << c.to_string() << ", prob: " << prb << " / "
                     << prob_floor);
         ps_prb_play.update(c, prb);
@@ -697,8 +607,8 @@ Card SoundAgent::act(const State &state, const History &hist) {
           int ls = hand.len[s] - 1;
           while (ls > 0) {
             ps_ab.rm_top(s, 1);
-            double prb =
-                1 - prob_higher_ord0(ps_ab, c_max, state.trump, Pa, Pb);
+            double prb = 1 - prob_higher_ord0_exact(ps_ab, c_max, state.trump,
+                                                    Nu_a, Nu_b);
             if (prb > this->prob_floor) {
               if (prb > prb_m) {
                 ps_play.clear();
@@ -741,7 +651,8 @@ Card SoundAgent::act(const State &state, const History &hist) {
     for (Suit s = 0; s < Card::N_SUITS; s++) {
       for (int i = 0; i < ps_hi.len[s]; i++) {
         c.set(s, ps_hi.cards[s][i]);
-        double prb = 1 - prob_higher_ord1(ps_a, c, state.led, state.trump, Pa);
+        double prb =
+            1 - prob_higher_ord1_exact(ps_a, c, state.led, state.trump, Nu_a);
         LOG("Card " << c.to_string() << ", prob: " << prb << " / "
                     << prob_floor);
         ps_prb_play.update(c, prb);
@@ -764,10 +675,10 @@ Card SoundAgent::act(const State &state, const History &hist) {
            c_card != Card::NONE);
     Hand ps_a = Habc.uni(Hca).uni(Hab);
     if (Card::cmp(c_card, b_card, state.led, state.trump) > 0) {
-      double pr_comp_na =
-          1 - prob_higher_ord2(ps_a, c_card, state.led, state.trump, Pa);
-      LOG("comp c " << c_card.to_string()
-                    << ", prob. to be better than ps_a: " << pr_comp_na << ", critical: " << critical);
+      double pr_comp_na = 1 - prob_higher_ord2_exact(ps_a, c_card, state.led,
+                                                     state.trump, Nu_a);
+      LOG("comp c " << c_card.to_string() << ", prob. to be better than ps_a: "
+                    << pr_comp_na << ", critical: " << critical);
       if (!critical && pr_comp_na > this->prob_floor) {
         LOG("OK with comp c.");
         out = hand.min_mil_trl(state.led, state.trump);
@@ -789,7 +700,8 @@ Card SoundAgent::act(const State &state, const History &hist) {
     for (Suit s = 0; s < Card::N_SUITS; s++) {
       for (int i = 0; i < ps_hi.len[s]; i++) {
         c.set(s, ps_hi.cards[s][i]);
-        double prb = 1 - prob_higher_ord2(ps_a, c, state.led, state.trump, Pa);
+        double prb =
+            1 - prob_higher_ord2_exact(ps_a, c, state.led, state.trump, Nu_a);
         LOG("Card " << c.to_string() << ", prob: " << prb << " / "
                     << prob_floor);
         ps_prb_play.update(c, prb);
@@ -870,10 +782,6 @@ void SoundAgent::reset() {
   Ha.clear();
   Hb.clear();
   Hc.clear();
-
-  Pa.clear();
-  Pb.clear();
-  Pc.clear();
 
   last_ord = -1;
   last_led = Card::NON_SU;

@@ -15,7 +15,7 @@ class SoundAgent: public Agent {
 	int Nu_a, Nu_b, Nu_c;
 	int Ncards_a, Ncards_b, Ncards_c;
 
-	ProbHand Pa, Pb, Pc;
+	// ProbHand Pa, Pb, Pc;
 
 	double prob_floor, trump_prob_cap, prob_ceiling;
 
@@ -25,10 +25,7 @@ class SoundAgent: public Agent {
 	void update_oth_hands(int pl_id, const Card& pl_c, Suit led);
 	void updateHandsNcards();
 
-	void updateProbs();
-
-	std::pair<Card, double> prb_act(const Hand &ps_hi, const Hand &ps_oth, int N_ex, Suit led, Suit trump
-	, bool critical = false) const;
+	// void updateProbs();
 
 
 public:
