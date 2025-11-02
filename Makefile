@@ -1,25 +1,26 @@
-# Makefile for Hokm Card Game (Linux)
+# Makefile for Hokm Card Game
 
 # Phony targets
 .PHONY: all test clean
-
-# Default target
-all: hokm.out hokm_dbg.out
 
 # Paths
 OBJPATH = ./obj
 SRCPATH = ./src
 INCPATH = ./include
+BINPATH = ./bin
 
 # Compiler and Linker
-CXX = g++
-LD = g++
+CXX = clang++
+LD = clang++
 
 # Executable names
-TARGET = hokm.out
-DBG_TARGET = hokm_dbg.out
-TEST_TARGET = hokm_test.out
-LRN_TARGET = hokm_learn.out
+TARGET = $(BINPATH)/hokm
+DBG_TARGET = $(BINPATH)/hokm_dbg
+TEST_TARGET = $(BINPATH)/hokm_test
+LRN_TARGET = $(BINPATH)/hokm_learn
+
+# Default target
+all: $(TARGET) $(DBG_TARGET) $(LRN_TARGET)
 
 # Flags
 DEPFLAGS = -MMD -MP
@@ -44,13 +45,17 @@ SRC_FILES = \
 	InteractiveAgent.cpp \
 	InteractiveGame.cpp \
 	MultiClientServer.cpp \
-	LearningGame.cpp \
 	ProbHand.cpp \
 	RemoteInterAgent.cpp \
 	RndAgent.cpp \
 	SoundAgent.cpp \
-	State.cpp \
-	main.cpp
+	State.cpp
+
+MAIN_SRC_FILES = main.cpp
+
+LEARN_SRC_FILES = \
+	LearningGame.cpp \
+	main_learning.cpp
 
 TEST_SRC_FILES = \
 	Card_test.cpp \
@@ -64,7 +69,9 @@ TEST_SRC_FILES = \
 
 # Object files
 OBJS = $(addprefix $(OBJPATH)/,$(SRC_FILES:.cpp=.o))
+MAIN_OBJS = $(addprefix $(OBJPATH)/,$(MAIN_SRC_FILES:.cpp=.o))
 DBG_OBJS = $(addprefix $(OBJPATH)/,$(SRC_FILES:.cpp=_dbg.o))
+LEARN_OBJS= $(addprefix $(OBJPATH)/,$(LEARN_SRC_FILES:.cpp=.o))
 TEST_OBJS = $(addprefix $(OBJPATH)/,$(TEST_SRC_FILES:.cpp=.o))
 
 # Dependencies
@@ -76,13 +83,15 @@ DEPS = $(OBJS:.o=.d) $(DBG_OBJS:.o=.d) $(TEST_OBJS:.o=.d)
 # --- Targets ---
 
 # Build release executable
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJS) $(MAIN_OBJS)
 	@echo "====== Linking Release Build: $(TARGET) ======"
+	@mkdir -p $(dir $@)
 	$(LD) -o $@ $^ $(LDFLAGS)
 
 # Build debug executable
-$(DBG_TARGET): $(DBG_OBJS)
+$(DBG_TARGET): $(DBG_OBJS) $(OBJPATH)/main_dbg.o
 	@echo "====== Linking Debug Build: $(DBG_TARGET) ======"
+	@mkdir -p $(dir $@)
 	$(LD) -o $@ $^ $(LDFLAGS)
 
 # Build and run tests
@@ -91,9 +100,17 @@ test: $(TEST_TARGET)
 	./$(TEST_TARGET)
 
 # Build test executable
-$(TEST_TARGET): $(filter-out $(OBJPATH)/main_dbg.o,$(DBG_OBJS)) $(TEST_OBJS)
+$(TEST_TARGET): $(DBG_OBJS) $(TEST_OBJS)
 	@echo "====== Linking Test Build: $(TEST_TARGET) ======"
+	@mkdir -p $(dir $@)
 	$(LD) -o $@ $^ $(LDFLAGS)
+
+# Build learning executable
+$(LRN_TARGET): $(OBJS) $(LEARN_OBJS)
+	@echo "====== Linking Learning Build: $(LRN_TARGET) ======"
+	@mkdir -p $(dir $@)
+	$(LD) -o $@ $^ $(LDFLAGS)
+
 
 # --- Rules ---
 
@@ -109,13 +126,9 @@ $(OBJPATH)/%_test.o: $(SRCPATH)/%_test.cpp
 	@mkdir -p $(dir $@)
 	$(CXX) $(DBG_CXXFLAGS) -c $< -o $@
 
-$(OBJPATH)/main_test.o: $(SRCPATH)/main_test.cpp
-	@mkdir -p $(dir $@)
-	$(CXX) $(DBG_CXXFLAGS) -c $< -o $@
-
 
 # Clean up
 clean:
 	@echo "====== Cleaning build artifacts ======"
 	rm -rf $(OBJPATH)
-	rm -f $(TARGET) $(DBG_TARGET) $(TEST_TARGET)
+	rm -rf $(BINPATH)

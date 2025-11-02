@@ -9,6 +9,7 @@
 #define AGENT_HPP_
 
 #include <array>
+#include <atomic>
 
 #include "GameConfig.h"
 #include "Card.h"
@@ -20,7 +21,7 @@
 class Agent
 {
 private:
-	static int next_id;
+	static std::atomic<int> next_id;
 
 protected:
 	int player_id{-1};
@@ -56,6 +57,10 @@ public:
 	Hand get_hand() const;
 
 	std::string get_name() const;
+
+	void set_name(std::string);
+
+	static void reset_id() { next_id.store(0); };
 };
 
 #endif /* AGENT_HPP_ */

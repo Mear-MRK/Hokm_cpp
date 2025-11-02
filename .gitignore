@@ -45,4 +45,10 @@ build_warnings.log
 data
 *.dat
 *.bin
+*.txt
+*.csv
+*.log
 
+# bin, obj
+bin
+obj

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <random>
 #include <stdexcept>
+#include <string>
 #include <thread>
 
 #include "Card.h"
@@ -77,13 +78,16 @@ inline int GameRound::trick() {
     int pl = (state.turn + ord) % Hokm::N_PLAYERS;
     state.ord = ord;
 
-    broadcast_info("/ALRWaiting for " + agent[pl]->get_name() + " to play...");
+    auto ag = agent[pl];
+    std::string nameId = ag->get_name(); // + " (id: " + std::to_string(ag->get_id()) + ")";
+
+    broadcast_info("/ALRWaiting for " + nameId + " to play...");
 
     Card c = agent[pl]->act(state, hist);
 
     LOG(">>> " + agent[pl]->get_name() + " played " + c.to_string());
     broadcast_info("/ALR");
-    broadcast_info("/INF" + agent[pl]->get_name() + " played " + c.to_string());
+    broadcast_info("/INF" + nameId + " played " + c.to_string());
     if (show_info)
       agent[pl]->info("/HND" + agent[pl]->get_hand().to_string());
 
@@ -160,7 +164,7 @@ int GameRound::play(int round_win_score) {
       }
 
     {
-      broadcast_info("/HED/RSC" + std::to_string(team_scores[0]) + ":" +
+      broadcast_info("/RSC" + std::to_string(team_scores[0]) + ":" +
                      std::to_string(team_scores[1]));
       broadcast_info("/INFLast table: " + table_str(state.table));
       if (show_info)

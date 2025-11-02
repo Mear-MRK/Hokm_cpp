@@ -22,9 +22,9 @@ LearningGame::LearningGame(int nbr_probs, double min_prob, double max_prob) :
 	// for (int pl = 0; pl < Hokm::N_PLAYERS; pl++)
 	// 	agent[pl] = new SoundAgent();
 	agent[0] = new SoundAgent();
-	agent[1] = new RndAgent();
+	agent[1] = new SoundAgent();
 	agent[2] = new SoundAgent();
-	agent[3] = new RndAgent();
+	agent[3] = new SoundAgent();
 
 	round = std::unique_ptr<GameRound>(new GameRound(agent));
 
@@ -42,6 +42,7 @@ LearningGame::~LearningGame()
 		delete agent[pl];
 	delete[] probs;
 	delete[] stats;
+	 Agent::reset_id();
 }
 
 void LearningGame::tweak_floor_trump_probs(int nbr_episodes)

@@ -11,5 +11,5 @@ namespace Hokm {
 
 	inline const int WIN_SCORE = 7;
 	inline const int RND_WIN_SCORE = 7;
-	inline const int SHUFFLE_CMPLX = 1;
+	inline const int SHUFFLE_CMPLX = 2;
 }

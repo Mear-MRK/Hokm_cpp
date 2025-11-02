@@ -44,6 +44,9 @@ public:
 
     bool is_connected(int player_id) const;
 
+    bool any_connected() const;
+    bool any_reserved() const;
+
 private:
     MultiClientServer() = default;
     ~MultiClientServer();

@@ -8,6 +8,8 @@
 #include "ProbHand.h"
 
 class SoundAgent: public Agent {
+private:
+	static int s_id;
 
 	std::mt19937 mt_rnd_gen;
 
@@ -30,7 +32,7 @@ class SoundAgent: public Agent {
 
 public:
 
-	SoundAgent(double prob_floor = 0.5, double trump_prob_cap = 1, double prob_ceiling = 1);
+	SoundAgent(double prob_floor = 0.52, double trump_prob_cap = 1, double prob_ceiling = 1);
 	
 	void set_probs(double prob_floor, double trump_prob_cap = 1, double prob_ceiling = 1);
 

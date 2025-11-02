@@ -13,40 +13,7 @@
 
 #include "utils.h"
 
-Suit SoundAgent::call_trump(const CardStack &first_5cards) {
-  Hand hand = first_5cards.to_Hand();
-
-  LOG(name << ", trump call, first5:\n" << hand.to_su_string());
-
-  float scr[Card::N_SUITS];
-
-  float beta = 1.0f / 6;
-
-  for (Suit s = 0; s < Card::N_SUITS; s++) {
-    float sum_r = 0;
-    for (int i = 0; i < hand.len[s]; i++)
-      sum_r += hand.cards[s][i];
-    scr[s] = hand.len[s] + beta * sum_r;
-  }
-
-  double max_scr = -1;
-  Suit trump = Card::NON_SU;
-  for (Suit t = 0; t < Card::N_SUITS; t++) {
-    LOG(name << ", trump call, suit " << Card::SU_STR[t]
-             << ", score: " << scr[t]);
-    if (scr[t] > max_scr) {
-      max_scr = scr[t];
-      trump = t;
-    } else if (scr[t] == max_scr && hand.len[t] < hand.len[trump])
-      trump = t;
-  }
-  LOG(name << ", alg. trump: " << Card::SU_STR[trump]);
-  //	if (trump == Card::NON_SU)
-  //		return first_5cards.at(
-  //				std::uniform_int_distribution<int>(0,
-  // 4)(mt_rnd_gen)).su;
-  return trump;
-}
+int SoundAgent::s_id = 0;
 
 void SoundAgent::init_round(const Hand &hand) {
 
@@ -445,6 +412,44 @@ double prob_higher_ord2_exact(const Hand &h_o, const Card &m_c, int s_led,
   return prob_higher_single_exact(h_o, m_c, s_led, s_tr, n_a);
 }
 
+Suit SoundAgent::call_trump(const CardStack &first_5cards) {
+  Hand hand = first_5cards.to_Hand();
+  Hand cmpHand = hand.cmpl();
+
+  LOG(name << ", trump call, first5:\n" << hand.to_su_string());
+
+  double scr[Card::N_SUITS];
+  //   float beta = 1.0f / 6;
+  Card c;
+  for (Suit su = 0; su < Card::N_SUITS; su++) {
+    double sum_r = 0;
+    for (int s = 0; s < Card::N_SUITS; s++)
+      for (int i = 0; i < hand.len[s]; i++)
+        sum_r += 1 - prob_higher_ord0_exact(cmpHand, c.set(s, hand.cards[s][i]),
+                                            su, 13, 13);
+    //   sum_r += hand.cards[s][i];
+    scr[su] = sum_r;
+  }
+
+  double max_scr = -1;
+  Suit trump = Card::NON_SU;
+  for (Suit t = 0; t < Card::N_SUITS; t++) {
+    LOG(name << ", trump call, suit " << Card::SU_STR[t]
+             << ", score: " << scr[t]);
+    if (scr[t] > max_scr) {
+      max_scr = scr[t];
+      trump = t;
+    } else if (scr[t] == max_scr && hand.len[t] < hand.len[trump])
+      trump = t;
+  }
+  LOG(name << ", alg. trump: " << Card::SU_STR[trump]);
+  //	if (trump == Card::NON_SU)
+  //		return first_5cards.at(
+  //				std::uniform_int_distribution<int>(0,
+  // 4)(mt_rnd_gen)).su;
+  return trump;
+}
+
 Card SoundAgent::act(const State &state, const History &hist) {
   int op_team = (team_id + 1) % Hokm::N_TEAMS;
   LOG("--- " << name << " pl_id " << player_id << " team " << team_id << " ord "
@@ -530,7 +535,8 @@ Card SoundAgent::act(const State &state, const History &hist) {
   //   LOG("Pb: " << Pb.to_string());
   //   LOG("Pc: " << Pc.to_string());
   // #ifdef DEBUG
-  //   if (Pa.nbr() != Ncards_a || Pb.nbr() != Ncards_b || Pc.nbr() != Ncards_c)
+  //   if (Pa.nbr() != Ncards_a || Pb.nbr() != Ncards_b || Pc.nbr() !=
+  //   Ncards_c)
   //   {
   //     throw std::runtime_error("Nbr of cards inconsistencies!");
   //   }
@@ -628,8 +634,13 @@ Card SoundAgent::act(const State &state, const History &hist) {
       break;
     }
     Hand cert_h = ps_prb_play.gte(1.0).discard(state.trump);
+    LOG("Cert hand: " << cert_h.to_string());
     Hand *h = (cert_h.nbr_cards) ? &cert_h : &ps_play;
     out = h->min_mil_trl(state.led, state.trump);
+    if (out.su == state.trump && state.led != state.trump) {
+      out = ps_prb_play.gt(this->prob_floor - 0.15)
+                .min_mil_trl(state.led, state.trump);
+    }
   } break;
 
   case 1: {
@@ -665,8 +676,13 @@ Card SoundAgent::act(const State &state, const History &hist) {
       break;
     }
     Hand cert_h = ps_prb_play.gte(1.0).discard(state.trump);
+    LOG("Cert hand: " << cert_h.to_string());
     Hand *h = (cert_h.nbr_cards) ? &cert_h : &ps_play;
     out = h->min_mil_trl(state.led, state.trump);
+    if (out.su == state.trump && state.led != state.trump) {
+      out = ps_prb_play.gt(this->prob_floor - 0.15)
+                .min_mil_trl(state.led, state.trump);
+    }
   } break;
 
   case 2: {
@@ -693,6 +709,8 @@ Card SoundAgent::act(const State &state, const History &hist) {
     LOG("pssbl_hi_hand: " << ps_hi.to_string());
     if (ps_hi.nbr_cards == 0) {
       out = hand.maxLed_maxTr_min_mil(state.led, state.trump);
+      if (Card::cmp(b_card, out, state.led, state.trump) > 0)
+        out = hand.min_mil_trl(state.led, state.trump);
       break;
     }
     ProbHand ps_prb_play;
@@ -711,13 +729,21 @@ Card SoundAgent::act(const State &state, const History &hist) {
     LOG("Pssbl. play: " << ps_play.to_string());
     if (ps_play.nbr_cards == 0) {
       out = hand.maxLed_maxTr_min_mil(state.led, state.trump);
+      if (Card::cmp(b_card, out, state.led, state.trump) > 0)
+        out = hand.min_mil_trl(state.led, state.trump);
       break;
     }
     Hand cert_h = ps_prb_play.gte(1.0).discard(state.trump);
+    LOG("Cert hand: " << cert_h.to_string());
     if (cert_h.nbr_cards) {
       out = cert_h.min_mil_trl(state.led, state.trump);
-    } else
+    } else {
       out = ps_play.min_mil_trl(state.led, state.trump);
+      if (out.su == state.trump && state.led != state.trump) {
+        out = ps_prb_play.gt(this->prob_floor - 0.15)
+                  .min_mil_trl(state.led, state.trump);
+      }
+    }
     H_a.add(ps_a);
     int dfn = H_a.diff_between(out, c_card);
     LOG("diff " << c_card.to_string() << "-" << out.to_string() << ": " << dfn);
@@ -760,7 +786,7 @@ SoundAgent::SoundAgent(double min_prob, double trump_prb_cap, double max_prob)
     : Agent(), mt_rnd_gen(std::mt19937(std::random_device()())),
       prob_floor(min_prob), trump_prob_cap(trump_prb_cap),
       prob_ceiling(max_prob) {
-  name = "AI_" + std::to_string(player_id);
+  name = "AI_S" + std::to_string(s_id++);
 }
 
 void SoundAgent::set_probs(double prob_floor, double trump_prob_cap,

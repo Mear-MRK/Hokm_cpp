@@ -22,6 +22,15 @@ RemoteInterAgent::RemoteInterAgent(bool show_hand)
     std::cout << name << ": client connected" << std::endl;
 }
 
+RemoteInterAgent::~RemoteInterAgent() {
+    auto& srv = MultiClientServer::instance();
+    srv.release_slot(player_id);
+    if (!srv.any_reserved() && !srv.any_connected()) {
+        srv.stop();
+    }
+}
+
+
 void RemoteInterAgent::output(const std::string& out_str)
 {
     std::string msg = out_str + "[SEP]";
@@ -39,5 +48,14 @@ std::string RemoteInterAgent::input(const std::string& prompt)
 
 void RemoteInterAgent::fin_game()
 {
-    MultiClientServer::instance().send_to(player_id, std::string("/END[SEP]"));
+    auto& srv = MultiClientServer::instance();
+    srv.send_to(player_id, std::string("/END[SEP]"));
+
+    // Release this slot’s reservation
+    srv.release_slot(player_id);
+
+    // If no reservations and no active connections, stop the server
+    if (!srv.any_reserved() && !srv.any_connected()) {
+        srv.stop();
+    }
 }

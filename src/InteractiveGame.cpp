@@ -9,9 +9,12 @@
 
 #include <chrono>
 #include <iostream>
+#include <string>
 #include <thread>
 
+#include "GameConfig.h"
 #include "InteractiveAgent.h"
+#include "MultiClientServer.h"
 #include "RemoteInterAgent.h"
 #include "SoundAgent.h"
 #include "utils.h"
@@ -32,11 +35,18 @@ static Agent *newAgentFrom(char ag_typ, int, bool show_hand = true) {
 InteractiveGame::InteractiveGame(std::string ag_typs, bool show_hand,
                                  bool prompt)
     : prompt{prompt} {
-  for (size_t pl = 0; pl < agent.size(); pl++)
+  LOG("InteractiveGame(...) called.");
+  for (size_t pl = 0; pl < Hokm::N_PLAYERS; pl++)
     agent[pl] = newAgentFrom(ag_typs[pl], pl, show_hand);
 
   for (auto ag : agent)
     ag->init_game();
+
+  std::string info_str = "/INF";
+  for (auto ag : agent)
+    info_str += std::to_string(ag->get_id()) +
+                ":" + ag->get_name() + ";";
+  broadcast_info(info_str);
 
   round = std::unique_ptr<GameRound>(new GameRound(agent));
   round->show_info = true;
@@ -47,25 +57,30 @@ InteractiveGame::InteractiveGame(std::string ag_typs, bool show_hand,
 }
 
 InteractiveGame::~InteractiveGame() {
+  LOG("~InteractiveGame() called.");
   for (auto ag : agent)
     delete ag;
+  MultiClientServer::instance().stop();
+  Agent::reset_id();
 }
 
 int InteractiveGame::play(int win_score, int round_win_score) {
   int round_winner_team = -1;
   for (int r = 0; r <= 2 * win_score - 1; r++) {
     round->reset();
-    std::string start_round_str = "/ALRWaiting for " +
-                                  agent[round->opening_player]->get_name() +
-                                  " to call the trump suit... ";
+    auto o_ag = agent[round->opening_player];
+    std::string o_nameId =
+        o_ag->get_name(); //+ " (id: " + std::to_string(o_ag->get_id()) + ")";
+
+    std::string start_round_str =
+        "/ALRWaiting for " + o_nameId + " to call the trump suit... ";
     broadcast_info(start_round_str);
 
     round->trump_call();
 
-    broadcast_info("/INF" + agent[round->opening_player]->get_name() +
-                   " called " + Card::SU_STR[round->state.trump] +
-                   " as trump.");
-    broadcast_info("/HED/TRM" + Card::SU_STR[round->state.trump]);
+    broadcast_info("/INF" + o_nameId + " called " +
+                   Card::SU_STR[round->state.trump] + " as trump.");
+    broadcast_info("/TRM" + Card::SU_STR[round->state.trump]);
 
     round->deal_n_init();
 
@@ -81,11 +96,11 @@ int InteractiveGame::play(int win_score, int round_win_score) {
     broadcast_info(end_round_str);
     std::string game_scr_str =
         std::to_string(team_scores[0]) + ":" + std::to_string(team_scores[1]);
-    broadcast_info("/HED/GSC" + game_scr_str);
+    broadcast_info("/GSC" + game_scr_str);
     if (!prompt)
       std::this_thread::sleep_for(std::chrono::seconds(2));
-    broadcast_info("/HED/RSC0:0");
-    broadcast_info("/HED/TRM");
+    broadcast_info("/RSC0:0");
+    broadcast_info("/TRM");
     broadcast_info("/ALR");
 
     if (team_scores[round_winner_team] >= win_score)

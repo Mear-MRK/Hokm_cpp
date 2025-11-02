@@ -8,7 +8,7 @@ class MultiClientServer;
 class RemoteInterAgent : public InteractiveAgent {
 public:
     RemoteInterAgent(bool show_hand = true);
-    ~RemoteInterAgent() override = default;
+    ~RemoteInterAgent();
 
     void output(const std::string&) override;
     std::string input(const std::string& prompt) override;

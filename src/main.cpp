@@ -45,8 +45,8 @@ int main(int argc, char *argv[]) {
     agent_types = std::string(argv[1]);
   }
 
-  for (int i = 0; i < 10; i++) {
-    InteractiveGame game(agent_types, true, true);
+  for (int i = 0; i < 1; i++) {
+    InteractiveGame game{agent_types, true, false};
     game.play(game_win_score, round_win_score);
   }
 
