@@ -39,8 +39,8 @@ void RemoteInterAgent::output(const std::string& out_str)
 
 std::string RemoteInterAgent::input(const std::string& prompt)
 {
-    std::string request = "/INP" + prompt + "[SEP]";
-    MultiClientServer::instance().send_to(player_id, request);
+    // Remember and send the prompt via server so it can be replayed after reconnect
+    MultiClientServer::instance().send_prompt(player_id, std::string("/INP") + prompt);
     std::string ans = MultiClientServer::instance().recv_from(player_id);
     if (!ans.empty() && ans.back() == '\r') ans.pop_back();
     return ans;

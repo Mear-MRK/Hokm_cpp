@@ -4,10 +4,13 @@
 #include <atomic>
 #include <condition_variable>
 #include <cstdint>
+#include <functional>
 #include <memory>
 #include <mutex>
 #include <string>
 #include <thread>
+#include <unordered_map>
+#include <vector>
 
 #include <netinet/in.h>
 
@@ -39,6 +42,9 @@ public:
     // Send a string to this player (raw; caller adds [SEP] as needed)
     void send_to(int player_id, const std::string& msg);
 
+    // Send a prompt to this player and remember it for replay upon reconnect
+    void send_prompt(int player_id, const std::string& prompt_with_prefix /* e.g. "/INP..." without [SEP] */);
+
     // Broadcast to all connected players
     void broadcast(const std::string& msg);
 
@@ -46,6 +52,10 @@ public:
 
     bool any_connected() const;
     bool any_reserved() const;
+
+    // Resume handlers: game code can subscribe to be notified after a seat resumes
+    int add_resume_handler(std::function<void(int /*player_id*/)> fn);
+    void remove_resume_handler(int id);
 
 private:
     MultiClientServer() = default;
@@ -62,6 +72,10 @@ private:
         std::thread reader_thread;
         ThreadSafeQueue<std::string> inbox;
         std::mutex send_mtx;
+
+        // Reconnect support
+        std::string token;        // stable token for this seat
+        std::string last_prompt;  // full framed prompt to replay: "/INP... [SEP]"
     };
 
     void accept_loop();
@@ -69,7 +83,11 @@ private:
     static bool send_all(int fd, const char* data, size_t len);
     static bool send_line(int fd, const std::string& line);
     static bool read_line(int fd, std::string& out); // reads until '\n'
+    static bool read_line_timeout(int fd, std::string& out, int timeout_ms);
     static void close_fd(int& fd);
+    static std::string generate_token();
+
+    void fire_resume_handlers(int player_id);
 
     std::atomic<bool> started_{false};
     std::atomic<bool> shutting_down_{false};
@@ -84,4 +102,11 @@ private:
 
     // Reservation flags: accept loop prefers assigning new connections to reserved slots
     std::array<bool, Hokm::N_PLAYERS> reserved_{};
+
+    // token -> player_id
+    std::unordered_map<std::string, int> token_to_pid_;
+
+    // Resume handlers registry
+    int next_handler_id_{1};
+    std::vector<std::pair<int, std::function<void(int)>>> resume_handlers_;
 };

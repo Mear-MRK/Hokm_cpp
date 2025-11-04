@@ -15,16 +15,23 @@
 
 class InteractiveGame {
 private:
-	std::array<Agent*, Hokm::N_PLAYERS>agent;
-	std::unique_ptr<GameRound> round;
-	std::array<int, Hokm::N_TEAMS>team_scores = {0};
-	bool prompt = false;
-public:
-	InteractiveGame(std::string ag_typs, bool show_hand = false, bool prompt=false);
-	~InteractiveGame();
+    std::array<Agent*, Hokm::N_PLAYERS>agent;
+    std::unique_ptr<GameRound> round;
+    std::array<int, Hokm::N_TEAMS>team_scores = {0};
+    bool prompt = false;
 
-	int play(int win_score = Hokm::WIN_SCORE, int round_win_score = Hokm::RND_WIN_SCORE);
-	void broadcast_info(std::string info_str, int exclude = -1);
+    // NEW: id for resume handler registration
+    int resume_handler_id = -1;
+
+    // NEW: send per-seat snapshot after resume
+    void sync_on_resume(int player_id);
+
+public:
+    InteractiveGame(std::string ag_typs, bool show_hand = false, bool prompt=false);
+    ~InteractiveGame();
+
+    int play(int win_score = Hokm::WIN_SCORE, int round_win_score = Hokm::RND_WIN_SCORE);
+    void broadcast_info(std::string info_str, int exclude = -1);
 };
 
 #endif /* INTERACTIVEGAME_H_ */

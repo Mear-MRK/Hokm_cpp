@@ -18,7 +18,12 @@
 GameRound::GameRound(std::array<Agent *, Hokm::N_PLAYERS> agent)
     : round_id(-1), hist(), deck(), agent(agent), team_scores({0}),
       mt_rnd_gen(std::mt19937(std::random_device()())), winner_team(-1),
-      trump_team(-1), opening_player(-1), kot(0) {}
+      trump_team(-1), opening_player(-1), kot(0) {
+
+  for (int i = 0; i < Hokm::N_PLAYERS; i++) {
+    name[i] = agent[i]->get_name();
+  }
+}
 
 void GameRound::reset() {
   round_id++;
@@ -79,7 +84,8 @@ inline int GameRound::trick() {
     state.ord = ord;
 
     auto ag = agent[pl];
-    std::string nameId = ag->get_name(); // + " (id: " + std::to_string(ag->get_id()) + ")";
+    std::string nameId =
+        ag->get_name(); // + " (id: " + std::to_string(ag->get_id()) + ")";
 
     broadcast_info("/ALRWaiting for " + nameId + " to play...");
 
@@ -105,7 +111,7 @@ inline int GameRound::trick() {
     state.table[pl] = c;
     hand[pl].remove(c);
 
-    broadcast_info("/TBL" + table_str(state.table));
+    broadcast_info("/TBL" + table_str_with_names(state.table, name));
     if (show_info)
       std::this_thread::sleep_for(std::chrono::milliseconds(turn_sleep_ms));
   }
@@ -166,11 +172,11 @@ int GameRound::play(int round_win_score) {
     {
       broadcast_info("/RSC" + std::to_string(team_scores[0]) + ":" +
                      std::to_string(team_scores[1]));
-      broadcast_info("/INFLast table: " + table_str(state.table));
+      broadcast_info("/INFLast table: " + table_str_with_names(state.table, name));
       if (show_info)
         std::this_thread::sleep_for(std::chrono::milliseconds(rnd_sleep_ms));
       table_clear(state.table);
-      broadcast_info("/TBL" + table_str(state.table));
+      broadcast_info("/TBL" + table_str_with_names(state.table, name));
       if (round_finished)
         broadcast_info("/HND");
     }

@@ -8,7 +8,6 @@
 #include "InteractiveGame.h"
 
 #include <chrono>
-#include <iostream>
 #include <string>
 #include <thread>
 
@@ -18,6 +17,7 @@
 #include "RemoteInterAgent.h"
 #include "SoundAgent.h"
 #include "utils.h"
+#include "table.h"  // for table_str(...)
 
 static Agent *newAgentFrom(char ag_typ, int, bool show_hand = true) {
   switch (ag_typ) {
@@ -54,10 +54,22 @@ InteractiveGame::InteractiveGame(std::string ag_typs, bool show_hand,
     round->turn_sleep_ms = 0;
     round->rnd_sleep_ms = 0;
   }
+
+  // NEW: register a resume handler to resend snapshot to a resuming player
+  resume_handler_id = MultiClientServer::instance().add_resume_handler(
+      [this](int pid) {
+        try { this->sync_on_resume(pid); } catch (...) {}
+      }
+  );
 }
 
 InteractiveGame::~InteractiveGame() {
   LOG("~InteractiveGame() called.");
+  // Unregister resume handler if still present
+  if (resume_handler_id >= 0) {
+    MultiClientServer::instance().remove_resume_handler(resume_handler_id);
+    resume_handler_id = -1;
+  }
   for (auto ag : agent)
     delete ag;
   MultiClientServer::instance().stop();
@@ -120,4 +132,43 @@ void InteractiveGame::broadcast_info(std::string info_str, int exclude) {
   for (size_t pl = 0; pl < agent.size(); pl++)
     if ((int)pl != exclude)
       agent[pl]->info(info_str);
+}
+
+// NEW: per-seat state snapshot after resume
+void InteractiveGame::sync_on_resume(int pid) {
+  if (pid < 0 || pid >= (int)agent.size()) return;
+  if (!round) return;
+
+  
+  // 4) Player's current hand (/HND)
+  // Prefer agent's own view (may include last play), fallback to round's stored hand
+  Hand ph = agent[pid]->get_hand();
+  if (ph.nbr_cards == 0) {
+    ph = round->get_player_hand(pid);
+  }
+  agent[pid]->info("/HND" + ph.to_string());
+
+  // 1) Trump suit
+  if (round->state.trump >= 0 && round->state.trump < Card::N_SUITS) {
+    agent[pid]->info(std::string("/TRM") + Card::SU_STR[round->state.trump]);
+  } else {
+    // Clear trump if not set
+    agent[pid]->info("/TRM");
+    if (round->state.turn == pid){
+      Hand h5 = round->stack[round->state.turn].top(5).to_Hand();
+      agent[pid]->info("/ALRIt's your turn to call the trump.");
+      agent[pid]->info("/HND" + h5.to_string());
+    }
+  }
+
+  // 2) Current hand scores (/RSC)
+  const auto& hsc = round->get_hand_scores();
+  agent[pid]->info("/RSC" + std::to_string(hsc[0]) + ":" + std::to_string(hsc[1]));
+
+  // 3) Current game scores (/GSC)
+  agent[pid]->info("/GSC" + std::to_string(team_scores[0]) + ":" + std::to_string(team_scores[1]));
+
+
+  // 5) Current table (/TBL)
+  agent[pid]->info("/TBL" + table_str_with_names(round->state.table, round->name));
 }

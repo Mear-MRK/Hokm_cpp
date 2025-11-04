@@ -7,8 +7,12 @@
 *.o
 *.obj
 
+# Python Cache
 __pycache__/
-build_warnings.log
+
+# Logs
+log
+*.log
 
 # Precompiled Headers
 *.gch
@@ -45,9 +49,7 @@ build_warnings.log
 data
 *.dat
 *.bin
-*.txt
 *.csv
-*.log
 
 # bin, obj
 bin

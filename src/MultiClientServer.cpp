@@ -4,8 +4,12 @@
 #include <csignal>
 #include <cstring>
 #include <iostream>
+#include <random>
+#include <sstream>
+#include <unordered_map>
 
 #include <arpa/inet.h>
+#include <poll.h>
 #include <sys/socket.h>
 #include <unistd.h>
 
@@ -19,7 +23,7 @@ MultiClientServer &MultiClientServer::instance() {
 }
 
 void MultiClientServer::ensure_started(uint16_t port) {
-    LOG("MultiClientServer::ensure_started(.) called.");
+  LOG("MultiClientServer::ensure_started(.) called.");
   bool expected = false;
   if (!started_.compare_exchange_strong(expected, true)) {
     return; // already started
@@ -56,8 +60,7 @@ void MultiClientServer::ensure_started(uint16_t port) {
   addr_.sin_addr.s_addr = INADDR_ANY;
   addr_.sin_port = htons(port_);
 
-  if (bind(listen_fd_, reinterpret_cast<sockaddr *>(&addr_), sizeof(addr_)) <
-      0) {
+  if (bind(listen_fd_, reinterpret_cast<sockaddr *>(&addr_), sizeof(addr_)) < 0) {
     std::perror("bind");
     std::cerr << "MultiClientServer: bind failed on port " << port_ << "\n";
     std::abort();
@@ -71,17 +74,18 @@ void MultiClientServer::ensure_started(uint16_t port) {
 
   std::cout << "Server listening on port " << port_ << std::endl;
 
-  // Clear reservations
   {
     std::lock_guard<std::mutex> lk(m_);
     reserved_.fill(false);
+    token_to_pid_.clear();
+    resume_handlers_.clear();
+    next_handler_id_ = 1;
   }
 
   accept_thread_ = std::thread(&MultiClientServer::accept_loop, this);
 }
 
 void MultiClientServer::stop() {
-
   LOG("MultiClientServer::stop() called.");
   if (!started_)
     return;
@@ -97,6 +101,8 @@ void MultiClientServer::stop() {
       }
     }
     reserved_.fill(false);
+    token_to_pid_.clear();
+    resume_handlers_.clear();
   }
 
   if (accept_thread_.joinable())
@@ -186,6 +192,64 @@ bool MultiClientServer::read_line(int fd, std::string &out) {
   return true;
 }
 
+bool MultiClientServer::read_line_timeout(int fd, std::string& out, int timeout_ms) {
+  out.clear();
+  struct pollfd pfd;
+  pfd.fd = fd;
+  pfd.events = POLLIN;
+  pfd.revents = 0;
+  int rv = ::poll(&pfd, 1, timeout_ms);
+  if (rv <= 0) {
+    return false; // timeout or error
+  }
+  if (!(pfd.revents & POLLIN)) {
+    return false;
+  }
+  return read_line(fd, out);
+}
+
+static bool starts_with(const std::string& s, const std::string& pfx) {
+  return s.size() >= pfx.size() && std::equal(pfx.begin(), pfx.end(), s.begin());
+}
+
+std::string MultiClientServer::generate_token() {
+  // Simple hex token, 32 bytes entropy -> 64 hex chars
+  std::random_device rd;
+  std::ostringstream oss;
+  for (int i = 0; i < 32; ++i) {
+    unsigned byte = rd() & 0xFF;
+    static const char* hex = "0123456789abcdef";
+    oss << hex[(byte >> 4) & 0xF] << hex[byte & 0xF];
+  }
+  return oss.str();
+}
+
+int MultiClientServer::add_resume_handler(std::function<void(int)> fn) {
+  std::lock_guard<std::mutex> lk(m_);
+  int id = next_handler_id_++;
+  resume_handlers_.push_back({id, std::move(fn)});
+  return id;
+}
+
+void MultiClientServer::remove_resume_handler(int id) {
+  std::lock_guard<std::mutex> lk(m_);
+  auto it = std::remove_if(resume_handlers_.begin(), resume_handlers_.end(),
+                           [&](const auto& p){ return p.first == id; });
+  resume_handlers_.erase(it, resume_handlers_.end());
+}
+
+void MultiClientServer::fire_resume_handlers(int player_id) {
+  // Copy handlers to avoid holding lock while invoking user code
+  std::vector<std::function<void(int)>> cbs;
+  {
+    std::lock_guard<std::mutex> lk(m_);
+    for (auto& p : resume_handlers_) cbs.push_back(p.second);
+  }
+  for (auto& cb : cbs) {
+    try { cb(player_id); } catch (...) {}
+  }
+}
+
 void MultiClientServer::accept_loop() {
   LOG("MultiClientServer::accept_loop() called.");
   while (!shutting_down_) {
@@ -202,6 +266,74 @@ void MultiClientServer::accept_loop() {
       continue;
     }
     LOG("MultiClientServer::accept_loop(): accepted fd: " << cfd);
+
+    // Try to read an immediate RESUME <token> line (short timeout).
+    std::string firstline;
+    bool handled = false;
+    if (read_line_timeout(cfd, firstline, 300) && starts_with(firstline, "RESUME ")) {
+      std::string token = firstline.substr(std::string("RESUME ").size());
+      int pid = -1;
+      std::shared_ptr<Session> s;
+      {
+        std::lock_guard<std::mutex> lk(m_);
+        auto it = token_to_pid_.find(token);
+        if (it != token_to_pid_.end()) {
+          pid = it->second;
+          auto &slot = sessions_[pid];
+          if (!slot) {
+            slot = std::make_shared<Session>();
+            slot->player_id = pid;
+            slot->name = "Player" + std::to_string(pid);
+            slot->token = token;
+          } else {
+            if (slot->connected) {
+              close_fd(slot->sock);
+            }
+            if (slot->reader_thread.joinable()) {
+              slot->reader_thread.join();
+            }
+          }
+          slot->sock = cfd;
+          slot->connected = true;
+          s = slot;
+        }
+      }
+
+      if (pid != -1) {
+        // Send OK <pid> for compatibility
+        std::string ok = "OK " + std::to_string(pid) + "\n";
+        send_all(cfd, ok.c_str(), ok.size());
+
+        // Start reader thread
+        {
+          std::lock_guard<std::mutex> lk(m_);
+          auto &slot = sessions_[pid];
+          slot->reader_thread = std::thread(&MultiClientServer::reader_loop, this, slot);
+        }
+
+        // Notify game to resend current state snapshot to this player
+        fire_resume_handlers(pid);
+
+        // Replay last prompt if any (after snapshot so UI is up to date)
+        {
+          std::lock_guard<std::mutex> lk(m_);
+          auto &slot = sessions_[pid];
+          if (!slot->last_prompt.empty()) {
+            std::lock_guard<std::mutex> lk2(slot->send_mtx);
+            send_all(slot->sock, slot->last_prompt.c_str(), slot->last_prompt.size());
+          }
+        }
+
+        cv_.notify_all();
+        handled = true;
+      } else {
+        // Invalid token -> fall through to normal assignment
+      }
+    }
+
+    if (handled) {
+      continue;
+    }
 
     // Choose slot: prefer reserved slots that are not yet connected,
     // otherwise pick the first free slot.
@@ -223,7 +355,7 @@ void MultiClientServer::accept_loop() {
         }
       }
     }
-LOG("MultiClientServer::accept_loop(): pid: " << pid);
+    LOG("MultiClientServer::accept_loop(): pid: " << pid);
     if (pid == -1) {
       const char *full = "ERR server full\n";
       send_all(cfd, full, std::strlen(full));
@@ -236,6 +368,7 @@ LOG("MultiClientServer::accept_loop(): pid: " << pid);
     s->player_id = pid;
     s->name = "Player" + std::to_string(pid);
     s->connected = true;
+    s->token = generate_token();
 
     {
       std::lock_guard<std::mutex> lk(m_);
@@ -247,11 +380,19 @@ LOG("MultiClientServer::accept_loop(): pid: " << pid);
       }
       slot = s;
       reserved_[pid] = false; // consumed reservation
+      token_to_pid_[s->token] = pid;
     }
 
-    // Inform client of assigned id
+    // Inform client of assigned id (compatibility)
     std::string ok = "OK " + std::to_string(pid) + "\n";
     send_all(cfd, ok.c_str(), ok.size());
+
+    // Also send reconnect token as a framed message
+    {
+      std::lock_guard<std::mutex> lk2(s->send_mtx);
+      std::string tok_msg = "/TOK" + s->token + "[SEP]";
+      send_all(s->sock, tok_msg.c_str(), tok_msg.size());
+    }
 
     s->reader_thread = std::thread(&MultiClientServer::reader_loop, this, s);
     cv_.notify_all();
@@ -260,7 +401,6 @@ LOG("MultiClientServer::accept_loop(): pid: " << pid);
 }
 
 void MultiClientServer::reader_loop(std::shared_ptr<Session> s) {
-
   LOG("MultiClientServer::reader_thread(s) started: pl_id: " << s->player_id);
   while (!shutting_down_ && s->connected) {
     std::string line;
@@ -268,6 +408,15 @@ void MultiClientServer::reader_loop(std::shared_ptr<Session> s) {
       break;
     }
     s->inbox.push(std::move(line));
+
+    // A line received typically answers a prompt: clear last_prompt
+    {
+      std::lock_guard<std::mutex> lk(m_);
+      auto &slot = sessions_[s->player_id];
+      if (slot) {
+        slot->last_prompt.clear();
+      }
+    }
   }
   s->connected = false;
   close_fd(s->sock);
@@ -310,6 +459,18 @@ void MultiClientServer::send_to(int player_id, const std::string &msg) {
     close_fd(s->sock);
     cv_.notify_all();
   }
+}
+
+void MultiClientServer::send_prompt(int player_id, const std::string& prompt_with_prefix) {
+  // prompt_with_prefix must start with "/INP" and NOT include trailing "[SEP]".
+  std::shared_ptr<Session> s;
+  {
+    std::lock_guard<std::mutex> lk(m_);
+    s = sessions_[player_id];
+    if (!s) return;
+    s->last_prompt = prompt_with_prefix + "[SEP]";
+  }
+  send_to(player_id, prompt_with_prefix + "[SEP]");
 }
 
 void MultiClientServer::broadcast(const std::string &msg) {

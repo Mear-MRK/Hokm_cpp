@@ -30,6 +30,18 @@ static inline std::string table_str(const Card table[])
 	return tbl_str;
 }
 
+static inline std::string table_str_with_names(const Card table[], const std::string name[]) {
+
+  std::string out;
+  for (size_t i = 0; i < Hokm::N_PLAYERS; ++i) {
+    out += name[i];
+    out += ':';
+    out += table[i].to_string();
+    out += ';';
+  }
+  return out;
+}
+
 static inline void table_clear(Card table[])
 {
 	for(int pl = 0; pl < Hokm::N_PLAYERS; pl++)

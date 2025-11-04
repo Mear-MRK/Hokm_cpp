@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
 # hokm_gui_client.py
-# PySide6 GUI client for Hokm
-# - Left pane: connection fields, scores, Info (5 recent lines showing only /INF from server and client logs), Last table (5 lines: 4 plays + winners)
-# - Middle pane: trump icon, winner badge, table with seat-name labels (actual player names in black, no background), info/status label (shows /ALR alerts), prompts, hand
-# - Your turn indicator: thick golden border around the player's hand (no green background)
-# - Uses names announced by server via /INF "id: #, name: ..." before rounds; alerts include player id too
-# - Alerts (/ALR) are shown in the status label instead of "Waiting..." or "Your turn"
-# - At end of each trick, Last table shows who played what and a "Winners: nameA & nameB" line
-# - CLI: optional default host or host:port via positional arg or -H/--host
 
 import sys
 import time
@@ -16,6 +8,7 @@ import threading
 import re
 import getpass
 import argparse
+import os
 from dataclasses import dataclass
 from typing import List, Optional, Callable, Dict, Tuple
 
@@ -32,10 +25,6 @@ from PySide6.QtWidgets import (
 )
 
 DEFAULT_PORT = 23345
-
-# ------------------
-# Card model/helpers
-# ------------------
 
 SUITS = ["S", "H", "C", "D"]
 RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "X", "J", "Q", "K", "A"]
@@ -92,10 +81,6 @@ def card_to_human(code: str) -> str:
     except Exception:
         return code or "--"
 
-# -----------------
-# Shared card painting (crisp vector drawing)
-# -----------------
-
 def paint_card_face(p: QPainter, rect: QRectF, card: Card):
     rank = RANK_TEXT[card.rank]
     suit = SUIT_SYMBOL[card.suit]
@@ -131,10 +116,6 @@ def paint_card_face(p: QPainter, rect: QRectF, card: Card):
     p.setFont(f_s_center)
     p.drawText(rect, Qt.AlignCenter, suit)
 
-# -----------------
-# Trump icon (no badge)
-# -----------------
-
 class TrumpIcon(QWidget):
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
@@ -169,10 +150,6 @@ class TrumpIcon(QWidget):
             return
         p.setPen(SUIT_COLOR[self._suit])
         p.drawText(bg_rect, Qt.AlignCenter, SUIT_SYMBOL[self._suit])
-
-# -----------------
-# Winner badge (fixed height; white only when showing text)
-# -----------------
 
 class WinnerBadge(QWidget):
     def __init__(self, parent: Optional[QWidget] = None):
@@ -220,10 +197,6 @@ class WinnerBadge(QWidget):
         p.setPen(self._color)
         p.drawText(QRectF(bx, by, bw, bh), Qt.AlignCenter, self._text)
 
-# -----------------
-# Score label (right-justified numeric block so scores align)
-# -----------------
-
 class ScoreLabel(QWidget):
     def __init__(self, title: str, parent: Optional[QWidget] = None):
         super().__init__(parent)
@@ -247,7 +220,6 @@ class ScoreLabel(QWidget):
         left_pad = 6
         right_pad = 6
 
-        # Title
         p.setPen(QColor("#CFD8DC"))
         f_title = QFont(); f_title.setPointSize(12); f_title.setBold(True)
         p.setFont(f_title)
@@ -255,7 +227,6 @@ class ScoreLabel(QWidget):
         p.drawText(QRectF(rect.x() + left_pad, rect.y(), rect.width() // 2, rect.height()),
                    Qt.AlignVCenter | Qt.AlignLeft, title_text)
 
-        # Numbers block: right-justified
         f_num = QFont(); f_num.setPointSize(14); f_num.setBold(True)
         p.setFont(f_num)
         fm = p.fontMetrics()
@@ -282,10 +253,6 @@ class ScoreLabel(QWidget):
 
         p.setPen(QColor("#E53935"))
         p.drawText(QRectF(bx, y, opp_w, h), Qt.AlignVCenter | Qt.AlignLeft, s_opp)
-
-# -----------------
-# Card UI widgets
-# -----------------
 
 class CardWidget(QWidget):
     clicked = Signal(str)
@@ -371,12 +338,11 @@ class FlowHand(QWidget):
         self._reposition_children()
 
     def paintEvent(self, event) -> None:
-        # Golden thick margin when it's your turn
         if self._turn_active:
             p = QPainter(self)
             p.setRenderHint(QPainter.Antialiasing, True)
             rect = self.rect().adjusted(3, 3, -3, -3)
-            pen = QPen(QColor("#DAA520"), 6)  # goldenrod
+            pen = QPen(QColor("#DAA520"), 6)
             p.setPen(pen)
             p.setBrush(Qt.NoBrush)
             p.drawRoundedRect(rect, 10, 10)
@@ -438,10 +404,6 @@ class FlowHand(QWidget):
             child.move(x0, y)
             x0 += overlap
 
-# -------------
-# Table display
-# -------------
-
 class TableArea(QWidget):
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
@@ -458,7 +420,7 @@ class TableArea(QWidget):
 
     def setPlayerNames(self, names: Dict[str, str]):
         for k, v in names.items():
-            if k in self._names and v:
+            if k in self._names and v is not None:
                 self._names[k] = v
         self.update()
 
@@ -494,7 +456,7 @@ class TableArea(QWidget):
         p = QPainter(self)
         p.setRenderHint(QPainter.Antialiasing, True)
         rect = self.rect()
-        p.fillRect(rect, QColor("#14493E"))  # green felt
+        p.fillRect(rect, QColor("#14493E"))
 
         w, h = 80, 120
         cx, cy = rect.center().x(), rect.center().y()
@@ -509,20 +471,17 @@ class TableArea(QWidget):
 
         rects = {"c": top_r, "u": bot_r, "b": left_r, "a": right_r}
 
-        # Cards in z-order
         order = self._z_order if self._z_order else ["c", "u", "b", "a"]
         for key in order:
             card = self._cards.get(key)
             if card:
                 paint_card_face(p, rects[key].adjusted(2, 2, -2, -2), card)
 
-        # Seat name labels: black text, no background box
         f = QFont(); f.setPointSize(12); f.setBold(True)
         p.setFont(f)
         p.setPen(QColor("#FFFFFF"))
         fm = p.fontMetrics()
 
-        # Top above top_r
         name_top = self._names["c"]
         top_w = max(60, fm.horizontalAdvance(name_top) + 12)
         top_h = fm.height() + 6
@@ -531,7 +490,6 @@ class TableArea(QWidget):
                          top_w, top_h)
         p.drawText(top_box, Qt.AlignCenter, name_top)
 
-        # Bottom below bot_r
         name_bot = self._names["u"]
         bot_w = max(60, fm.horizontalAdvance(name_bot) + 12)
         bot_h = fm.height() + 6
@@ -540,7 +498,6 @@ class TableArea(QWidget):
                          bot_w, bot_h)
         p.drawText(bot_box, Qt.AlignCenter, name_bot)
 
-        # Left of left_r
         name_left = self._names["b"]
         left_w = max(60, fm.horizontalAdvance(name_left) + 12)
         left_h = fm.height() + 6
@@ -549,7 +506,6 @@ class TableArea(QWidget):
                           left_w, left_h)
         p.drawText(left_box, Qt.AlignCenter, name_left)
 
-        # Right of right_r
         name_right = self._names["a"]
         right_w = max(60, fm.horizontalAdvance(name_right) + 12)
         right_h = fm.height() + 6
@@ -557,10 +513,6 @@ class TableArea(QWidget):
                            right_r.center().y() - right_h / 2,
                            right_w, right_h)
         p.drawText(right_box, Qt.AlignCenter, name_right)
-
-# ------------------------
-# Network/Protocol bridge
-# ------------------------
 
 class ProtocolAdapter:
     def set_callbacks(self, on_log: Callable[[str], None],
@@ -584,14 +536,7 @@ class ProtocolAdapter:
     def close(self) -> None:
         raise NotImplementedError
 
-# -------- Hokm adapter --------
-
 class HokmAdapter(ProtocolAdapter):
-    """
-    Server protocol (key parts used here):
-      - "OK <pid>" assignment (0..3)
-      - [SEP]-delimited messages: /INF, /ALR, /TBL, /HND, /INP, /WIT, /END
-    """
     def __init__(self):
         self.cb_log: Callable[[str], None] = lambda m: None
         self.cb_connected: Callable[[], None] = lambda: None
@@ -601,7 +546,6 @@ class HokmAdapter(ProtocolAdapter):
         self.cb_your_turn: Callable[[bool], None] = lambda b: None
         self.cb_game_end: Callable[[], None] = lambda: None
 
-        # extra UI hooks
         self._cb_trump: Callable[[Optional[str]], None] = lambda s: None
         self._cb_positions: Callable[[Dict[str, Optional[str]]], None] = lambda pos: None
         self._cb_scores: Callable[[int, int], None] = lambda us, opp: None
@@ -609,6 +553,7 @@ class HokmAdapter(ProtocolAdapter):
         self._cb_team: Callable[[int], None] = lambda tid: None
         self._cb_alert: Callable[[str], None] = lambda t: None
         self._cb_player_id: Callable[[int], None] = lambda pid: None
+        self._cb_seat_names: Callable[[Dict[str, str]], None] = lambda nm: None
 
         self._get_user_input: Optional[Callable[[str, int], str]] = None
 
@@ -618,6 +563,9 @@ class HokmAdapter(ProtocolAdapter):
         self.player_id = 0
         self.my_team_id = 0
         self.tcp_rcv_sz = 4 * 1024
+
+        self._host: str = ""
+        self._port: int = 0
 
     def set_callbacks(self, on_log: Callable[[str], None],
                       on_connected: Callable[[], None],
@@ -658,7 +606,34 @@ class HokmAdapter(ProtocolAdapter):
     def set_player_id_callback(self, on_pid: Callable[[int], None]) -> None:
         self._cb_player_id = on_pid
 
+    def set_seat_names_callback(self, on_names: Callable[[Dict[str, str]], None]) -> None:
+        self._cb_seat_names = on_names
+
+    def _token_path(self, host: str, port: int) -> str:
+        safe_host = (host or "localhost").replace("/", "_").replace(":", "_")
+        return os.path.expanduser(f"~/.hokm_token_{safe_host}_{port}")
+
+    def _load_token(self, host: str, port: int) -> Optional[str]:
+        try:
+            with open(self._token_path(host, port), "r") as f:
+                t = f.read().strip()
+                return t if t else None
+        except FileNotFoundError:
+            return None
+        except Exception:
+            return None
+
+    def _save_token(self, host: str, port: int, tok: str) -> None:
+        if not tok:
+            return
+        try:
+            with open(self._token_path(host, port), "w") as f:
+                f.write(tok)
+        except Exception:
+            pass
+
     def connect(self, host: str, port: int, seat: int) -> None:
+        self._host, self._port = host, port
         sc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sc.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
         sc.settimeout(5.0)
@@ -669,6 +644,14 @@ class HokmAdapter(ProtocolAdapter):
         self._connected = True
         self.cb_connected()
         self.cb_log(f"Connected to {host}:{port}. Waiting for assignment...")
+
+        tok = self._load_token(host, port)
+        if tok:
+            try:
+                self.cb_log("Attempting to resume previous seat...")
+                sc.sendall(f"RESUME {tok}\n".encode("ascii", errors="ignore"))
+            except Exception:
+                pass
 
         assigned = False
         tries = 0
@@ -701,7 +684,6 @@ class HokmAdapter(ProtocolAdapter):
         if not self._sock:
             self.cb_disconnected("not connected")
             return
-
         recv_buf = ""
         try:
             while self._connected and not should_stop():
@@ -710,18 +692,14 @@ class HokmAdapter(ProtocolAdapter):
                 except Exception as e:
                     self.cb_log(f"Recv error: {e}")
                     break
-
                 if not b_srv_msg:
                     self.cb_log("Disconnected from server.")
                     break
-
                 try:
                     chunk = b_srv_msg.decode('ascii', errors='ignore')
                 except Exception:
                     chunk = b_srv_msg.decode('utf-8', errors='ignore')
-
                 recv_buf += chunk
-
                 while True:
                     idx = recv_buf.find('[SEP]')
                     if idx == -1:
@@ -749,6 +727,23 @@ class HokmAdapter(ProtocolAdapter):
             return int(payload[4]), int(payload[6])
         return None
 
+    def _parse_tbl_pairs(self, payload: str):
+        # returns list of (name, card_raw) in order; pads/truncates to 4
+        pairs: List[Tuple[str, str]] = []
+        for seg in payload.split(';'):
+            seg = seg.strip()
+            if not seg:
+                continue
+            name, sep, card = seg.partition(':')
+            if sep != ':':
+                continue
+            name = (name or "").strip()
+            card = (card or "").strip()
+            pairs.append((name, card))
+        while len(pairs) < 4:
+            pairs.append(("", ""))
+        return pairs[:4]
+
     def _handle_msg(self, com: str, msg: str) -> None:
         if com == '/RSC':
             pair = self._parse_scores(msg)
@@ -767,15 +762,18 @@ class HokmAdapter(ProtocolAdapter):
                 else:
                     self._cb_gscores(t1, t0)
         elif com == '/TRM':
-            # After dropping /HED, the suit is sent directly after /TRM
             suit_char = (msg.strip()[:1] or "-").upper()
             suit = suit_char if suit_char in SUITS else None
             self._cb_trump(suit)
+        elif com == '/TOK':
+            tok = (msg or "").strip()
+            if tok:
+                self._save_token(self._host, self._port, tok)
+                self.cb_log("Reconnect token received.")
         elif com == '/INF':
-            # keep /INF prefix so UI can filter
+            # Just forward to Info; do not parse names
             self.cb_log("/INF" + msg)
         elif com == '/ALR':
-            # route alerts to UI status label
             self._cb_alert(msg)
         elif com == '/TBL':
             self._handle_table(msg)
@@ -805,15 +803,36 @@ class HokmAdapter(ProtocolAdapter):
         self.cb_hand(codes)
 
     def _handle_table(self, table_str: str) -> None:
-        tbl = table_str.split()
-        while len(tbl) < 4:
-            tbl.append("--")
-        u_idx = (self.player_id + 4) % 4
-        c_idx = (u_idx + 2) % 4
-        a_idx = (u_idx + 1) % 4
-        b_idx = (u_idx + 3) % 4
-        pos = {"u": tbl[u_idx], "c": tbl[c_idx], "a": tbl[a_idx], "b": tbl[b_idx]}
-        self._cb_positions(pos)
+        # Parse pairs by absolute seat order, map to relative seats by player_id
+        pairs = self._parse_tbl_pairs(table_str)
+        names = [nm for nm, _ in pairs]
+        raw = [cd for _, cd in pairs]
+
+        def norm(i: int) -> Optional[str]:
+            c = (raw[i] or "").strip().upper()
+            n = normalize_card_code(c)
+            return n
+
+        u = self.player_id % 4
+        a = (u + 1) % 4
+        c = (u + 2) % 4
+        b = (u + 3) % 4
+
+        positions = {
+            "u": norm(u),
+            "a": norm(a),
+            "c": norm(c),
+            "b": norm(b),
+        }
+        # Also send seat names derived from TBL (fallbacks if missing)
+        seat_names = {
+            "u": names[u] if names[u] else "You",
+            "a": names[a] if names[a] else "Right",
+            "b": names[b] if names[b] else "Left",
+            "c": names[c] if names[c] else "Across",
+        }
+        self._cb_positions(positions)
+        self._cb_seat_names(seat_names)
 
     def _handle_prompt(self, prompt: str) -> None:
         if not self._sock:
@@ -848,7 +867,6 @@ class HokmAdapter(ProtocolAdapter):
             return data.decode('utf-8', errors='ignore')
 
     def play_card(self, code: str) -> None:
-        # plays are provided in response to prompts
         pass
 
     def close(self) -> None:
@@ -876,14 +894,13 @@ class HokmAdapter(ProtocolAdapter):
             self._sock = None
             self._connected = False
 
-# ---------------- Worker in QThread ----------------
-
 class ClientWorker(QObject):
     sig_connected = Signal()
     sig_disconnected = Signal(str)
     sig_log = Signal(str)
     sig_hand = Signal(list)
     sig_table_positions = Signal(object)
+    sig_seat_names = Signal(object)
     sig_your_turn = Signal(bool)
     sig_game_end = Signal()
     sig_prompt = Signal(str)
@@ -914,6 +931,7 @@ class ClientWorker(QObject):
         def cb_your_turn(flag: bool): self.sig_your_turn.emit(flag)
         def cb_game_end(): self.sig_game_end.emit()
         def cb_positions(pos: Dict[str, Optional[str]]): self.sig_table_positions.emit(pos)
+        def cb_seat_names(nm: Dict[str, str]): self.sig_seat_names.emit(nm)
         def cb_trump(suit: Optional[str]): self.sig_trump.emit(suit)
         def cb_scores(us: int, opp: int): self.sig_scores.emit(us, opp)
         def cb_gscores(us: int, opp: int): self.sig_gscores.emit(us, opp)
@@ -928,6 +946,8 @@ class ClientWorker(QObject):
                 adapter.set_suit_callbacks(cb_trump)
             if hasattr(adapter, "set_table_positions_callback"):
                 adapter.set_table_positions_callback(cb_positions)
+            if hasattr(adapter, "set_seat_names_callback"):
+                adapter.set_seat_names_callback(cb_seat_names)
             if hasattr(adapter, "set_score_callbacks"):
                 adapter.set_score_callbacks(cb_scores, cb_gscores)
             if hasattr(adapter, "set_team_callback"):
@@ -989,10 +1009,6 @@ class ClientWorker(QObject):
         except Exception as e:
             self.sig_log.emit(f"Failed to play {code}: {e}")
 
-# -----------------
-# Suit picker (for trump call)
-# -----------------
-
 class SuitPicker(QWidget):
     suitChosen = Signal(str)
 
@@ -1017,10 +1033,6 @@ class SuitPicker(QWidget):
             row.addWidget(btn)
             self._buttons[s] = btn
 
-# -----------------
-# Main application (Left + Middle panes only)
-# -----------------
-
 class MainWindow(QMainWindow):
     sig_start = Signal(object, str, int)
     sig_stop = Signal()
@@ -1038,7 +1050,6 @@ class MainWindow(QMainWindow):
         root.setSpacing(8)
         self.setCentralWidget(central)
 
-        # Left pane (dark)
         left = QWidget(self)
         left.setObjectName("LeftPane")
         left.setStyleSheet("""
@@ -1055,7 +1066,7 @@ class MainWindow(QMainWindow):
 
         self.host_edit = QLineEdit(self)
         self.host_edit.setPlaceholderText("Host or host:port")
-        self.host_edit.setText(default_host_port if default_host_port else "127.0.0.1")
+        self.host_edit.setText(default_host_port if default_host_port else "localhost")
 
         try:
             default_name = getpass.getuser() or ""
@@ -1075,7 +1086,6 @@ class MainWindow(QMainWindow):
         left_layout.addSpacing(6)
         left_layout.addWidget(self.btn_connect)
 
-        # Scores
         left_layout.addSpacing(14)
         self.lbl_gscores = ScoreLabel("Game Scores")
         self.lbl_gscores.setFixedHeight(36)
@@ -1085,7 +1095,6 @@ class MainWindow(QMainWindow):
         self.lbl_scores.setFixedHeight(36)
         left_layout.addWidget(self.lbl_scores)
 
-        # Info (non-scrollable, exactly 5 recent lines)
         left_layout.addSpacing(10)
         lbl_info = QLabel("Info")
         fi = lbl_info.font(); fi.setPointSize(11); fi.setBold(True)
@@ -1095,7 +1104,6 @@ class MainWindow(QMainWindow):
         self._setup_fixed_height_rows(self.info_list, rows=5, scrollable=False)
         left_layout.addWidget(self.info_list)
 
-        # Last table (non-scrollable 5 lines: 4 plays + Winners)
         left_layout.addSpacing(6)
         lbl_last = QLabel("Last table")
         fl = lbl_last.font(); fl.setPointSize(11); fl.setBold(True)
@@ -1107,13 +1115,11 @@ class MainWindow(QMainWindow):
 
         left_layout.addStretch(1)
 
-        # Middle pane
         middle = QWidget(self)
         mid_layout = QVBoxLayout(middle)
         mid_layout.setContentsMargins(12, 12, 12, 12)
         mid_layout.setSpacing(8)
 
-        # Trump icon centered
         self.trump_icon = TrumpIcon(self)
         wrap_trump = QWidget(self)
         wrap_trump_layout = QHBoxLayout(wrap_trump)
@@ -1123,21 +1129,17 @@ class MainWindow(QMainWindow):
         wrap_trump_layout.addStretch(1)
         mid_layout.addWidget(wrap_trump)
 
-        # Winner badge
         self.winner_badge = WinnerBadge(self)
         mid_layout.addWidget(self.winner_badge)
 
-        # Table with name labels
         self.table = TableArea(self)
         mid_layout.addWidget(self.table, stretch=5)
 
-        # Status/info label (shows /ALR alerts)
         self.lbl_turn = QLabel("Waiting...")
         f = self.lbl_turn.font(); f.setPointSize(14); f.setBold(True)
         self.lbl_turn.setFont(f); self.lbl_turn.setAlignment(Qt.AlignCenter)
         mid_layout.addWidget(self.lbl_turn)
 
-        # Prompt row
         prompt_row = QHBoxLayout()
         self.lbl_prompt = QLabel("")
         self.edit_prompt = QLineEdit(self); self.edit_prompt.setPlaceholderText("Type response and press Enter"); self.edit_prompt.setMaxLength(16)
@@ -1148,7 +1150,6 @@ class MainWindow(QMainWindow):
         self.prompt_wrap = QWidget(self); self.prompt_wrap.setLayout(prompt_row); self.prompt_wrap.setVisible(False)
         mid_layout.addWidget(self.prompt_wrap)
 
-        # Suit picker (trump call)
         sp_row = QHBoxLayout()
         self.lbl_trump_prompt = QLabel("")
         self.suit_picker = SuitPicker(self)
@@ -1161,35 +1162,30 @@ class MainWindow(QMainWindow):
         self.suit_picker_wrap = QWidget(self); self.suit_picker_wrap.setLayout(sp_row); self.suit_picker_wrap.setVisible(False)
         mid_layout.addWidget(self.suit_picker_wrap)
 
-        # Hand (golden border on your turn)
         self.hand = FlowHand(self)
         mid_layout.addWidget(self.hand, stretch=2)
 
-        # Assemble panes (no right pane)
         left.setFixedWidth(360)
         root.addWidget(left, 0)
         root.addWidget(middle, 1)
 
-        # Status bar
         self.status = QStatusBar(self); self.setStatusBar(self.status)
 
-        # Thread / worker
         self.thread = QThread(self)
         self.worker = ClientWorker()
         self.worker.moveToThread(self.thread)
 
-        # UI -> worker
         self.sig_start.connect(self.worker.start_client)
         self.sig_play.connect(self.worker.play_card)
         self.sig_input.connect(self.worker.provide_input, Qt.DirectConnection)
         self.sig_stop.connect(self.worker.stop, Qt.DirectConnection)
 
-        # worker -> UI
         self.worker.sig_log.connect(self._log)
         self.worker.sig_connected.connect(self._on_connected)
         self.worker.sig_disconnected.connect(self._on_disconnected)
         self.worker.sig_hand.connect(self._on_hand)
         self.worker.sig_table_positions.connect(self._on_table_positions)
+        self.worker.sig_seat_names.connect(self._on_seat_names)
         self.worker.sig_your_turn.connect(self._on_your_turn)
         self.worker.sig_game_end.connect(self._on_game_end)
         self.worker.sig_prompt.connect(self._on_prompt)
@@ -1200,7 +1196,6 @@ class MainWindow(QMainWindow):
         self.worker.sig_alert.connect(self._on_alert)
         self.worker.sig_player_id.connect(self._on_player_id)
 
-        # UI handlers
         self.btn_connect.clicked.connect(self._on_connect_clicked)
         self.hand.playRequested.connect(self._on_play_requested)
         self.btn_submit.clicked.connect(self._on_submit_prompt)
@@ -1209,7 +1204,6 @@ class MainWindow(QMainWindow):
 
         self.thread.start()
 
-        # State
         self._prompt_visible = False
         self._inp_pending = False
         self._pending_is_card = False
@@ -1221,16 +1215,13 @@ class MainWindow(QMainWindow):
         self._my_team_id: Optional[int] = None
         self._game_winner_shown = False
 
-        # Turn/alert state
         self._is_your_turn = False
         self._last_alert_text: str = ""
 
-        # Names for seats
+        # Seat names (now driven from /TBL)
         self._player_id: Optional[int] = None
-        self._id_to_name: Dict[int, str] = {}
         self._player_names: Dict[str, str] = {"u": "You", "a": "Right", "b": "Left", "c": "Across"}
 
-        # History state (last table only)
         self._prev_table: Dict[str, Optional[str]] = {"u": None, "c": None, "a": None, "b": None}
         self._current_trick: List[Tuple[str, str]] = []
         self._last_trick: List[Tuple[str, str]] = []
@@ -1238,12 +1229,9 @@ class MainWindow(QMainWindow):
         self._trick_full: bool = False
         self._refresh_last_table_view()
 
-        # Round winner badge timer
         self._round_clear_timer = QTimer(self)
         self._round_clear_timer.setSingleShot(True)
         self._round_clear_timer.timeout.connect(lambda: self.winner_badge.clear_text())
-
-    # ---- Helpers for UI ----
 
     def _setup_fixed_height_rows(self, lw: QListWidget, rows: int, scrollable: bool):
         lw.setUniformItemSizes(True)
@@ -1258,14 +1246,14 @@ class MainWindow(QMainWindow):
     def _parse_host_port(self, text: str) -> Tuple[str, int]:
         s = (text or "").strip()
         if not s:
-            return "127.0.0.1", DEFAULT_PORT
+            return "localhost", DEFAULT_PORT
         if ':' in s and s.count(':') == 1:
             host, p = s.split(':', 1)
             try:
                 port = int(p)
             except ValueError:
                 port = DEFAULT_PORT
-            return host or "127.0.0.1", port
+            return host or "localhost", port
         return s, DEFAULT_PORT
 
     def _is_card_prompt(self, prompt: str) -> bool:
@@ -1300,17 +1288,14 @@ class MainWindow(QMainWindow):
         self._game_winner_shown = False
         self.winner_badge.clear_text()
         self._round_clear_timer.stop()
-        # names
         self._player_names = {"u": "You", "a": "Right", "b": "Left", "c": "Across"}
         self.table.setPlayerNames(self._player_names)
-        # last table
         self._prev_table = {"u": None, "c": None, "a": None, "b": None}
         self._current_trick = []
         self._last_trick = []
         self._last_trick_winner_line = ""
         self._trick_full = False
         self._refresh_last_table_view()
-        # info
         self.info_list.clear()
 
     def _announce_round_winner(self, team_id: int, round_num: Optional[int]):
@@ -1346,7 +1331,6 @@ class MainWindow(QMainWindow):
         if color:
             item.setForeground(color)
         self.info_list.addItem(item)
-        # Keep only 5 most recent lines
         while self.info_list.count() > 5:
             self.info_list.takeItem(0)
 
@@ -1355,56 +1339,28 @@ class MainWindow(QMainWindow):
 
     def _refresh_last_table_view(self):
         self.last_table_list.clear()
-        # plays (up to 4)
         for k, code in self._last_trick[:4]:
             self.last_table_list.addItem(f"{self._seat_name(k)}: {card_to_human(code)}")
-        # pad remaining play rows to exactly 4
         for _ in range(4 - min(4, len(self._last_trick))):
             self.last_table_list.addItem("")
-        # winners line (5th)
         self.last_table_list.addItem(self._last_trick_winner_line if self._last_trick_winner_line else "")
 
     def _update_status_label(self):
-        # if self._last_alert_text:
         self.lbl_turn.setText(self._last_alert_text)
-        # else:
-        #     self.lbl_turn.setText("Your turn" if self._is_your_turn else "Waiting...")
-
-    def _update_names_from_registry(self):
-        # requires player_id and id_to_name
-        if self._player_id is None or not self._id_to_name:
-            return
-        u = self._player_id
-        a = (u + 1) % 4
-        c = (u + 2) % 4
-        b = (u + 3) % 4
-        self._player_names = {
-            "u": self._id_to_name.get(u, "You"),
-            "a": self._id_to_name.get(a, "Right"),
-            "b": self._id_to_name.get(b, "Left"),
-            "c": self._id_to_name.get(c, "Across"),
-        }
-        self.table.setPlayerNames(self._player_names)
-        # refresh last table view to reflect names
-        self._refresh_last_table_view()
 
     def _compare_cards(self, code1: str, code2: str, led_suit: Optional[str], trump_suit: Optional[str]) -> int:
-        # returns >0 if code1 > code2
         c1 = Card.from_code(code1)
         c2 = Card.from_code(code2)
         ts = trump_suit
         ls = led_suit
-        # trump beats non-trump
         if ts and c1.suit == ts and c2.suit != ts:
             return 1
         if ts and c2.suit == ts and c1.suit != ts:
             return -1
-        # within same suit: higher rank wins
         if c1.suit == c2.suit:
             r1 = RANKS.index(c1.rank)
             r2 = RANKS.index(c2.rank)
             return 1 if r1 > r2 else (-1 if r1 < r2 else 0)
-        # neither is trump: follow led suit
         if ls:
             if c1.suit == ls and c2.suit != ls:
                 return 1
@@ -1416,37 +1372,24 @@ class MainWindow(QMainWindow):
         self._last_trick_winner_line = ""
         if len(self._last_trick) < 4:
             return
-        # led suit is suit of the first actual play observed
         led_code = self._last_trick[0][1]
         led_suit = Card.from_code(led_code).suit if normalize_card_code(led_code) else None
         trump_suit = self._trump_suit
 
-        # find winning play
         best_idx = 0
         for i in range(1, 4):
             if self._compare_cards(self._last_trick[i][1], self._last_trick[best_idx][1], led_suit, trump_suit) > 0:
                 best_idx = i
         winner_seat_key = self._last_trick[best_idx][0]
 
-        # map seat key to absolute player id
-        if self._player_id is None:
-            return
-        seat_to_abs = {
-            "u": self._player_id,
-            "a": (self._player_id + 1) % 4,
-            "c": (self._player_id + 2) % 4,
-            "b": (self._player_id + 3) % 4,
-        }
-        win_abs = seat_to_abs.get(winner_seat_key)
-        if win_abs is None:
-            return
-        team_id = win_abs % 2
-        # names of the two players in the winner team
-        names = [self._id_to_name.get(pid, f"P{pid}") for pid in range(4) if pid % 2 == team_id]
+        # Determine team by seats (U & C) vs (A & B)
+        if winner_seat_key in ("u", "c"):
+            team_seats = ("u", "c")
+        else:
+            team_seats = ("a", "b")
+        names = [self._player_names.get(s, s) for s in team_seats]
         if len(names) == 2:
             self._last_trick_winner_line = f"Winners: {names[0]} & {names[1]}"
-
-    # ---- Handlers ----
 
     def closeEvent(self, event) -> None:
         try:
@@ -1467,6 +1410,8 @@ class MainWindow(QMainWindow):
             adapter.set_suit_callbacks(lambda s: self.worker.sig_trump.emit(s))
         if hasattr(adapter, "set_table_positions_callback"):
             adapter.set_table_positions_callback(lambda pos: self.worker.sig_table_positions.emit(pos))
+        if hasattr(adapter, "set_seat_names_callback"):
+            adapter.set_seat_names_callback(lambda nm: self.worker.sig_seat_names.emit(nm))
         if hasattr(adapter, "set_score_callbacks"):
             adapter.set_score_callbacks(lambda us, opp: self.worker.sig_scores.emit(us, opp),
                                         lambda us, opp: self.worker.sig_gscores.emit(us, opp))
@@ -1486,7 +1431,6 @@ class MainWindow(QMainWindow):
 
     def _on_player_id(self, pid: int):
         self._player_id = pid
-        self._update_names_from_registry()
 
     def _on_team_id(self, tid: int):
         self._my_team_id = tid
@@ -1537,7 +1481,6 @@ class MainWindow(QMainWindow):
         self._pending_is_card = False
         self.winner_badge.clear_text()
         self._round_clear_timer.stop()
-        # Reset last table
         self._current_trick.clear()
         self._last_trick.clear()
         self._last_trick_winner_line = ""
@@ -1548,16 +1491,26 @@ class MainWindow(QMainWindow):
     def _on_hand(self, cards: List[str]):
         self.hand.setCards(cards)
 
+    def _on_seat_names(self, names: Dict[str, str]):
+        # Update labels using names derived from /TBL
+        merged = dict(self._player_names)
+        merged.update(names or {})
+        self._player_names = {
+            "u": merged.get("u", "You"),
+            "a": merged.get("a", "Right"),
+            "b": merged.get("b", "Left"),
+            "c": merged.get("c", "Across"),
+        }
+        self.table.setPlayerNames(self._player_names)
+        self._refresh_last_table_view()
+
     def _on_table_positions(self, positions: Dict[str, Optional[str]]):
-        # Update table
         self.table.setPositions(positions)
 
-        # Track last table plays
         curr: Dict[str, Optional[str]] = {
             k: normalize_card_code(positions.get(k) or "") for k in ("u", "c", "a", "b")
         }
 
-        # Detect new plays (None -> code)
         for k in ("u", "a", "c", "b"):
             if self._prev_table.get(k) is None and curr.get(k) is not None:
                 self._current_trick.append((k, curr[k]))  # type: ignore
@@ -1571,7 +1524,6 @@ class MainWindow(QMainWindow):
             self._last_trick = list(self._current_trick)
             self._current_trick = []
             self._trick_full = False
-            # compute winners line
             self._compute_last_trick_winner_line()
             self._refresh_last_table_view()
 
@@ -1593,7 +1545,6 @@ class MainWindow(QMainWindow):
         self._update_status_label()
         self.hand.setTurnActive(False)
         self.hand.setInteractive(False)
-        # winner info via alerts parsing will set winner badge; fallback via scores:
         self._announce_game_winner(team_id=None)
         self.btn_connect.setEnabled(True)
         self.host_edit.setEnabled(True)
@@ -1603,9 +1554,7 @@ class MainWindow(QMainWindow):
         t = (text or "").strip()
         self._last_alert_text = t
         self._update_status_label()
-        # Parse winners from alert text if present
         lower = t.lower()
-        # Round winner team id
         m = re.search(r'round\s*\d+[^a-z0-9]+winner\s*team[:\s]+(\d+)', lower)
         if m:
             try:
@@ -1613,7 +1562,6 @@ class MainWindow(QMainWindow):
                 self._announce_round_winner(team_id, round_num=None)
             except Exception:
                 pass
-        # Game winner
         mg = re.search(r'team\s+(\d+)\s+is\s+the\s+winner\s+of\s+the\s+game', lower)
         if mg:
             try:
@@ -1621,7 +1569,6 @@ class MainWindow(QMainWindow):
                 self._announce_game_winner(team_id)
             except Exception:
                 pass
-        # Empty alert clears to default text
         if t == "":
             self._update_status_label()
 
@@ -1631,7 +1578,6 @@ class MainWindow(QMainWindow):
             if self._is_name_prompt(prompt):
                 name = (self.name_edit.text() or "").strip() or getpass.getuser() or "You"
                 self.sig_input.emit(name)
-                # We'll use server-provided names when /INF arrives
                 self._inp_pending = False
                 self._pending_is_card = False
                 self._show_prompt(False, "")
@@ -1640,7 +1586,6 @@ class MainWindow(QMainWindow):
                 self._trump_picker_active = True
                 self.hand.setInteractive(False)
                 self.hand.clearSelection()
-                # Do not show golden margin while calling trump
                 self.hand.setTurnActive(False)
                 self.lbl_trump_prompt.setText(prompt)
                 self.suit_picker_wrap.setVisible(True)
@@ -1659,7 +1604,6 @@ class MainWindow(QMainWindow):
             self._show_prompt(False, "")
             self.suit_picker_wrap.setVisible(False)
             self.lbl_trump_prompt.setText("")
-            # Keep border off until server ends the prompt
             self.hand.setTurnActive(False)
 
     def _show_prompt(self, visible: bool, text: str):
@@ -1683,54 +1627,21 @@ class MainWindow(QMainWindow):
         self.lbl_gscores.setScores(us, opp)
 
     def _log(self, msg: str):
-        # Only /INF messages and client logs go to Info
         raw = (msg or "").strip()
         if raw.startswith("/INF"):
-            # Show raw /INF message
             inf_text = raw[4:]
             self._append_info(inf_text)
-
-            # Strict parse: require exactly ids 0..3
-            id_to_name: dict[int, str] = {}
-            for seg in (s for s in inf_text.split(";") if s.strip()):
-                pid_str, sep, name = seg.strip().partition(":")
-                if not sep:
-                    raise ValueError(f"Invalid segment (missing colon): {seg!r}")
-                pid = int(pid_str.strip())
-                if not (0 <= pid <= 3):
-                    raise ValueError(f"Player id out of range: {pid}")
-                name = name.strip()
-                if len(name) >= 2 and name[0] == name[-1] == '"':
-                    name = name[1:-1]
-                if not name:
-                    raise ValueError(f"Empty name for id {pid}")
-                if pid in id_to_name:
-                    raise ValueError(f"Duplicate id {pid}")
-                id_to_name[pid] = name
-            if set(id_to_name.keys()) != {0, 1, 2, 3}:
-                raise ValueError(f"Incomplete ids: {sorted(id_to_name.keys())}")
-            self._id_to_name.update(id_to_name)
-
-            # Update seat names if we can
-            self._update_names_from_registry()
         else:
-            # client-side logs
             if raw:
                 self._append_info(raw)
 
-# ------------
-# Entry point
-# ------------
-
 def main():
-    # Parse CLI for default host (or host:port)
     parser = argparse.ArgumentParser(description="Hokm GUI Client")
     parser.add_argument("host", nargs="?", help="Default host or host:port to prefill in the UI")
     parser.add_argument("-H", "--host", dest="host_opt", help="Default host or host:port to prefill in the UI")
     args = parser.parse_args()
     default_host_port = args.host_opt or args.host
 
-    # HDPI policy must be set before creating QApplication
     QGuiApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
     app = QApplication(sys.argv)
     w = MainWindow(default_host_port=default_host_port)
